@@ -26,7 +26,7 @@ executable_path() = joinpath(package_root(), "build", "emtp")
 function build_reference()
     script = joinpath(package_root(), "scripts", "build_fortran.sh")
     isfile(script) || error("Missing registered reference build entrypoint: $script")
-    run(setenv(`bash $script`, "EMTP_DEBUG_BUILD" => "1"))
+    run(addenv(`bash $script`, "EMTP_DEBUG_BUILD" => "1"))
     executable = executable_path()
     isfile(executable) || error("Reference build completed without producing $executable")
     return executable
@@ -87,7 +87,7 @@ function run_deck(
     timeout_s > 0 || throw(ArgumentError("timeout_s must be positive"))
     timed_out = false
     process = open(report_path, "w") do report
-        command = setenv(
+        command = addenv(
             `$executable`,
             "EMTP_GOLDEN_TAPE_DIR" => state_dir,
         )
