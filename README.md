@@ -19,3 +19,17 @@ silently substitute missing study parameters.
 
 Catalog code and the included synthetic data are available under the MIT
 licence.
+
+## Structure and checks
+
+```text
+catalogs/generic/      versioned synthetic equipment data
+src/                   catalog and study-facet API
+test/                  provenance and facet tests
+examples/              public catalog example
+check.jl               structure and publication-boundary check
+Makefile               check, test, and example commands
+```
+
+Run `make check`, `make test`, and `make example` before publishing catalog
+changes.
