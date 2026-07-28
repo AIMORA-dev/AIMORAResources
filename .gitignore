@@ -1,7 +1,7 @@
 Manifest.toml
 build/
 runs/
-examples/outputs/
+examples/**/outputs/
 *.o
 *.err
 *.PL4

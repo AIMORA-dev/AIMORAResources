@@ -17,7 +17,14 @@ end
 if isfile(BPAEMTPReference.executable_path())
     @testset "compiled reference example" begin
         deck = read(
-            joinpath(@__DIR__, "..", "examples", "rlc_energization.deck"),
+            joinpath(
+                @__DIR__,
+                "..",
+                "examples",
+                "emt",
+                "rlc_energization",
+                "rlc_energization.deck",
+            ),
             String,
         )
         result = BPAEMTPReference.run_deck(

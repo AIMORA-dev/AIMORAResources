@@ -12,14 +12,10 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: julia-actions/setup-julia@v2
+      - uses: actions/checkout@v6
+      - uses: julia-actions/setup-julia@v3
         with:
           version: "1.10"
-      - uses: julia-actions/cache@v2
-      - name: Build compiled BPA reference
-        run: EMTP_DEBUG_BUILD=1 scripts/build_fortran.sh
-      - name: Run package tests
-        run: julia --project=. test/runtests.jl
-      - name: Run reference example
-        run: julia --project=. examples/rlc_energization.jl
+      - uses: julia-actions/cache@v3
+      - name: Check, build, test, and run the reference example
+        run: make check build test example
