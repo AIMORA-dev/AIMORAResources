@@ -88,7 +88,7 @@ function run_deck(
     timed_out = false
     process = open(report_path, "w") do report
         command = addenv(
-            `$executable`,
+            Cmd(`$executable`; dir = output_dir),
             "EMTP_GOLDEN_TAPE_DIR" => state_dir,
         )
         child = run(
