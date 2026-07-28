@@ -1,0 +1,7 @@
+Manifest.toml
+build/
+runs/
+examples/outputs/
+*.o
+*.err
+*.PL4

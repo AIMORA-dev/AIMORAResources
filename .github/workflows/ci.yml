@@ -1,0 +1,25 @@
+name: Reference CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: "1.10"
+      - uses: julia-actions/cache@v2
+      - name: Build compiled BPA reference
+        run: EMTP_DEBUG_BUILD=1 scripts/build_fortran.sh
+      - name: Run package tests
+        run: julia --project=. test/runtests.jl
+      - name: Run reference example
+        run: julia --project=. examples/rlc_energization.jl
