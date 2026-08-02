@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-01"
-source_count = 461
+snapshot_date = "2026-08-02"
+source_count = 464
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -14,10 +14,10 @@ source_count = 461
 "public_testset" = 9
 "translation_capability_packet" = 11
 "validation_fixture" = 71
-"validation_suite" = 76
+"validation_suite" = 79
 
 [counts_by_disposition]
-"example" = 52
+"example" = 55
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -4174,3 +4174,30 @@ path = "tests/suite/wound_field_synchronous_machine.jl"
 disposition = "gallery"
 example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
 reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:modern_emt_science_contract"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/modern_emt_science_contract.jl"
+disposition = "example"
+example_ids = ["emt_inverter"]
+reason = "The executable average-value contract and its explicit unsupported switching boundary are represented by the public inverter example."
+
+[[source]]
+id = "validation-suite:modern_emt_timestep_transactions"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/modern_emt_timestep_transactions.jl"
+disposition = "example"
+example_ids = ["emt_checkpoint_restart"]
+reason = "Typed reversible state and exact continuation are represented by the public checkpoint/restart example."
+
+[[source]]
+id = "validation-suite:modern_emt_hybrid_execution"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/modern_emt_hybrid_execution.jl"
+disposition = "example"
+example_ids = ["emt_multirate_sampled_pwm"]
+reason = "Exact multirate sampled scheduling and PWM are represented by the public scheduler demonstrator; private validation retains coupled event and rollback evidence."

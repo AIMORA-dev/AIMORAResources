@@ -632,3 +632,14 @@ source_ids = [
     "case-input:emt:dc_simulator_type16_fixed_field",
     "case-input:emt:dc_simulator_type16_free_field",
 ]
+
+[[case]]
+id = "emt_multirate_sampled_pwm"
+study = "emt"
+path = "examples/emt/multirate_sampled_pwm/run.jl"
+entrypoint = "examples/emt/multirate_sampled_pwm/run.jl"
+description = "Exact integer-tick electrical, delayed sampled-control, and trailing-edge PWM tasks with deterministic priority and held outputs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["validation-suite:modern_emt_hybrid_execution"]
