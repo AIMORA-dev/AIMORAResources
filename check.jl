@@ -234,9 +234,9 @@ if isdir(joinpath(engine_root, "test"))
     end
 end
 
-if isfile(joinpath(workspace_root, "translation_ledger", "cards_c301_c325.md"))
+if isfile(joinpath(workspace_root, "LEDGER", "cards_c301_c325.md"))
     cards = read(
-        joinpath(workspace_root, "translation_ledger", "cards_c301_c325.md"),
+        joinpath(workspace_root, "LEDGER", "cards_c301_c325.md"),
         String,
     )
     for row in coverage_rows
