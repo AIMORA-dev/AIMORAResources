@@ -32,6 +32,9 @@ get(project, "name", nothing) == "BPAEMTPReference" ||
 for forbidden_path in (
     "AGENTS.md",
     "MEMORY.md",
+    "MAP.md",
+    "LEDGER.md",
+    "LEDGER",
     "TRANSLATION_MAP.md",
     "TRANSLATION_LEDGER.md",
     ".codex",
