@@ -2,6 +2,9 @@ using Test
 using AIMORACases
 using TOML
 
+include(joinpath(AIMORACases.package_root(), "examples", "Qualification.jl"))
+using .AIMORAExampleQualification
+
 @testset "case catalog" begin
     cases = AIMORACases.available_cases()
     catalog = TOML.parsefile(
@@ -18,6 +21,23 @@ using TOML
     )
     @test AIMORACases.case_descriptor(:emt_rlc_energization).study == :emt
     @test_throws KeyError AIMORACases.case_descriptor(:missing)
+end
+
+@testset "impact-selected example qualification" begin
+    root = AIMORACases.package_root()
+    targets = example_targets(root)
+    selected = select_changed_targets(
+        targets,
+        [
+            "examples/emt/rlc_energization/run.jl",
+            "examples/line_constants/double_circuit/outputs/sequence_impedance.csv",
+        ],
+    )
+    @test getfield.(selected, :id) == ["emt_rlc_energization", "line_constants_double_circuit"]
+    @test only(select_targets(targets, ["transformer_parameters_two_winding_short_circuit"])).directory ==
+          "examples/transformer_parameters/two_winding_short_circuit"
+    @test isempty(select_changed_targets(targets, ["examples/support/ExampleSupport.jl"]))
+    @test_throws ErrorException select_targets(targets, ["missing_example"])
 end
 
 @testset "source coverage contract" begin

@@ -17,6 +17,8 @@ for relative_path in (
     "test/runtests.jl",
     "examples/README.md",
     "examples/list_cases.jl",
+    "examples/Qualification.jl",
+    "examples/run_examples.jl",
     "examples/support/ExampleSupport.jl",
     "examples/support/CatalogDeckExample.jl",
     "examples/support/ClassicEMTPExample.jl",
@@ -40,6 +42,10 @@ catalog = TOML.parsefile(joinpath(ROOT, "examples", "catalog.toml"))
 get(catalog, "schema", nothing) == "aimora-examples-v2" ||
     fail("example catalog schema is not aimora-examples-v2")
 catalog_rows = catalog["case"]
+include(joinpath(ROOT, "examples", "Qualification.jl"))
+qualification_targets = AIMORAExampleQualification.example_targets(ROOT)
+length(qualification_targets) == length(catalog_rows) ||
+    fail("qualification runner does not cover every catalog example")
 catalog_directories = String[]
 catalog_rows_by_directory = Dict{String,Any}()
 for row in catalog_rows
