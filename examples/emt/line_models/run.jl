@@ -3,9 +3,11 @@
 using Printf
 
 include(normpath(joinpath(@__DIR__, "..", "..", "load_aimora.jl")))
+include(normpath(joinpath(@__DIR__, "..", "..", "support", "ExampleSupport.jl")))
 
 using AIMORA.EMTStudy
 using AIMORA.Lines
+using .ExampleSupport
 
 const DT = 20.0e-6
 
@@ -35,12 +37,24 @@ function write_line_trace_csv(path::AbstractString, trace::DeckEMTTrace)
 end
 
 function main()
-    output_dir = length(ARGS) >= 1 ? ARGS[1] : joinpath(@__DIR__, "outputs")
+    output_dir = artifact_directory(ARGS, joinpath(@__DIR__, "outputs"))
     trace = run_deck_emt(DECK_LINES; dt_s = DT, t_end_s = 5.0 * DT, source = "line_models example")
     csv_path = write_line_trace_csv(joinpath(output_dir, "bergeron_line_trace.csv"), trace)
+    series = Pair{String,Vector{Float64}}[
+        "source_v_pu" => vec(trace.voltage_pu[trace.node_map[:source], :]),
+        "load_v_pu" => vec(trace.voltage_pu[trace.node_map[:load], :]),
+    ]
+    waveform_path = write_waveform_svg(
+        joinpath(output_dir, "bergeron_line_waveform.svg"),
+        trace.time_s,
+        series;
+        title = "Bergeron Line Travelling-Wave Response",
+        y_label = "voltage (pu)",
+    )
     point = frequency_dependent_line_point(0.0, 2.0e-3, 0.0, 0.5e-6, 10.0, 60.0)
 
     @printf("Output CSV: %s\n", abspath(csv_path))
+    @printf("Output waveform: %s\n", waveform_path)
     @printf("Engine: Julia fixed-step Bergeron line slice\n")
     @printf("Legacy Fortran in loop: no\n")
     @printf("Samples: %d, dt: %.1f us\n", length(trace.time_s), trace.dt_s * 1.0e6)

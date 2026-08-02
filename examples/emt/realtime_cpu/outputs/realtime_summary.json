@@ -1,0 +1,9 @@
+{
+  "steps": 2500,
+  "dt_s": 0.000020000,
+  "duration_s": 0.050000000,
+  "mean_step_s": 0.000000227,
+  "max_step_s": 0.000004860,
+  "overruns": 0,
+  "realtime": false
+}

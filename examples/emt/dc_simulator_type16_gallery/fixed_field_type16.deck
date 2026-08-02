@@ -1,0 +1,16 @@
+BEGIN NEW DATA CASE
+C Two-card type-16 DC simulator with generated startup topology
+   .001     .004     60.       0
+       1       1       1       0       1       0       0       0
+ 0P1                        10.0
+ 0P2                        12.0
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+16P1     2       2.0       0.5     0.001     0.002     0.003       0.0       0.0
+  P2     0       3.0       4.0     -10.0      10.0      0.01      60.0         1
+BLANK CARD ENDING SOURCES
+  P1    P2
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

@@ -1,0 +1,85 @@
+id,name,domain,status,owner
+emt,Electromagnetic transient,dynamic,implemented,src/studies/emt.jl
+power_flow,AC balanced power flow,static,planned,src/studies/power_flow.jl
+unbalanced_power_flow,AC unbalanced multiphase power flow,static,planned,planned
+dc_power_flow,DC power flow,static,planned,planned
+voltage_drop,Voltage drop,static,planned,planned
+load_allocation,Load allocation,static,planned,planned
+load_growth,Load growth and planning,planning,planned,planned
+contingency,Contingency and N-1 screening,planning,planned,planned
+voltage_stability,Voltage stability margin,static,planned,planned
+hosting_capacity,DER hosting capacity,planning,planned,planned
+optimal_power_flow,Optimal power flow,optimization,planned,planned
+short_circuit,Short circuit,static,planned,src/studies/short_circuit.jl
+iec_short_circuit,IEC-style short circuit,fault,planned,planned
+ansi_short_circuit,ANSI-style short circuit,fault,planned,planned
+unbalanced_fault,Unbalanced fault analysis,fault,planned,planned
+dc_short_circuit,DC short circuit,fault,planned,planned
+protection,Protection coordination,protection,planned,src/studies/protection.jl
+relay_settings,Relay setting calculation,protection,planned,planned
+time_current_coordination,Time-current coordination,protection,planned,planned
+fuse_recloser_coordination,Fuse and recloser coordination,protection,planned,planned
+distance_protection,Distance protection,protection,planned,planned
+differential_protection,Differential protection,protection,planned,planned
+protection_optimization,Protection setting optimization,optimization,planned,planned
+arc_flash,Arc flash,safety,planned,src/studies/arc_flash.jl
+arc_flash_labels,Arc-flash labels,safety,planned,planned
+grounding_grid,Grounding grid design,safety,planned,planned
+step_touch_voltage,Step and touch voltage,safety,planned,planned
+grounding_conductor_sizing,Grounding conductor sizing,sizing,planned,planned
+lightning_surge_risk,Lightning and surge risk screening,safety,planned,planned
+rms_transient_stability,RMS transient stability,dynamic,planned,planned
+switching_transients,Switching transients,dynamic,planned,planned
+lightning_transients,Lightning and surge transients,dynamic,planned,planned
+transformer_inrush,Transformer energization and inrush,dynamic,planned,planned
+motor_starting_dynamic,Motor starting dynamics,machines,planned,planned
+ferroresonance,Ferroresonance,dynamic,planned,planned
+insulation_coordination,Insulation coordination,safety,planned,planned
+harmonic_load_flow,Harmonic load flow,power_quality,planned,planned
+harmonic_resonance,Harmonic resonance,power_quality,planned,planned
+filter_sizing,Harmonic filter sizing,sizing,planned,planned
+flicker,Flicker,power_quality,planned,planned
+voltage_sag_swell,Voltage sag and swell,power_quality,planned,planned
+voltage_unbalance,Voltage unbalance,power_quality,planned,planned
+induction_machine,Induction machine model,machines,planned,planned
+synchronous_machine,Synchronous machine model,machines,planned,planned
+generator_capability,Generator capability and loading,machines,planned,planned
+motor_torque_speed,Motor torque-speed checks,machines,planned,planned
+machine_thermal,Machine thermal loading,machines,planned,planned
+excitation_governor,Excitation and governor models,machines,planned,planned
+pv_string_sizing,PV string sizing,sizing,planned,planned
+pv_inverter_sizing,PV inverter sizing,sizing,planned,planned
+pv_cable_sizing,PV DC and AC cable sizing,sizing,planned,planned
+pv_yield,PV yield and clipping,renewables,planned,planned
+grid_following_inverter,Grid-following inverter model,power_electronics,planned,planned
+grid_forming_inverter,Grid-forming inverter model,power_electronics,planned,planned
+bess_sizing,Battery energy storage sizing,sizing,planned,planned
+storage_dispatch,Storage dispatch,optimization,planned,planned
+wind_turbine,Wind turbine model,renewables,planned,planned
+ride_through,Ride-through compliance checks,power_electronics,planned,planned
+cable_ampacity,Cable ampacity,thermal,planned,planned
+dynamic_cable_rating,Dynamic cable thermal rating,thermal,planned,planned
+cable_thermal_capacity,Cable thermal overload capacity,thermal,planned,planned
+cable_short_circuit_withstand,Cable short-circuit withstand,thermal,planned,planned
+cable_pulling,Cable pulling and tension checks,mechanical,planned,planned
+duct_bank_derating,Duct-bank and tray derating,thermal,planned,planned
+line_constants,Overhead line impedance and capacitance constants,lines,implemented,src/studies/line_constants.jl
+cable_constants,Cable constants and frequency scan,lines,implemented,src/studies/cable_constants.jl
+transformer_parameters,Transformer parameter conversion and branch generation,static,implemented,src/studies/transformer_parameters.jl
+sheath_bonding,Cable sheath bonding and circulating current,lines,planned,planned
+conductor_sizing,Conductor sizing,sizing,planned,planned
+transformer_sizing,Transformer sizing,sizing,planned,planned
+generator_sizing,Generator sizing,sizing,planned,planned
+motor_sizing,Motor sizing,sizing,planned,planned
+switchgear_rating,Switchgear rating,sizing,planned,planned
+ct_vt_sizing,CT and VT sizing,sizing,planned,planned
+ups_battery_sizing,UPS and battery sizing,sizing,planned,planned
+feeder_reconfiguration,Feeder reconfiguration,optimization,planned,planned
+capacitor_placement,Capacitor placement optimization,optimization,planned,planned
+der_placement_sizing,DER placement and sizing,optimization,planned,planned
+cable_sizing_optimization,Cable sizing optimization,optimization,planned,planned
+reliability_indices,Reliability indices,reliability,planned,planned
+outage_impact,Outage impact,reliability,planned,planned
+asset_aging,Asset loading and aging,reliability,planned,planned
+transformer_loss_of_life,Transformer loss-of-life,reliability,planned,planned
+cable_thermal_aging,Cable thermal aging,reliability,planned,planned

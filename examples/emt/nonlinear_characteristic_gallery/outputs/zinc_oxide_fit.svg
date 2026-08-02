@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="34" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#111827">ZnO Piecewise Power-Law Fit</text>
+<rect x="92.0" y="70.0" width="700.0" height="400.0" fill="#f8fafc" stroke="#cbd5e1"/>
+<line x1="92.0" y1="70.0" x2="792.0" y2="70.0" stroke="#e2e8f0"/>
+<text x="82.0" y="74.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">0.105</text>
+<line x1="92.0" y1="170.0" x2="792.0" y2="170.0" stroke="#e2e8f0"/>
+<text x="82.0" y="174.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">0.0775</text>
+<line x1="92.0" y1="270.0" x2="792.0" y2="270.0" stroke="#e2e8f0"/>
+<text x="82.0" y="274.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">0.05</text>
+<line x1="92.0" y1="370.0" x2="792.0" y2="370.0" stroke="#e2e8f0"/>
+<text x="82.0" y="374.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">0.0225</text>
+<line x1="92.0" y1="470.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="82.0" y="474.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">-0.004999</text>
+<line x1="92.0" y1="70.0" x2="92.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="92.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">18.75</text>
+<line x1="267.0" y1="70.0" x2="267.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="267.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">25.62</text>
+<line x1="442.0" y1="70.0" x2="442.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="442.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">32.5</text>
+<line x1="617.0" y1="70.0" x2="617.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="617.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">39.38</text>
+<line x1="792.0" y1="70.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="792.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">46.25</text>
+<polyline points="123.818,451.818 200.182,451.785 302.000,451.458 429.273,448.185 582.000,415.458 760.182,88.182" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="123.818,451.818 200.182,451.785 302.000,451.458 429.273,448.204 582.000,414.863 760.182,88.182" fill="none" stroke="#dc2626" stroke-width="2"/>
+<text x="442.0" y="535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#334155">voltage (V)</text>
+<text x="24" y="270.0" text-anchor="middle" transform="rotate(-90 24 270.0)" font-family="sans-serif" font-size="14" fill="#334155">current (A)</text>
+<line x1="816.0" y1="90.0" x2="836.0" y2="90.0" stroke="#2563eb" stroke-width="3"/>
+<text x="844.0" y="94.0" font-family="sans-serif" font-size="12" fill="#334155">measured_current_a</text>
+<line x1="816.0" y1="110.0" x2="836.0" y2="110.0" stroke="#dc2626" stroke-width="3"/>
+<text x="844.0" y="114.0" font-family="sans-serif" font-size="12" fill="#334155">fitted_current_a</text>
+</svg>

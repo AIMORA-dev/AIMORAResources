@@ -1,0 +1,62 @@
+AIMORA OVER20 FINALIZATION REPORT
+SOURCE: parsed_deck_trace example
+TITLE: Parsed Deck Trace OVER20 Finalization
+LEGACY FORTRAN IN LOOP: NO
+FULL BPA REPORT COMPATIBILITY: NO
+BINARY PLOT FORMAT COMPATIBILITY: NO
+EMTSPY COMPATIBILITY: NO
+STATISTICS ROUTE COMPATIBILITY: NO
+FORTRAN SCOPE:
+  - over20_peak_node_report_labels_5011_5019
+  - over20_plot_end_sentinel_labels_5019_5022_8005
+  - over20_extrema_report_labels_8002_8004_18005
+  - over20_terminal_node_voltage_labels_5759_7012
+  - over20_final_route_labels_9800_9850
+OVER20 OWNER SUMMARY:
+  SAMPLE INDICES: [0, 1, 2, 3, 4, 5]
+  TIME S VALUES: [0, 2e-05, 4e-05, 6e-05, 8e-05, 0.0001]
+  TERMINAL TIME S: 1.000000E-04
+  VARIABLE EXTREMA ROWS: 6
+  FINAL ROUTE REQUESTS:
+    TERMINAL CONDITIONS: true
+    BINARY PLOT RECORD: true
+    INTERACTIVE PLOT: false
+    CATALOG: false
+    TABLE SAVE: false
+OVERALL SIMULATION PEAK NODE VOLTAGE
+  BUS1                         1.000000E+00     0.000000E+00
+PLOT SENTINEL VOLTI(1): -9999
+VARIABLE MAXIMA
+  BUS1_V_PU                            1.000000E+00
+  BUS2_V_PU                            5.000000E-01
+  BUS3_V_PU                            3.333333E-01
+TIMES OF MAXIMA
+  BUS1_V_PU                            0.000000E+00
+  BUS2_V_PU                            0.000000E+00
+  BUS3_V_PU                            4.000000E-05
+VARIABLE MINIMA
+  BUS1_V_PU                            1.000000E+00
+  BUS2_V_PU                            3.333333E-01
+  BUS3_V_PU                            0.000000E+00
+TIMES OF MINIMA
+  BUS1_V_PU                            4.000000E-05
+  BUS2_V_PU                            4.000000E-05
+  BUS3_V_PU                            0.000000E+00
+TERMINAL NODE VOLTAGES
+  BUS1                         1.000000E+00
+  BUS2                         3.333333E-01
+  BUS3                         3.333333E-01
+DEFERRED EFFECTS:
+  - full_terminal_branch_state_punch
+  - full_terminal_nonlinear_switch_state_punch
+  - binary_plot_file_compatibility
+  - pltfil_interactive_plotting
+  - katalg_tables_save_restore
+  - emtspy_spying_interactive_storage
+  - over20_statistics_route
+  - full_bpa_text_report_compatibility
+  - full_over29_overlay
+  - full_over31_plot_setup
+  - dekplt_interactive_plotting
+  - dekspy_interactive_storage
+  - xpr_expression_report_formatting

@@ -1,0 +1,20 @@
+BEGIN NEW DATA CASE
+C Type-18 ideal-transformer voltage constraint driven by a constant source
+C   dT >< Tmax >< Xopt >< Copt ><Epsiln>
+  50.E-6    .002     60.       0
+      20       1       1       0       1       0       0       0
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+ 0P1    S1                  10.0
+ 0S1    S2                  20.0
+ 0S2    PREV                30.0
+ 0PREV                      40.0
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+11PREV          100.
+18P1     0       2.0S1    S2    AUX
+BLANK CARD ENDING SOURCES
+  PREV  P1    S1    S2    AUX
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

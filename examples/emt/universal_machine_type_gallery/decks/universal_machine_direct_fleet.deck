@@ -1,0 +1,61 @@
+BEGIN NEW DATA CASE
+C     TWO MANUALLY INITIALIZED DIRECT-CURRENT UNIVERSAL MACHINES
+POWER FREQUENCY                     60.0
+ABSOLUTE U.M. DIMENSIONS              40       4     100     120
+C PRINTED NUMBER WIDTH  13  2
+ .000020 .000980
+       1       1       1       1       1      -1                               1
+      10      10      40      40     200     200
+C  --------- DISTINCT ARMATURE-TERMINAL EXTERNAL RESISTANCES
+  BUSC2 BUSCS2            100.0 10.0                                            1
+  BUSD2 BUSDS2            120.0 12.0                                            1
+C  --------- CONNECTIVITY OF EMTP ELECTRIC NETWORKS
+  BUSCS2                  1.0E+6
+  BUSDS2                  1.0E+6
+C  --------- DISTINCT MECHANICAL NETWORK COMPONENTS
+  BUSMG BUSMGR            .4548                                                1
+  BUSMGR      BUSMG BUSMGR
+  BUSMG                               9.8E+7                                   1
+  BUSHG BUSHR             .5120                                                1
+  BUSHR       BUSHG BUSHR
+  BUSHG                               8.7E+7                                   1
+C  -------- FOR MEASUREMENT OF ELECTROMECHANICAL TORQUE
+  BUSMS BUSMG             1.0E-6                                               1
+  BUSHS BUSHG             1.0E-6                                               1
+BLANK card ending branch cards
+BLANK card ending nonexistent switch cards
+C  --------- DC ARMATURE AND DRIVE SOURCES
+11BUSCS2       10.0                                                -1.0
+11BUSMS      1.0E-12                                                -1.0
+11BUSDS2       12.0                                                -1.0
+11BUSHS      1.2E-12                                                -1.0
+19 UM
+ 0
+BLANK CARD ENDING CLASS 1 UM DATA CARDS
+C  UM-1 MACHINE TABLE: TYPE 9, SERIES-COMPOUND-FIELD DC
+ 9 2 0111BUSMG        2                            0.1885
+0.0           0.02358
+0.0           0.02358
+C  UM-1 FIVE-COIL TABLE
+0.0           0.0012                          1 0.0
+0.0           0.0012                          1 0.0
+0.412         0.0012        BUSC2             1 0.0
+0.110         0.0012                          1 0.0
+0.050         0.0                             1 0.0
+C  UM-2 MACHINE TABLE: TYPE 10, SERIES-FIELD DC
+10 2 0111BUSHG        2                            0.2050
+0.0           0.02100
+0.0           0.02100
+C  UM-2 FIVE-COIL TABLE
+0.0           0.0010                          1 0.0
+0.0           0.0010                          1 0.0
+0.500         0.0010        BUSD2             1 0.0
+0.0           0.0010                          1 0.0
+0.060         0.0                             1 0.0
+BLANK card terminating all U.M. data
+BLANK card ending all electric-network sources
+  BUSCS2BUSC2             BUSMG
+  BUSDS2BUSD2             BUSHG
+BLANK card terminating output variable requests
+BLANK card terminating plot cards
+BEGIN NEW DATA CASE

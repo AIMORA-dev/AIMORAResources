@@ -1,0 +1,3 @@
+id,bus,rated_kva,v_ll_rms_v,p_ref_pu,q_ref_pu,enabled,model
+solar_1,bus_650,750,4160,0.8,0.05,true,grid_following
+battery_1,bus_675,500,4160,0.25,-0.1,true,grid_following

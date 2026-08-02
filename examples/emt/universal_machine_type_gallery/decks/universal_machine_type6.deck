@@ -1,0 +1,44 @@
+BEGIN NEW DATA CASE
+C     AUTOMATICALLY INITIALIZED SINGLE-PHASE STATOR AND FIELD MACHINE
+POWER FREQUENCY                     60.0
+ABSOLUTE U.M. DIMENSIONS              20       2      50      60
+C PRINTED NUMBER WIDTH  13  2
+ .000020    .010
+       1       1       1       1       1      -1                               1
+       5       5      20      20     100     100
+C  --------- STORED POWER-TERMINAL EXTERNAL RESISTANCES
+  BUSC2 BUSCS2            100.0 10.0                                            1
+C  --------- CONNECTIVITY OF EMTP FOR ELECTRIC NETWORK
+  BUSCS2                  1.0E+6
+  BUSFD                   1.0E+6
+C  --------- MECHANICAL NETWORK COMPONENTS
+  BUSMG BUSMGR            .4548                                                1
+  BUSMGR      BUSMG BUSMGR
+  BUSMG                               9.8E+7                                   1
+C  -------- FOR MEASUREMENT OF ELECTROMECHANICAL TORQUE
+  BUSMS BUSMG             1.0E-6                                               1
+BLANK card ending branch cards
+BLANK card ending nonexistent switch cards
+C  --------- SOURCES FOR DUMMY SLOTS, SINGLE PHASE, FIELD, AND DRIVE
+14BUSCS2     1.0     60.0     +90.0                         -1.0
+14BUSFD   1.0E-9     60.0     +120.0                        -1.0
+14BUSMS -1 0.000001  0.00001                                -1.0
+19 UM
+ 1
+BLANK CARD ENDING CLASS 1 UM DATA CARDS
+C  UM-1 MACHINE TABLE: TYPE 6, SINGLE-PHASE STATOR AND FIELD
+ 6 1 0111BUSMG        2                            0.1885
+              0.02358
+              0.02358
+2.0           0.0           BUSFD BUSMS
+C  UM-1 FOUR-COIL TABLE: TWO DUMMY SLOTS, STATOR, EXTERNAL FIELD
+0.0           0.0012                          1
+0.0           0.0012                          1
+0.412         0.0012        BUSC2             1
+0.110         0.0012        BUSFD             1
+BLANK card terminating all U.M. data
+BLANK card ending all electric-network sources
+  BUSCS2BUSC2 BUSFD       BUSMG
+BLANK card terminating output variable requests
+BLANK card terminating plot cards
+BEGIN NEW DATA CASE

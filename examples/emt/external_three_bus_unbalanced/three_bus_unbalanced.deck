@@ -1,0 +1,35 @@
+# Julia-only educational adaptation of PowerModelsDistribution case3_unbalanced.
+# R values are upstream diagonal ohmic data. L = X/(2*pi*50 Hz).
+
+begin buses
+bus source_a
+bus source_b
+bus source_c
+bus primary_a
+bus primary_b
+bus primary_c
+bus load_a
+bus load_b
+bus load_c
+end buses
+
+begin sources
+source grid_a source_a 1.0e9 0.9959 50.0 0.0 0.0
+source grid_b source_b 1.0e9 0.9959 50.0 -2.0943951023931953 0.0
+source grid_c source_c 1.0e9 0.9959 50.0 2.0943951023931953 0.0
+end sources
+
+begin branches
+rl oh_a source_a primary_a 0.1000 0.000185574663
+rl oh_b source_b primary_b 0.1000 0.000185574663
+rl oh_c source_c primary_c 0.1000 0.000185574663
+rl quad_a primary_a load_a 0.1167 0.000212312694
+rl quad_b primary_b load_b 0.1167 0.000212312694
+rl quad_c primary_c load_c 0.1167 0.000212312694
+capacitor cable_a load_a 0 50.929581789e-9
+capacitor cable_b load_b 0 50.929581789e-9
+capacitor cable_c load_c 0 50.929581789e-9
+resistor load_phase_a load_a 0 0.50
+resistor load_phase_b load_b 0 0.75
+resistor load_phase_c load_c 0 0.75
+end branches

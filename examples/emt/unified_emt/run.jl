@@ -20,12 +20,10 @@ function main()
         inverter_q_pu = 0.05,
     )
 
-    t0 = time()
     rows = run_reduced_feeder_inverter(cfg)
-    elapsed = time() - t0
 
     write_unified_csv(joinpath(output_dir, "unified_emt_timeseries.csv"), rows)
-    write_unified_summary(joinpath(output_dir, "summary.json"), rows, cfg; elapsed_s = elapsed)
+    write_unified_summary(joinpath(output_dir, "summary.json"), rows, cfg)
     write_unified_voltage_svg(joinpath(output_dir, "unified_voltage.svg"), rows)
     write_unified_power_svg(joinpath(output_dir, "unified_power.svg"), rows)
 
@@ -36,7 +34,6 @@ function main()
     @printf("Samples: %d, dt: %.1f us\n", length(rows), cfg.dt_s * 1e6)
     @printf("Final bus voltage: %.4f pu\n", last[2])
     @printf("Final inverter P/Q: %.4f / %.4f pu\n", last[6], last[7])
-    @printf("Simulation loop time: %.6f s\n", elapsed)
 end
 
 main()

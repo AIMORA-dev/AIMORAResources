@@ -1,0 +1,634 @@
+schema = "aimora-examples-v2"
+
+# Every runnable public example has one catalog row. `path` is the primary
+# reusable input when one exists, otherwise it is the Julia entrypoint.
+# `entrypoint` always names the Julia program launched by the local Makefile.
+
+[[case]]
+id = "classic_case0001_series_rlc_step"
+study = "emt"
+path = "examples/classic_emtp/case0001_series_rlc_step/case0001.deck"
+entrypoint = "examples/classic_emtp/case0001_series_rlc_step/run.jl"
+description = "Classic single-phase series RLC circuit energized by a step-voltage source."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0002_parallel_rlc_discharge"
+study = "emt"
+path = "examples/classic_emtp/case0002_parallel_rlc_discharge/case0002.deck"
+entrypoint = "examples/classic_emtp/case0002_parallel_rlc_discharge/run.jl"
+description = "Classic parallel RLC capacitor-discharge case with an initial condition and timed switch."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0003_atpdraw_rlc"
+study = "emt"
+path = "examples/classic_emtp/case0003_atpdraw_rlc/case0003.deck"
+entrypoint = "examples/classic_emtp/case0003_atpdraw_rlc/run.jl"
+description = "Normalized ATPDraw-originated RLC topology with explicit initial conditions and a 10 ms switch event."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0004_500kv_line_constants"
+study = "line_constants"
+path = "examples/classic_emtp/case0004_500kv_line_constants/case0004.deck"
+entrypoint = "examples/classic_emtp/case0004_500kv_line_constants/run.jl"
+description = "Classic 500 kV flat bundled-line geometry and 60 Hz line-constants calculation."
+requires_solver = true
+reference_compatible = true
+result_kind = "frequency_scan"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0005_345kv_double_circuit"
+study = "line_constants"
+path = "examples/classic_emtp/case0005_345kv_double_circuit/case0005.deck"
+entrypoint = "examples/classic_emtp/case0005_345kv_double_circuit/run.jl"
+description = "Classic 345 kV double-circuit tower geometry with complete mutual coupling."
+requires_solver = true
+reference_compatible = true
+result_kind = "frequency_scan"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0006_230kv_high_frequency_line"
+study = "line_constants"
+path = "examples/classic_emtp/case0006_230kv_high_frequency_line/case0006.deck"
+entrypoint = "examples/classic_emtp/case0006_230kv_high_frequency_line/run.jl"
+description = "Classic 230 kV conductor geometry evaluated at 500 kHz for fast-front studies."
+requires_solver = true
+reference_compatible = true
+result_kind = "frequency_scan"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0007_capacitor_bank_recovery_voltage"
+study = "emt"
+path = "examples/classic_emtp/case0007_capacitor_bank_recovery_voltage/case0007.deck"
+entrypoint = "examples/classic_emtp/case0007_capacitor_bank_recovery_voltage/run.jl"
+description = "Opening an ungrounded three-phase capacitor bank and observing transient recovery voltage."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0008_back_to_back_capacitor_banks"
+study = "emt"
+path = "examples/classic_emtp/case0008_back_to_back_capacitor_banks/case0008.deck"
+entrypoint = "examples/classic_emtp/case0008_back_to_back_capacitor_banks/run.jl"
+description = "Two delta capacitor banks switched back-to-back through current-limiting reactors."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0009_capacitor_restrike"
+study = "emt"
+path = "examples/classic_emtp/case0009_capacitor_restrike/case0009.deck"
+entrypoint = "examples/classic_emtp/case0009_capacitor_restrike/run.jl"
+description = "Capacitor-switch phase interruption and restrike with a corrected reachable horizon."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0010_parallel_ehv_resonance"
+study = "emt"
+path = "examples/classic_emtp/case0010_parallel_ehv_resonance/case0010.deck"
+entrypoint = "examples/classic_emtp/case0010_parallel_ehv_resonance/run.jl"
+description = "Steady-state phasor solution of coupled parallel EHV lines, series capacitors, shunt reactors, and a fault."
+requires_solver = true
+reference_compatible = true
+result_kind = "phasors"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0011_transmission_line_reclosing"
+study = "emt"
+path = "examples/classic_emtp/case0011_transmission_line_reclosing/case0011.deck"
+entrypoint = "examples/classic_emtp/case0011_transmission_line_reclosing/run.jl"
+description = "Transmission-line fault clearing, breaker opening, distributed history, and trapped charge."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0012_lightning_tower_surge"
+study = "emt"
+path = "examples/classic_emtp/case0012_lightning_tower_surge/case0012.deck"
+entrypoint = "examples/classic_emtp/case0012_lightning_tower_surge/run.jl"
+description = "Fast lightning-current impulse, tower/line travelling waves, and insulator voltages."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0013_potential_transformer_ferroresonance"
+study = "emt"
+path = "examples/classic_emtp/case0013_potential_transformer_ferroresonance/case0013.deck"
+entrypoint = "examples/classic_emtp/case0013_potential_transformer_ferroresonance/run.jl"
+description = "Potential-transformer nonlinear magnetizing branch coupled to breaker grading capacitance."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0014_subsynchronous_resonance"
+study = "emt"
+path = "examples/classic_emtp/case0014_subsynchronous_resonance/case0014.deck"
+entrypoint = "examples/classic_emtp/case0014_subsynchronous_resonance/run.jl"
+description = "Series-compensated IEEE second benchmark-style network coupled to a synchronous generator and four-mass shaft."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0015_universal_induction_machine"
+study = "emt"
+path = "examples/classic_emtp/case0015_universal_induction_machine/case0015.deck"
+entrypoint = "examples/classic_emtp/case0015_universal_induction_machine/run.jl"
+description = "Universal-machine type-4 automatic induction-machine initialization and coupled horizon."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "classic_case0050_tacs_thyristor_control"
+study = "emt"
+path = "examples/classic_emtp/case0050_tacs_thyristor_control/case0050.deck"
+entrypoint = "examples/classic_emtp/case0050_tacs_thyristor_control/run.jl"
+description = "TACS valve-voltage integration and firing control of antiparallel thyristor switches."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = ["emtp-bpa-cpp-ca4339d"]
+
+[[case]]
+id = "cable_constants_three_phase_single_layer"
+study = "cable_constants"
+path = "examples/cable_constants/three_phase_single_layer/three_phase_single_layer.deck"
+entrypoint = "examples/cable_constants/three_phase_single_layer/run.jl"
+description = "Three buried single-core cables with metallic sheaths, one insulation layer, and a logarithmic frequency scan."
+requires_solver = true
+reference_compatible = true
+result_kind = "frequency_scan"
+
+[[case]]
+id = "core_study_catalog_and_scenario"
+study = "core"
+path = "examples/core/study_catalog_and_scenario/run.jl"
+entrypoint = "examples/core/study_catalog_and_scenario/run.jl"
+description = "Study discovery, project/case/scenario construction, inverter assets, and EMT input-profile orientation."
+requires_solver = false
+reference_compatible = false
+result_kind = "catalog"
+
+[[case]]
+id = "emt_balanced_three_phase_sine"
+study = "emt"
+path = "examples/emt/balanced_three_phase_sine/run.jl"
+entrypoint = "examples/emt/balanced_three_phase_sine/run.jl"
+description = "Balanced three-phase sinusoidal sources with phase and line-to-line voltage waveforms."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_checkpoint_restart"
+study = "emt"
+path = "examples/emt/checkpoint_restart/run.jl"
+entrypoint = "examples/emt/checkpoint_restart/run.jl"
+description = "Typed checkpoint export, restart continuation, and sample-by-sample comparison with an uninterrupted EMT run."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_external_three_bus_unbalanced"
+study = "emt"
+path = "examples/emt/external_three_bus_unbalanced/three_bus_unbalanced.deck"
+entrypoint = "examples/emt/external_three_bus_unbalanced/run.jl"
+description = "Julia-only three-bus unbalanced feeder adapted from redistributable PowerModelsDistribution data."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_fault_equivalent_fitting"
+study = "emt"
+path = "examples/emt/fault_equivalent_fitting/run.jl"
+entrypoint = "examples/emt/fault_equivalent_fitting/run.jl"
+description = "Passive generator-equivalent fitting from network admittance and prescribed fault-current targets."
+requires_solver = false
+reference_compatible = false
+result_kind = "fit_curve"
+
+[[case]]
+id = "emt_frequency_dependent_line"
+study = "emt"
+path = "examples/emt/frequency_dependent_line/run.jl"
+entrypoint = "examples/emt/frequency_dependent_line/run.jl"
+description = "Semlyen rational frequency-dependent line response and receiving-end transient waveform."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_generated_ieee13_deck"
+study = "emt"
+path = "examples/emt/generated_ieee13_deck/ieee13_minimum_core.deck"
+entrypoint = "examples/emt/generated_ieee13_deck/run.jl"
+description = "Readable Julia-generated feeder deck using IEEE 13-node-style names with parser tables and an EMT trace."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_inverter"
+study = "emt"
+path = "examples/emt/inverter/run.jl"
+entrypoint = "examples/emt/inverter/run.jl"
+description = "Standalone stateful grid-following inverter simulation with current and power waveforms."
+requires_solver = false
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_line_models"
+study = "emt"
+path = "examples/emt/line_models/run.jl"
+entrypoint = "examples/emt/line_models/run.jl"
+description = "Bergeron travelling-wave transient together with direct frequency-domain line quantities."
+requires_solver = false
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_machine_tacs_interface"
+study = "emt"
+path = "examples/emt/machine_tacs_interface/run.jl"
+entrypoint = "examples/emt/machine_tacs_interface/run.jl"
+description = "Synchronous-machine output transfer into TACS/control storage for excitation and governor workflows."
+requires_solver = false
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_multi_case_sequence"
+study = "emt"
+path = "examples/emt/multi_case_sequence/run.jl"
+entrypoint = "examples/emt/multi_case_sequence/run.jl"
+description = "Ordered execution of two valid studies around an explicitly aborted and discarded input case."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_nonlinear_characteristic_gallery"
+study = "emt"
+path = "examples/emt/nonlinear_characteristic_gallery/run.jl"
+entrypoint = "examples/emt/nonlinear_characteristic_gallery/run.jl"
+description = "Saturation, hysteresis, and zinc-oxide characteristic preparation with physical curve plots."
+requires_solver = false
+reference_compatible = false
+result_kind = "characteristic_curves"
+
+[[case]]
+id = "emt_nonlinear_controls"
+study = "emt"
+path = "examples/emt/nonlinear_controls/run.jl"
+entrypoint = "examples/emt/nonlinear_controls/run.jl"
+description = "Diode valve, controlled switch, saturable inductor, and first-order TACS control in one nodal run."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_parsed_deck_trace"
+study = "emt"
+path = "examples/emt/parsed_deck_trace/run.jl"
+entrypoint = "examples/emt/parsed_deck_trace/run.jl"
+description = "Minimal readable-deck parse, validation, EMT execution, and report-artifact workflow."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_realtime_cpu"
+study = "emt"
+path = "examples/emt/realtime_cpu/run.jl"
+entrypoint = "examples/emt/realtime_cpu/run.jl"
+description = "Measured fixed-step CPU timing for the open inverter model without claiming hard real-time qualification."
+requires_solver = false
+reference_compatible = false
+result_kind = "timing"
+
+[[case]]
+id = "emt_reduced_feeder_inverter"
+study = "emt"
+path = "examples/emt/reduced_feeder_inverter/run.jl"
+entrypoint = "examples/emt/reduced_feeder_inverter/run.jl"
+description = "Reduced-feeder inverter operating-point sensitivity across load conductance and reactive-power commands."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_rlc_energization"
+study = "emt"
+path = "examples/emt/rlc_energization/rlc_energization.deck"
+entrypoint = "examples/emt/rlc_energization/run.jl"
+description = "Canonical source, series R-L, and shunt-C energization transient."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_single_phase_sine_source"
+study = "emt"
+path = "examples/emt/single_phase_sine_source/run.jl"
+entrypoint = "examples/emt/single_phase_sine_source/run.jl"
+description = "Smallest nodal sinusoidal-source example with a resistive load and one voltage waveform."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_source_waveform_gallery"
+study = "emt"
+path = "examples/emt/source_waveform_gallery/run.jl"
+entrypoint = "examples/emt/source_waveform_gallery/run.jl"
+description = "Sinusoid, cosine, DC, ramp, slope, impulse, and harmonic source functions plotted together."
+requires_solver = false
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_switching_ensemble"
+study = "emt"
+path = "examples/emt/switching_ensemble/run.jl"
+entrypoint = "examples/emt/switching_ensemble/run.jl"
+description = "Deterministic sweep of breaker closing instants with schedule, extrema, and sensitivity results."
+requires_solver = true
+reference_compatible = false
+result_kind = "ensemble_curve"
+
+[[case]]
+id = "emt_switching_transient"
+study = "emt"
+path = "examples/emt/switching_transient/switching_transient.deck"
+entrypoint = "examples/emt/switching_transient/run.jl"
+description = "Canonical timed-switch transient with compiled-reference coverage."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_tabulated_and_analytic_sources"
+study = "emt"
+path = "examples/emt/tabulated_and_analytic_sources/source_signals.csv"
+entrypoint = "examples/emt/tabulated_and_analytic_sources/run.jl"
+description = "Interpolated tabulated source data combined with an analytic ramp-then-slope signal."
+requires_solver = false
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_transmission_fault_switching"
+study = "emt"
+path = "examples/emt/transmission_fault_switching/transmission_fault_switching.deck"
+entrypoint = "examples/emt/transmission_fault_switching/run.jl"
+description = "Three-phase transmission-line fault and breaker switching case."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_unified_emt"
+study = "emt"
+path = "examples/emt/unified_emt/run.jl"
+entrypoint = "examples/emt/unified_emt/run.jl"
+description = "Compact high-level reduced-feeder and inverter configuration followed by one unified EMT run."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_universal_machine_type3"
+study = "emt"
+path = "examples/emt/universal_machine_type3/universal_machine_type3.deck"
+entrypoint = "examples/emt/universal_machine_type3/run.jl"
+description = "Universal-machine type-3 induction-machine initialization and coupled timestep case."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "line_constants_double_circuit"
+study = "line_constants"
+path = "examples/line_constants/double_circuit/double_circuit.deck"
+entrypoint = "examples/line_constants/double_circuit/run.jl"
+description = "Double-circuit overhead-line constants case with physical geometry and Carson earth return."
+requires_solver = true
+reference_compatible = true
+result_kind = "frequency_scan"
+
+[[case]]
+id = "transformer_parameters_multiphase_sequence_tests"
+study = "transformer_parameters"
+path = "examples/transformer_parameters/multiphase_sequence_tests/run.jl"
+entrypoint = "examples/transformer_parameters/multiphase_sequence_tests/run.jl"
+description = "BCTRAN-style positive- and zero-sequence test conversion to a full three-phase terminal representation."
+requires_solver = false
+reference_compatible = false
+result_kind = "matrix"
+
+[[case]]
+id = "transformer_parameters_saturable_two_winding"
+study = "transformer_parameters"
+path = "examples/transformer_parameters/saturable_two_winding/run.jl"
+entrypoint = "examples/transformer_parameters/saturable_two_winding/run.jl"
+description = "Typed winding and magnetizing data converted to passive branch matrices for a saturable transformer."
+requires_solver = false
+reference_compatible = false
+result_kind = "matrix"
+
+[[case]]
+id = "transformer_parameters_two_winding_short_circuit"
+study = "transformer_parameters"
+path = "examples/transformer_parameters/two_winding_short_circuit/run.jl"
+entrypoint = "examples/transformer_parameters/two_winding_short_circuit/run.jl"
+description = "Two-winding short-circuit test conversion to impedance, admittance, and generated branch parameters."
+requires_solver = false
+reference_compatible = false
+result_kind = "matrix"
+
+[[case]]
+id = "cable_constants_geometry_gallery"
+study = "cable_constants"
+path = "examples/cable_constants/cable_geometry_gallery/type2_one_layer.deck"
+entrypoint = "examples/cable_constants/cable_geometry_gallery/run.jl"
+description = "Type-2 and type-3 cable configurations with one/two layers and centred/off-centre pipe geometry."
+requires_solver = true
+reference_compatible = true
+result_kind = "frequency_scan"
+
+[[case]]
+id = "emt_control_network_feedback"
+study = "emt"
+path = "examples/emt/control_network_feedback/control_network_feedback.deck"
+entrypoint = "examples/emt/control_network_feedback/run.jl"
+description = "Closed-loop TACS network sensing, first-order filtering, controlled sources, and switch mutation."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_fixed_source_load_flow_gallery"
+study = "emt"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_angle_q.deck"
+entrypoint = "examples/emt/fixed_source_load_flow_gallery/run.jl"
+description = "Seventeen FIX SOURCE load-flow variants spanning scalar/coupled networks, switches, and induction, synchronous, and DC-machine boundaries."
+requires_solver = true
+reference_compatible = true
+result_kind = "phasors"
+
+[[case]]
+id = "emt_hysteretic_inductor_runtime"
+study = "emt"
+path = "examples/emt/hysteretic_inductor_runtime/hysteretic_inductor_runtime.deck"
+entrypoint = "examples/emt/hysteretic_inductor_runtime/run.jl"
+description = "Type-96 hysteretic inductor characteristic, companion, history state, sparse solve, and waveform."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_ideal_transformer_type18"
+study = "emt"
+path = "examples/emt/ideal_transformer_type18/ideal_transformer_type18.deck"
+entrypoint = "examples/emt/ideal_transformer_type18/run.jl"
+description = "Type-18 ideal-transformer source constraint, network solve, and voltage waveforms."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_mixed_frequency_subnetworks"
+study = "emt"
+path = "examples/emt/mixed_frequency_subnetworks/mixed_frequency_subnetworks.deck"
+entrypoint = "examples/emt/mixed_frequency_subnetworks/run.jl"
+description = "Independent 50 Hz and 60 Hz steady-state islands initialized into one multi-frequency EMT trace."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_switch_type_gallery"
+study = "emt"
+path = "examples/emt/switch_type_gallery/current_zero.deck"
+entrypoint = "examples/emt/switch_type_gallery/run.jl"
+description = "Current-zero opening and type-76 time-controlled resistance switch waveforms."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+
+[[case]]
+id = "emt_universal_machine_type_gallery"
+study = "emt"
+path = "examples/emt/universal_machine_type_gallery/run.jl"
+entrypoint = "examples/emt/universal_machine_type_gallery/run.jl"
+description = "Twenty-nine Julia-executed universal/direct/detailed synchronous-machine decks plus a controlled comparison of equation-family types 1 through 12."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+
+[[case]]
+id = "emt_signed_source_routing"
+study = "emt"
+path = "examples/emt/signed_source_routing/signed_source_routing.deck"
+entrypoint = "examples/emt/signed_source_routing/run.jl"
+description = "Signed ordinary, type-17, and type-60 source routing through TACS feedback, switching, timestep mutation, and output."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = [
+    "case-input:emt:signed_source_routing",
+    "translation-packet:C308",
+]
+
+[[case]]
+id = "emt_coupled_network_copy_gallery"
+study = "emt"
+path = "examples/emt/coupled_network_copy_gallery/four_phase_coupled_rl.deck"
+entrypoint = "examples/emt/coupled_network_copy_gallery/run.jl"
+description = "Four-phase coupled R-L, coupled R-L COPY, and distributed-line COPY execution with independent histories."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = [
+    "case-input:emt:four_phase_coupled_rl",
+    "case-input:emt:coupled_rl_copy",
+    "case-input:emt:distributed_line_copy",
+    "translation-packet:C309",
+]
+
+[[case]]
+id = "emt_nonlinear_identity_type98_gallery"
+study = "emt"
+path = "examples/emt/nonlinear_identity_type98_gallery/named_type96_hysteretic.deck"
+entrypoint = "examples/emt/nonlinear_identity_type98_gallery/run.jl"
+description = "NONLIN owner-name binding and standalone type-98 pseudo-nonlinear-inductor sparse/timestep execution."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = [
+    "case-input:emt:named_type96_hysteretic",
+    "case-input:emt:type98_pseudo_nonlinear_inductor",
+    "translation-packet:C310",
+]
+
+[[case]]
+id = "emt_active_negative_resistance_rl"
+study = "emt"
+path = "examples/emt/active_negative_resistance_rl/active_negative_resistance_rl.deck"
+entrypoint = "examples/emt/active_negative_resistance_rl/run.jl"
+description = "Finite active negative-resistance R-L branch with a nonsingular trapezoidal companion and bounded waveform."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = [
+    "case-input:emt:active_negative_resistance_rl",
+    "translation-packet:C311",
+]
+
+[[case]]
+id = "emt_dc_simulator_type16_gallery"
+study = "emt"
+path = "examples/emt/dc_simulator_type16_gallery/fixed_field_type16.deck"
+entrypoint = "examples/emt/dc_simulator_type16_gallery/run.jl"
+description = "Fixed- and free-field two-card type-16 DC-simulator sources with generated topology and initialized control state."
+requires_solver = true
+reference_compatible = true
+result_kind = "waveform"
+source_ids = [
+    "case-input:emt:dc_simulator_type16_fixed_field",
+    "case-input:emt:dc_simulator_type16_free_field",
+]

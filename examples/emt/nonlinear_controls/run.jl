@@ -3,11 +3,13 @@
 using Printf
 
 include(normpath(joinpath(@__DIR__, "..", "..", "load_aimora.jl")))
+include(normpath(joinpath(@__DIR__, "..", "..", "support", "ExampleSupport.jl")))
 
 using AIMORA.Nodal
 using AIMORA.Sources
 using AIMORA.Nonlinear
 using AIMORA.TACS
+using .ExampleSupport
 
 function write_trace_csv(path::AbstractString, rows)
     mkpath(dirname(path))
@@ -79,12 +81,25 @@ function run_case()
 end
 
 function main()
-    output_dir = length(ARGS) >= 1 ? ARGS[1] : joinpath(@__DIR__, "outputs")
+    output_dir = artifact_directory(ARGS, joinpath(@__DIR__, "outputs"))
     rows = run_case()
     csv_path = write_trace_csv(joinpath(output_dir, "nonlinear_controls_trace.csv"), rows)
+    time_s = [row.time_s for row in rows]
+    waveform_path = write_waveform_svg(
+        joinpath(output_dir, "nonlinear_controls_waveform.svg"),
+        time_s,
+        Pair{String,Vector{Float64}}[
+            "control" => [row.control for row in rows],
+            "load_v_pu" => [row.load_v_pu for row in rows],
+            "sat_inductor_i_pu" => [row.sat_inductor_current_pu for row in rows],
+        ];
+        title = "Controlled Nonlinear EMT Response",
+        y_label = "per-unit value",
+    )
     last = rows[end]
 
     @printf("Output CSV: %s\n", abspath(csv_path))
+    @printf("Output waveform: %s\n", waveform_path)
     @printf("Engine: Julia fixed-step nonlinear/control EMT slice\n")
     @printf("Legacy Fortran in loop: no\n")
     @printf("Samples: %d, dt: %.1f us\n", length(rows), 20.0)

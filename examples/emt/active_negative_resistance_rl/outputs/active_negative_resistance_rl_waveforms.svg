@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="34" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#111827">Finite Active Negative-Resistance R–L Branch</text>
+<rect x="92.0" y="70.0" width="700.0" height="400.0" fill="#f8fafc" stroke="#cbd5e1"/>
+<line x1="92.0" y1="70.0" x2="792.0" y2="70.0" stroke="#e2e8f0"/>
+<text x="82.0" y="74.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">105.3</text>
+<line x1="92.0" y1="170.0" x2="792.0" y2="170.0" stroke="#e2e8f0"/>
+<text x="82.0" y="174.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">76.26</text>
+<line x1="92.0" y1="270.0" x2="792.0" y2="270.0" stroke="#e2e8f0"/>
+<text x="82.0" y="274.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">47.25</text>
+<line x1="92.0" y1="370.0" x2="792.0" y2="370.0" stroke="#e2e8f0"/>
+<text x="82.0" y="374.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">18.24</text>
+<line x1="92.0" y1="470.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="82.0" y="474.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">-10.77</text>
+<line x1="92.0" y1="70.0" x2="92.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="92.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">-5e-05</text>
+<line x1="267.0" y1="70.0" x2="267.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="267.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.000225</text>
+<line x1="442.0" y1="70.0" x2="442.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="442.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.0005</text>
+<line x1="617.0" y1="70.0" x2="617.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="617.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.000775</text>
+<line x1="792.0" y1="70.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="792.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.00105</text>
+<polyline points="123.818,88.182 187.455,88.427 251.091,89.161 314.727,90.384 378.364,92.093 442.000,94.287 505.636,96.962 569.273,100.114 632.909,103.740 696.545,107.832 760.182,112.387" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="123.818,377.768 187.455,284.335 251.091,219.439 314.727,174.568 378.364,143.795 442.000,122.993 505.636,109.289 569.273,100.678 632.909,95.767 696.545,93.581 760.182,93.442" fill="none" stroke="#dc2626" stroke-width="2"/>
+<polyline points="123.818,143.287 187.455,236.965 251.091,302.595 314.727,348.689 378.364,381.171 442.000,404.166 505.636,420.546 569.273,432.309 632.909,440.845 696.545,447.124 760.182,451.818" fill="none" stroke="#059669" stroke-width="2"/>
+<polyline points="123.818,427.362 187.455,418.019 251.091,411.529 314.727,407.042 378.364,403.965 442.000,401.885 505.636,400.514 569.273,399.653 632.909,399.162 696.545,398.944 760.182,398.930" fill="none" stroke="#7c3aed" stroke-width="2"/>
+<text x="442.0" y="535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#334155">time (s)</text>
+<text x="24" y="270.0" text-anchor="middle" transform="rotate(-90 24 270.0)" font-family="sans-serif" font-size="14" fill="#334155">per-unit value</text>
+<line x1="816.0" y1="90.0" x2="836.0" y2="90.0" stroke="#2563eb" stroke-width="3"/>
+<text x="844.0" y="94.0" font-family="sans-serif" font-size="12" fill="#334155">output_fixed_1_pu</text>
+<line x1="816.0" y1="110.0" x2="836.0" y2="110.0" stroke="#dc2626" stroke-width="3"/>
+<text x="844.0" y="114.0" font-family="sans-serif" font-size="12" fill="#334155">output_fixed_2_pu</text>
+<line x1="816.0" y1="130.0" x2="836.0" y2="130.0" stroke="#059669" stroke-width="3"/>
+<text x="844.0" y="134.0" font-family="sans-serif" font-size="12" fill="#334155">branch_voltage_branch_fixed_1_pu</text>
+<line x1="816.0" y1="150.0" x2="836.0" y2="150.0" stroke="#7c3aed" stroke-width="3"/>
+<text x="844.0" y="154.0" font-family="sans-serif" font-size="12" fill="#334155">branch_current_branch_fixed_1_pu</text>
+</svg>

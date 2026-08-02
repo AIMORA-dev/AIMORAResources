@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="34" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#111827">Universal Machine Direct Tacs Fleet</text>
+<rect x="92.0" y="70.0" width="700.0" height="400.0" fill="#f8fafc" stroke="#cbd5e1"/>
+<line x1="92.0" y1="70.0" x2="792.0" y2="70.0" stroke="#e2e8f0"/>
+<text x="82.0" y="74.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">1.13e-06</text>
+<line x1="92.0" y1="170.0" x2="792.0" y2="170.0" stroke="#e2e8f0"/>
+<text x="82.0" y="174.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">8.341e-07</text>
+<line x1="92.0" y1="270.0" x2="792.0" y2="270.0" stroke="#e2e8f0"/>
+<text x="82.0" y="274.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">5.381e-07</text>
+<line x1="92.0" y1="370.0" x2="792.0" y2="370.0" stroke="#e2e8f0"/>
+<text x="82.0" y="374.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">2.422e-07</text>
+<line x1="92.0" y1="470.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="82.0" y="474.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">-5.381e-08</text>
+<line x1="92.0" y1="70.0" x2="92.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="92.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">-1e-05</text>
+<line x1="267.0" y1="70.0" x2="267.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="267.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">4.5e-05</text>
+<line x1="442.0" y1="70.0" x2="442.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="442.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.0001</text>
+<line x1="617.0" y1="70.0" x2="617.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="617.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.000155</text>
+<line x1="792.0" y1="70.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="792.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.00021</text>
+<polyline points="123.818,451.818 187.455,451.818 251.091,451.818 314.727,451.818 378.364,451.818 442.000,451.818 505.636,451.818 569.273,451.818 632.909,451.818 696.545,451.818 760.182,451.818" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="123.818,451.818 187.455,145.240 251.091,202.014 314.727,248.274 378.364,285.967 442.000,316.681 505.636,341.706 569.273,362.097 632.909,378.712 696.545,392.250 760.182,403.281" fill="none" stroke="#dc2626" stroke-width="2"/>
+<polyline points="123.818,451.818 187.455,451.818 251.091,451.818 314.727,451.818 378.364,451.818 442.000,451.818 505.636,451.818 569.273,451.818 632.909,451.818 696.545,451.818 760.182,451.818" fill="none" stroke="#059669" stroke-width="2"/>
+<polyline points="123.818,451.818 187.455,88.182 251.091,163.158 314.727,222.676 378.364,269.922 442.000,307.426 505.636,337.198 569.273,360.831 632.909,379.591 696.545,394.483 760.182,406.305" fill="none" stroke="#7c3aed" stroke-width="2"/>
+<polyline points="123.818,451.818 187.455,145.240 251.091,202.014 314.727,248.274 378.364,285.967 442.000,316.680 505.636,341.706 569.273,362.097 632.909,378.712 696.545,392.250 760.182,403.281" fill="none" stroke="#d97706" stroke-width="2"/>
+<polyline points="123.818,451.818 187.455,88.182 251.091,163.158 314.727,222.676 378.364,269.922 442.000,307.426 505.636,337.197 569.273,360.830 632.909,379.591 696.545,394.483 760.182,406.305" fill="none" stroke="#0891b2" stroke-width="2"/>
+<text x="442.0" y="535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#334155">time (s)</text>
+<text x="24" y="270.0" text-anchor="middle" transform="rotate(-90 24 270.0)" font-family="sans-serif" font-size="14" fill="#334155">machine response (units in legend)</text>
+<line x1="816.0" y1="90.0" x2="836.0" y2="90.0" stroke="#2563eb" stroke-width="3"/>
+<text x="844.0" y="94.0" font-family="sans-serif" font-size="12" fill="#334155">branch_current_branch_fixed_5</text>
+<line x1="816.0" y1="110.0" x2="836.0" y2="110.0" stroke="#dc2626" stroke-width="3"/>
+<text x="844.0" y="114.0" font-family="sans-serif" font-size="12" fill="#334155">branch_current_branch_fixed_7</text>
+<line x1="816.0" y1="130.0" x2="836.0" y2="130.0" stroke="#059669" stroke-width="3"/>
+<text x="844.0" y="134.0" font-family="sans-serif" font-size="12" fill="#334155">branch_current_branch_fixed_8</text>
+<line x1="816.0" y1="150.0" x2="836.0" y2="150.0" stroke="#7c3aed" stroke-width="3"/>
+<text x="844.0" y="154.0" font-family="sans-serif" font-size="12" fill="#334155">branch_current_branch_fixed_10</text>
+<line x1="816.0" y1="170.0" x2="836.0" y2="170.0" stroke="#d97706" stroke-width="3"/>
+<text x="844.0" y="174.0" font-family="sans-serif" font-size="12" fill="#334155">branch_current_branch_fixed_11</text>
+<line x1="816.0" y1="190.0" x2="836.0" y2="190.0" stroke="#0891b2" stroke-width="3"/>
+<text x="844.0" y="194.0" font-family="sans-serif" font-size="12" fill="#334155">branch_current_branch_fixed_12</text>
+</svg>

@@ -1,0 +1,14 @@
+FIX SOURCE LOAD FLOW
+converged = true
+iterations = 59
+network_topologies = scalar_branch
+switch,name,from_node,to_node,initial_state,conductance_siemens
+constraint,kind,nodes,target_active_power,target_reactive_power,target_voltage_peak,target_angle_deg,active_power,reactive_power
+1,active_power_voltage,SA+SB+SC,457.71767761,,105,,457.717241403,96.6120731692
+node,voltage_peak,angle_deg,active_power,reactive_power
+SA,105,7.99999189507,152.572413801,32.2040243897
+SB,105,-112.000008105,152.572413801,32.2040243897
+SC,105,127.999991895,152.572413801,32.2040243897
+RA,100,0,-148.161449512,-10.1492029476
+RB,100,-120,-148.161449512,-10.1492029476
+RC,100,120,-148.161449512,-10.1492029476

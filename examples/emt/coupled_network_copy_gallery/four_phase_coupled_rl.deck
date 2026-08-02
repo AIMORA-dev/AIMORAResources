@@ -1,0 +1,29 @@
+BEGIN NEW DATA CASE
+RENUMBER BYPASS
+FIX SOURCE
+  50.E-6    .002     60.       0
+      20       1       1       0       1       0       0       0
+51S1    R1                 2.000    0.600000
+52S2    R2                 0.200    0.050000 2.500    0.700000
+53S3    R3                 0.100    0.020000 0.150    0.040000 3.000    0.800000
+54S4    R4                 0.050    0.010000 0.040    0.008000 0.030    0.006000
+                           3.500    0.900000
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+14S1          100.     60.0        0.                          -1.0
+14S2          100.     60.0     -120.                          -1.0
+14S3          100.     60.0      120.                          -1.0
+14R1          100.     60.0        0.                          -1.0
+14R2          100.     60.0     -120.                          -1.0
+14R3          100.     60.0      120.                          -1.0
+14S4          100.     60.0        0.                          -1.0
+14R4          100.     60.0        0.                          -1.0
+BLANK CARD ENDING SOURCES
+ 1S1                    118.66754605    105.00000000  100.00  110.00-180.0 180.0
+               0     200      20       1 1.0e-06   0.200   2.500
+  S1    S2    S3    R1    R2    R3
+  S4    R4
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

@@ -1,0 +1,14 @@
+BEGIN NEW DATA CASE
+ 100.E-6    .001     60.       0
+       1       1       0       0       1       0       0       0       0       9
+ 1N1    N2                 -.500 1.000 0.000   0.0   0.0   0.0   0.0   0.0   0.3
+ 1N2                        10.0 0.000 0.000   0.0   0.0   0.0   0.0   0.0   0.0
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+14N1          100.     60.0        0.                          -1.0
+BLANK CARD ENDING SOURCES
+  N1    N2
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

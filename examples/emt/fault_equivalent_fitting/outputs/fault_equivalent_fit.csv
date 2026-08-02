@@ -1,0 +1,3 @@
+node,target_reactance_ohm,reconstructed_reactance_ohm,residual_ohm,generator_resistance_ohm,generator_reactance_ohm
+1,2,2,-4.4408920985e-16,0.350372906023,3.50372906023
+2,2.5,2.5,8.881784197e-16,0.270277832254,5.40555664509

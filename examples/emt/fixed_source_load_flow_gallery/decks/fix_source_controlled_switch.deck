@@ -1,0 +1,24 @@
+BEGIN NEW DATA CASE
+FIX SOURCE
+C One-phase constrained source behind an initially closed TACS-controlled switch
+C  dT >< Tmax >< Xopt >< Copt ><Epsiln>
+  50.E-6    .002     60.       0
+      20       1       1       0       1       0       0       0
+TACS HYBRID
+11GATE           1.0                                                -1.0
+BLANK CARD ENDING TACS DATA
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+ 0X1    S2                   1.0   5.0   0.0
+BLANK CARD ENDING BRANCHES
+13S1    X1                                            CLOSED          GATE      0
+BLANK CARD ENDING SWITCHES
+14S1          100.     60.0        0.                          -1.0
+14S2          100.     60.0        0.                          -1.0
+BLANK CARD ENDING SOURCES
+ 1S1                    152.57255920    105.00000000   80.00  130.00 -60.0  60.0
+               0     200      20       1 1.0e-06   0.200   2.500
+  S1    X1    S2
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

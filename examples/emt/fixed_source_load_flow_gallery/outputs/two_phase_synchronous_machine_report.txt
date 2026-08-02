@@ -1,0 +1,12 @@
+FIX SOURCE LOAD FLOW
+converged = true
+iterations = 26
+network_topologies = scalar_branch+two_phase_synchronous_machine_voltage_boundary
+switch,name,from_node,to_node,initial_state,conductance_siemens
+constraint,kind,nodes,target_active_power,target_reactive_power,target_voltage_peak,target_angle_deg,active_power,reactive_power
+1,active_power_voltage,BUSBS2+BUSCS2,215016.68287,,3100,,215016.662654,91611.6543571
+node,voltage_peak,angle_deg,active_power,reactive_power
+BUSAS2,3000,0,4.5,7.3274719682e-10
+BUSBS2,3100,4.99999952866,107508.331327,45805.8271785
+BUSCS2,3100,94.9999995287,107508.331327,45805.8271785
+BUSFD,1,0,5e-07,0

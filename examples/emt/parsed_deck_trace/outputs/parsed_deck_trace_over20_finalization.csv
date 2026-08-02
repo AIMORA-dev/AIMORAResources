@@ -1,0 +1,17 @@
+kind,name,value,time_s
+peak_node_voltage,bus1,0.999999999,0.000000000
+plot_end_sentinel,VOLTI(1),-9999.000000000,0.000100000
+variable_maximum,bus1_v_pu,0.999999999,0.000000000
+variable_maximum,bus2_v_pu,0.500000000,0.000000000
+variable_maximum,bus3_v_pu,0.333333332,0.000040000
+variable_minimum,bus1_v_pu,0.999999999,0.000040000
+variable_minimum,bus2_v_pu,0.333333333,0.000040000
+variable_minimum,bus3_v_pu,0.000000000,0.000000000
+terminal_voltage,bus1,0.999999999,0.000100000
+terminal_voltage,bus2,0.333333333,0.000100000
+terminal_voltage,bus3,0.333333332,0.000100000
+final_route,terminal_conditions_requested,1,0.000100000
+final_route,binary_plot_record_requested,1,0.000100000
+final_route,interactive_plot_requested,0,0.000100000
+final_route,catalog_requested,0,0.000100000
+final_route,table_save_requested,0,0.000100000

@@ -1,0 +1,37 @@
+BEGIN NEW DATA CASE
+C Dynamic TACS function samples a network node and drives signed type-17 and type-60 sources.
+ 5.0E-05 3.0E-04
+   20000       1       1       1       1       0       0       0
+TACS HYBRID
+ 1FILTER  +SENSE
+       1.0       0.0
+       1.0     0.001
+ 0DRIVEN  +FILTER
+ 0MODUL   +FILTER
+90SENSE
+91OBSIN
+93OBSOUT
+23PULSE          2.0    0.0002    0.0001                         0.0003
+24RAMP           3.0   0.00015       0.0                         0.0003
+33FILTERSENSE OBSIN OBSOUTPULSE RAMP
+BLANK CARD ENDING TACS DATA
+  SENSE                       1.0
+  DRIVEN                      1.0
+  MODUL                       1.0
+  SWOUT                       1.0
+  OBSOUT                      1.0
+BLANK CARD ENDING BRANCHES
+13DRIVENSWOUT                                                         FILTER  01
+ 0OBSIN OBSOUT      -1.0       1.0       0.0       0.0CLOSED                  00
+BLANK CARD ENDING SWITCHES
+11SENSE         10.0       0.0       0.0       0.0       0.0       0.0       0.0
+11OBSIN          4.0       0.0       0.0       0.0       0.0       0.0       0.0
+60DRIVEN-1       1.0       2.0       0.0       0.0       0.0       0.0       1.0
+17MODUL -1       2.0       3.0       0.0       0.0       0.0       0.0       1.0
+11MODUL -1       1.0       0.0       0.0       0.0       0.0       0.0       1.0
+BLANK CARD ENDING SOURCES
+  SENSE DRIVEN MODUL SWOUT OBSINOBSOUT
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

@@ -1,0 +1,7 @@
+request,kind,etac_index,value
+-1,cu,2,1.250000000
+-8,cv1,3,-0.750000000
+-12,field_current_magnitude,4,4.301162634
+-13,field_current_angle,5,0.950546841
+1,mechanical_history,6,11.000000000
+5,shaft_torque,7,-27.500000000

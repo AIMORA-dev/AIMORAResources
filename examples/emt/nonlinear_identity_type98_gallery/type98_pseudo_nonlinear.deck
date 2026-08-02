@@ -1,0 +1,19 @@
+BEGIN NEW DATA CASE
+C Standalone type-98 pseudo-nonlinear inductor with a segment transition.
+  10.E-3    .05      60.       0
+       1       1       0       0       1       0       0       0       0       9
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+98N1                               0.0         0.0                             1
+             0.1            0.01             1.0
+             1.0             1.0             2.0
+          9999.0
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+14N1             1.0      1.0      90.0                         -1.0
+BLANK CARD ENDING SOURCES
+  N1
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

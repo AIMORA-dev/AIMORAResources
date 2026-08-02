@@ -1,0 +1,14 @@
+BEGIN NEW DATA CASE
+CABLE CONSTANTS
+    3   -1    1    0    1    1    1    1    1
+     0.080     0.090     0.100   2.0E-7      50.0       2.5       2.2
+     0.000     0.000
+    1
+     0.000     0.010     0.014     0.000     0.000     0.000     0.000
+   1.70E-8       1.0       1.0      2.25   2.20E-7      35.0       1.0       2.8
+      1.20      0.00
+    100.000000      60.000000    1    2 1000.000         0 0
+BLANK CARD TERMINATING FREQUENCY CARDS
+BLANK CARD TERMINATING CABLE CONSTANTS CASES
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

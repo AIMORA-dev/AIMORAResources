@@ -1,0 +1,46 @@
+schema = "aimora.deck_case_sequence_summary.v1"
+source = "multi-case sequence example"
+status = "ok"
+case_count = 2
+aborted_case_count = 1
+discarded_card_count = 1
+run_terminated = true
+elapsed_s = 0.0
+
+[[cases]]
+case_index = 1
+start_line_no = 1
+end_line_no = 5
+execution_kind = "emt"
+emt_executed = true
+frequency_scan_count = 0
+whole_network_frequency_scan_count = 0
+whole_network_frequency_sample_count = 0
+line_model_frequency_scan_count = 0
+frequency_sample_count = 0
+frequency_schedules_hz = []
+impulse_response_count = 0
+impulse_response_fit_errors = []
+handled_requests = []
+compatibility_exclusions = []
+deferred_requests = []
+final_voltage_pu = [0.99999999999975, 0.499999999999875]
+
+[[cases]]
+case_index = 2
+start_line_no = 10
+end_line_no = 14
+execution_kind = "emt"
+emt_executed = true
+frequency_scan_count = 0
+whole_network_frequency_scan_count = 0
+whole_network_frequency_sample_count = 0
+line_model_frequency_scan_count = 0
+frequency_sample_count = 0
+frequency_schedules_hz = []
+impulse_response_count = 0
+impulse_response_fit_errors = []
+handled_requests = []
+compatibility_exclusions = []
+deferred_requests = []
+final_voltage_pu = [1.9999999999995, 0.99999999999975]

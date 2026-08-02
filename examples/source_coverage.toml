@@ -1,0 +1,4176 @@
+schema = "aimora-source-coverage-v1"
+status = "audited"
+snapshot_date = "2026-08-01"
+source_count = 461
+
+[counts_by_kind]
+"atpdraw_case" = 93
+"atpdraw_exa_project" = 52
+"canonical_case_input" = 55
+"claimed_external_case" = 63
+"claimed_translation_packet" = 14
+"classic_case" = 16
+"classic_case_origin" = 1
+"public_testset" = 9
+"translation_capability_packet" = 11
+"validation_fixture" = 71
+"validation_suite" = 76
+
+[counts_by_disposition]
+"example" = 52
+"gallery" = 142
+"negative_test" = 3
+"not_a_deck" = 14
+"oracle_only" = 25
+"pending_export" = 145
+"source_missing" = 63
+"validation_only" = 17
+
+[[source]]
+id = "aimora-test:grounded-scalar-branch-references"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#grounded scalar branch references"
+disposition = "gallery"
+example_ids = ["emt_parsed_deck_trace"]
+reason = "The parsed-deck gallery includes fixed-card grounded scalar branch references and writes their inherited conductances as auditable artifacts."
+
+[[source]]
+id = "aimora-test:open-engineering-core"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#open engineering core"
+disposition = "example"
+example_ids = ["core_study_catalog_and_scenario"]
+reason = "The public test scenario is represented by the named Julia example or consolidated gallery."
+
+[[source]]
+id = "aimora-test:private-solver-integration"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#private solver integration"
+disposition = "validation_only"
+example_ids = []
+reason = "Package isolation, rejection, or repository-boundary test; not a standalone scientific study."
+
+[[source]]
+id = "aimora-test:public-checkout-without-solver"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#public checkout has no solver source"
+disposition = "validation_only"
+example_ids = []
+reason = "Package isolation, rejection, or repository-boundary test; not a standalone scientific study."
+
+[[source]]
+id = "aimora-test:public-inverter-model"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#public inverter model"
+disposition = "example"
+example_ids = ["emt_inverter"]
+reason = "The public test scenario is represented by the named Julia example or consolidated gallery."
+
+[[source]]
+id = "aimora-test:public-package-isolation"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#public package isolation"
+disposition = "validation_only"
+example_ids = []
+reason = "Repository-isolation behavior is a contract check, not a standalone scientific study."
+
+[[source]]
+id = "aimora-test:retired-input-converter-dispositions"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#retired input-converter dispositions"
+disposition = "validation_only"
+example_ids = []
+reason = "Package isolation, rejection, or repository-boundary test; not a standalone scientific study."
+
+[[source]]
+id = "aimora-test:sampled-line-terminal-admittance"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#sampled line steady-state terminal admittance"
+disposition = "example"
+example_ids = ["emt_frequency_dependent_line"]
+reason = "The public test scenario is represented by the named Julia example or consolidated gallery."
+
+[[source]]
+id = "aimora-test:transformer-parameter-studies"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#transformer parameter studies"
+disposition = "gallery"
+example_ids = ["transformer_parameters_two_winding_short_circuit", "transformer_parameters_saturable_two_winding", "transformer_parameters_multiphase_sequence_tests"]
+reason = "The public test scenario is represented by the named Julia example or consolidated gallery."
+
+[[source]]
+id = "atpdraw-exa:exa_1"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_1.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_10"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_10.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_10n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_10n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_11"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_11.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_11g"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_11g.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_12"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_12.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_13"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_13.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_14"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_14.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_15"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_15.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_16"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_16.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_17"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/exa_17.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_17n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/exa_17n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_17nn"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/exa_17nn.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_18"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/exa_18.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_19"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_19.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_1n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_1n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_2"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_2.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_20"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_20.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_21"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_21.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_22a"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_22a.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_22b"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_22b.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_22c"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_22c.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_23"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_23.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_24"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_24.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_25"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_25.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_26"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_26.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_27"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_27.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_2n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_2n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_3"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_3.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_3n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_3n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_4"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_4.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_4g"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_4g.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_4n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_4n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_5"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_5.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_6"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_6.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_6g"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_6g.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_7"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_7.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_7a"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_7a.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_7n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_7n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_8"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_8.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_8g"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_8g.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_8m3"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_8m3.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_9"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_9.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_9n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_9n.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Official ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:all"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/All.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:exa_3dump"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/Exa_3dump.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ACP project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:grp-ctrlcb"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Grp/ctrlCB.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ATPDraw group project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:grp-flux1"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Grp/Flux1.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ATPDraw group project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:grp-flux3"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Grp/Flux3.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ATPDraw group project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:grp-flux3n"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Grp/Flux3N.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ATPDraw group project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:grp-loadpq"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Grp/loadpq.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ATPDraw group project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-exa:myfirst"
+owner = "ATPDraw 7.3 image archive"
+kind = "atpdraw_exa_project"
+path = "ATP-EMTP/ATPDraw73_Image.zip!/Projects/MyFirst.acp"
+disposition = "pending_export"
+example_ids = []
+reason = "Bundled ACP tutorial project is privately retained; ATP text export and independent Julia conversion remain pending."
+
+[[source]]
+id = "atpdraw-official:case-1"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=1&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-100"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=100&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-101"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=101&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-102"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=102&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-103"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=103&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-104"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=104&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-105"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=105&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-106"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=106&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-113"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=113&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-114"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=114&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-115"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=115&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-117"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=117&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-118"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=118&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-119"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=119&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-120"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=120&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-121"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=121&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-122"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=122&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-123"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=123&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-124"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=124&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-125"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=125&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-127"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=127&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-128"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=128&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-129"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=129&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-130"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=130&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-132"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=132&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-133"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=133&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-134"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=134&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-136"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=136&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-137"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=137&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-139"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=139&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-14"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=14&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-141"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=141&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-142"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=142&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-147"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=147&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-15"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=15&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-150"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=150&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-154"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=154&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-155"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=155&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-156"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=156&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-16"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=16&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-17"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=17&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-18"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=18&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-2"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=2&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-21"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=21&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-22"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=22&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-25"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=25&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-26"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=26&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-27"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=27&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-3"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=3&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-30"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=30&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-31"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=31&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-34"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=34&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-37"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=37&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-38"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=38&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-4"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=4&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-40"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=40&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-43"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=43&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-44"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=44&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-45"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=45&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-46"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=46&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-47"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=47&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-48"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=48&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-5"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=5&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-50"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=50&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-51"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=51&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-52"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=52&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-53"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=53&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-54"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=54&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-56"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=56&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-57"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=57&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-58"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=58&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-6"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=6&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-63"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=63&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-65"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=65&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-66"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=66&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-68"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=68&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-69"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=69&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-70"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=70&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-74"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=74&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-76"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=76&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-79"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=79&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-80"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=80&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-81"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=81&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-83"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=83&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-85"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=85&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-86"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=86&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-87"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=87&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-91"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=91&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-92"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=92&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-93"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=93&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-96"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=96&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-97"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=97&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "atpdraw-official:case-98"
+owner = "ATPDraw official authenticated corpus"
+kind = "atpdraw_case"
+path = "https://www.atpdraw.net/showpost.php?id=98&kind=0"
+disposition = "pending_export"
+example_ids = []
+reason = "ACP is privately archived and integrity-checked; official ATP text export, AIMORA classification, and independent Julia example are still pending."
+
+[[source]]
+id = "claimed-dc-suite:DC-1"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-10"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-11"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-12"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-13"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-14"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-15"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-16"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-17"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-18"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-19"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-2"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-20"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-21"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-22"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-23"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-24"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-25"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-26"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-27"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-28"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-29"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-3"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-30"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-31"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-32"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-33"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-34"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-35"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-36"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-37"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-38"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-39"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-4"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-40"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-41"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-42"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-43"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-44"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-45"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-46"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-47"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-48"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-49"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-5"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-50"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-51"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-52"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-53"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-54"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-55"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-56"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-57"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-58"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-59"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-6"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-60"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-61"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-62"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-63"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-7"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-8"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "claimed-dc-suite:DC-9"
+owner = "unverified external designation"
+kind = "claimed_external_case"
+path = ""
+disposition = "source_missing"
+example_ids = []
+reason = "No lawful source file or authoritative index for this claimed DC designation is present in the workspace, official ATPDraw corpus, or added reference inventory."
+
+[[source]]
+id = "classic-emtp:case0001"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0001_series_rlc_step"
+disposition = "example"
+example_ids = ["classic_case0001_series_rlc_step"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "emtp-bpa-cpp-ca4339d"
+owner = "AIMORACases.jl"
+kind = "classic_case_origin"
+path = "examples/classic_emtp/SOURCE.md"
+disposition = "gallery"
+example_ids = ["classic_case0001_series_rlc_step", "classic_case0002_parallel_rlc_discharge", "classic_case0003_atpdraw_rlc", "classic_case0004_500kv_line_constants", "classic_case0005_345kv_double_circuit", "classic_case0006_230kv_high_frequency_line", "classic_case0007_capacitor_bank_recovery_voltage", "classic_case0008_back_to_back_capacitor_banks", "classic_case0009_capacitor_restrike", "classic_case0010_parallel_ehv_resonance", "classic_case0011_transmission_line_reclosing", "classic_case0012_lightning_tower_surge", "classic_case0013_potential_transformer_ferroresonance", "classic_case0014_subsynchronous_resonance", "classic_case0015_universal_induction_machine", "classic_case0050_tacs_thyristor_control"]
+reason = "The shared source record identifies the exact upstream repository, commit, rights statement, byte-identical inputs, and six documented normalizations."
+
+[[source]]
+id = "classic-emtp:case0002"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0002_parallel_rlc_discharge"
+disposition = "example"
+example_ids = ["classic_case0002_parallel_rlc_discharge"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0003"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0003_atpdraw_rlc"
+disposition = "example"
+example_ids = ["classic_case0003_atpdraw_rlc"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0004"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0004_500kv_line_constants"
+disposition = "example"
+example_ids = ["classic_case0004_500kv_line_constants"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0005"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0005_345kv_double_circuit"
+disposition = "example"
+example_ids = ["classic_case0005_345kv_double_circuit"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0006"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0006_230kv_high_frequency_line"
+disposition = "example"
+example_ids = ["classic_case0006_230kv_high_frequency_line"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0007"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0007_capacitor_bank_recovery_voltage"
+disposition = "example"
+example_ids = ["classic_case0007_capacitor_bank_recovery_voltage"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0008"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0008_back_to_back_capacitor_banks"
+disposition = "example"
+example_ids = ["classic_case0008_back_to_back_capacitor_banks"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0009"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0009_capacitor_restrike"
+disposition = "example"
+example_ids = ["classic_case0009_capacitor_restrike"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0010"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0010_parallel_ehv_resonance"
+disposition = "example"
+example_ids = ["classic_case0010_parallel_ehv_resonance"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0011"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0011_transmission_line_reclosing"
+disposition = "example"
+example_ids = ["classic_case0011_transmission_line_reclosing"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0012"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0012_lightning_tower_surge"
+disposition = "example"
+example_ids = ["classic_case0012_lightning_tower_surge"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0013"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0013_potential_transformer_ferroresonance"
+disposition = "example"
+example_ids = ["classic_case0013_potential_transformer_ferroresonance"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0014"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0014_subsynchronous_resonance"
+disposition = "example"
+example_ids = ["classic_case0014_subsynchronous_resonance"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0015"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0015_universal_induction_machine"
+disposition = "example"
+example_ids = ["classic_case0015_universal_induction_machine"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "classic-emtp:case0050"
+owner = "AIMORACases.jl"
+kind = "classic_case"
+path = "examples/classic_emtp/case0050_tacs_thyristor_control"
+disposition = "example"
+example_ids = ["classic_case0050_tacs_thyristor_control"]
+reason = "Classic case is independently expressed and executed by AIMORA's Julia runtime."
+
+[[source]]
+id = "translation-packet:C301"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C301"
+disposition = "gallery"
+example_ids = ["emt_parsed_deck_trace"]
+reason = "C301 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C302"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C302"
+disposition = "gallery"
+example_ids = ["emt_checkpoint_restart", "emt_parsed_deck_trace"]
+reason = "C302 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C303"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C303"
+disposition = "gallery"
+example_ids = ["core_study_catalog_and_scenario", "line_constants_double_circuit"]
+reason = "C303 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C304"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C304"
+disposition = "gallery"
+example_ids = ["emt_rlc_energization"]
+reason = "C304 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C305"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C305"
+disposition = "gallery"
+example_ids = ["transformer_parameters_two_winding_short_circuit", "transformer_parameters_saturable_two_winding", "transformer_parameters_multiphase_sequence_tests"]
+reason = "C305 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C306"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C306"
+disposition = "validation_only"
+example_ids = []
+reason = "C306 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C307"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C307"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "emt_switching_ensemble", "emt_fault_equivalent_fitting", "emt_frequency_dependent_line", "emt_nonlinear_characteristic_gallery", "emt_universal_machine_type_gallery"]
+reason = "C307 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C308"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C308"
+disposition = "gallery"
+example_ids = ["emt_signed_source_routing"]
+reason = "C308 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C309"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C309"
+disposition = "gallery"
+example_ids = ["emt_coupled_network_copy_gallery"]
+reason = "C309 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C310"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C310"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_identity_type98_gallery"]
+reason = "C310 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C311"
+owner = "AIMORA workspace"
+kind = "translation_capability_packet"
+path = "translation_ledger/cards_c301_c325.md#C311"
+disposition = "gallery"
+example_ids = ["emt_active_negative_resistance_rl"]
+reason = "C311 is a capability/evidence packet rather than a downloadable deck; its shippable Julia behavior is mapped to examples where applicable."
+
+[[source]]
+id = "translation-packet:C312"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C312 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C313"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C313 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C314"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C314 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C315"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C315 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C316"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C316 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C317"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C317 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C318"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C318 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C319"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C319 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C320"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C320 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C321"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C321 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C322"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C322 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C323"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C323 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C324"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C324 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "translation-packet:C325"
+owner = "claimed designation"
+kind = "claimed_translation_packet"
+path = ""
+disposition = "not_a_deck"
+example_ids = []
+reason = "No C325 card or deck exists in the authoritative workspace; the cards file currently contains C301 through C311 only."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c305_transformer_parameters.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c305_transformer_parameters.deck"
+disposition = "gallery"
+example_ids = ["transformer_parameters_two_winding_short_circuit", "transformer_parameters_saturable_two_winding", "transformer_parameters_multiphase_sequence_tests"]
+reason = "Transformer-parameter variants are consolidated."
+
+[[source]]
+id = "case-input:emt:c307_automatic_direct_machine_type10"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/c307_automatic_direct_machine_type10.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:c307_automatic_direct_machine_type11"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/c307_automatic_direct_machine_type11.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:c307_automatic_direct_machine_type12"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/c307_automatic_direct_machine_type12.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:c307_automatic_direct_machine_type9"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/c307_automatic_direct_machine_type9.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_cable_type2_one_layer.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_cable_type2_one_layer.deck"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "cable_constants_three_phase_single_layer"]
+reason = "Cable variants are consolidated by geometry."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_cable_type2_two_layer.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_cable_type2_two_layer.deck"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "cable_constants_three_phase_single_layer"]
+reason = "Cable variants are consolidated by geometry."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_cable_type3_centered_one_layer.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_cable_type3_centered_one_layer.deck"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "cable_constants_three_phase_single_layer"]
+reason = "Cable variants are consolidated by geometry."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_cable_type3_offcenter_two_layer.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_cable_type3_offcenter_two_layer.deck"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "cable_constants_three_phase_single_layer"]
+reason = "Cable variants are consolidated by geometry."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_complex_kc_lee_line.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_complex_kc_lee_line.deck"
+disposition = "gallery"
+example_ids = ["emt_line_models", "line_constants_double_circuit", "classic_case0004_500kv_line_constants", "classic_case0006_230kv_high_frequency_line"]
+reason = "Line variants are consolidated by transient or constants workflow."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_ensemble_switching.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_ensemble_switching.deck"
+disposition = "example"
+example_ids = ["emt_switching_ensemble"]
+reason = "Ensemble switching is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_explicit_triangular_coupled_rl.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_explicit_triangular_coupled_rl.deck"
+disposition = "gallery"
+example_ids = ["emt_coupled_network_copy_gallery"]
+reason = "Coupled and copied network variants are consolidated."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_fault_generator_equivalent.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_fault_generator_equivalent.deck"
+disposition = "example"
+example_ids = ["emt_fault_equivalent_fitting"]
+reason = "Generator/fault equivalent fitting is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_general_marti_fitting.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_general_marti_fitting.deck"
+disposition = "gallery"
+example_ids = ["emt_frequency_dependent_line", "emt_line_models"]
+reason = "Frequency-dependent line variants are consolidated."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_nonlinear_preprocessing.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_nonlinear_preprocessing.deck"
+disposition = "example"
+example_ids = ["emt_nonlinear_characteristic_gallery"]
+reason = "Nonlinear characteristic preparation is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_public_type76_switch.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_public_type76_switch.deck"
+disposition = "example"
+example_ids = ["emt_switch_type_gallery"]
+reason = "Specialized switch execution is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:c307_whole_network_frequency_scan.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/c307_whole_network_frequency_scan.deck"
+disposition = "example"
+example_ids = ["emt_mixed_frequency_subnetworks"]
+reason = "Repeated/mixed-frequency network execution is represented directly."
+
+[[source]]
+id = "case-input:emt:signed_source_routing"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/signed_source_routing/signed_source_routing.deck"
+disposition = "example"
+example_ids = ["emt_signed_source_routing"]
+reason = "Canonical public signed-routing deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:coupled_rl_copy"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/coupled_network_copy_gallery/coupled_rl_copy.deck"
+disposition = "gallery"
+example_ids = ["emt_coupled_network_copy_gallery"]
+reason = "Canonical public coupled R-L COPY deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:distributed_line_copy"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/coupled_network_copy_gallery/distributed_line_copy.deck"
+disposition = "gallery"
+example_ids = ["emt_coupled_network_copy_gallery"]
+reason = "Canonical public distributed-line COPY deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:four_phase_coupled_rl"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/coupled_network_copy_gallery/four_phase_coupled_rl.deck"
+disposition = "gallery"
+example_ids = ["emt_coupled_network_copy_gallery"]
+reason = "Canonical public four-phase coupled R-L deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:named_type96_hysteretic"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/nonlinear_identity_type98_gallery/named_type96_hysteretic.deck"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_identity_type98_gallery"]
+reason = "Canonical public named type-96 deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:type98_pseudo_nonlinear_inductor"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/nonlinear_identity_type98_gallery/type98_pseudo_nonlinear.deck"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_identity_type98_gallery"]
+reason = "Canonical public standalone type-98 deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:active_negative_resistance_rl"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/active_negative_resistance_rl/active_negative_resistance_rl.deck"
+disposition = "example"
+example_ids = ["emt_active_negative_resistance_rl"]
+reason = "Canonical public finite active-R deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:control_expression_runtime.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/control_expression_runtime.deck"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls"]
+reason = "Control network/device variants are consolidated."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:control_network_feedback.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/control_network_feedback.deck"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls"]
+reason = "Control network/device variants are consolidated."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:control_system_ac_source.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/control_system_ac_source.deck"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls"]
+reason = "Control network/device variants are consolidated."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:control_system_full_device.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/control_system_full_device.deck"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls"]
+reason = "Control network/device variants are consolidated."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:current_zero_switch_runtime.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/current_zero_switch_runtime.deck"
+disposition = "example"
+example_ids = ["emt_switch_type_gallery"]
+reason = "Specialized switch execution is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:data_crisis_stop_reference_stdout.txt"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/data_crisis_stop_reference_stdout.txt"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:data_crisis_stop_report.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/data_crisis_stop_report.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:dc_simulator_type16_fixed_field"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/dc_simulator_type16_gallery/fixed_field_type16.deck"
+disposition = "gallery"
+example_ids = ["emt_dc_simulator_type16_gallery"]
+reason = "Canonical public fixed-field type-16 deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:dc_simulator_type16_free_field"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/dc_simulator_type16_gallery/free_field_type16.deck"
+disposition = "gallery"
+example_ids = ["emt_dc_simulator_type16_gallery"]
+reason = "Canonical public free-field type-16 deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:detailed_synchronous_machine_universal_section"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/detailed_synchronous_machine_universal_section.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:electromagnetic_text_output_runtime.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/electromagnetic_text_output_runtime.deck"
+disposition = "example"
+example_ids = ["emt_parsed_deck_trace"]
+reason = "Typed report output is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fc4_cable_constants.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fc4_cable_constants.deck"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "cable_constants_three_phase_single_layer"]
+reason = "Cable variants are consolidated by geometry."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fc4_cable_transient.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fc4_cable_transient.deck"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "cable_constants_three_phase_single_layer"]
+reason = "Cable variants are consolidated by geometry."
+
+[[source]]
+id = "case-input:emt:fix_source_angle_q"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_angle_q.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_angle_q_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_angle_q_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_automatic_separately_excited_dc_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_automatic_separately_excited_dc_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:fix_source_cage_induction_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_cage_induction_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_cage_induction_machine_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_cage_induction_machine_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_cage_induction_machine_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_cage_induction_machine_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_controlled_switch"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_controlled_switch.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_controlled_switch_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_controlled_switch_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_coupled_phase_pi"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_coupled_phase_pi.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_coupled_phase_pi_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_coupled_phase_pi_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_coupled_sequence"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_coupled_sequence.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_coupled_sequence_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_coupled_sequence_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_distributed_line"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_distributed_line.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_distributed_line_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_distributed_line_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_generator_equivalent.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_generator_equivalent.deck"
+disposition = "example"
+example_ids = ["emt_fault_equivalent_fitting"]
+reason = "Generator/fault equivalent fitting is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_generator_equivalent_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_generator_equivalent_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_induction_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_induction_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_induction_machine_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_induction_machine_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_induction_machine_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_induction_machine_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_initial_switch"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_initial_switch.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_initial_switch_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_initial_switch_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_load_flow"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_load_flow.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_load_flow_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_load_flow_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_sampled_frequency_line.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_sampled_frequency_line.deck"
+disposition = "gallery"
+example_ids = ["emt_frequency_dependent_line", "emt_line_models"]
+reason = "Frequency-dependent line variants are consolidated."
+
+[[source]]
+id = "case-input:emt:fix_source_single_phase_induction_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_single_phase_induction_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_single_phase_induction_machine_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_single_phase_induction_machine_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_single_phase_induction_machine_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_single_phase_induction_machine_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_three_phase_pv"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_three_phase_pv.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_three_phase_pv_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_three_phase_pv_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_two_phase_induction_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_two_phase_induction_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_two_phase_induction_machine_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_two_phase_induction_machine_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_two_phase_induction_machine_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_two_phase_induction_machine_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_two_phase_rotor_induction_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_two_phase_rotor_induction_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_two_phase_rotor_induction_machine_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_two_phase_rotor_induction_machine_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_two_phase_rotor_induction_machine_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_two_phase_rotor_induction_machine_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_two_phase_synchronous_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_two_phase_synchronous_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_two_phase_synchronous_machine_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_two_phase_synchronous_machine_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "case-input:emt:fix_source_wound_field_synchronous_machine"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_wound_field_synchronous_machine.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_wound_field_synchronous_machine_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_wound_field_synchronous_machine_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_wound_field_synchronous_machine_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_wound_field_synchronous_machine_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "case-input:emt:fix_source_wound_field_synchronous_machine_saturated"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/fixed_source_load_flow_gallery/decks/fix_source_wound_field_synchronous_machine_saturated.deck"
+disposition = "gallery"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "Canonical public FIX SOURCE variant; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_wound_field_synchronous_machine_saturated_control.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_wound_field_synchronous_machine_saturated_control.deck"
+disposition = "validation_only"
+example_ids = []
+reason = "Pre-mutated post-load-flow comparison control retained for oracle qualification; it is not an independent user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:fix_source_wound_field_synchronous_machine_saturated_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/fix_source_wound_field_synchronous_machine_saturated_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:frequency_dependent_generator_equivalent.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/frequency_dependent_generator_equivalent.deck"
+disposition = "example"
+example_ids = ["emt_fault_equivalent_fitting"]
+reason = "Generator/fault equivalent fitting is demonstrated directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:frequency_dependent_generator_equivalent_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/frequency_dependent_generator_equivalent_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:line_constants_double_circuit.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/line_constants_double_circuit.deck"
+disposition = "gallery"
+example_ids = ["emt_line_models", "line_constants_double_circuit", "classic_case0004_500kv_line_constants", "classic_case0006_230kv_high_frequency_line"]
+reason = "Line variants are consolidated by transient or constants workflow."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:line_constants_high_frequency.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/line_constants_high_frequency.deck"
+disposition = "gallery"
+example_ids = ["emt_line_models", "line_constants_double_circuit", "classic_case0004_500kv_line_constants", "classic_case0006_230kv_high_frequency_line"]
+reason = "Line variants are consolidated by transient or constants workflow."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:mixed_frequency_conflict.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/mixed_frequency_conflict.deck"
+disposition = "negative_test"
+example_ids = []
+reason = "Intentionally invalid or nonconvergent input is retained only as a validation test."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:mixed_frequency_subnetworks.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/mixed_frequency_subnetworks.deck"
+disposition = "example"
+example_ids = ["emt_mixed_frequency_subnetworks"]
+reason = "Repeated/mixed-frequency network execution is represented directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:mixed_frequency_subnetworks_reference.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/mixed_frequency_subnetworks_reference.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Expected/reference output supports validation but is not a standalone user study."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:mixed_frequency_switch_conflict.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/mixed_frequency_switch_conflict.deck"
+disposition = "negative_test"
+example_ids = []
+reason = "Intentionally invalid or nonconvergent input is retained only as a validation test."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:public_case0011_repaired.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/public_case0011_repaired.deck"
+disposition = "example"
+example_ids = ["classic_case0011_transmission_line_reclosing"]
+reason = "Public classic case0011 is represented directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:public_case0011_report_runtime.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/public_case0011_report_runtime.deck"
+disposition = "example"
+example_ids = ["classic_case0011_transmission_line_reclosing"]
+reason = "Public classic case0011 is represented directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:public_case0013_source.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/public_case0013_source.deck"
+disposition = "example"
+example_ids = ["classic_case0013_potential_transformer_ferroresonance"]
+reason = "Public classic case0013 is represented directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:rc0_line_constants.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/rc0_line_constants.deck"
+disposition = "gallery"
+example_ids = ["emt_line_models", "line_constants_double_circuit", "classic_case0004_500kv_line_constants", "classic_case0006_230kv_high_frequency_line"]
+reason = "Line variants are consolidated by transient or constants workflow."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:rc0_rlc_energization.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/rc0_rlc_energization.deck"
+disposition = "example"
+example_ids = ["emt_rlc_energization"]
+reason = "RC0 RLC behavior is represented directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:rc0_source_branch_transient.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/rc0_source_branch_transient.deck"
+disposition = "gallery"
+example_ids = ["emt_source_waveform_gallery", "emt_rlc_energization"]
+reason = "RC0 source/branch behavior is consolidated."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:rc0_switching_transient.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/rc0_switching_transient.deck"
+disposition = "example"
+example_ids = ["emt_switching_transient"]
+reason = "RC0 switching behavior is represented directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:semlyen_fitted_line.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/semlyen_fitted_line.deck"
+disposition = "gallery"
+example_ids = ["emt_frequency_dependent_line", "emt_line_models"]
+reason = "Frequency-dependent line variants are consolidated."
+
+[[source]]
+id = "case-input:emt:synchronous_machine_saturated_delta_fleet"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/synchronous_machine_saturated_delta_fleet.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:type18_ideal_transformer.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/type18_ideal_transformer.deck"
+disposition = "example"
+example_ids = ["emt_ideal_transformer_type18"]
+reason = "Type-18 behavior is represented directly."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:type96_hysteretic_inductor_primary.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/type96_hysteretic_inductor_primary.deck"
+disposition = "example"
+example_ids = ["emt_hysteretic_inductor_runtime"]
+reason = "Type-96 runtime is demonstrated directly."
+
+[[source]]
+id = "case-input:emt:universal_machine_direct_coupled_fleet"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_direct_coupled_fleet.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_direct_electromechanical_fleet"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_direct_electromechanical_fleet.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_direct_fleet"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_direct_fleet.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_direct_tacs_fleet"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_direct_tacs_fleet.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type1"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type1.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type10"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type10.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type11"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type11.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type12"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type12.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type2"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type2.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type3"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type3.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type3_manual"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type3_manual.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:universal_machine_type3_nonconvergent.deck"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/universal_machine_type3_nonconvergent.deck"
+disposition = "negative_test"
+example_ids = []
+reason = "Intentionally invalid or nonconvergent input is retained only as a validation test."
+
+[[source]]
+id = "case-input:emt:universal_machine_type3_normalized"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type3_normalized.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type3_normalized_predicted_current"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type3_normalized_predicted_current.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type3_predicted_current"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type3_predicted_current.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type3_remanent"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type3_remanent.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type4"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type4.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type5"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type5.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type6"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type6.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type7"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type7.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type8"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type8.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type8_automatic"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type8_automatic.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type9"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type9.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "case-input:emt:universal_machine_type9_series_leakage"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/universal_machine_type_gallery/decks/universal_machine_type9_series_leakage.deck"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery"]
+reason = "Canonical public machine deck; AIMORAValidation consumes this path without retaining a duplicate fixture."
+
+[[source]]
+id = "validation-fixture:core_routine_oracle:core_routine_harness.FOR"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/core_routine_oracle/core_routine_harness.FOR"
+disposition = "oracle_only"
+example_ids = []
+reason = "Fortran harness is compiled-reference evidence and is forbidden from the public Julia example package."
+
+[[source]]
+id = "validation-fixture:over16_sparse_factor_oracle:over16_sparse_factor_harness.f90"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/over16_sparse_factor_oracle/over16_sparse_factor_harness.f90"
+disposition = "oracle_only"
+example_ids = []
+reason = "Fortran harness is compiled-reference evidence and is forbidden from the public Julia example package."
+
+[[source]]
+id = "validation-fixture:source_loop:c299_source_signals.csv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/source_loop/c299_source_signals.csv"
+disposition = "example"
+example_ids = ["emt_tabulated_and_analytic_sources"]
+reason = "Tabulated source input is represented by the public source-program example."
+
+[[source]]
+id = "validation-suite:accelerator_nodal"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/accelerator_nodal.jl"
+disposition = "example"
+example_ids = ["emt_realtime_cpu"]
+reason = "Runtime/allocation behavior is represented by the bounded CPU timing example."
+
+[[source]]
+id = "validation-suite:active_series_rl"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/active_series_rl.jl"
+disposition = "example"
+example_ids = ["emt_active_negative_resistance_rl"]
+reason = "Finite active negative-R R-L execution is demonstrated directly."
+
+[[source]]
+id = "validation-suite:allocation_contracts"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/allocation_contracts.jl"
+disposition = "example"
+example_ids = ["emt_realtime_cpu"]
+reason = "Runtime/allocation behavior is represented by the bounded CPU timing example."
+
+[[source]]
+id = "validation-suite:automatic_direct_machine_fleet"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/automatic_direct_machine_fleet.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:automatic_separately_excited_dc_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/automatic_separately_excited_dc_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:branch_outputs"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/branch_outputs.jl"
+disposition = "gallery"
+example_ids = ["emt_parsed_deck_trace", "emt_checkpoint_restart"]
+reason = "Typed reports, plots, terminal state, and resumable output are consolidated."
+
+[[source]]
+id = "validation-suite:cable_constants_deck"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/cable_constants_deck.jl"
+disposition = "gallery"
+example_ids = ["cable_constants_geometry_gallery", "cable_constants_three_phase_single_layer"]
+reason = "Cable variants are consolidated by geometry and frequency study."
+
+[[source]]
+id = "validation-suite:cascaded_phase_pi_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/cascaded_phase_pi_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_frequency_dependent_line", "emt_line_models"]
+reason = "Frequency-dependent and cascaded line behavior is consolidated in the line examples."
+
+[[source]]
+id = "validation-suite:control_expression_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/control_expression_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:control_network_feedback"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/control_network_feedback.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:control_system_ac_source_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/control_system_ac_source_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:dc_simulator_sources"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/dc_simulator_sources.jl"
+disposition = "gallery"
+example_ids = ["emt_dc_simulator_type16_gallery"]
+reason = "Fixed/free type-16 variants share one gallery."
+
+[[source]]
+id = "validation-suite:dc_simulator_sources_oracle"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/dc_simulator_sources_oracle.jl"
+disposition = "oracle_only"
+example_ids = []
+reason = "Compiled/reference comparison is evidence, not a Julia-only public example."
+
+[[source]]
+id = "validation-suite:deck_case_sequence"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/deck_case_sequence.jl"
+disposition = "example"
+example_ids = ["emt_multi_case_sequence"]
+reason = "Ordered valid/aborted case execution is demonstrated directly."
+
+[[source]]
+id = "validation-suite:deck_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/deck_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_parsed_deck_trace", "emt_checkpoint_restart"]
+reason = "Typed reports, plots, terminal state, and resumable output are consolidated."
+
+[[source]]
+id = "validation-suite:deck_sources"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/deck_sources.jl"
+disposition = "gallery"
+example_ids = ["emt_source_waveform_gallery", "emt_signed_source_routing", "emt_dc_simulator_type16_gallery", "emt_ideal_transformer_type18"]
+reason = "Source card families are consolidated into focused source galleries."
+
+[[source]]
+id = "validation-suite:detailed_synchronous_machine_universal_section"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/detailed_synchronous_machine_universal_section.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:direct_machine_coupled_fleet"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/direct_machine_coupled_fleet.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:direct_machine_electromechanical_fleet"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/direct_machine_electromechanical_fleet.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:direct_machine_fleet"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/direct_machine_fleet.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:direct_machine_series_leakage"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/direct_machine_series_leakage.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:direct_machine_tacs_fleet"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/direct_machine_tacs_fleet.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:elec_tacsto_testsets"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/elec_tacsto_testsets.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:executable_comparison"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/executable_comparison.jl"
+disposition = "validation_only"
+example_ids = []
+reason = "Qualification or private-oracle infrastructure is not a user study."
+
+[[source]]
+id = "validation-suite:fixed_source_load_flow"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/fixed_source_load_flow.jl"
+disposition = "example"
+example_ids = ["emt_fixed_source_load_flow_gallery"]
+reason = "FIX SOURCE variants share one load-flow gallery."
+
+[[source]]
+id = "validation-suite:foundation_and_lines"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/foundation_and_lines.jl"
+disposition = "gallery"
+example_ids = ["emt_line_models", "emt_rlc_energization", "line_constants_double_circuit"]
+reason = "Foundation branch and line behaviors are represented across these introductory studies."
+
+[[source]]
+id = "validation-suite:generator_equivalents"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/generator_equivalents.jl"
+disposition = "example"
+example_ids = ["emt_fault_equivalent_fitting"]
+reason = "Generator/fault equivalent fitting is demonstrated directly."
+
+[[source]]
+id = "validation-suite:grounded_branch_references"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/grounded_branch_references.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type3", "classic_case0015_universal_induction_machine"]
+reason = "Grounded branch references are exercised by the promoted machine decks."
+
+[[source]]
+id = "validation-suite:induction_machine_type3"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/induction_machine_type3.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:julia_package_qualification"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/julia_package_qualification.jl"
+disposition = "validation_only"
+example_ids = []
+reason = "Qualification or private-oracle infrastructure is not a user study."
+
+[[source]]
+id = "validation-suite:lean_timestep_diagnostics"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/lean_timestep_diagnostics.jl"
+disposition = "example"
+example_ids = ["emt_realtime_cpu"]
+reason = "Runtime/allocation behavior is represented by the bounded CPU timing example."
+
+[[source]]
+id = "validation-suite:machine_input_modes"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/machine_input_modes.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:machine_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/machine_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:nonlinear_copy_source_loop"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/nonlinear_copy_source_loop.jl"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_characteristic_gallery", "emt_nonlinear_identity_type98_gallery", "emt_hysteretic_inductor_runtime", "emt_nonlinear_controls", "classic_case0013_potential_transformer_ferroresonance"]
+reason = "Nonlinear preprocessing and runtime variants are consolidated."
+
+[[source]]
+id = "validation-suite:nonlinear_timestep"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/nonlinear_timestep.jl"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_characteristic_gallery", "emt_nonlinear_identity_type98_gallery", "emt_hysteretic_inductor_runtime", "emt_nonlinear_controls", "classic_case0013_potential_transformer_ferroresonance"]
+reason = "Nonlinear preprocessing and runtime variants are consolidated."
+
+[[source]]
+id = "validation-suite:nonlinear_transformers"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/nonlinear_transformers.jl"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_characteristic_gallery", "emt_nonlinear_identity_type98_gallery", "emt_hysteretic_inductor_runtime", "emt_nonlinear_controls", "classic_case0013_potential_transformer_ferroresonance"]
+reason = "Nonlinear preprocessing and runtime variants are consolidated."
+
+[[source]]
+id = "validation-suite:overhead_line_constants"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/overhead_line_constants.jl"
+disposition = "gallery"
+example_ids = ["line_constants_double_circuit", "classic_case0004_500kv_line_constants", "classic_case0006_230kv_high_frequency_line"]
+reason = "Overhead-line calculations are consolidated by geometry/frequency."
+
+[[source]]
+id = "validation-suite:overhead_line_constants_oracle"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/overhead_line_constants_oracle.jl"
+disposition = "oracle_only"
+example_ids = []
+reason = "Compiled/reference comparison is evidence, not a Julia-only public example."
+
+[[source]]
+id = "validation-suite:parallel_compound_dc_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/parallel_compound_dc_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:piecewise_nonlinear_inductor"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/piecewise_nonlinear_inductor.jl"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_characteristic_gallery", "emt_nonlinear_identity_type98_gallery", "emt_hysteretic_inductor_runtime", "emt_nonlinear_controls", "classic_case0013_potential_transformer_ferroresonance"]
+reason = "Nonlinear preprocessing and runtime variants are consolidated."
+
+[[source]]
+id = "validation-suite:platform_core"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/platform_core.jl"
+disposition = "gallery"
+example_ids = ["core_study_catalog_and_scenario", "emt_inverter", "emt_line_models", "emt_realtime_cpu", "emt_reduced_feeder_inverter", "emt_unified_emt"]
+reason = "Shippable platform scenarios are demonstrated by the catalog, inverter, line, timing, and reduced-feeder workflows; repository and API assertions remain supporting contracts inside the suite."
+
+[[source]]
+id = "validation-suite:primary_nonlinear_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/primary_nonlinear_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_nonlinear_characteristic_gallery", "emt_nonlinear_identity_type98_gallery", "emt_hysteretic_inductor_runtime", "emt_nonlinear_controls", "classic_case0013_potential_transformer_ferroresonance"]
+reason = "Nonlinear preprocessing and runtime variants are consolidated."
+
+[[source]]
+id = "validation-suite:restart_checkpoint_and_extinction"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/restart_checkpoint_and_extinction.jl"
+disposition = "example"
+example_ids = ["emt_checkpoint_restart"]
+reason = "Checkpoint and restart continuity is demonstrated directly."
+
+[[source]]
+id = "validation-suite:restart_execution"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/restart_execution.jl"
+disposition = "example"
+example_ids = ["emt_checkpoint_restart"]
+reason = "Checkpoint and restart continuity is demonstrated directly."
+
+[[source]]
+id = "validation-suite:runtime_output_bundle"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/runtime_output_bundle.jl"
+disposition = "gallery"
+example_ids = ["emt_parsed_deck_trace", "emt_checkpoint_restart"]
+reason = "Typed reports, plots, terminal state, and resumable output are consolidated."
+
+[[source]]
+id = "validation-suite:sampled_frequency_line_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/sampled_frequency_line_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_frequency_dependent_line", "emt_line_models"]
+reason = "Frequency-dependent and cascaded line behavior is consolidated in the line examples."
+
+[[source]]
+id = "validation-suite:scientific_surface_closure"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/scientific_surface_closure.jl"
+disposition = "validation_only"
+example_ids = []
+reason = "Cross-capability closure assertions are not a standalone physical scenario."
+
+[[source]]
+id = "validation-suite:self_excited_shunt_dc_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/self_excited_shunt_dc_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:semlyen_frequency_dependent_line"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/semlyen_frequency_dependent_line.jl"
+disposition = "gallery"
+example_ids = ["emt_frequency_dependent_line", "emt_line_models"]
+reason = "Frequency-dependent and cascaded line behavior is consolidated in the line examples."
+
+[[source]]
+id = "validation-suite:separately_excited_dc_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/separately_excited_dc_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:series_compound_dc_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/series_compound_dc_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:series_field_dc_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/series_field_dc_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:series_rlc_alteration"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/series_rlc_alteration.jl"
+disposition = "example"
+example_ids = ["emt_rlc_energization"]
+reason = "The public RLC workflow owns the same branch and timestep path."
+
+[[source]]
+id = "validation-suite:single_phase_induction_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/single_phase_induction_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:source_signal_program"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/source_signal_program.jl"
+disposition = "gallery"
+example_ids = ["emt_source_waveform_gallery", "emt_tabulated_and_analytic_sources", "emt_single_phase_sine_source"]
+reason = "Analytic and tabulated sources are consolidated."
+
+[[source]]
+id = "validation-suite:sources_and_controls"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/sources_and_controls.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:state_changing_nonlinear_switches"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/state_changing_nonlinear_switches.jl"
+disposition = "gallery"
+example_ids = ["emt_switch_type_gallery", "emt_switching_ensemble", "emt_nonlinear_controls"]
+reason = "Switch variants are indexed in the switching galleries."
+
+[[source]]
+id = "validation-suite:steady_state_frequency_networks"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/steady_state_frequency_networks.jl"
+disposition = "example"
+example_ids = ["emt_mixed_frequency_subnetworks"]
+reason = "Mixed-frequency island initialization is demonstrated directly."
+
+[[source]]
+id = "validation-suite:study_loop_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/study_loop_runtime.jl"
+disposition = "example"
+example_ids = ["emt_realtime_cpu"]
+reason = "Runtime/allocation behavior is represented by the bounded CPU timing example."
+
+[[source]]
+id = "validation-suite:switched_nonlinear_public_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/switched_nonlinear_public_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_switch_type_gallery", "emt_switching_ensemble", "emt_nonlinear_controls"]
+reason = "Switch variants are indexed in the switching galleries."
+
+[[source]]
+id = "validation-suite:switching"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/switching.jl"
+disposition = "gallery"
+example_ids = ["emt_switching_transient", "emt_switch_type_gallery"]
+reason = "Switch families and canonical transient behavior are consolidated."
+
+[[source]]
+id = "validation-suite:switching_nonlinear_resistor"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/switching_nonlinear_resistor.jl"
+disposition = "gallery"
+example_ids = ["emt_switch_type_gallery", "emt_switching_ensemble", "emt_nonlinear_controls"]
+reason = "Switch variants are indexed in the switching galleries."
+
+[[source]]
+id = "validation-suite:synchronous_machine_saturation"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/synchronous_machine_saturation.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:tacs_controls"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/tacs_controls.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:timestep_machine_oracles"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/timestep_machine_oracles.jl"
+disposition = "oracle_only"
+example_ids = []
+reason = "Compiled/reference comparison is evidence, not a Julia-only public example."
+
+[[source]]
+id = "validation-suite:timestep_mutation_order"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/timestep_mutation_order.jl"
+disposition = "gallery"
+example_ids = ["emt_checkpoint_restart", "emt_switching_transient", "emt_control_network_feedback"]
+reason = "Mutation order is visible across restart, switching, and control examples."
+
+[[source]]
+id = "validation-suite:triggered_timed_resistance"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/triggered_timed_resistance.jl"
+disposition = "gallery"
+example_ids = ["emt_switch_type_gallery", "emt_switching_ensemble", "emt_nonlinear_controls"]
+reason = "Switch variants are indexed in the switching galleries."
+
+[[source]]
+id = "validation-suite:two_phase_induction_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/two_phase_induction_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:two_phase_rotor_induction_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/two_phase_rotor_induction_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:two_phase_synchronous_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/two_phase_synchronous_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:type18_ideal_transformer"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/type18_ideal_transformer.jl"
+disposition = "example"
+example_ids = ["emt_ideal_transformer_type18"]
+reason = "Type-18 execution is demonstrated directly."
+
+[[source]]
+id = "validation-suite:unified_control_device_valves"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/unified_control_device_valves.jl"
+disposition = "gallery"
+example_ids = ["emt_control_network_feedback", "emt_nonlinear_controls", "emt_machine_tacs_interface", "classic_case0050_tacs_thyristor_control"]
+reason = "Control, TACS, valve, and machine interfaces are consolidated by physical workflow."
+
+[[source]]
+id = "validation-suite:universal_machine_primary_runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/universal_machine_primary_runtime.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:universal_machines"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/universal_machines.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."
+
+[[source]]
+id = "validation-suite:validation_foundations"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/validation_foundations.jl"
+disposition = "validation_only"
+example_ids = []
+reason = "Qualification or private-oracle infrastructure is not a user study."
+
+[[source]]
+id = "validation-suite:wound_field_synchronous_machine"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/wound_field_synchronous_machine.jl"
+disposition = "gallery"
+example_ids = ["emt_universal_machine_type_gallery", "emt_universal_machine_type3", "classic_case0015_universal_induction_machine", "emt_machine_tacs_interface"]
+reason = "Machine equation families and coupled execution are consolidated."

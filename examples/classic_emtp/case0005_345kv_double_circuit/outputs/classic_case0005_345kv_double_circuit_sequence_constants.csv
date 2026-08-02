@@ -1,0 +1,3 @@
+frequency_hz,sequence,zc_magnitude_ohm,resistance_ohm_per_mile,reactance_ohm_per_mile
+60,zero,651.788267181,0.63757388924,1.63187653824
+60,positive,278.848035537,0.0626933523831,0.57352790137

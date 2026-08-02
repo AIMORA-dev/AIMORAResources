@@ -1,0 +1,21 @@
+BEGIN NEW DATA CASE
+C Named type-96 hysteretic inductor used to prove NONLIN NAME binding.
+ 100.E-3 500.E-3     60.       0
+       1       1       0       0       1       0       0       0       0       9
+C 345678901234567890123456789012345678901234567890123456789012345678901234567890
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+  NONLIN NAME:HYST1 
+96N1                         0.0        0.0        0.0
+             0.0             0.0
+             1.0             2.0
+             2.0             4.0
+           9999.
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+14N1             0.1      1.0      90.0                         -1.0
+BLANK CARD ENDING SOURCES
+  N1
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

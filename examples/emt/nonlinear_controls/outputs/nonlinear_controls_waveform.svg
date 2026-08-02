@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="34" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#111827">Controlled Nonlinear EMT Response</text>
+<rect x="92.0" y="70.0" width="700.0" height="400.0" fill="#f8fafc" stroke="#cbd5e1"/>
+<line x1="92.0" y1="70.0" x2="792.0" y2="70.0" stroke="#e2e8f0"/>
+<text x="82.0" y="74.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">1.062</text>
+<line x1="92.0" y1="170.0" x2="792.0" y2="170.0" stroke="#e2e8f0"/>
+<text x="82.0" y="174.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">0.7195</text>
+<line x1="92.0" y1="270.0" x2="792.0" y2="270.0" stroke="#e2e8f0"/>
+<text x="82.0" y="274.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">0.3767</text>
+<line x1="92.0" y1="370.0" x2="792.0" y2="370.0" stroke="#e2e8f0"/>
+<text x="82.0" y="374.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">0.03393</text>
+<line x1="92.0" y1="470.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="82.0" y="474.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">-0.3089</text>
+<line x1="92.0" y1="70.0" x2="92.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="92.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">-9e-06</text>
+<line x1="267.0" y1="70.0" x2="267.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="267.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">4.05e-05</text>
+<line x1="442.0" y1="70.0" x2="442.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="442.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">9e-05</text>
+<line x1="617.0" y1="70.0" x2="617.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="617.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.0001395</text>
+<line x1="792.0" y1="70.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="792.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.000189</text>
+<polyline points="123.818,353.378 194.525,305.161 265.232,265.710 335.939,233.432 406.646,207.023 477.354,185.416 548.061,167.737 618.768,153.272 689.475,141.438 760.182,131.755" fill="none" stroke="#2563eb" stroke-width="2"/>
+<polyline points="123.818,451.818 194.525,450.113 265.232,448.447 335.939,88.182 406.646,88.182 477.354,88.182 548.061,88.182 618.768,88.182 689.475,88.182 760.182,88.182" fill="none" stroke="#dc2626" stroke-width="2"/>
+<polyline points="123.818,307.978 194.525,309.683 265.232,311.349 335.939,309.395 406.646,303.854 477.354,298.335 548.061,292.838 618.768,287.363 689.475,281.909 760.182,276.478" fill="none" stroke="#059669" stroke-width="2"/>
+<text x="442.0" y="535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#334155">time (s)</text>
+<text x="24" y="270.0" text-anchor="middle" transform="rotate(-90 24 270.0)" font-family="sans-serif" font-size="14" fill="#334155">per-unit value</text>
+<line x1="816.0" y1="90.0" x2="836.0" y2="90.0" stroke="#2563eb" stroke-width="3"/>
+<text x="844.0" y="94.0" font-family="sans-serif" font-size="12" fill="#334155">control</text>
+<line x1="816.0" y1="110.0" x2="836.0" y2="110.0" stroke="#dc2626" stroke-width="3"/>
+<text x="844.0" y="114.0" font-family="sans-serif" font-size="12" fill="#334155">load_v_pu</text>
+<line x1="816.0" y1="130.0" x2="836.0" y2="130.0" stroke="#059669" stroke-width="3"/>
+<text x="844.0" y="134.0" font-family="sans-serif" font-size="12" fill="#334155">sat_inductor_i_pu</text>
+</svg>

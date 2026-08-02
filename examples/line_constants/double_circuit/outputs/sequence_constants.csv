@@ -1,0 +1,3 @@
+frequency_hz,sequence,zc_magnitude_ohm,zc_angle_deg,attenuation_db_per_mile,velocity_miles_per_s,resistance_ohm_per_mile,reactance_ohm_per_mile,susceptance_mho_per_mile
+60,zero,651.788267181,-10.6702895673,0.00432298161354,142717.559307,0.63757388924,1.63187653824,4.12403424498e-06
+60,positive,278.848035537,-3.11916728439,0.000977872177201,182477.240654,0.0626933523831,0.57352790137,7.41991104304e-06

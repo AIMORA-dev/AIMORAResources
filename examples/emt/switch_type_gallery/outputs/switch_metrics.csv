@@ -1,0 +1,3 @@
+case,samples,timestep_s,duration_s,maximum_voltage,maximum_output
+current_zero,201,5e-05,0.01,1.66662336496,2.66630755424
+type76,7,2e-05,0.00012,2.00000063574,2.00000063574

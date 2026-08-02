@@ -1,0 +1,5 @@
+geometry,conductor_count,frequency_count,first_frequency_hz,mode1_zc_magnitude_ohm,mode1_velocity_m_per_s,physical_checks_passed
+type2_one_layer,1,3,60,79.306449383,33967427.9365,true
+type2_two_layer,2,3,60,130.273830245,26480193.9337,true
+type3_centered_one_layer,1,3,60,112.103202624,140134816.459,true
+type3_offcenter_two_layer,2,3,60,56.2498861922,45399088.1583,true

@@ -1,0 +1,18 @@
+BEGIN NEW DATA CASE
+RENUMBER BYPASS
+  20.E-6 120.E-6
+   20000       1       0       1       1       0       0       0       1       0
+       1       1       1    0.05     2.0     0.0   360.0    60.0     4.0     307
+  BUS1  BUS2                     1.0       0.0       0.0
+  BUS2                           1.0       0.0       0.0
+  BUS3                           1.0       0.0       0.0
+BLANK CARD ENDING BRANCHES
+76BUS2  BUS3   2.000E-05 8.000E-05 5.000E-02 5.000E-06                         0
+BLANK CARD ENDING SWITCHES
+11BUS1            1.
+BLANK CARD ENDING SOURCES
+  BUS2  BUS3
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

@@ -3,9 +3,11 @@
 using Printf
 
 include(normpath(joinpath(@__DIR__, "..", "..", "load_aimora.jl")))
+include(normpath(joinpath(@__DIR__, "..", "..", "support", "ExampleSupport.jl")))
 
 using AIMORA.Companion
 using AIMORA.Machines
+using .ExampleSupport
 
 function write_transfer_csv(path::AbstractString, preview)
     mkpath(dirname(path))
@@ -52,11 +54,20 @@ function run_case()
 end
 
 function main()
-    output_dir = length(ARGS) >= 1 ? ARGS[1] : joinpath(@__DIR__, "outputs")
+    output_dir = artifact_directory(ARGS, joinpath(@__DIR__, "outputs"))
     preview, state = run_case()
     csv_path = write_transfer_csv(joinpath(output_dir, "machine_tacs_transfer.csv"), preview)
+    waveform_path = write_waveform_svg(
+        joinpath(output_dir, "machine_tacs_transfer.svg"),
+        collect(1:preview.transfer_count),
+        ["transferred_value" => preview.request_values];
+        title = "Machine–TACS Transfer Values",
+        x_label = "request order",
+        y_label = "value",
+    )
 
     @printf("Output CSV: %s\n", abspath(csv_path))
+    @printf("Output plot: %s\n", waveform_path)
     @printf("Engine: Julia OVER16 synchronous-machine TACS interface slice\n")
     @printf("Legacy Fortran in loop: no\n")
     @printf("Transferred ETAC values: %d\n", preview.transfer_count)

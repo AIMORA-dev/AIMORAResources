@@ -1,7 +1,7 @@
 .PHONY: check test example clean-examples
 
 JULIA ?= julia
-EMT_EXAMPLES := $(sort $(dir $(wildcard examples/emt/*/Makefile)))
+EXAMPLES := $(sort $(dir $(wildcard examples/*/*/Makefile)))
 
 check:
 	$(JULIA) --project=. check.jl
@@ -11,11 +11,11 @@ test: check
 
 example: check
 	$(JULIA) --project=. examples/list_cases.jl
-	@for example_dir in $(EMT_EXAMPLES); do \
+	@for example_dir in $(EXAMPLES); do \
 		$(MAKE) --no-print-directory -C "$$example_dir" JULIA="$(JULIA)" run || exit $$?; \
 	done
 
 clean-examples:
-	@for example_dir in $(EMT_EXAMPLES); do \
+	@for example_dir in $(EXAMPLES); do \
 		$(MAKE) --no-print-directory -C "$$example_dir" clean || exit $$?; \
 	done

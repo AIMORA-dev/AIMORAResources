@@ -1,0 +1,26 @@
+BEGIN NEW DATA CASE
+FIX SOURCE
+C Phase-A P/V source through a three-phase coupled sequence R-X branch
+C  dT >< Tmax >< Xopt >< Copt ><Epsiln>
+  50.E-6    .002     60.       0
+      20       1       1       0       1       0       0       0
+C < n1 >< n2 ><ref1><ref2><R0/1>< X0/X1    >
+51SA    RA                 3.000   15.000000
+52SB    RB                 1.000    5.000000
+53SC    RC
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+14SA          100.     60.0        0.                          -1.0
+14SB          100.     60.0     -120.                          -1.0
+14SC          100.     60.0      120.                          -1.0
+14RA          100.     60.0        0.                          -1.0
+14RB          100.     60.0     -120.                          -1.0
+14RC          100.     60.0      120.                          -1.0
+BLANK CARD ENDING SOURCES
+ 1SA                    118.66754605    105.00000000  100.00  110.00-180.0 180.0
+               0     200      20       1 1.0e-06   0.200   2.500
+  SA    SB    SC    RA    RB    RC
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

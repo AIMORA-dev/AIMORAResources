@@ -1,0 +1,7 @@
+row,terminal_1,terminal_2,terminal_3,terminal_4,terminal_5,terminal_6
+terminal_1,0.12,0,0,0,0,0
+terminal_2,0,0.06,0,0,0,0
+terminal_3,0,0,0.12,0,0,0
+terminal_4,0,0,0,0.06,0,0
+terminal_5,0,0,0,0,0.12,0
+terminal_6,0,0,0,0,0,0.06

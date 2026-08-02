@@ -1,0 +1,11 @@
+{
+  "samples": 7501,
+  "t_end_s": 0.150000000,
+  "elapsed_s": 0.000000000,
+  "final_p_pu": 0.850000000,
+  "final_q_pu": 0.100000000,
+  "final_id_pu": 0.850000000,
+  "final_iq_pu": -0.100000000,
+  "max_p_error_pu": 0.393333333,
+  "max_q_error_pu": 0.000000000
+}

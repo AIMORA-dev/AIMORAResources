@@ -1,0 +1,8 @@
+requirement,key,label,unit,description
+required,timestep,Timestep,s,Fixed simulation timestep.
+required,duration,Duration,s,Simulation duration.
+required,network_elements,Network elements,,Branches; sources; switches; and injections.
+required,initial_conditions,Initial conditions,,Initial voltages; currents; and model states.
+optional,events,Events,,Switching; faults; references; and disturbances.
+optional,controls,Controls,,Control blocks and converter controllers.
+optional,output_channels,Output channels,,Signals to record.

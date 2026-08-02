@@ -1,0 +1,50 @@
+BEGIN NEW DATA CASE
+FIX SOURCE
+C     ANGLE/Q-CONSTRAINED STATOR SOURCE FEEDING A TYPE-7 MACHINE
+POWER FREQUENCY                     60.0
+ABSOLUTE U.M. DIMENSIONS              20       2      50      60
+C PRINTED NUMBER WIDTH  13  2
+ .000002    .001
+       1       1       1       1       1      -1                               1
+       5       5      20      20     100     100
+C  --------- STORED POWER-TERMINAL EXTERNAL RESISTANCES
+  BUSC2 BUSCS2            100.0 10.0                                            1
+C  --------- CONNECTIVITY OF EMTP FOR ELECTRIC NETWORK
+  BUSCS2                  1.0E+6
+  BUSFD                   1.0E+6
+  BUSFQ                   1.0E+6
+C  --------- MECHANICAL NETWORK COMPONENTS
+  BUSMG BUSMGR            10.0                                                 1
+  BUSMGR      BUSMG BUSMGR
+  BUSMG                               9.8E+7                                   1
+C  -------- FOR MEASUREMENT OF ELECTROMECHANICAL TORQUE
+  BUSMS BUSMG             1.0E-6                                               1
+BLANK card ending branch cards
+BLANK card ending nonexistent switch cards
+C  --------- SOURCES FOR SINGLE PHASE, TWO ROTOR AXES, AND DRIVE
+14BUSCS2     1.0     60.0     +90.0                         -1.0
+14BUSFD   1.0E-9     60.0     +120.0                        -1.0
+14BUSFQ   1.0E-9     60.0       0.0                         -1.0
+14BUSMS -1 0.000001  0.00001                                -1.0
+19 UM
+ 1
+BLANK CARD ENDING CLASS 1 UM DATA CARDS
+C  UM-1 MACHINE TABLE: TYPE 7, SINGLE-PHASE STATOR AND TWO-PHASE ROTOR
+ 7 1 1111BUSMG        2                            0.1885
+              0.02358
+              0.02358
+2.0           0.0           BUSFD BUSMS
+C  UM-1 FIVE-COIL TABLE: TWO DUMMY SLOTS, STATOR, D ROTOR, Q ROTOR
+0.0           0.0012                          1
+0.0           0.0012                          1
+1.0           0.0012        BUSC2             1
+1.0           0.0012        BUSFD             1
+1.0           0.0012        BUSFQ             1
+BLANK card terminating all U.M. data
+BLANK card ending all electric-network sources
+ 2BUSCS2                        90.0  0.000726840284     0.5     1.5-180.0 180.0
+               0    1000      20       1 1.0e-07   0.200   2.500
+  BUSCS2BUSC2 BUSFD BUSFQ BUSMG
+BLANK card terminating output variable requests
+BLANK card terminating plot cards
+BEGIN NEW DATA CASE

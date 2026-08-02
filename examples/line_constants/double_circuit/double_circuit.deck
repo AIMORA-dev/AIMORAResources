@@ -1,0 +1,20 @@
+C AIMORA JULIA INPUT: DOUBLE-CIRCUIT 345-KV TRANSMISSION LINE CONSTANTS
+BEGIN NEW DATA CASE
+LINE CONSTANTS
+C LEFT TOWER
+ 1    .5   .1195 4         1.165   -60.    101.2             18.      0.  RAIL 2
+ 2    .5   .1195 4         1.165   -45.     80.              18.      0.  RAIL 2
+ 3    .5   .1195 4         1.165   -75.     80.              18.      0.  RAIL 2
+ 0    .5   1.901 4         .3854   -47.    114.
+ 0    .5   1.901 4         .3854   -73.    114.
+C RIGHT TOWER
+ 4    .5   .1191 4         1.196    60.    101.2             18.      0.CARDIN 2
+ 5    .5   .1191 4         1.196    45.     80.              18.      0.CARDIN 2
+ 6    .5   .1191 4         1.196    75.     80.              18.      0.CARDIN 2
+ 0    .5   6.59  4          .36     47.    114.
+ 0    .5   6.59  4          .36     73.    114.
+BLANK CARD TERMINATING CONDUCTOR CARDS
+    100.       60.         1 111111 111111 1
+BLANK CARD TERMINATING FREQUENCY CARDS
+BLANK CARD TERMINATING LINE CONSTANTS CASES
+BLANK CARD TERMINATING THE CASE

@@ -1,0 +1,5 @@
+scenario,load_conductance_pu,q_command_pu,final_bus_voltage_pu,final_active_power_pu,final_reactive_power_pu
+baseline,0.843,0.05,1.04471309746,0.8,0.05
+light_load,0.5,0.05,1.0603191889,0.8,0.05
+heavy_load,1.5,0.05,1.01610543867,0.8,0.05
+reactive_power_command,0.843,0.25,1.04471309746,0.8,0.25

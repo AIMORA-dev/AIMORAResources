@@ -1,0 +1,26 @@
+BEGIN NEW DATA CASE
+FIX SOURCE
+C Phase-A P/V source through a three-phase coupled R-X-C pi section
+C  dT >< Tmax >< Xopt >< Copt ><Epsiln>
+  50.E-6    .002     60.       0
+      20       1       1       0       1       0       0       0
+C < n1 >< n2 ><ref1><ref2>< R  >< X  >< C  > lower-triangular phase matrix
+ 1SA    RA                 1.000 5.000 0.020
+ 2SB    RB                 0.200 1.000-0.005 1.000 5.000 0.020
+ 3SC    RC                 0.200 1.000-0.005 0.200 1.000-0.005 1.000 5.000 0.020
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+14SA          100.     60.0        0.                          -1.0
+14SB          100.     60.0     -120.                          -1.0
+14SC          100.     60.0      120.                          -1.0
+14RA          100.     60.0        0.                          -1.0
+14RB          100.     60.0     -120.                          -1.0
+14RC          100.     60.0      120.                          -1.0
+BLANK CARD ENDING SOURCES
+ 1SA                    163.47128778    105.00000000  100.00  110.00-180.0 180.0
+               0     200      20       1 1.0e-06   0.200   2.500
+  SA    SB    SC    RA    RB    RC
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

@@ -1,0 +1,20 @@
+BEGIN NEW DATA CASE
+C Two disconnected steady-state subnetworks at 50 Hz and 60 Hz
+C  dT >< Tmax >< Xopt >< Copt ><Epsiln>
+  50.E-6     .02     60.       0
+      20       1       1       0       1       0       0       0
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+ 0S50   L50                  1.0   1.0   0.0
+ 0L50                       10.0   0.0   0.0
+ 0S60   L60                  1.0   1.0   0.0
+ 0L60                       10.0   0.0   0.0
+BLANK CARD ENDING BRANCHES
+BLANK CARD ENDING SWITCHES
+14S50         100.     50.0        0.                          -1.0
+14S60         120.     60.0       30.                          -1.0
+BLANK CARD ENDING SOURCES
+  S50   L50   S60   L60
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

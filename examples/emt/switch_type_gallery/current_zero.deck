@@ -1,0 +1,16 @@
+BEGIN NEW DATA CASE
+C Current-zero switch opening through the primary Julia timestep runtime
+  50.E-6    0.01
+       1       1       1       1       1       0       0       0
+C < n1 >< n2 ><ref1><ref2>< R  >< L  >< C  >
+  BUS2                           1.0       0.0       0.0
+BLANK CARD ENDING BRANCHES
+ 0BUS1  BUS2        -1.0     0.003       0.0       0.0CLOSED                  03
+BLANK CARD ENDING SWITCHES
+14BUS1            1.     60.         0.                            -1.
+BLANK CARD ENDING SOURCES
+  BUS1  BUS2
+BLANK CARD ENDING NODE VOLTAGE OUTPUT
+BLANK CARD ENDING PLOTS
+BEGIN NEW DATA CASE
+BLANK CARD ENDING THE CASE

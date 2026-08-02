@@ -1,0 +1,3 @@
+case,samples,timestep_s,duration_s,nodes,output_channels,maximum_voltage_pu,maximum_output_pu
+fixed_field_type16,5,0.001,0.004,4,3,0,0
+free_field_type16,5,0.001,0.004,4,3,0,0

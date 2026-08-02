@@ -1,0 +1,15 @@
+energization,switch,event,time_s
+1,switch_fixed_1,close,2e-05
+1,switch_fixed_1,open,4e-05
+2,switch_fixed_1,close,3e-05
+2,switch_fixed_1,open,5e-05
+3,switch_fixed_1,close,4e-05
+3,switch_fixed_1,open,6e-05
+4,switch_fixed_1,close,5e-05
+4,switch_fixed_1,open,7e-05
+5,switch_fixed_1,close,6e-05
+5,switch_fixed_1,open,8e-05
+6,switch_fixed_1,close,7e-05
+6,switch_fixed_1,open,9e-05
+7,switch_fixed_1,close,8e-05
+7,switch_fixed_1,open,0.0001

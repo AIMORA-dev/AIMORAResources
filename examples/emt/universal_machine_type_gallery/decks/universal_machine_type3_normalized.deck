@@ -1,0 +1,50 @@
+BEGIN NEW DATA CASE
+C     AUTOMATIC TYPE-3 INDUCTION MACHINE WITH FREQUENCY-NORMALIZED DATA
+POWER FREQUENCY                     60.0
+ABSOLUTE U.M. DIMENSIONS              20       2      50      60
+C PRINTED NUMBER WIDTH  13  2
+ .000200    .010
+       1       1       1       1       1      -1                               1
+       5       5      20      20     100     100
+C  --------- POWER-TERMINAL EXTERNAL RESISTANCES
+  BUSA2 BUSAS2            1.0E-4 10.0                                          1
+  BUSB2 BUSBS2BUSA2 BUSAS2
+  BUSC2 BUSCS2BUSA2 BUSAS2
+C  --------- CONNECTIVITY OF EMTP FOR ELECTRIC NETWORK
+  BUSAS2                  1.0E+6
+  BUSBS2      BUSAS2
+  BUSCS2      BUSAS2
+C  --------- MECHANICAL NETWORK COMPONENTS
+  BUSMG BUSMGR            .4548                                                1
+  BUSMGR      BUSMG BUSMGR
+  BUSMG                               9.8E+7                                   1
+C  -------- FOR MEASUREMENT OF ELECTROMECHANICAL TORQUE
+  BUSMS BUSMG             1.0E-6                                               1
+BLANK card ending branch cards
+BLANK card ending nonexistent switch cards
+C  --------- SOURCES FOR INFINITE BUS
+14BUSAS2  3000.0     60.0     0.0                           -1.0
+14BUSBS2  3000.0     60.0     -120.0                        -1.0
+14BUSCS2  3000.0     60.0     +120.0                        -1.0
+C  --------- MECHANICAL INPUT TORQUE (ACTUAL VALUE SET BY SS)
+14BUSMS -1 0.000001  0.00001                                -1.0
+19 UM
+11
+C  UM-1 MACHINE TABLE: TYPE 3, NORMALIZED D/Q REACTANCES
+ 3 1 1111BUSMG        2                            0.001
+              0.02358
+              0.02358
+2.0           0.0                 BUSMS
+BLANK CARD ENDING MACHINE TABLE
+C  UM-1 FIVE-COIL TABLE
+                            BUSA2             1
+0.412         0.0012        BUSB2             1
+0.412         0.0012        BUSC2             1
+0.110         0.0012                          1
+0.110         0.0012                          1
+BLANK card terminating all U.M. data
+BLANK card ending all electric-network sources
+  BUSAS2BUSA2 BUSMG
+BLANK card terminating output variable requests
+BLANK card terminating plot cards
+BEGIN NEW DATA CASE

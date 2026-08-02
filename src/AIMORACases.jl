@@ -16,7 +16,7 @@ end
 package_root() = normpath(joinpath(@__DIR__, ".."))
 
 function available_cases()
-    catalog = TOML.parsefile(joinpath(package_root(), "cases", "catalog.toml"))
+    catalog = TOML.parsefile(joinpath(package_root(), "examples", "catalog.toml"))
     descriptors = CaseDescriptor[]
     for row in catalog["case"]
         descriptor = CaseDescriptor(
