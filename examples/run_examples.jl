@@ -9,7 +9,7 @@ function usage(io::IO = stderr)
     println(io, "Usage:")
     println(io, "  julia examples/run_examples.jl --id ID [--id ID ...] [--plan]")
     println(io, "  julia examples/run_examples.jl --changed PATH [PATH ...] [--plan]")
-    println(io, "  julia examples/run_examples.jl --all [--plan]")
+    println(io, "  julia examples/run_examples.jl --all --release [--force] [--plan]")
 end
 
 function main(arguments::Vector{String})
@@ -18,6 +18,8 @@ function main(arguments::Vector{String})
     changed = String[]
     run_all = false
     plan_only = false
+    release = false
+    force = false
     index = 1
     while index <= length(arguments)
         argument = arguments[index]
@@ -36,6 +38,10 @@ function main(arguments::Vector{String})
             run_all = true
         elseif argument == "--plan"
             plan_only = true
+        elseif argument == "--release"
+            release = true
+        elseif argument == "--force"
+            force = true
         else
             usage()
             return 2
@@ -47,8 +53,10 @@ function main(arguments::Vector{String})
     targets = example_targets(ROOT)
     selected = run_all ? targets :
         !isempty(ids) ? select_targets(targets, ids) : select_changed_targets(targets, changed)
+    run_all && (release = true)
+    worker_count = release ? parse(Int, get(ENV, "AIMORA_EXAMPLE_WORKERS", "5")) : 1
     timing_path = get(ENV, "AIMORA_EXAMPLE_TIMINGS_PATH", "")
-    run_examples(ROOT, selected; plan_only, timing_path)
+    run_examples(ROOT, selected; plan_only, timing_path, release, force, worker_count)
     return 0
 end
 

@@ -7,5 +7,5 @@
 - `frequency_hz`: 60.0
 - `node_count`: 72
 - `source_count`: 3
-- `maximum_voltage_magnitude`: 379839.3333626275
+- `maximum_voltage_magnitude`: 379839.33336262754
 - `interpretation`: The 60 Hz phasor solution exposes voltage magnification from the long coupled PI-section network, series capacitors, shunt reactors, and fault branch.

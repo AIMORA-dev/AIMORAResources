@@ -10,6 +10,6 @@
 - `recorded_samples`: 1202
 - `nodes`: 25
 - `output_channels`: 10
-- `maximum_absolute_voltage_pu`: 581677.1813108107
-- `maximum_absolute_output_pu`: 581677.1813108107
+- `maximum_absolute_voltage_pu`: 581677.1813108112
+- `maximum_absolute_output_pu`: 581677.1813108112
 - `interpretation`: A receiving-end fault and 20 ms breaker opening leave trapped charge on the distributed line, which controls the subsequent terminal recovery waveform.

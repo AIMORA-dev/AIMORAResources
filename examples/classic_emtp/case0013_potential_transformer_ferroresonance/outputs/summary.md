@@ -10,6 +10,6 @@
 - `recorded_samples`: 2001
 - `nodes`: 18
 - `output_channels`: 9
-- `maximum_absolute_voltage_pu`: 628512.3884045572
-- `maximum_absolute_output_pu`: 840000.3212185442
+- `maximum_absolute_voltage_pu`: 628504.8486885856
+- `maximum_absolute_output_pu`: 840000.327603336
 - `interpretation`: Breaker grading capacitance exchanges energy with the nonlinear transformer magnetizing branch after the 20 ms source-side opening.

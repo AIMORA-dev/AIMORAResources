@@ -11,7 +11,9 @@ test: check
 
 example: check
 	$(JULIA) --project=. examples/list_cases.jl
-	$(JULIA) --project=. examples/run_examples.jl --all
+	JULIA_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 \
+		$(JULIA) --project=. examples/run_examples.jl --all --release
+	$(JULIA) --project=. check.jl
 
 example-changed:
 	@test -n "$(CHANGED_PATHS)" || { echo "CHANGED_PATHS is required" >&2; exit 2; }

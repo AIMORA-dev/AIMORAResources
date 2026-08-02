@@ -10,6 +10,6 @@
 - `recorded_samples`: 1001
 - `nodes`: 18
 - `output_channels`: 31
-- `maximum_absolute_voltage_pu`: 2.6189603895268448e7
-- `maximum_absolute_output_pu`: 2.6189603895268448e7
+- `maximum_absolute_voltage_pu`: 2.6189603895255823e7
+- `maximum_absolute_output_pu`: 2.6189603895255823e7
 - `interpretation`: The series-compensated network and four-mass shaft exchange electrical and torsional energy after the short three-phase disturbance.

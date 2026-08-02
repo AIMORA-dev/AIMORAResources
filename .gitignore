@@ -1,3 +1,4 @@
 Manifest.toml
 /outputs/
+.qualification/
 *.PL4
