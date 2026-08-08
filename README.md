@@ -10,7 +10,7 @@ study_tabs(transformer)
 study_facet(transformer, :power_flow)
 ```
 
-The initial entries are explicitly synthetic examples. Manufacturer and commercial data may be added only when its provenance and redistribution licence are recorded. AIMORA must not imply manufacturer certification or silently substitute missing study parameters.
+The included entries are explicitly synthetic examples. The generic switch-detailed two-level VSC entry pins units, exact case-input status, uncertainty treatment, fidelity, domain, control/filter arrangement, and unsupported phenomena without implying a measured product or certification. Manufacturer and commercial data may be added only when its provenance and redistribution licence are recorded. AIMORA must not imply manufacturer certification or silently substitute missing study parameters.
 
 ## Structure and checks
 
