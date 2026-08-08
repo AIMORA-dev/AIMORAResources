@@ -2,13 +2,84 @@
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
+reference_lexical_absolute_path() {
+    local input="$1"
+    local candidate component joined
+    local -a components=()
+    local -a normalized=()
+    case "$input" in
+        /*) candidate="$input" ;;
+        *) candidate="$PWD/$input" ;;
+    esac
+    IFS='/' read -r -a components <<< "$candidate"
+    for component in "${components[@]}"; do
+        case "$component" in
+            ''|.) ;;
+            ..)
+                if [ "${#normalized[@]}" -gt 0 ]; then
+                    unset "normalized[$((${#normalized[@]} - 1))]"
+                fi
+                ;;
+            *) normalized+=("$component") ;;
+        esac
+    done
+    if [ "${#normalized[@]}" -eq 0 ]; then
+        printf '/\n'
+    else
+        printf -v joined '/%s' "${normalized[@]}"
+        printf '%s\n' "$joined"
+    fi
+}
+
+reference_realpath_allow_missing() {
+    local normalized probe suffix component base
+    normalized="$(reference_lexical_absolute_path "$1")"
+    if realpath "$normalized" >/dev/null 2>&1; then
+        realpath "$normalized"
+        return
+    fi
+    probe="$normalized"
+    suffix=""
+    while [ ! -e "$probe" ] && [ "$probe" != "/" ]; do
+        component="${probe##*/}"
+        suffix="/$component$suffix"
+        probe="${probe%/*}"
+        [ -n "$probe" ] || probe="/"
+    done
+    if [ -d "$probe" ]; then
+        base="$(cd "$probe" && pwd -P)"
+    else
+        base="$(cd "$(dirname "$probe")" && pwd -P)/$(basename "$probe")"
+    fi
+    printf '%s%s\n' "$base" "$suffix"
+}
+
+reference_link_legacy_executable() {
+    local compiler="$1"
+    local argument
+    local -a filtered_arguments=()
+    shift
+    if [ "$(uname -s)" = "Darwin" ]; then
+        for argument in "$@"; do
+            case "$argument" in
+                */BLOCKDSPY.o) ;;
+                *) filtered_arguments+=("$argument") ;;
+            esac
+        done
+        "$compiler" "${filtered_arguments[@]}"
+    else
+        "$compiler" "$@" -Wl,--allow-multiple-definition
+    fi
+}
+
 SRC="$ROOT/src/fortran"
 BUILD_INPUT="${EMTP_BUILD_DIR:-$ROOT/build}"
 case "$BUILD_INPUT" in
     /*) BUILD="$BUILD_INPUT" ;;
     *) BUILD="$ROOT/$BUILD_INPUT" ;;
 esac
-BUILD="$(realpath -m "$BUILD")"
+BUILD="$(reference_realpath_allow_missing "$BUILD")"
 case "$BUILD" in
     "$ROOT/build"|"$ROOT/runs/"*) ;;
     *)
@@ -63,8 +134,9 @@ if [ -n "${EMTP_COMMON_MAP:-}" ]; then
 fi
 
 echo "--- Applying legacy Fortran portability patches ---"
-"$JULIA_BIN" --startup-file=no - "$BUILD/MAIN00.FOR" <<'JULIA'
-path = only(ARGS)
+"$JULIA_BIN" --startup-file=no - \
+    "$BUILD/MAIN00.FOR" "$BUILD/CALCOM.FOR" <<'JULIA'
+path, calcom_path = ARGS
 text = read(path, String)
 start_marker = "      SUBROUTINE FRENUM ( TEXT1, N3, D1 )"
 end_marker = "\n      SUBROUTINE  PACKA1"
@@ -111,6 +183,12 @@ C     under gfortran.
 """
 patched = text[begin:first(start_range)-1] * replacement * text[first(end_range)+1:end]
 write(path, patched)
+if Sys.isapple()
+    calcom = read(calcom_path, String)
+    axis_entry = "      ENTRY AXIS\n"
+    occursin(axis_entry, calcom) || error("CALCOM AXIS entry missing in $calcom_path")
+    write(calcom_path, replace(calcom, axis_entry => ""; count = 1))
+end
 JULIA
 
 EMTP_TIME44_DELAY_S="${EMTP_TIME44_DELAY_S:-0}"
@@ -206,8 +284,14 @@ failed=()
 objects=()
 for src in "${SOURCES[@]}"; do
     obj="${src%.*}.o"
+    source_flags="$FFLAGS"
+    if [ "$(uname -s)" = "Darwin" ] && [ "$src" = "OVER8.FOR" ]; then
+        # GCC 16 misoptimizes legacy aliasing in OVER8 on Apple ARM64 and
+        # leaves the compiled reference spinning before time stepping.
+        source_flags="$source_flags -O0"
+    fi
     printf "  %-20s -> %s ... " "$src" "$obj"
-    if "$FC" $FFLAGS -c "$BUILD/$src" -o "$BUILD/$obj" 2>"$BUILD/${src}.err"; then
+    if "$FC" $source_flags -c "$BUILD/$src" -o "$BUILD/$obj" 2>"$BUILD/${src}.err"; then
         echo "OK"
         objects+=("$BUILD/$obj")
     else
@@ -227,7 +311,7 @@ if [ "${#failed[@]}" -gt 0 ]; then
 fi
 
 echo "--- Linking ---"
-"$FC" -o "$BUILD/emtp" "${objects[@]}" -Wl,--allow-multiple-definition
+reference_link_legacy_executable "$FC" -o "$BUILD/emtp" "${objects[@]}"
 
 echo
 echo "Built: $BUILD/emtp"

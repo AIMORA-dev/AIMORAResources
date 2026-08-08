@@ -86,31 +86,36 @@ function run_deck(
     report_path = joinpath(output_dir, report_name)
     timeout_s > 0 || throw(ArgumentError("timeout_s must be positive"))
     timed_out = false
-    process = open(report_path, "w") do report
-        command = addenv(
-            Cmd(`$executable`; dir = output_dir),
-            "EMTP_GOLDEN_TAPE_DIR" => state_dir,
-        )
-        child = run(
-            pipeline(
-                command,
-                stdin = IOBuffer(String(deck_text)),
-                stdout = report,
-                stderr = report,
-            );
-            wait = false,
-        )
-        wait_status = timedwait(
-            () -> process_exited(child),
-            Float64(timeout_s);
-            pollint = 0.05,
-        )
-        if wait_status == :timed_out
-            timed_out = true
-            kill(child)
+    process = mktemp(output_dir) do _, deck
+        write(deck, String(deck_text))
+        flush(deck)
+        seekstart(deck)
+        open(report_path, "w") do report
+            command = addenv(
+                Cmd(`$executable`; dir = output_dir),
+                "EMTP_GOLDEN_TAPE_DIR" => state_dir,
+            )
+            child = run(
+                pipeline(
+                    command,
+                    stdin = deck,
+                    stdout = report,
+                    stderr = report,
+                );
+                wait = false,
+            )
+            wait_status = timedwait(
+                () -> process_exited(child),
+                Float64(timeout_s);
+                pollint = 0.05,
+            )
+            if wait_status == :timed_out
+                timed_out = true
+                kill(child)
+            end
+            wait(child)
+            child
         end
-        wait(child)
-        child
     end
     exit_code = process.exitcode
     text = read(report_path, String)
