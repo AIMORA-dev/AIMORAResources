@@ -2,6 +2,7 @@ name = "AIMORACases"
 uuid = "c2d99356-2241-4b88-ae11-80a94b927354"
 authors = ["Ahmed Elkholy"]
 version = "0.1.0"
+license = "PolyForm-Noncommercial-1.0.0"
 
 [deps]
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"

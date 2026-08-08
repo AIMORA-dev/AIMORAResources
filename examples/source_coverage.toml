@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-02"
-source_count = 464
+source_count = 465
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -14,7 +14,7 @@ source_count = 464
 "public_testset" = 9
 "translation_capability_packet" = 11
 "validation_fixture" = 71
-"validation_suite" = 79
+"validation_suite" = 80
 
 [counts_by_disposition]
 "example" = 55
@@ -24,7 +24,7 @@ source_count = 464
 "oracle_only" = 25
 "pending_export" = 145
 "source_missing" = 63
-"validation_only" = 17
+"validation_only" = 18
 
 [[source]]
 id = "aimora-test:grounded-scalar-branch-references"
@@ -3859,6 +3859,15 @@ path = "tests/suite/platform_core.jl"
 disposition = "gallery"
 example_ids = ["core_study_catalog_and_scenario", "emt_inverter", "emt_line_models", "emt_realtime_cpu", "emt_reduced_feeder_inverter", "emt_unified_emt"]
 reason = "Shippable platform scenarios are demonstrated by the catalog, inverter, line, timing, and reduced-feeder workflows; repository and API assertions remain supporting contracts inside the suite."
+
+[[source]]
+id = "validation-suite:power_semiconductor_devices"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/power_semiconductor_devices.jl"
+disposition = "validation_only"
+example_ids = []
+reason = "Independent semiconductor device limits and coupled stamp checks are validation evidence; the reusable public bridge case belongs to the active bridge packet."
 
 [[source]]
 id = "validation-suite:primary_nonlinear_runtime"
