@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-02"
-source_count = 466
+source_count = 467
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -14,7 +14,7 @@ source_count = 466
 "public_testset" = 10
 "translation_capability_packet" = 11
 "validation_fixture" = 71
-"validation_suite" = 80
+"validation_suite" = 81
 
 [counts_by_disposition]
 "example" = 56
@@ -24,7 +24,7 @@ source_count = 466
 "oracle_only" = 25
 "pending_export" = 145
 "source_missing" = 63
-"validation_only" = 18
+"validation_only" = 19
 
 [[source]]
 id = "aimora-test:grounded-scalar-branch-references"
@@ -3868,6 +3868,15 @@ path = "test/runtests.jl#complementary power-semiconductor bridge public contrac
 disposition = "example"
 example_ids = ["emt_complementary_bridge_commutation"]
 reason = "The generic public half-bridge case exercises the reusable bridge contract, complementary interlock, dead time, natural freewheel paths, coupled load current, terminal KCL, and energy output."
+
+[[source]]
+id = "validation-suite:power_semiconductor_bridge_leg"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/power_semiconductor_bridge_leg.jl"
+disposition = "validation_only"
+example_ids = []
+reason = "Private validation retains bridge rollback, restart, timestep-refinement, coupled hybrid execution, invalid-state rejection, and bounded-performance evidence without duplicating the public case source owner."
 
 [[source]]
 id = "validation-suite:power_semiconductor_devices"
