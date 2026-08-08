@@ -20,8 +20,6 @@ Typed results include pole and line voltages, phase/filter currents, DC-link vol
 
 This slice does not claim PLL dynamics, grid-forming control, four-wire zero-sequence current, LCL resonance, transformer magnetization or saturation, semiconductor reverse recovery, nonlinear device capacitance, switching-energy maps, electrothermal state, manufacturer prediction, adaptive global timesteps, standard conformance, or certification. Other converter topologies, control families, plant models, and compliance domains require separate qualification.
 
-The implementation evidence revision is engine `c77c37e042362a42b390a127552f59c82c74f5a2`, private solver `864b4a2f9defa71c7b9f6468957b031bb9c43d8e`, public case `9e2d3cbb0fb73e04eeb63457054d8074b61846b8`, generic catalog `07222ae077d04efc618c605a652e972d84232d7c`, independent reference models `7003467c054a740786734c39cc83139d178247b6`, and private qualification `636c39389bbb22286c6c5a6212af11a187d404b8`. The private workspace ledger owns the final release-gate and acceptance revision; this public page does not expose private evidence artifacts.
-
 ## Current maturity
 
 | Study | Status | Availability |
