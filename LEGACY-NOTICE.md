@@ -1,14 +1,7 @@
 # Historical BPA source notice
 
-The Fortran sources identify the Methods Development Branch of the Bonneville
-Power Administration as the originating organization.
+The Fortran sources identify the Methods Development Branch of the Bonneville Power Administration as the originating organization.
 
-`src/fortran/MAIN00.FOR` contains the original statement that, in conformity
-with long-standing BPA policy and the United States Freedom of Information
-Act, dissemination of the program materials is freely made to interested
-parties. It also states that no warranty of usefulness, accuracy, fidelity, or
-completeness is expressed or implied.
+`src/fortran/MAIN00.FOR` contains the original statement that, in conformity with long-standing BPA policy and the United States Freedom of Information Act, dissemination of the program materials is freely made to interested parties. It also states that no warranty of usefulness, accuracy, fidelity, or completeness is expressed or implied.
 
-The source files and their embedded notices are preserved. This repository
-does not assert that the historical source is covered by the MIT licence used
-for the new Julia wrapper and portability files.
+The source files and their embedded notices are preserved. This repository does not assert that the historical source is covered by the PolyForm Noncommercial licence used for later distributions of the new Julia wrapper and portability files, or by the MIT licence that accompanied earlier wrapper distributions.
