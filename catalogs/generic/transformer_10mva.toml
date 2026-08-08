@@ -4,7 +4,7 @@ equipment_class = "two_winding_transformer"
 manufacturer = ""
 model = "Generic 10 MVA 33/11 kV transformer"
 provenance = "Synthetic engineering example created for the AIMORA public catalog"
-licence = "MIT"
+licence = "PolyForm-Noncommercial-1.0.0"
 
 [common]
 rated_power_mva = 10.0

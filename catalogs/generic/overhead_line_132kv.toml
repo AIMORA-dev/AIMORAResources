@@ -4,7 +4,7 @@ equipment_class = "overhead_line"
 manufacturer = ""
 model = "Generic 132 kV overhead line"
 provenance = "Synthetic engineering example created for the AIMORA public catalog"
-licence = "MIT"
+licence = "PolyForm-Noncommercial-1.0.0"
 
 [common]
 rated_voltage_kv = 132.0
