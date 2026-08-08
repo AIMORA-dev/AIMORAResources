@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-02"
-source_count = 467
+snapshot_date = "2026-08-08"
+source_count = 472
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -13,7 +13,7 @@ source_count = 467
 "classic_case_origin" = 1
 "public_testset" = 10
 "translation_capability_packet" = 11
-"validation_fixture" = 71
+"validation_fixture" = 76
 "validation_suite" = 81
 
 [counts_by_disposition]
@@ -21,7 +21,7 @@ source_count = 467
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
-"oracle_only" = 25
+"oracle_only" = 30
 "pending_export" = 145
 "source_missing" = 63
 "validation_only" = 19
@@ -4228,3 +4228,48 @@ path = "tests/suite/modern_emt_hybrid_execution.jl"
 disposition = "example"
 example_ids = ["emt_multirate_sampled_pwm"]
 reason = "Exact multirate sampled scheduling and PWM are represented by the public scheduler demonstrator; private validation retains coupled event and rollback evidence."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:public_case0003_binary_plot_samples.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/public_case0003_binary_plot_samples.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Selected compiled public case0003 binary-plot rows are retained as regression evidence, not as a standalone Julia-only example."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:public_case0011_binary_plot_samples.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/public_case0011_binary_plot_samples.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "Selected compiled public case0011 binary-plot rows are retained as regression evidence, not as a standalone Julia-only example."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:source_branch_transient_compiled_samples.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/source_branch_transient_compiled_samples.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "The compiled source and branch timestep trace is retained as mutation-order oracle evidence, not as a standalone Julia-only example."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:switching_transient_compiled_samples.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/switching_transient_compiled_samples.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "The compiled scheduled-switch timestep trace is retained as mutation-order oracle evidence, not as a standalone Julia-only example."
+
+[[source]]
+id = "validation-fixture:bpa_emtp:current_zero_switch_compiled_samples.tsv"
+owner = "AIMORAValidation"
+kind = "validation_fixture"
+path = "tests/fixtures/bpa_emtp/current_zero_switch_compiled_samples.tsv"
+disposition = "oracle_only"
+example_ids = []
+reason = "The compiled current-zero switching trace is retained as interruption-order oracle evidence, not as a standalone Julia-only example."

@@ -14,8 +14,8 @@ The 2026-08-01 snapshot contains 461 source records:
 | Source kind | Records | Current disposition |
 | --- | ---: | --- |
 | AIMORA public package testsets | 9 | 5 example/gallery, 4 validation-only |
-| AIMORAValidation suite files | 76 | 69 example/gallery, 3 oracle-only, 4 validation-only |
-| AIMORAValidation fixtures | 71 | 38 example/gallery, 22 oracle-only, 8 derived comparison controls, 3 negative tests |
+| AIMORAValidation suite files | 80 | 73 example/gallery, 3 oracle-only, 4 validation-only |
+| AIMORAValidation fixtures | 76 | 38 example/gallery, 27 oracle-only, 8 derived comparison controls, 3 negative tests |
 | Canonical case inputs consumed by validation | 55 | 55 example/gallery; no duplicate validation fixture |
 | Classic public EMTP cases | 16 | 16 direct examples |
 | Shared classic-case provenance record | 1 | gallery provenance for all 16 cases |
