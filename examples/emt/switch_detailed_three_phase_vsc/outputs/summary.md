@@ -1,0 +1,45 @@
+# Switch-Detailed Three-Phase Two-Level VSC
+
+- `julia_only`: true
+- `fidelity`: SwitchingDetailed
+- `topology`: three-phase three-wire two-level IGBT bridge
+- `control_family`: known-angle synchronous-reference-frame grid-following current PI
+- `modulation`: minimum-maximum zero-sequence-injected trailing-edge PWM (centered-space-vector-equivalent line voltages in the linear region)
+- `filter_and_transformer`: series L filter plus grounded-wye transformer leakage referred to converter side
+- `timestep_s`: 1.0e-6
+- `duration_s`: 0.06
+- `carrier_frequency_hz`: 10000.0
+- `control_period_s`: 0.0001
+- `control_delay_s`: 2.0e-6
+- `active_power_reference_w`: 20000.0
+- `mean_active_power_w`: 19823.58778476672
+- `active_power_tracking_error`: 0.00882061076166392
+- `reactive_power_reference_var`: 0.0
+- `mean_reactive_power_var`: -8.260023733583198
+- `dc_link_mean_voltage_v`: 784.7349805691388
+- `dc_link_peak_to_peak_ripple_v`: 0.917870872360254
+- `phase_current_fundamental_rms_a`: 28.332021981856148,28.310314538621608,28.359564012135213
+- `phase_current_thd`: 0.03324608092609974,0.03317624376936319,0.03488011078230712
+- `line_voltage_fundamental_rms_v`: 412.6727248366125,412.76635149616453,412.69898999211205
+- `line_voltage_thd`: 0.017497001105009666,0.017866147185728178,0.017109120690772913
+- `maximum_zero_sequence_current_a`: 3.1393980748362083e-9
+- `maximum_nodal_kcl_residual_a`: 7.450580596923828e-9
+- `dc_source_energy_j`: 1033.5748560981708
+- `ac_terminal_energy_j`: 1107.8784655418347
+- `converter_dissipated_energy_j`: 45.49781865662373
+- `dc_ac_energy_residual_j`: 5.993505817514233e-5
+- `relative_dc_ac_energy_residual`: 4.7075168513180705e-8
+- `relative_energy_residual`: 3.3971456281448136e-7
+- `control_sample_count`: 601
+- `control_write_count`: 600
+- `pwm_cycle_counts`: 601,601,601
+- `pwm_edge_counts`: 1201,1201,1201
+- `commutation_count`: 3600
+- `maximum_topology_iterations`: 8
+- `all_off_dead_time_sample_count`: 7072
+- `antiparallel_diode_sample_count`: 27619
+- `block_count`: 1
+- `restart_count`: 1
+- `boundary_count`: 6
+- `exact_boundary_alignment`: true
+- `unsupported`: PLL dynamics, grid-forming control, four-wire zero-sequence current, LCL resonance, transformer magnetization/saturation, reverse recovery, nonlinear device capacitance, switching-energy maps, electrothermal state, manufacturer prediction, and certification

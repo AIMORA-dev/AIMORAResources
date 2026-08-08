@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-08"
-source_count = 472
+source_count = 474
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -11,13 +11,13 @@ source_count = 472
 "claimed_translation_packet" = 14
 "classic_case" = 16
 "classic_case_origin" = 1
-"public_testset" = 10
+"public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 81
+"validation_suite" = 82
 
 [counts_by_disposition]
-"example" = 56
+"example" = 58
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -106,6 +106,15 @@ path = "test/runtests.jl#transformer parameter studies"
 disposition = "gallery"
 example_ids = ["transformer_parameters_two_winding_short_circuit", "transformer_parameters_saturable_two_winding", "transformer_parameters_multiphase_sequence_tests"]
 reason = "The public test scenario is represented by the named Julia example or consolidated gallery."
+
+[[source]]
+id = "aimora-test:switch-detailed-three-phase-vsc-public-model"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#switch-detailed three-phase VSC public model"
+disposition = "example"
+example_ids = ["emt_switch_detailed_three_phase_vsc"]
+reason = "The public fidelity/domain, transforms, modulation, floating DC source, coupled converter runtime, and in-domain rejection checks are exercised by the complete switch-detailed VSC example."
 
 [[source]]
 id = "atpdraw-exa:exa_1"
@@ -4228,6 +4237,15 @@ path = "tests/suite/modern_emt_hybrid_execution.jl"
 disposition = "example"
 example_ids = ["emt_multirate_sampled_pwm"]
 reason = "Exact multirate sampled scheduling and PWM are represented by the public scheduler demonstrator; private validation retains coupled event and rollback evidence."
+
+[[source]]
+id = "validation-suite:switch_detailed_three_phase_vsc"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/switch_detailed_three_phase_vsc.jl"
+disposition = "example"
+example_ids = ["emt_switch_detailed_three_phase_vsc"]
+reason = "Independent transforms, PWM, sampled control, R-L reconstruction, coupled six-position execution, exact events, checkpoint/rollback, refinement, performance, and E0-E5 applicability qualify the public VSC study."
 
 [[source]]
 id = "validation-fixture:bpa_emtp:public_case0003_binary_plot_samples.tsv"

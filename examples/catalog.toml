@@ -654,3 +654,17 @@ requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
 source_ids = ["aimora-test:complementary-power-semiconductor-bridge-public-contract"]
+
+[[case]]
+id = "emt_switch_detailed_three_phase_vsc"
+study = "emt"
+path = "examples/emt/switch_detailed_three_phase_vsc/run.jl"
+entrypoint = "examples/emt/switch_detailed_three_phase_vsc/run.jl"
+description = "Three-phase three-wire switch-detailed two-level IGBT VSC with a floating dynamic DC link, sampled current control, sinusoidal and centered-space-vector-equivalent carrier PWM formulations, filter/grid coupling, disturbances, protection, typed DC-to-AC energy, and harmonic outputs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = [
+    "aimora-test:switch-detailed-three-phase-vsc-public-model",
+    "validation-suite:switch_detailed_three_phase_vsc",
+]
