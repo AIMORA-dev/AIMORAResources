@@ -53,7 +53,7 @@ for row in catalog_rows
         haskey(row, field) || fail("catalog row is missing $(field)")
         isempty(strip(String(row[field]))) && fail("catalog row has empty $(field)")
     end
-    entrypoint = joinpath(ROOT, String(row["entrypoint"]))
+    entrypoint = normpath(joinpath(ROOT, String(row["entrypoint"])))
     isfile(entrypoint) || fail("catalog entrypoint does not exist: $(row["entrypoint"])")
     basename(entrypoint) == "run.jl" ||
         fail("catalog entrypoint is not a run.jl: $(row["entrypoint"])")
@@ -196,7 +196,7 @@ if isdir(joinpath(validation_root, "tests"))
         String(row["kind"]) == "validation_suite"
     )
     actual_suites = Set(
-        relpath(path, validation_root) for path in
+        replace(relpath(path, validation_root), '\\' => '/') for path in
         filter(
             path -> isfile(path) && endswith(path, ".jl"),
             readdir(joinpath(validation_root, "tests", "suite"); join = true),
@@ -213,7 +213,10 @@ if isdir(joinpath(validation_root, "tests"))
     fixtures_root = joinpath(validation_root, "tests", "fixtures")
     for (directory, _, files) in walkdir(fixtures_root)
         for filename in files
-            push!(actual_fixtures, relpath(joinpath(directory, filename), validation_root))
+            push!(
+                actual_fixtures,
+                replace(relpath(joinpath(directory, filename), validation_root), '\\' => '/'),
+            )
         end
     end
     expected_fixtures == actual_fixtures ||
