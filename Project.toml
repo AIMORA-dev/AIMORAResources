@@ -4,6 +4,9 @@ version = "0.1.0"
 authors = ["Ahmed Elkholy <ahmed_elkholy@f-eng.tanta.edu.eg>"]
 license = "PolyForm-Noncommercial-1.0.0"
 
+[deps]
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+
 [compat]
 julia = "1.10"
 
