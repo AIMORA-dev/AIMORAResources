@@ -643,3 +643,14 @@ requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
 source_ids = ["validation-suite:modern_emt_hybrid_execution"]
+
+[[case]]
+id = "emt_complementary_bridge_commutation"
+study = "emt"
+path = "examples/emt/complementary_bridge_commutation/run.jl"
+entrypoint = "examples/emt/complementary_bridge_commutation/run.jl"
+description = "Exact-PWM complementary IGBT bridge-leg commutation with enforced dead time, natural antiparallel freewheel paths, coupled R-L load, terminal KCL, and energy accounting."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["validation-suite:power_semiconductor_bridge_leg"]

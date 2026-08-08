@@ -1,0 +1,28 @@
+# Complementary Bridge Commutation
+
+- `timestep_s`: 1.0e-6
+- `dc_link_voltage_v`: 400.0
+- `load_resistance_ohm`: 8.0
+- `load_inductance_h`: 0.001
+- `pwm_carrier_period_s`: 2.0e-5
+- `pwm_duty`: 0.5
+- `commutation_dead_time_s`: 2.0e-6
+- `pwm_edge_count`: 11
+- `upper_gate_transition_count`: 9
+- `lower_gate_transition_count`: 10
+- `topology_transition_count`: 28
+- `all_off_dead_time_sample_count`: 19
+- `freewheel_sample_count`: 39
+- `complementary_interlock_passed`: true
+- `simultaneous_conduction_sample_count`: 0
+- `pwm_edge_ticks_unique`: true
+- `finite_state_passed`: true
+- `maximum_terminal_kcl_residual_a`: 1.7763568394002505e-15
+- `source_energy_j`: 0.19561411434158346
+- `load_resistor_energy_j`: 0.05797187746437351
+- `load_magnetic_energy_j`: 0.06970158899362519
+- `bridge_dissipated_energy_j`: 0.06393643421690949
+- `bridge_stored_energy_j`: 0.004019836484329519
+- `terminal_energy_residual_j`: 1.5622817654255793e-5
+- `relative_terminal_energy_residual`: 7.986549287018758e-5
+- `julia_only`: true
