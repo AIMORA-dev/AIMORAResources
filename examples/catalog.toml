@@ -653,4 +653,4 @@ description = "Exact-PWM complementary IGBT bridge-leg commutation with enforced
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:power_semiconductor_bridge_leg"]
+source_ids = ["aimora-test:complementary-power-semiconductor-bridge-public-contract"]

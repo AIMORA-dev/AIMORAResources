@@ -11,10 +11,10 @@ source_count = 466
 "claimed_translation_packet" = 14
 "classic_case" = 16
 "classic_case_origin" = 1
-"public_testset" = 9
+"public_testset" = 10
 "translation_capability_packet" = 11
 "validation_fixture" = 71
-"validation_suite" = 81
+"validation_suite" = 80
 
 [counts_by_disposition]
 "example" = 56
@@ -3861,13 +3861,13 @@ example_ids = ["core_study_catalog_and_scenario", "emt_inverter", "emt_line_mode
 reason = "Shippable platform scenarios are demonstrated by the catalog, inverter, line, timing, and reduced-feeder workflows; repository and API assertions remain supporting contracts inside the suite."
 
 [[source]]
-id = "validation-suite:power_semiconductor_bridge_leg"
-owner = "AIMORAValidation"
-kind = "validation_suite"
-path = "tests/suite/power_semiconductor_bridge_leg.jl"
+id = "aimora-test:complementary-power-semiconductor-bridge-public-contract"
+owner = "AIMORA.jl"
+kind = "public_testset"
+path = "test/runtests.jl#complementary power-semiconductor bridge public contract"
 disposition = "example"
 example_ids = ["emt_complementary_bridge_commutation"]
-reason = "The generic public half-bridge case demonstrates complementary interlock, dead time, natural freewheel paths, coupled load current, terminal KCL, and energy output; private validation retains rollback, restart, timestep-refinement, and bounded-performance evidence."
+reason = "The generic public half-bridge case exercises the reusable bridge contract, complementary interlock, dead time, natural freewheel paths, coupled load current, terminal KCL, and energy output."
 
 [[source]]
 id = "validation-suite:power_semiconductor_devices"
