@@ -9,6 +9,9 @@ export amplitude_invariant_clarke_matrix,
        synchronous_to_phase_reference,
        two_level_pwm_duties,
        synchronous_current_control_reference,
+       exponential_conductance_voltage_reference,
+       cubic_mna_residual_jacobian_reference,
+       manufactured_cubic_constraint_case,
        series_rl_piecewise_constant_current,
        series_rl_piecewise_constant_trace
 
@@ -194,6 +197,211 @@ function synchronous_current_control_reference(
         direct_integral_as = accepted_integral[1],
         quadrature_integral_as = accepted_integral[2],
         saturated,
+    )
+end
+
+"""Solve `g*v + Is*expm1(v/Vs) = source_current` by an independent monotone bracket and bisection reference."""
+function exponential_conductance_voltage_reference(
+    source_current_a::Real,
+    linear_conductance_s::Real,
+    saturation_current_a::Real,
+    voltage_scale_v::Real;
+    current_tolerance_a::Real=1.0e-14,
+    maximum_iterations::Integer=256,
+)
+    source_current = Float64(source_current_a)
+    linear_conductance = Float64(linear_conductance_s)
+    saturation_current = Float64(saturation_current_a)
+    voltage_scale = Float64(voltage_scale_v)
+    tolerance = Float64(current_tolerance_a)
+    all(isfinite, (
+        source_current,
+        linear_conductance,
+        saturation_current,
+        voltage_scale,
+        tolerance,
+    )) || throw(ArgumentError("exponential reference inputs must be finite"))
+    linear_conductance >= 0.0 || throw(ArgumentError(
+        "reference linear conductance must be nonnegative",
+    ))
+    saturation_current > 0.0 || throw(ArgumentError(
+        "reference saturation current must be positive",
+    ))
+    voltage_scale > 0.0 || throw(ArgumentError(
+        "reference voltage scale must be positive",
+    ))
+    tolerance > 0.0 || throw(ArgumentError(
+        "reference current tolerance must be positive",
+    ))
+    iterations = Int(maximum_iterations)
+    iterations > 0 || throw(ArgumentError("reference maximum iterations must be positive"))
+
+    residual(voltage_v) = linear_conductance * voltage_v +
+        saturation_current * expm1(voltage_v / voltage_scale) - source_current
+    zero_residual = residual(0.0)
+    abs(zero_residual) <= tolerance && return 0.0
+    lower_voltage = zero_residual > 0.0 ? -voltage_scale : 0.0
+    upper_voltage = zero_residual > 0.0 ? 0.0 : voltage_scale
+    lower_residual = residual(lower_voltage)
+    upper_residual = residual(upper_voltage)
+    expansion_count = 0
+    while !(lower_residual <= 0.0 <= upper_residual)
+        expansion_count += 1
+        expansion_count <= 128 || throw(ArgumentError(
+            "exponential reference could not bracket the monotone solution",
+        ))
+        if lower_residual > 0.0
+            lower_voltage *= 2.0
+            lower_residual = residual(lower_voltage)
+        else
+            upper_voltage *= 2.0
+            upper_residual = residual(upper_voltage)
+        end
+        all(isfinite, (lower_residual, upper_residual)) || throw(ArgumentError(
+            "exponential reference bracket left the finite evaluation domain",
+        ))
+    end
+    for _ in 1:iterations
+        midpoint = lower_voltage + 0.5 * (upper_voltage - lower_voltage)
+        midpoint_residual = residual(midpoint)
+        abs(midpoint_residual) <= tolerance && return midpoint
+        if midpoint_residual < 0.0
+            lower_voltage = midpoint
+        else
+            upper_voltage = midpoint
+        end
+    end
+    midpoint = lower_voltage + 0.5 * (upper_voltage - lower_voltage)
+    abs(residual(midpoint)) <= 10.0 * tolerance || throw(ArgumentError(
+        "exponential reference did not reach its current tolerance",
+    ))
+    return midpoint
+end
+
+"""Independently assemble dense KCL/MNA residual and Jacobian for one passive cubic branch and one ideal voltage equation."""
+function cubic_mna_residual_jacobian_reference(
+    voltage_v,
+    constraint_current_a::Real,
+    linear_admittance_s,
+    source_current_a,
+    positive_node::Integer,
+    negative_node::Integer,
+    linear_conductance_s::Real,
+    cubic_coefficient_a_per_v3::Real,
+    constraint_coefficients,
+    constraint_value_v::Real,
+)
+    voltage = Float64.(voltage_v)
+    admittance = Matrix{Float64}(linear_admittance_s)
+    source_current = Float64.(source_current_a)
+    node_count = length(voltage)
+    size(admittance) == (node_count, node_count) || throw(DimensionMismatch(
+        "reference admittance size must match voltage count",
+    ))
+    length(source_current) == node_count || throw(DimensionMismatch(
+        "reference source-current length must match voltage count",
+    ))
+    coefficients = Float64.(constraint_coefficients)
+    length(coefficients) == node_count || throw(DimensionMismatch(
+        "reference constraint coefficients must cover every node",
+    ))
+    positive = Int(positive_node)
+    negative = Int(negative_node)
+    1 <= positive <= node_count || throw(ArgumentError(
+        "reference positive branch node is outside the network",
+    ))
+    1 <= negative <= node_count || throw(ArgumentError(
+        "reference negative branch node is outside the network",
+    ))
+    positive != negative || throw(ArgumentError("reference cubic branch must not self-loop"))
+    linear_conductance = Float64(linear_conductance_s)
+    cubic_coefficient = Float64(cubic_coefficient_a_per_v3)
+    constraint_current = Float64(constraint_current_a)
+    constraint_value = Float64(constraint_value_v)
+    all(isfinite, voltage) && all(isfinite, admittance) &&
+        all(isfinite, source_current) && all(isfinite, coefficients) &&
+        all(isfinite, (
+            linear_conductance,
+            cubic_coefficient,
+            constraint_current,
+            constraint_value,
+        )) || throw(ArgumentError("reference cubic MNA inputs must be finite"))
+
+    residual = admittance * voltage - source_current
+    jacobian = zeros(Float64, node_count + 1, node_count + 1)
+    jacobian[1:node_count, 1:node_count] .= admittance
+    branch_voltage = voltage[positive] - voltage[negative]
+    branch_current = linear_conductance * branch_voltage +
+        cubic_coefficient * branch_voltage^3
+    differential_conductance = linear_conductance +
+        3.0 * cubic_coefficient * branch_voltage^2
+    residual[positive] += branch_current
+    residual[negative] -= branch_current
+    jacobian[positive, positive] += differential_conductance
+    jacobian[positive, negative] -= differential_conductance
+    jacobian[negative, positive] -= differential_conductance
+    jacobian[negative, negative] += differential_conductance
+    residual .+= coefficients .* constraint_current
+    constraint_residual = dot(coefficients, voltage) - constraint_value
+    jacobian[1:node_count, end] .= coefficients
+    jacobian[end, 1:node_count] .= coefficients
+    complete_residual = vcat(residual, constraint_residual)
+    nonlinear_device_absorbed_power_w = branch_voltage * branch_current
+    ideal_constraint_absorbed_power_w =
+        constraint_current * dot(coefficients, voltage)
+    algebraic_power_balance_residual_w = dot(
+        vcat(voltage, constraint_current),
+        complete_residual,
+    )
+    return (
+        residual=complete_residual,
+        jacobian,
+        branch_current_a=branch_current,
+        branch_differential_conductance_s=differential_conductance,
+        nonlinear_device_absorbed_power_w,
+        ideal_constraint_absorbed_power_w,
+        algebraic_power_balance_residual_w,
+    )
+end
+
+"""Return a manufactured two-node cubic network whose exact voltage is `[2, 1]` V and constraint current is `0.4` A."""
+function manufactured_cubic_constraint_case()
+    exact_voltage_v = [2.0, 1.0]
+    exact_constraint_current_a = 0.4
+    linear_admittance_s = [1.0 0.0; 0.0 1.0]
+    source_current_a = [2.7, 0.3]
+    constraint_coefficients = [1.0, -1.0]
+    evaluation = cubic_mna_residual_jacobian_reference(
+        exact_voltage_v,
+        exact_constraint_current_a,
+        linear_admittance_s,
+        source_current_a,
+        1,
+        2,
+        0.2,
+        0.1,
+        constraint_coefficients,
+        1.0,
+    )
+    return (
+        exact_voltage_v,
+        exact_constraint_current_a,
+        linear_admittance_s,
+        source_current_a,
+        positive_node=1,
+        negative_node=2,
+        linear_conductance_s=0.2,
+        cubic_coefficient_a_per_v3=0.1,
+        constraint_coefficients,
+        constraint_value_v=1.0,
+        residual=evaluation.residual,
+        jacobian=evaluation.jacobian,
+        nonlinear_device_absorbed_power_w=
+            evaluation.nonlinear_device_absorbed_power_w,
+        ideal_constraint_absorbed_power_w=
+            evaluation.ideal_constraint_absorbed_power_w,
+        algebraic_power_balance_residual_w=
+            evaluation.algebraic_power_balance_residual_w,
     )
 end
 

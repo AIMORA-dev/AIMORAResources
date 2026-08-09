@@ -124,3 +124,54 @@ end
         interval,
     )
 end
+
+@testset "independent nonlinear scalar and manufactured MNA references" begin
+    voltage = exponential_conductance_voltage_reference(
+        1.0,
+        0.55,
+        0.01,
+        0.2,
+    )
+    @test abs(0.55 * voltage + 0.01 * expm1(voltage / 0.2) - 1.0) <= 1.0e-13
+    @test_throws ArgumentError exponential_conductance_voltage_reference(
+        1.0,
+        0.55,
+        0.0,
+        0.2,
+    )
+
+    manufactured = manufactured_cubic_constraint_case()
+    @test maximum(abs, manufactured.residual) <= 2.0e-16
+    @test manufactured.nonlinear_device_absorbed_power_w ≈ 0.3 atol=2.0e-16
+    @test manufactured.ideal_constraint_absorbed_power_w ≈ 0.4 atol=2.0e-16
+    @test abs(manufactured.algebraic_power_balance_residual_w) <=
+        4.0 * eps(Float64)
+    @test manufactured.jacobian == [1.5 -0.5 1.0; -0.5 1.5 -1.0; 1.0 -1.0 0.0]
+    perturbation = 1.0e-7
+    forward = cubic_mna_residual_jacobian_reference(
+        manufactured.exact_voltage_v .+ [perturbation, 0.0],
+        manufactured.exact_constraint_current_a,
+        manufactured.linear_admittance_s,
+        manufactured.source_current_a,
+        manufactured.positive_node,
+        manufactured.negative_node,
+        manufactured.linear_conductance_s,
+        manufactured.cubic_coefficient_a_per_v3,
+        manufactured.constraint_coefficients,
+        manufactured.constraint_value_v,
+    )
+    backward = cubic_mna_residual_jacobian_reference(
+        manufactured.exact_voltage_v .- [perturbation, 0.0],
+        manufactured.exact_constraint_current_a,
+        manufactured.linear_admittance_s,
+        manufactured.source_current_a,
+        manufactured.positive_node,
+        manufactured.negative_node,
+        manufactured.linear_conductance_s,
+        manufactured.cubic_coefficient_a_per_v3,
+        manufactured.constraint_coefficients,
+        manufactured.constraint_value_v,
+    )
+    central_column = (forward.residual - backward.residual) / (2.0 * perturbation)
+    @test central_column ≈ manufactured.jacobian[:, 1] rtol=5.0e-9
+end
