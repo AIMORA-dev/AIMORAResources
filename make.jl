@@ -37,6 +37,7 @@ makedocs(
         "Getting Started" => "getting-started.md",
         "Architecture" => "architecture.md",
         "Studies and Models" => "studies.md",
+        "Nonlinear EMT" => "nonlinear-emt.md",
         "Cases and Catalogs" => "cases-and-catalogs.md",
         "Validation" => "validation.md",
         "Contributing" => "development.md",
