@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-08"
-source_count = 474
+source_count = 475
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 55
+"canonical_case_input" = 56
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -17,7 +17,7 @@ source_count = 474
 "validation_suite" = 82
 
 [counts_by_disposition]
-"example" = 58
+"example" = 59
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -25,6 +25,15 @@ source_count = 474
 "pending_export" = 145
 "source_missing" = 63
 "validation_only" = 19
+
+[[source]]
+id = "case-input:emt:nonlinear-network-discontinuity"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/nonlinear_network_discontinuity/run.jl"
+disposition = "example"
+example_ids = ["emt_nonlinear_network_discontinuity"]
+reason = "Redistributable AIMORA-authored physical and eight-node manufactured networks exercise the public nonlinear-device contract, fitted ZnO owner, ideal constraints, rollback-safe RLC companions, sparse topology invalidation/reuse, localized discontinuity treatment, chatter vetoes, refinement, and deterministic restart without proprietary input data."
 
 [[source]]
 id = "aimora-test:grounded-scalar-branch-references"

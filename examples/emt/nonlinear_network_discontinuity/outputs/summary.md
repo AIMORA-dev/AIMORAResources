@@ -1,0 +1,31 @@
+# Nonlinear Network Discontinuity
+
+- `voltage_steps_s`: (2.0e-5, 1.0e-5, 5.0e-6)
+- `coarse_to_medium_maximum_error_v`: 2.4345475624725736
+- `medium_to_fine_maximum_error_v`: 0.6906919768050699
+- `refinement_error_ratio`: 3.524794907469531
+- `maximum_kcl_residual_a`: 9.948728324653592e-10
+- `maximum_constraint_residual_v`: 0.0
+- `final_energy_defect_j`: 4.622270101006798e-5
+- `relative_final_energy_defect`: 8.255500520800562e-5
+- `minimum_arrester_power_w`: 3.7010047355518667e-6
+- `maximum_nonlinear_power_diagnostic_error_w`: 0.0
+- `localized_discontinuity_count`: 2
+- `localized_event_chatter_veto_count`: 1
+- `physical_chatter_veto_count`: 0
+- `numeric_factorization_count`: 465
+- `iterative_refinement_count`: 0
+- `symbolic_factorization_count`: 0
+- `factor_reuse_count`: 0
+- `maximum_restart_error_v`: 0.0
+- `maximum_typed_study_voltage_error_v`: 0.0
+- `maximum_typed_constraint_error_a`: 0.0
+- `manufactured_node_count`: 8
+- `manufactured_event_time_s`: 0.0005
+- `manufactured_maximum_voltage_error_v`: 2.0112800314109336e-12
+- `manufactured_maximum_constraint_current_a`: 2.7755575615628914e-17
+- `manufactured_pre_event_topology_signature`: 16528576239119371583
+- `manufactured_event_topology_signature`: 15125589657557374025
+- `restart_probe_voltage_v`: 258.5226615078634
+- `public_case_domain`: synthetic instantaneous-EMT network only
+- `commercial_tool_equivalence`: false

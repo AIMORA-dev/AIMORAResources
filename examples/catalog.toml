@@ -1,5 +1,16 @@
 schema = "aimora-examples-v2"
 
+[[case]]
+id = "emt_nonlinear_network_discontinuity"
+study = "emt"
+path = "examples/emt/nonlinear_network_discontinuity/run.jl"
+entrypoint = "examples/emt/nonlinear_network_discontinuity/run.jl"
+description = "Scaled nonlinear RLC and eight-node manufactured networks with a fitted ZnO branch, ideal constraints, a sparse topology change, localized discontinuities, chatter vetoes, refinement, and deterministic restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["case-input:emt:nonlinear-network-discontinuity"]
+
 # Every runnable public example has one catalog row. `path` is the primary
 # reusable input when one exists, otherwise it is the Julia entrypoint.
 # `entrypoint` always names the Julia program launched by the local Makefile.
