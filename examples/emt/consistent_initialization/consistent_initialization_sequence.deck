@@ -1,0 +1,12 @@
+BEGIN NEW DATA CASE
+source grid source 5.0 100.0 50.0 0.0
+rl feeder source mid 2.0 0.01
+rl tail mid load 4.0 0.02
+conductance shunt load 0 0.1
+END NEW DATA CASE
+BEGIN NEW DATA CASE
+source grid source 5.0 100.0 50.0 0.0
+rl feeder source mid 2.0 0.01
+rl tail mid load 4.0 0.02
+conductance shunt load 0 0.1
+BLANK CARD TERMINATING THE CASE

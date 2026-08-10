@@ -4,14 +4,14 @@
 
 ## Audited snapshot
 
-The 2026-08-08 snapshot contains 474 source records:
+The 2026-08-10 snapshot contains 476 source records:
 
 | Source kind | Records | Current disposition |
 | --- | ---: | --- |
 | AIMORA public package testsets | 11 | 7 example/gallery, 4 validation-only |
 | AIMORAValidation suite files | 82 | 73 example/gallery, 3 oracle-only, 6 validation-only |
 | AIMORAValidation fixtures | 76 | 38 example/gallery, 27 oracle-only, 8 derived comparison controls, 3 negative tests |
-| Canonical case inputs consumed by validation | 55 | 55 example/gallery; no duplicate validation fixture |
+| Canonical case inputs consumed by validation | 57 | 57 example/gallery; no duplicate validation fixture |
 | Classic public EMTP cases | 16 | 16 direct examples |
 | Shared classic-case provenance record | 1 | gallery provenance for all 16 cases |
 | Implemented C301–C311 capability packets | 11 | 10 galleries, 1 validation-only |
@@ -20,7 +20,7 @@ The 2026-08-08 snapshot contains 474 source records:
 | ATPDraw 7.3 bundled ACP projects/groups | 52 | privately archived, pending export and conversion |
 | Claimed DC-1–DC-63 collection | 63 | source missing |
 
-Across all kinds, 58 records map directly to an example, 142 map to a consolidated gallery, 30 are reference-output/oracle material, 19 are validation-only or derived-comparison contracts, 3 are intentionally invalid negative tests, 14 are nonexistent packet designations, 145 await ACP export and independent Julia implementation, and 63 lack an identifiable source.
+Across all kinds, 60 records map directly to an example, 142 map to a consolidated gallery, 30 are reference-output/oracle material, 19 are validation-only or derived-comparison contracts, 3 are intentionally invalid negative tests, 14 are nonexistent packet designations, 145 await ACP export and independent Julia implementation, and 63 lack an identifiable source.
 
 ## Disposition rules
 

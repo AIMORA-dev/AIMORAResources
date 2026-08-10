@@ -679,3 +679,14 @@ source_ids = [
     "aimora-test:switch-detailed-three-phase-vsc-public-model",
     "validation-suite:switch_detailed_three_phase_vsc",
 ]
+
+[[case]]
+id = "emt_consistent_initialization"
+study = "emt"
+path = "examples/emt/consistent_initialization/consistent_initialization_sequence.deck"
+entrypoint = "examples/emt/consistent_initialization/run.jl"
+description = "Physical-frequency and timestep-matched harmonic scans, complete companion/state initialization, typed operating-point mapping, deterministic signatures, and dependent two-case EMT sequencing."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["case-input:emt:consistent_initialization_sequence"]

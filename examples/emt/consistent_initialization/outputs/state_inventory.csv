@@ -1,0 +1,15 @@
+case_index,owner,state_family,instance_count,initialization_basis
+1,energy_accumulator,algebraic,4,time_zero_energy_reference
+1,network_voltage,algebraic,3,harmonic_network_equilibrium
+1,source_state,algebraic,1,phasor_time_mapping
+1,checkpoint_continuation_state,checkpoint,1,complete_prepared_runtime_before_first_advance
+1,series_rl_history,delayed_history,2,exact_companion_recurrence
+1,network_topology,discrete,1,ranked_connected_component_classification
+1,output_cursor,discrete,1,time_zero_output_epoch
+2,energy_accumulator,algebraic,4,time_zero_energy_reference
+2,network_voltage,algebraic,3,harmonic_network_equilibrium
+2,source_state,algebraic,1,phasor_time_mapping
+2,checkpoint_continuation_state,checkpoint,1,complete_prepared_runtime_before_first_advance
+2,series_rl_history,delayed_history,2,exact_companion_recurrence
+2,network_topology,discrete,1,ranked_connected_component_classification
+2,output_cursor,discrete,1,time_zero_output_epoch

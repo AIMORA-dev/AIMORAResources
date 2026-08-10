@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-08"
-source_count = 475
+snapshot_date = "2026-08-10"
+source_count = 476
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 56
+"canonical_case_input" = 57
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -17,7 +17,7 @@ source_count = 475
 "validation_suite" = 82
 
 [counts_by_disposition]
-"example" = 59
+"example" = 60
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -34,6 +34,15 @@ path = "examples/emt/nonlinear_network_discontinuity/run.jl"
 disposition = "example"
 example_ids = ["emt_nonlinear_network_discontinuity"]
 reason = "Redistributable AIMORA-authored physical and eight-node manufactured networks exercise the public nonlinear-device contract, fitted ZnO owner, ideal constraints, rollback-safe RLC companions, sparse topology invalidation/reuse, localized discontinuity treatment, chatter vetoes, refinement, and deterministic restart without proprietary input data."
+
+[[source]]
+id = "case-input:emt:consistent_initialization_sequence"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/consistent_initialization/consistent_initialization_sequence.deck"
+disposition = "example"
+example_ids = ["emt_consistent_initialization"]
+reason = "Redistributable AIMORA-authored passive R-L sequence demonstrates physical-frequency and timestep-matched scans, exact companion histories, complete accepted-state inventory, typed operating-point mapping, deterministic signatures, and dependent Julia-only case execution."
 
 [[source]]
 id = "aimora-test:grounded-scalar-branch-references"

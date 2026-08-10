@@ -1,0 +1,2 @@
+asset,quantity,phase,source_unit,target_unit,basis,orientation,source_real,source_imaginary,target_real_si,target_imaginary_si,absolute_uncertainty_si,residual_v,reaction_current_real_a,reaction_current_imaginary_a,passed
+load,node_voltage_peak_phasor,not_applicable,V,V,peak_node_to_ground,node_to_ground,-26.858129623,-46.0707606658,-26.858129623,-46.0707606658,0,0,0,-1.7763568394e-15,true
