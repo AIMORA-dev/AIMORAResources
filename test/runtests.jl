@@ -175,3 +175,186 @@ end
     central_column = (forward.residual - backward.residual) / (2.0 * perturbation)
     @test central_column ≈ manufactured.jacobian[:, 1] rtol=5.0e-9
 end
+
+@testset "independent consistent EMT initialization references" begin
+    physical_frequency_hz = 50.0
+    timestep_s = 500.0e-6
+    physical_angular_frequency = 2.0 * pi * physical_frequency_hz
+    matched_angular_frequency = trapezoidal_reactive_angular_frequency(
+        physical_frequency_hz,
+        timestep_s,
+    )
+    @test matched_angular_frequency ≈
+        2.0 / timestep_s * tan(pi * physical_frequency_hz * timestep_s)
+    @test matched_angular_frequency > physical_angular_frequency
+    @test_throws ArgumentError trapezoidal_reactive_angular_frequency(
+        1.0 / (2.0 * timestep_s),
+        timestep_s,
+    )
+
+    branches = [
+        (from_node=1, to_node=2, resistance_ohm=2.0, inductance_h=10.0e-3),
+        (from_node=2, to_node=3, resistance_ohm=4.0, inductance_h=20.0e-3),
+    ]
+    shunts = [(node=3, conductance_s=0.1)]
+    sources = [(node=1, conductance_s=5.0, voltage_phasor_v=100.0 - 15.0im)]
+    physical = independent_series_rl_network_equilibrium(
+        3,
+        branches,
+        shunts,
+        sources;
+        physical_frequency_hz,
+    )
+    matched = independent_series_rl_network_equilibrium(
+        3,
+        branches,
+        shunts,
+        sources;
+        physical_frequency_hz,
+        timestep_s,
+    )
+    @test physical.classification === :unique
+    @test matched.classification === :unique
+    @test physical.numerical_rank == 3
+    @test physical.maximum_residual_a <= 2.0e-13
+    @test physical.admittance_symmetry_max_abs_error == 0.0
+    @test physical.minimum_dissipative_eigenvalue_s >= -2.0e-16
+    @test norm(physical.node_voltage_phasors - matched.node_voltage_phasors) > 1.0e-4
+    @test maximum(abs, independent_series_rl_recurrence_residuals(
+        matched.node_voltage_phasors,
+        branches;
+        physical_frequency_hz,
+        timestep_s,
+    )) <= 2.0e-14
+    @test abs(independent_lumped_companion_recurrence_residual(
+        :series_rl,
+        90.0 - 30.0im;
+        resistance_ohm=2.0,
+        inductance_h=10.0e-3,
+        physical_frequency_hz,
+        timestep_s,
+    )) <= 2.0e-14
+    @test abs(independent_lumped_companion_recurrence_residual(
+        :series_rlc,
+        90.0 - 30.0im;
+        resistance_ohm=2.0,
+        inductance_h=10.0e-3,
+        capacitance_f=2.0e-3,
+        physical_frequency_hz,
+        timestep_s,
+    )) <= 2.0e-14
+    @test abs(independent_lumped_companion_recurrence_residual(
+        :capacitor,
+        90.0 - 30.0im;
+        capacitance_f=2.0e-3,
+        physical_frequency_hz,
+        timestep_s,
+    )) <= 8.0e-14
+    coupled_recurrence = independent_coupled_series_rl_recurrence_residuals(
+        ComplexF64[90.0 - 30.0im, -45.0 + 20.0im],
+        [2.0 0.1; 0.1 2.5],
+        [10.0e-3 1.0e-3; 1.0e-3 12.0e-3];
+        physical_frequency_hz,
+        timestep_s,
+    )
+    @test maximum(abs, coupled_recurrence) <= 3.0e-14
+
+    shifted = independent_series_rl_network_equilibrium(
+        3,
+        branches,
+        shunts,
+        sources;
+        physical_frequency_hz,
+        timestep_s,
+        time_origin_s=1.25e-3,
+    )
+    expected_rotation = cis(2.0 * pi * physical_frequency_hz * 1.25e-3)
+    @test shifted.node_voltage_phasors ≈
+        matched.node_voltage_phasors .* expected_rotation atol=2.0e-14
+    @test independent_peak_phasor_samples(
+        2.0 - 3.0im,
+        physical_frequency_hz,
+        (0.0, timestep_s),
+    ) ≈ [
+        2.0,
+        real((2.0 - 3.0im) * cis(physical_angular_frequency * timestep_s)),
+    ] atol=2.0e-15
+    periodic_times = [0.0, timestep_s, 2.0 * timestep_s]
+    periodic_phasors = ComplexF64[2.0 - 3.0im, -1.0 + 0.5im]
+    periodic_frequencies = [50.0, 60.0]
+    periodic_trace = Float64[
+        real(periodic_phasors[node] * cis(2.0 * pi * periodic_frequencies[node] * time))
+        for node in eachindex(periodic_phasors), time in periodic_times
+    ]
+    periodic_error = independent_periodic_voltage_error(
+        periodic_phasors,
+        periodic_frequencies,
+        periodic_times,
+        periodic_trace,
+    )
+    @test periodic_error.maximum_absolute_error_v == 0.0
+    @test periodic_error.normalized_rms == 0.0
+    @test_throws DimensionMismatch independent_periodic_voltage_error(
+        periodic_phasors,
+        periodic_frequencies,
+        periodic_times,
+        zeros(3, 3),
+    )
+
+    mapping = independent_operating_point_mapping(
+        2.0 - 3.0im,
+        -2000.0 + 3000.0im;
+        scale_to_target=1000.0,
+        orientation_sign=-1.0,
+    )
+    @test mapping.mapped_value == -2000.0 + 3000.0im
+    @test mapping.residual == 0.0
+
+    islanded = independent_series_rl_network_equilibrium(
+        2,
+        [(from_node=1, to_node=2, resistance_ohm=1.0, inductance_h=0.0)],
+        NamedTuple[],
+        NamedTuple[];
+        physical_frequency_hz,
+    )
+    @test islanded.classification === :islanded
+    @test islanded.numerical_rank == 1
+    @test islanded.unreferenced_components == [[1, 2]]
+    @test isempty(islanded.node_voltage_phasors)
+
+    ill_conditioned = independent_series_rl_network_equilibrium(
+        2,
+        [(from_node=1, to_node=2, resistance_ohm=1.0, inductance_h=0.0)],
+        [(node=1, conductance_s=1.0e-13)],
+        NamedTuple[];
+        physical_frequency_hz,
+    )
+    @test ill_conditioned.classification === :ill_conditioned
+    @test ill_conditioned.numerical_rank == 2
+    @test ill_conditioned.condition_estimate > 1.0e12
+    @test isempty(ill_conditioned.node_voltage_phasors)
+
+    nonunique = AIMORAReferenceModels._independent_dense_harmonic_solution(
+        ComplexF64[1.0 1.0; 1.0 1.0],
+        ComplexF64[2.0, 2.0];
+        absolute_current_tolerance_a=1.0e-12,
+        relative_current_tolerance=1.0e-10,
+        rank_threshold_multiplier=10.0,
+        maximum_condition_estimate=1.0e12,
+    )
+    @test nonunique.classification === :nonunique
+    @test isempty(nonunique.unreferenced_components)
+    @test isempty(nonunique.node_voltage_phasors)
+
+    infeasible = AIMORAReferenceModels._independent_dense_harmonic_solution(
+        ComplexF64[1.0 -1.0; -1.0 1.0],
+        ComplexF64[1.0, 1.0];
+        absolute_current_tolerance_a=1.0e-12,
+        relative_current_tolerance=1.0e-10,
+        rank_threshold_multiplier=10.0,
+        maximum_condition_estimate=1.0e12,
+    )
+    @test infeasible.classification === :infeasible
+    @test infeasible.maximum_residual_a > 0.5
+    @test isempty(infeasible.node_voltage_phasors)
+end

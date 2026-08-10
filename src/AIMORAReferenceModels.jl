@@ -12,6 +12,17 @@ export amplitude_invariant_clarke_matrix,
        exponential_conductance_voltage_reference,
        cubic_mna_residual_jacobian_reference,
        manufactured_cubic_constraint_case,
+       IndependentHarmonicNetworkResult,
+       trapezoidal_reactive_angular_frequency,
+       independent_series_rl_network_equilibrium,
+       independent_series_rl_recurrence_residuals,
+       independent_lumped_companion_periodic_state,
+       independent_lumped_companion_recurrence_residual,
+       independent_coupled_series_rl_periodic_state,
+       independent_coupled_series_rl_recurrence_residuals,
+       independent_peak_phasor_samples,
+       independent_periodic_voltage_error,
+       independent_operating_point_mapping,
        series_rl_piecewise_constant_current,
        series_rl_piecewise_constant_trace
 
@@ -456,5 +467,7 @@ function series_rl_piecewise_constant_trace(
     end
     return trace
 end
+
+include("consistent_emt_initialization.jl")
 
 end
