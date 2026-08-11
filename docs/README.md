@@ -16,15 +16,15 @@ Makefile              local check and build commands
 ## Local build
 
 ```bash
-git clone https://github.com/AIMORA-dev/AIMORADocs.git
+git clone https://github.com/AIMORA-dev/AIMORAResources.git
 git clone https://github.com/AIMORA-dev/AIMORA.jl.git
-cd AIMORADocs
+cd AIMORAResources/docs
 julia --project=. -e 'using Pkg; Pkg.instantiate()'
 make check
 make build
 ```
 
-Open `build/index.html`. GitHub Actions publishes the same build at <https://aimora-dev.github.io/AIMORADocs/>.
+Open `build/index.html`. GitHub Actions publishes the same build from the consolidated Resources repository.
 
 Place both clones in the same parent directory, or set `AIMORA_DOCS_ENGINE_PATH` explicitly. Only public repositories and public product information are inputs to this website. Internal source, repository names, paths, validation records, and development instructions are rejected by `check.jl`.
 

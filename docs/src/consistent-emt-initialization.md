@@ -63,7 +63,7 @@ end
 
 For dependent data cases, parse the complete sequence, preview the source case, create an `EMTOperatingPoint` carrying its accepted state signature, and pass `DeckCaseInitialization` instructions to `run_deck_case_sequence_emt`. The sequence runner executes a mapped case only after its named predecessor has accepted and its signature matches; dependency failure remains explicit and never falls back to ordinary zero-state execution.
 
-The runnable [`consistent_initialization`](https://github.com/AIMORA-dev/AIMORACases.jl/tree/main/examples/emt/consistent_initialization) case shows both harmonic formulations, a frequency scan, state inventory, exact typed voltage mapping, deterministic signatures, two-case sequencing, numerical tables, and a waveform using only public Julia APIs.
+The runnable [`consistent_initialization`](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/consistent_initialization) case shows both harmonic formulations, a frequency scan, state inventory, exact typed voltage mapping, deterministic signatures, two-case sequencing, numerical tables, and a waveform using only public Julia APIs.
 
 ## Scope and limits
 

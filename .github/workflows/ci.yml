@@ -2,10 +2,20 @@ name: Resources CI
 
 on:
   push:
+    branches: [main]
   pull_request:
+  schedule:
+    - cron: "0 3 * * 0"
+  workflow_dispatch:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: resources-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   repository-contract:
@@ -17,6 +27,7 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.10'
+      - uses: julia-actions/cache@v2
       - run: julia --startup-file=no test/runtests.jl
 
   package-tests:
@@ -33,4 +44,60 @@ jobs:
       - uses: julia-actions/setup-julia@v2
         with:
           version: '1.10'
+      - uses: julia-actions/cache@v2
       - run: julia --startup-file=no --project=${{ matrix.package }} -e 'using Pkg; Pkg.test()'
+
+  documentation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      - uses: julia-actions/cache@v2
+      - name: Fetch the public engine input
+        run: git clone --depth 1 https://github.com/AIMORA-dev/AIMORA.jl.git "$RUNNER_TEMP/AIMORA.jl"
+      - name: Build consolidated documentation
+        env:
+          AIMORA_DOCS_ENGINE_PATH: ${{ runner.temp }}/AIMORA.jl
+        run: |
+          julia --startup-file=no --project=docs -e 'using Pkg; Pkg.instantiate()'
+          make -C docs build
+      - uses: actions/configure-pages@v5
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+      - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        with:
+          path: docs/build
+
+  report-templates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      - run: julia --startup-file=no report-templates/tests/runtests.jl
+
+  historical-reference:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      - uses: julia-actions/cache@v2
+      - run: make -C references/bpa_emtp check build test example
+
+  deploy-documentation:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: documentation
+    steps:
+      - name: Deploy consolidated documentation
+        id: deployment
+        uses: actions/deploy-pages@v4
