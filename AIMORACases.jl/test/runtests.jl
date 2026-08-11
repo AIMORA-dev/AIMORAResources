@@ -42,6 +42,10 @@ end
 end
 
 @testset "release receipts and artifact identity" begin
+    @test AIMORAExampleQualification._git_content_signature(
+        joinpath(@__DIR__, "missing-private-solver"),
+    ) == "unavailable"
+
     mktempdir() do directory
         target = ExampleTarget("receipt_test", "example", "example/run.jl")
         signature = "abc123"

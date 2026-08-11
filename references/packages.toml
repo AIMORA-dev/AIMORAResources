@@ -1,0 +1,705 @@
+schema_version = 3
+title = "AIMORA local scientific reference package manifest"
+checkout_root = ".aimora/cache/references/packages"
+requirements_owner = "REQUIREMENTS.md#48-scientific-reference-packages-for-every-study"
+status_command = "bin/aimora references status"
+sync_command = "bin/aimora references sync"
+update_command = "bin/aimora references update"
+revision_policy = "Every Git checkout and official archive is locked here to exact content. Updating a pin requires explicit review of provenance, licence, scientific impact, and the resulting manifest diff."
+usage_policy = "These packages are external review inputs, not AIMORA production dependencies or proof by themselves."
+entry_policy = "Repository tables are shallow Git source checkouts. Package tables are named BPA provenance intakes; official archive entries retain readable source, build text, inputs, outputs, listings, PDF documents, and separately identified Excel workbooks, while classification states whether program source was actually present."
+binary_policy = "ZIP containers and executables are excluded from official BPA intake trees. PDFs are retained under documents/ and Excel workbooks under workbooks/ as binary read-only material; neither counts as source or executable evidence."
+
+[[package]]
+id = "bpa-atads"
+kind = "official_archive_readable_extract"
+url = "https://www.bpa.gov/-/media/Aep/foia/apps/Advanced-Tower-Analysis-and-Design-System-ATADS.zip"
+source_page = "https://www.bpa.gov/learn-and-participate/projects/transmission-tower-software"
+path = ".aimora/cache/references/packages/BPA/bpa-atads"
+classification = "input-only"
+archive_sha256 = "4dd4ceb57b1f920d5316ea16629583458f6a178b435cac100a96cbd032a22f1e"
+observed_on = "2026-08-03"
+routes = ["transmission structures", "tower structural inputs", "mechanical design"]
+contents = "Seven human-readable ATADS examples, one WLC example, the archive README, three PDF manuals/examples, and a generated source-status record; the Windows executables are excluded."
+license = "Official BPA no-warranty distribution notice; source and redistribution licence not established"
+boundary = "No program source exists in the inspected archive. Use the retained examples only to understand input semantics; any black-box execution or implementation authority requires a separate licence and scientific audit."
+
+[[package]]
+id = "bpa-anypole"
+kind = "official_archive_readable_extract"
+url = "https://www.bpa.gov/-/media/Aep/foia/apps/Anypole.zip"
+source_page = "https://www.bpa.gov/about/who-we-are/freedom-of-information-act/frequently-requested-information"
+path = ".aimora/cache/references/packages/BPA/bpa-anypole"
+classification = "input-only"
+archive_sha256 = "9e3bed8c98643b2dd1531cdd4d87a4db9151ce4a64f5f869561cfd8d8e2c9f4f"
+observed_on = "2026-08-03"
+routes = ["corona onset", "electric fields", "ion studies"]
+contents = "One human-readable example input, one PDF user guide, and a generated source-status record; the Windows executable is excluded."
+license = "Official BPA public download; source and redistribution licence not established"
+boundary = "No program source exists in the inspected archive. The example is an input-format clue, not equation authority or executable validation evidence."
+
+[[package]]
+id = "bpa-corona-field-effects"
+kind = "official_archive_readable_extract"
+url = "https://www.bpa.gov/-/media/Aep/foia/apps/Corona-and-Field-Effects.zip"
+source_page = "https://www.bpa.gov/about/who-we-are/freedom-of-information-act/frequently-requested-information"
+path = ".aimora/cache/references/packages/BPA/bpa-corona-field-effects"
+classification = "source"
+archive_sha256 = "5941fafcb9f617d45ad2ae54412909cda52766a6b333933133575f676ce8d48c"
+observed_on = "2026-08-03"
+routes = ["corona loss", "audible noise", "radio and television interference", "ozone", "electric and magnetic fields"]
+contents = "Seven Fortran source files, seven compiler listings, a human-readable example input/output pair, README, and generated source-status record; both Windows executables are excluded."
+license = "Official BPA public archive with original notices; production reuse and redistribution require legal review"
+boundary = "Local read-only equation and historical-comparison reference. It is not current standards authority, complete corona science, or permission to copy source into AIMORA."
+
+[[package]]
+id = "bpa-corona-field-effects-excel"
+kind = "official_archive_readable_extract"
+url = "https://www.bpa.gov/-/media/Aep/foia/apps/Corona-and-Field-Effects-Excel-Version.zip"
+source_page = "https://www.bpa.gov/about/who-we-are/freedom-of-information-act/frequently-requested-information"
+path = ".aimora/cache/references/packages/BPA/bpa-corona-field-effects-excel"
+classification = "workbook-only"
+archive_sha256 = "83ca7445387656ae63db93206518cebee6af1eca1478bb6af061a98ae043f813"
+workbook_sha256 = "7a66fdeeca2fb2a4df48820fc75ad05f3961d6c9bdd4fae0d8686c06e5679a18"
+observed_on = "2026-08-03"
+routes = ["corona and field-effects workbook provenance"]
+contents = "One binary legacy Excel workbook under workbooks/ plus a generated source-status record; no program source is present."
+license = "Official BPA public download; workbook source, macro, reuse, and redistribution rights not established"
+boundary = "The workbook is retained for local formula and black-box review but is not source, equation authority, or a qualified oracle. Redistribution or production reuse requires separate rights review."
+
+[[package]]
+id = "bpa-emtp-official"
+kind = "official_archive_readable_extract"
+url = "https://www.bpa.gov/-/media/Aep/foia/apps/Electromagnetic-Transients-Program-EMTP.zip"
+source_page = "https://www.bpa.gov/about/who-we-are/freedom-of-information-act/frequently-requested-information"
+path = ".aimora/cache/references/packages/BPA/bpa-emtp-official"
+classification = "source"
+archive_sha256 = "2880573d3110eec5652d42d02aee81d08ec40d1bd283a238eceb689e53d2bdd4"
+observed_on = "2026-08-03"
+routes = ["BPA EMTP provenance", "historical EMT equations", "retained regression audit"]
+contents = "Ninety-two Fortran files, three include files, build/support text, three PDF manuals, and a generated source-status record; the ZIP container is excluded."
+license = "Official BPA public archive; no conventional top-level OSI licence confirmed, so legal review is required before redistribution, translation, or reuse"
+boundary = "Read-only historical review and admitted regression provenance. It is never AIMORA production architecture or authority for modern EMT science."
+relationship = "Distinct from references/bpa_emtp, AIMORA's tracked buildable regression-oracle owner. At the 2026-08-03 intake all 95 official source basenames existed there; 92 matched after CR/NUL/trailing-space normalization, while MAIN00.FOR, OVER16.FOR, and USE1.FTN differed and require explicit provenance review."
+
+[[package]]
+id = "bpa-emtp-mirror"
+kind = "git"
+url = "https://github.com/ahmadabdullah/BPA_EMTP"
+path = ".aimora/cache/references/packages/ahmadabdullah/BPA_EMTP"
+revision = "3eedb9647531992476a7642cfa758d8f376df67f"
+classification = "source"
+routes = ["BPA EMTP source navigation", "historical EMT comparison", "official-archive cross-check"]
+contents = "Public GitHub mirror of historical BPA EMTP source and documentation, maintained separately from the official BPA archive for provenance comparison."
+license = "No conventional top-level OSI licence confirmed; preserve original notices and obtain legal review before redistribution, translation, or reuse"
+boundary = "Read-only local review source. The official BPA archive remains the primary provenance record, and the exact mirror commit must be pinned before use."
+
+[[repository]]
+id = "CURENT/andes"
+url = "https://github.com/CURENT/andes"
+path = ".aimora/cache/references/packages/CURENT/andes"
+revision = "eda5163c9ee8d19945a1dd5d1771fec5da608c27"
+routes = ["phasor DAE", "transient stability", "small signal", "initialization"]
+contents = "Symbolic phasor-domain power-system models, DAE routines, events, initialization, and analysis cases."
+license = "GPL-3.0-or-later"
+boundary = "External black-box and equation-review reference only."
+
+[[repository]]
+id = "Electa-Git/PowerModelsACDC.jl"
+url = "https://github.com/Electa-Git/PowerModelsACDC.jl"
+path = ".aimora/cache/references/packages/Electa-Git/PowerModelsACDC.jl"
+revision = "8b8752720d454bba26237eb3a8012f6467bf48bd"
+routes = ["AC/DC power flow", "HVDC steady state", "network optimization"]
+contents = "JuMP/PowerModels formulations for combined AC and DC grids, converters, examples, and tests."
+license = "BSD-3-Clause"
+boundary = "Independent formulation reference; do not share AIMORA production assembly."
+
+[[repository]]
+id = "ElmerCSC/elmerfem"
+url = "https://github.com/ElmerCSC/elmerfem"
+path = ".aimora/cache/references/packages/ElmerCSC/elmerfem"
+revision = "842aec0a4e87b940fc041642ab6286e2c2f9c2d8"
+routes = ["grounding fields", "cable thermal", "transformer thermal", "multiphysics"]
+contents = "General finite-element solvers, material models, meshes, examples, and field/thermal coupling infrastructure."
+license = "GPL/LGPL family; exact files require review"
+boundary = "External independent field oracle; meshes and material data have separate rights."
+
+[[repository]]
+id = "GMLC-TDC/HELICS"
+url = "https://github.com/GMLC-TDC/HELICS"
+path = ".aimora/cache/references/packages/GMLC-TDC/HELICS"
+revision = "59036c2744c3bdae46e73aa3c5191e9544dafce1"
+routes = ["co-simulation", "hybrid EMT-phasor", "distributed studies", "interfaces"]
+contents = "Federated co-simulation runtime, timing, message/value exchange, bindings, examples, and tests."
+license = "BSD-3-Clause"
+boundary = "Interface and timing reference; not authority for exchanged component equations."
+
+[[repository]]
+id = "GenXProject/GenX.jl"
+url = "https://github.com/GenXProject/GenX.jl"
+path = ".aimora/cache/references/packages/GenXProject/GenX.jl"
+revision = "3d9596ad9ce69e66ed0404754e58250059bf612b"
+routes = ["capacity expansion", "unit commitment", "storage", "planning"]
+contents = "Electricity-system capacity-expansion and operations formulations, input schemas, examples, and cases."
+license = "GPL-2.0"
+boundary = "External optimization reference only; solver and dataset terms remain separate."
+
+[[repository]]
+id = "GridProtectionAlliance/openHistorian"
+url = "https://github.com/GridProtectionAlliance/openHistorian"
+path = ".aimora/cache/references/packages/GridProtectionAlliance/openHistorian"
+revision = "0cf2dca8d67a6480b6d4bcf17c29d5b51498b842"
+routes = ["measurement history", "online monitoring", "digital twin", "asset health"]
+contents = "Time-series historian services, storage, adapters, querying, and Grid Protection Alliance integrations."
+license = "MIT"
+boundary = "Data-system reference; telemetry rights, calibration, and event truth remain external."
+
+[[repository]]
+id = "GridProtectionAlliance/openPDC"
+url = "https://github.com/GridProtectionAlliance/openPDC"
+path = ".aimora/cache/references/packages/GridProtectionAlliance/openPDC"
+revision = "f986af17cfdf3986fee8af05725368d6e2b5301a"
+routes = ["synchrophasors", "measurement ingestion", "online monitoring", "interoperability"]
+contents = "Phasor data concentrator, protocol adapters, stream processing, configuration, and operational tooling."
+license = "MIT"
+boundary = "Measurement transport reference; not protection or state-estimation proof."
+
+[[repository]]
+id = "JuliaDSP/DSP.jl"
+url = "https://github.com/JuliaDSP/DSP.jl"
+path = ".aimora/cache/references/packages/JuliaDSP/DSP.jl"
+revision = "7c798756cca39251da14bb5d38146feb2cdd1717"
+routes = ["waveform analysis", "power quality", "protection measurement", "filters"]
+contents = "Julia signal-processing filters, spectra, windows, resampling, estimation routines, and tests."
+license = "MIT"
+boundary = "Generic numerical reference; power-system metric definitions require exact standards."
+
+[[repository]]
+id = "LiaungYip/arcflash"
+url = "https://github.com/LiaungYip/arcflash"
+path = ".aimora/cache/references/packages/LiaungYip/arcflash"
+revision = "2a4bd82c6cbbef533f6d7e8f120e212e91a4f7cf"
+routes = ["arc flash", "IEEE 1584"]
+contents = "IEEE 1584 three-phase AC equations for 208 V to 15 kV, unit-aware calculations, Annex D tests, and large spreadsheet-comparison fixtures."
+license = "MIT; bundled comparison artifacts require separate rights review"
+boundary = "Bounded calculation oracle only; not DC, above-15-kV, clearing-time, PPE, or certification authority."
+
+[[repository]]
+id = "MATPOWER/matpower"
+url = "https://github.com/MATPOWER/matpower"
+path = ".aimora/cache/references/packages/MATPOWER/matpower"
+revision = "5f1b70611a573f5455de7a2e5786aed12adfbaf8"
+routes = ["balanced power flow", "continuation power flow", "OPF", "transmission cases"]
+contents = "MATLAB power-flow, continuation, optimal-power-flow algorithms, test suites, and transmission cases."
+license = "BSD-3-Clause; case data terms vary"
+boundary = "Historical and independent static-network reference; not DAE, protection, or EMT authority."
+
+[[repository]]
+id = "NatLabRockies/PRAS"
+url = "https://github.com/NatLabRockies/PRAS"
+path = ".aimora/cache/references/packages/NatLabRockies/PRAS"
+revision = "f49c56e8e81d5e83a6ee0ee98af2f6432a96bd7a"
+routes = ["resource adequacy", "capacity credit", "probabilistic reliability"]
+contents = "Probabilistic resource-adequacy models, simulation components, metrics, and examples."
+license = "MIT components; datasets require separate review"
+boundary = "Adequacy reference; not distribution restoration, asset aging, or universal reliability truth."
+
+[[repository]]
+id = "NatLabRockies/REopt.jl"
+url = "https://github.com/NatLabRockies/REopt.jl"
+path = ".aimora/cache/references/packages/NatLabRockies/REopt.jl"
+revision = "f952cabdf3e60f6e88eef80bb7bc9e7e24bac643"
+routes = ["DER sizing", "microgrids", "dispatch", "economics"]
+contents = "Distributed-energy sizing and dispatch optimization, financial inputs, resilience options, examples, and tests."
+license = "Apache-2.0; tariff and technology data terms vary"
+boundary = "Optimization reference; not detailed electrical physics, protection, or financial guarantee."
+
+[[repository]]
+id = "NatLabRockies/ROSCO"
+url = "https://github.com/NatLabRockies/ROSCO"
+path = ".aimora/cache/references/packages/NatLabRockies/ROSCO"
+revision = "974290ec39f7322a9ae83ffa989444bfbea8728b"
+routes = ["wind controls", "turbine operation", "OpenFAST coupling"]
+contents = "Reference open-source wind-turbine controller, tuning tools, control models, examples, and tests."
+license = "Apache-2.0"
+boundary = "Wind-control reference; not complete electrical converter, protection, or certification evidence."
+
+[[repository]]
+id = "NatLabRockies/SAM"
+url = "https://github.com/NatLabRockies/SAM"
+path = ".aimora/cache/references/packages/NatLabRockies/SAM"
+revision = "48d0e8cdd536b1d3401f25db842d20bc3eb54625"
+routes = ["PV yield", "renewable performance", "BESS economics", "sizing"]
+contents = "System Advisor Model application source, performance models, financial models, interfaces, and examples."
+license = "BSD-3-Clause; weather, tariff, and manufacturer data terms vary"
+boundary = "Performance/economics reference; not detailed switching, protection, or manufacturer certification."
+
+[[repository]]
+id = "NatLabRockies/ditto"
+url = "https://github.com/NatLabRockies/ditto"
+path = ".aimora/cache/references/packages/NatLabRockies/ditto"
+revision = "9a5cb71a6dd48f45b64e74a88b61140b129970e1"
+routes = ["distribution data conversion", "interoperability", "schema mapping"]
+contents = "Distribution-system model readers, writers, intermediate model, conversion examples, and tests."
+license = "BSD-3-Clause"
+boundary = "Adapter reference; conversion loss and unsupported semantics must be reported explicitly."
+
+[[repository]]
+id = "OpenFAST/openfast"
+url = "https://github.com/OpenFAST/openfast"
+path = ".aimora/cache/references/packages/OpenFAST/openfast"
+revision = "2895884d2be01862173c88d70f86b358d2f1a50a"
+routes = ["wind plant", "aeroelastic dynamics", "drivetrain", "multiphysics"]
+contents = "Wind-turbine aero-hydro-servo-elastic solvers, component modules, regression tests, and example models."
+license = "Apache-2.0; model data terms vary"
+boundary = "Mechanical/aeroelastic reference; not complete electrical-network or converter authority."
+
+[[repository]]
+id = "OpenFOAM/OpenFOAM-dev"
+url = "https://github.com/OpenFOAM/OpenFOAM-dev"
+path = ".aimora/cache/references/packages/OpenFOAM/OpenFOAM-dev"
+revision = "ecff693b6554bb8b268f9b714fe02871ea879e1f"
+routes = ["thermal-fluid fields", "cooling", "multiphysics"]
+contents = "Finite-volume CFD framework, thermal/fluid solvers, turbulence models, meshes, and examples."
+license = "GPL-3.0"
+boundary = "External field oracle only; equipment geometry, materials, and experiments remain separate."
+
+[[repository]]
+id = "OpenIPSL/OpenIPSL"
+url = "https://github.com/OpenIPSL/OpenIPSL"
+path = ".aimora/cache/references/packages/OpenIPSL/OpenIPSL"
+revision = "8155c73f51ceeec935eb158247c7c043eb697ff5"
+routes = ["phasor DAE", "machines", "controls", "HVDC and IBR dynamics"]
+contents = "Modelica power-system component library, dynamic models, examples, and validation cases."
+license = "BSD-3-Clause; model-specific sources require inspection"
+boundary = "External model reference; no universal model or proprietary compatibility claim."
+
+[[repository]]
+id = "OpenModelica/OMSimulator"
+url = "https://github.com/OpenModelica/OMSimulator"
+path = ".aimora/cache/references/packages/OpenModelica/OMSimulator"
+revision = "564cb10427833ba79c2410dccde6e818f8177af4"
+routes = ["FMI", "co-simulation", "multiphysics", "interfaces"]
+contents = "FMI-based system composition and co-simulation runtime, APIs, examples, and tests."
+license = "Review exact OpenModelica/OMSimulator terms"
+boundary = "External interface reference; not authority for component equations or real-time qualification."
+
+[[repository]]
+id = "PyPSA/PyPSA"
+url = "https://github.com/PyPSA/PyPSA"
+path = ".aimora/cache/references/packages/PyPSA/PyPSA"
+revision = "0eeeaf40bb24189eeeeaec01071875c2d9154dfc"
+routes = ["power flow", "unit commitment", "planning", "sector coupling"]
+contents = "Python energy-system network modeling, optimization, time series, statistics, examples, and tests."
+license = "MIT; datasets and solvers have separate terms"
+boundary = "Network/optimization reference; not apparatus, protection, or detailed time-domain physics."
+
+[[repository]]
+id = "SciML/DifferentialEquations.jl"
+url = "https://github.com/SciML/DifferentialEquations.jl"
+path = ".aimora/cache/references/packages/SciML/DifferentialEquations.jl"
+revision = "78c7e937c2f628cf72d7244f0006a7fee8de4bd3"
+routes = ["ODE and DAE integration", "numerical verification", "parameter estimation"]
+contents = "Julia differential-equation solver suite entrypoint, algorithms, interfaces, documentation, and tests."
+license = "MIT"
+boundary = "Generic numerical reference; it cannot validate incorrect power-system equations."
+
+[[repository]]
+id = "SciML/Optimization.jl"
+url = "https://github.com/SciML/Optimization.jl"
+path = ".aimora/cache/references/packages/SciML/Optimization.jl"
+revision = "bc8e107fb5bc755b45e7cfe6f1a5cf73b544e45c"
+routes = ["optimization", "parameter identification", "solver comparison"]
+contents = "Unified Julia optimization interface, solver adapters, automatic differentiation integration, examples, and tests."
+license = "MIT; linked solvers have separate terms"
+boundary = "Generic numerical reference; objective, constraints, and optimality claims remain AIMORA-owned."
+
+[[repository]]
+id = "Sienna-Platform/PowerFlows.jl"
+url = "https://github.com/Sienna-Platform/PowerFlows.jl"
+path = ".aimora/cache/references/packages/Sienna-Platform/PowerFlows.jl"
+revision = "82e7889b55e8ee107d37aca54fb99fafa8fb4254"
+routes = ["balanced power flow", "Julia network solving"]
+contents = "Julia power-flow formulations and algorithms integrated with the Sienna data ecosystem."
+license = "BSD-3-Clause"
+boundary = "Independent execution reference; do not reuse its assembly as AIMORA validation truth."
+
+[[repository]]
+id = "Sienna-Platform/PowerSimulations.jl"
+url = "https://github.com/Sienna-Platform/PowerSimulations.jl"
+path = ".aimora/cache/references/packages/Sienna-Platform/PowerSimulations.jl"
+revision = "ba9b7c3764de40f8984fa267389e6985b23a32bf"
+routes = ["operations", "unit commitment", "economic dispatch", "time series"]
+contents = "Julia production-cost and operations simulation orchestration, formulations, examples, and tests."
+license = "BSD-3-Clause"
+boundary = "Operations reference; market rules, data, and solver terms remain explicit."
+
+[[repository]]
+id = "Sienna-Platform/PowerSimulationsDynamics.jl"
+url = "https://github.com/Sienna-Platform/PowerSimulationsDynamics.jl"
+path = ".aimora/cache/references/packages/Sienna-Platform/PowerSimulationsDynamics.jl"
+revision = "f77d3dfc77d82174ff85a4f4fdcf20dcec3c01d1"
+routes = ["phasor DAE", "transient stability", "machines", "IBR dynamics"]
+contents = "Julia dynamic power-system simulation, component models, initialization, events, examples, and tests."
+license = "BSD-3-Clause"
+boundary = "Independent phasor-dynamics reference; not detailed EMT or universal model parity."
+
+[[repository]]
+id = "Sienna-Platform/PowerSystems.jl"
+url = "https://github.com/Sienna-Platform/PowerSystems.jl"
+path = ".aimora/cache/references/packages/Sienna-Platform/PowerSystems.jl"
+revision = "3101da73c30d77f5ad9ecc95a74291d07abe350d"
+routes = ["system data model", "network assets", "serialization", "interoperability"]
+contents = "Julia power-system data structures, parsing, validation, time series, and component models."
+license = "BSD-3-Clause"
+boundary = "Architecture and adapter reference; AIMORA retains its canonical physical model."
+
+[[repository]]
+id = "Sienna-Platform/PowerSystemsInvestmentsPortfolios.jl"
+url = "https://github.com/Sienna-Platform/PowerSystemsInvestmentsPortfolios.jl"
+path = ".aimora/cache/references/packages/Sienna-Platform/PowerSystemsInvestmentsPortfolios.jl"
+revision = "1ec89285e79be692cb8791880231e816f3c43a7f"
+routes = ["investment portfolios", "expansion planning", "scenario data"]
+contents = "Julia structures and workflows for power-system investment portfolios and planning inputs."
+license = "BSD-3-Clause"
+boundary = "Planning data reference; finance, policy, and uncertainty remain explicitly modeled."
+
+[[repository]]
+id = "SimPEG/simpeg"
+url = "https://github.com/SimPEG/simpeg"
+path = ".aimora/cache/references/packages/SimPEG/simpeg"
+revision = "43b0120dd70a793e319a05b679459364b0461479"
+routes = ["soil resistivity", "grounding input inversion", "electromagnetic fields"]
+contents = "Geophysical electromagnetic, resistivity, potential-field simulation and inversion with documentation and tests."
+license = "MIT"
+boundary = "Soil/field inference reference; not a complete substation-grounding design oracle."
+
+[[repository]]
+id = "ThummeTo/FMI.jl"
+url = "https://github.com/ThummeTo/FMI.jl"
+path = ".aimora/cache/references/packages/ThummeTo/FMI.jl"
+revision = "2b8f50a740f26ac4f0aae090aa9584e2780b7198"
+routes = ["FMI", "co-simulation", "model exchange", "interfaces"]
+contents = "Julia FMI import, execution, model exchange/co-simulation support, examples, and tests."
+license = "MIT"
+boundary = "Interface reference; imported model equations, causality, and licences remain separate."
+
+[[repository]]
+id = "VILLASframework/node"
+url = "https://github.com/VILLASframework/node"
+path = ".aimora/cache/references/packages/VILLASframework/node"
+revision = "6e972d411956663156f3dbd0d659e105b9d7950d"
+routes = ["real-time interfaces", "HIL", "sample transport", "co-simulation"]
+contents = "Real-time multiprotocol gateway, node types, time-series transport, hardware interfaces, tests, and examples."
+license = "Apache-2.0; hardware drivers may have separate terms"
+boundary = "Interface and latency reference; not relay logic or hard-real-time qualification by itself."
+
+[[repository]]
+id = "baggepinnen/LowLevelParticleFilters.jl"
+url = "https://github.com/baggepinnen/LowLevelParticleFilters.jl"
+path = ".aimora/cache/references/packages/baggepinnen/LowLevelParticleFilters.jl"
+revision = "7a63615444d040d9e7b14bb0abf3df5910732218"
+routes = ["dynamic state estimation", "Kalman filters", "particle filters"]
+contents = "Julia state-estimation and filtering algorithms, examples, simulation utilities, and tests."
+license = "MIT"
+boundary = "Generic estimator reference; truth plants and expected outputs must remain independent."
+
+[[repository]]
+id = "calliope-project/calliope"
+url = "https://github.com/calliope-project/calliope"
+path = ".aimora/cache/references/packages/calliope-project/calliope"
+revision = "d153afc6ca43d7bf977a2284818ccbbdca776b58"
+routes = ["energy planning", "sector coupling", "capacity expansion"]
+contents = "Energy-system optimization framework, model schema, scenario configuration, examples, and tests."
+license = "Apache-2.0; datasets and solvers have separate terms"
+boundary = "Planning reference; not power-system equipment or operational-certification authority."
+
+[[repository]]
+id = "cuihantao/PSAT"
+url = "https://github.com/cuihantao/PSAT"
+path = ".aimora/cache/references/packages/cuihantao/PSAT"
+revision = "2ba48c036f268dff4c6eb6b98b1999c68099d736"
+routes = ["historical power flow", "continuation", "transient stability", "small signal"]
+contents = "Archived MATLAB Power System Analysis Toolbox source, models, routines, and examples."
+license = "GPL; exact archive provenance requires review"
+boundary = "External historical oracle only; not sole modern scientific authority."
+
+[[repository]]
+id = "dparrini/python-comtrade"
+url = "https://github.com/dparrini/python-comtrade"
+path = ".aimora/cache/references/packages/dparrini/python-comtrade"
+revision = "fd8a60fba591f8aebcd849ed6b1585247bdfd95d"
+routes = ["COMTRADE", "waveform ingestion", "protection records"]
+contents = "Python COMTRADE configuration/data parser, examples, and tests."
+license = "MIT; record files have separate rights"
+boundary = "Parser reference; not calibration, channel identity, timing, or event truth."
+
+[[repository]]
+id = "dss-extensions/OpenDSSDirect.jl"
+url = "https://github.com/dss-extensions/OpenDSSDirect.jl"
+path = ".aimora/cache/references/packages/dss-extensions/OpenDSSDirect.jl"
+revision = "d5fdedb5310be9f94321711702ae6ce84acd616e"
+routes = ["unbalanced distribution", "QSTS", "faults", "harmonics"]
+contents = "Julia interface to DSS-Extensions, API wrappers, examples, and tests."
+license = "MIT"
+boundary = "Shares the dss_capi engine and counts as the same executable reference."
+
+[[repository]]
+id = "dss-extensions/dss_capi"
+url = "https://github.com/dss-extensions/dss_capi"
+path = ".aimora/cache/references/packages/dss-extensions/dss_capi"
+revision = "f5728aec36becd20c19ad2dfc98fa8cf181f8835"
+routes = ["OpenDSS behavior", "unbalanced distribution", "QSTS", "faults and harmonics"]
+contents = "DSS engine library, C API, distribution models, controls, tests, and examples."
+license = "BSD-3-Clause"
+boundary = "OpenDSS-lineage oracle; not phasor DAE, detailed EMT, or universal standard proof."
+
+[[repository]]
+id = "dynawo/dynawo"
+url = "https://github.com/dynawo/dynawo"
+path = ".aimora/cache/references/packages/dynawo/dynawo"
+revision = "0443c551b7bb0afacbbd8edf2a6d4a35d14c8992"
+routes = ["phasor DAE", "initialization", "machines", "HVDC and IBR dynamics"]
+contents = "Modelica/C++ power-system dynamic simulation, numerical services, models, examples, and tests."
+license = "MPL-2.0; model-specific terms require review"
+boundary = "External dynamic reference; not universal model parity or detailed EMT."
+
+[[repository]]
+id = "e2nIEE/pandapower"
+url = "https://github.com/e2nIEE/pandapower"
+path = ".aimora/cache/references/packages/e2nIEE/pandapower"
+revision = "4f139fa6215d7acc9004f003d41d9eb2f877ea5d"
+routes = ["power flow", "IEC short circuit", "state estimation", "OPF and protection"]
+contents = "Python power-system analysis, networks, controllers, time series, fault studies, protection examples, and tests."
+license = "BSD-3-Clause; standard and network data terms vary"
+boundary = "Independent bounded reference; defaults never substitute for exact standards."
+
+[[repository]]
+id = "e2nIEE/simbench"
+url = "https://github.com/e2nIEE/simbench"
+path = ".aimora/cache/references/packages/e2nIEE/simbench"
+revision = "c426a1a3fecbe986a868edc2beed56349c37baf7"
+routes = ["distribution benchmarks", "time series", "planning cases"]
+contents = "Multi-voltage benchmark networks, profiles, data access, and conversion tooling."
+license = "Code and database use separate ODbL/DbCL-style terms"
+boundary = "Attributed benchmark source; not equation authority or unrestricted data redistribution."
+
+[[repository]]
+id = "epri-dev/OpenETran"
+url = "https://github.com/epri-dev/OpenETran"
+path = ".aimora/cache/references/packages/epri-dev/OpenETran"
+revision = "63a70aae87464cd13c883bd9d2c14398d4da15eb"
+routes = ["insulation coordination", "lightning", "surge arresters", "nonlinear grounds"]
+contents = "EPRI transient simulator source, lines, insulators, arresters, lightning strokes, nonlinear grounds, critical-flashover iteration, documentation, and tests."
+license = "GPL-3.0"
+boundary = "External historical oracle; old scope excludes complete switching, TRV, and modern EMT qualification."
+
+[[repository]]
+id = "frdmendoza/cbl_CIGRE_TB880"
+url = "https://github.com/frdmendoza/cbl_CIGRE_TB880"
+path = ".aimora/cache/references/packages/frdmendoza/cbl_CIGRE_TB880"
+revision = "a9caa75ff78eb5d392b56b1404d76aab5829eaaa"
+routes = ["cable thermal", "IEC 60287", "CIGRE TB 880"]
+contents = "Jupyter notebooks reproducing selected CIGRE TB 880 cable-rating examples and IEC 60287 calculations."
+license = "GPL-2.0; CIGRE and IEC publications remain protected"
+boundary = "External verification reference; selected examples do not cover all cable installations or transient ratings."
+
+[[repository]]
+id = "frederikgeth/PowerModelsReliability.jl"
+url = "https://github.com/frederikgeth/PowerModelsReliability.jl"
+path = ".aimora/cache/references/packages/frederikgeth/PowerModelsReliability.jl"
+revision = "a3b53c5f93134e159cd1e1beac39b2e5a4a0c7ba"
+routes = ["network reliability", "adequacy", "contingencies"]
+contents = "Julia/PowerModels reliability formulations, data structures, examples, and tests."
+license = "BSD-3-Clause"
+boundary = "Bounded reliability reference; not restoration, asset degradation, or resilience by itself."
+
+[[repository]]
+id = "gridlab-d/gridlab-d"
+url = "https://github.com/gridlab-d/gridlab-d"
+path = ".aimora/cache/references/packages/gridlab-d/gridlab-d"
+revision = "e1841e1eebced819e45209f4a899763ce337b177"
+routes = ["distribution time series", "end use", "DER", "outages and markets"]
+contents = "Distribution simulation engine, modules, controls, end-use models, examples, and tests."
+license = "Custom GridLAB-D terms require exact-version review"
+boundary = "External executable reference until licence and model-specific terms are approved."
+
+[[repository]]
+id = "lanl-ansi/PowerModels.jl"
+url = "https://github.com/lanl-ansi/PowerModels.jl"
+path = ".aimora/cache/references/packages/lanl-ansi/PowerModels.jl"
+revision = "dd456754f952269147e868bb905d36d8402bb8d3"
+routes = ["power flow", "OPF", "network optimization"]
+contents = "Julia/JuMP transmission-network formulations, parsers, cases, examples, and tests."
+license = "LANL BSD-style; inspect exact files"
+boundary = "Independent formulation reference; no shared production/evidence assembly."
+
+[[repository]]
+id = "lanl-ansi/PowerModelsDistribution.jl"
+url = "https://github.com/lanl-ansi/PowerModelsDistribution.jl"
+path = ".aimora/cache/references/packages/lanl-ansi/PowerModelsDistribution.jl"
+revision = "87dc18b00964d7fb5de8f48da40043968f2667b0"
+routes = ["unbalanced distribution", "optimization", "hosting capacity"]
+contents = "Multi-conductor distribution formulations, engineering/math data models, parsers, examples, and tests."
+license = "LANL BSD-style; inspect exact files"
+boundary = "Independent formulation reference; not time-domain apparatus or protection truth."
+
+[[repository]]
+id = "lanl-ansi/PowerModelsONM.jl"
+url = "https://github.com/lanl-ansi/PowerModelsONM.jl"
+path = ".aimora/cache/references/packages/lanl-ansi/PowerModelsONM.jl"
+revision = "bbde2fd915d5c7a114035e60a46d85e9ad90d2dc"
+routes = ["microgrid operation", "network reconfiguration", "resilience"]
+contents = "Optimization of networked microgrids, switching, dispatch, scenarios, examples, and tests."
+license = "LANL BSD-style; inspect exact files"
+boundary = "Operational optimization reference; not dynamic transfer or protection qualification."
+
+[[repository]]
+id = "lanl-ansi/PowerModelsProtection.jl"
+url = "https://github.com/lanl-ansi/PowerModelsProtection.jl"
+path = ".aimora/cache/references/packages/lanl-ansi/PowerModelsProtection.jl"
+revision = "c4ef609e17daf713701def16958562be3a092aa2"
+routes = ["fault studies", "protection data", "CT and relay duties"]
+contents = "Distribution protection/fault formulations, engineering data models for relays and CTs, examples, and tests."
+license = "LANL BSD-style; inspect exact files"
+boundary = "Network-duty reference; not complete sampled relay, instrument-transformer, or breaker behavior."
+
+[[repository]]
+id = "lanl-ansi/PowerModelsRestoration.jl"
+url = "https://github.com/lanl-ansi/PowerModelsRestoration.jl"
+path = ".aimora/cache/references/packages/lanl-ansi/PowerModelsRestoration.jl"
+revision = "90e899c0fc1d01e84e1cad7abe1f31c5e0e7ea17"
+routes = ["restoration", "reconfiguration", "resilience"]
+contents = "Distribution restoration optimization formulations, cases, examples, and tests."
+license = "LANL BSD-style; inspect exact files"
+boundary = "Optimization reference; crew, protection, timing, and operational safety remain separate."
+
+[[repository]]
+id = "lanl-ansi/PowerModelsSecurityConstrained.jl"
+url = "https://github.com/lanl-ansi/PowerModelsSecurityConstrained.jl"
+path = ".aimora/cache/references/packages/lanl-ansi/PowerModelsSecurityConstrained.jl"
+revision = "5239af613f6bee3bcb0e86a78449115711c8cb87"
+routes = ["security-constrained OPF", "contingencies", "corrective actions"]
+contents = "Security-constrained network optimization formulations, data, cases, examples, and tests."
+license = "LANL BSD-style; inspect exact files"
+boundary = "Static security reference; not dynamic, protection, or cascading-system qualification."
+
+[[repository]]
+id = "manuvarkey/Earthing"
+url = "https://github.com/manuvarkey/Earthing"
+path = ".aimora/cache/references/packages/manuvarkey/Earthing"
+revision = "fe24fe0213d80c3cccb9df374e5a8ba22e9ca043"
+routes = ["substation grounding", "IEEE 80", "step and touch potential"]
+contents = "IEEE 80/ENA formula calculations, boundary-discretization grounding-network solver, potential plots, notebooks, and benchmarks."
+license = "GPL-3.0"
+boundary = "External bounded grounding reference; not sole authority for multilayer soil, current split, ionization, or field safety."
+
+[[repository]]
+id = "mbheinen/bpa-ipf-tsp"
+url = "https://github.com/mbheinen/bpa-ipf-tsp"
+path = ".aimora/cache/references/packages/mbheinen/bpa-ipf-tsp"
+revision = "37d916a9a3427721f40fd2a9ef8c74a6c3950456"
+routes = ["BPA power flow", "BPA transient stability", "historical regression"]
+contents = "Historical BPA IPF/TSP source fork, build material, programs, and associated legacy behavior."
+license = "Fork reports MIT/public-domain origin; exact provenance requires intake audit"
+boundary = "Compiled historical oracle only for the admitted BPA surface."
+
+[[repository]]
+id = "modelica/ModelicaStandardLibrary"
+url = "https://github.com/modelica/ModelicaStandardLibrary"
+path = ".aimora/cache/references/packages/modelica/ModelicaStandardLibrary"
+revision = "b756f9deed7d7f348cc0bb702b4e5b8eb83affed"
+routes = ["multiphysics", "machines", "thermal and fluid systems", "controls"]
+contents = "Standard Modelica component library, electrical/mechanical/thermal/fluid models, examples, and tests."
+license = "BSD-3-Clause"
+boundary = "Component/interface reference; not equipment-specific engineering proof."
+
+[[repository]]
+id = "mz-automation/libiec61850"
+url = "https://github.com/mz-automation/libiec61850"
+path = ".aimora/cache/references/packages/mz-automation/libiec61850"
+revision = "d75cdd0483837f1541346ee66259b003ed216065"
+routes = ["detailed protection interfaces", "IEC 61850", "GOOSE", "sampled values"]
+contents = "IEC 61850 client/server, MMS, GOOSE, sampled-value, SCL/model tooling, examples, and tests."
+license = "GPL-3.0 with commercial licensing options"
+boundary = "External protocol oracle; not protection-algorithm, timing, interoperability-certification, or relay-hardware proof."
+
+[[repository]]
+id = "power-grid-lib/pglib-opf"
+url = "https://github.com/power-grid-lib/pglib-opf"
+path = ".aimora/cache/references/packages/power-grid-lib/pglib-opf"
+revision = "dc6be4b2f85ca0e776952ec22cbd4c22396ea5a3"
+routes = ["OPF benchmarks", "transmission cases", "solver comparison"]
+contents = "Curated AC optimal-power-flow benchmark cases, metadata, and challenge cases."
+license = "CC-BY-4.0 data"
+boundary = "Attributed benchmark data; not equation authority."
+
+[[repository]]
+id = "powsybl/powsybl-core"
+url = "https://github.com/powsybl/powsybl-core"
+path = ".aimora/cache/references/packages/powsybl/powsybl-core"
+revision = "7a1ae581a9f8409c366261bdbc60cb64691dc43a"
+routes = ["network model", "security analysis", "short circuit", "CIM/CGMES"]
+contents = "Java power-system platform core, network model, import/export, analysis APIs, examples, and tests."
+license = "MPL-2.0"
+boundary = "External platform reference unless an explicit integration licence decision is approved."
+
+[[repository]]
+id = "powsybl/powsybl-open-loadflow"
+url = "https://github.com/powsybl/powsybl-open-loadflow"
+path = ".aimora/cache/references/packages/powsybl/powsybl-open-loadflow"
+revision = "fe0bd3dfb1fbb38bad58f3deab808e038da92a80"
+routes = ["transmission load flow", "security analysis", "network controls"]
+contents = "PowSyBl open load-flow implementation, controls, equations, examples, and tests."
+license = "MPL-2.0"
+boundary = "Independent executable reference only when AIMORA does not reuse its algorithms or data path."
+
+[[repository]]
+id = "pvlib/pvlib-python"
+url = "https://github.com/pvlib/pvlib-python"
+path = ".aimora/cache/references/packages/pvlib/pvlib-python"
+revision = "e6267a58d54964ab257321d0944ba179dc06a9bb"
+routes = ["PV source", "PV yield", "solar resource", "performance"]
+contents = "PV performance, solar-position, irradiance, temperature, inverter, and system modeling with examples and tests."
+license = "BSD-3-Clause; weather and manufacturer data terms vary"
+boundary = "PV source/yield reference; not detailed switching, protection, or certification."
+
+[[repository]]
+id = "pybamm-team/PyBaMM"
+url = "https://github.com/pybamm-team/PyBaMM"
+path = ".aimora/cache/references/packages/pybamm-team/PyBaMM"
+revision = "1e9fbcea25b78a0a633face62b077dae1f92bf62"
+routes = ["battery electrochemistry", "thermal", "degradation", "BESS source"]
+contents = "Battery electrochemical/equivalent-circuit models, solvers, parameter sets, experiments, examples, and tests."
+license = "BSD-3-Clause; parameter-set provenance varies"
+boundary = "Cell/model reference; not complete pack, BMS, inverter, protection, or safety certification."
+
+[[repository]]
+id = "renato-monaro/OpenRelay"
+url = "https://github.com/renato-monaro/OpenRelay"
+path = ".aimora/cache/references/packages/renato-monaro/OpenRelay"
+revision = "524911f3195fb1da7dc5e2fc71e32f0a76c522be"
+routes = ["detailed protection", "phasor extraction", "frequency", "relay logic"]
+contents = "Historical open relay framework with acquisition, IEC 61850 input, phasor/frequency/THD measures, logic, oscillography, and protection modules."
+license = "GPL-3.0"
+boundary = "External historical algorithm reference; inactive and insufficient as sole relay qualification evidence."
+
+[[repository]]
+id = "sogno-platform/dpsim"
+url = "https://github.com/sogno-platform/dpsim"
+path = ".aimora/cache/references/packages/sogno-platform/dpsim"
+revision = "17fc3dd98b5e3f0c2e9594ef1efeade7b393ee02"
+routes = ["real-time simulation", "EMT", "dynamic phasors", "protection/HIL stimuli"]
+contents = "Real-time-capable C++ power-flow, dynamic-phasor and EMT simulator, components, interfaces, examples, docs, and tests."
+license = "MPL-2.0"
+boundary = "External waveform/real-time reference; not a complete relay suite or hard-real-time proof for AIMORA."
+
+[[repository]]
+id = "switch-model/switch"
+url = "https://github.com/switch-model/switch"
+path = ".aimora/cache/references/packages/switch-model/switch"
+revision = "239d62cbe9baeec3bb05e56487241bdea60740af"
+routes = ["capacity expansion", "unit commitment", "planning", "policy"]
+contents = "Power-system planning optimization framework, modules, scenario inputs, examples, and tests."
+license = "Apache-2.0; datasets and solvers have separate terms"
+boundary = "Planning reference; not device physics or operational certification."

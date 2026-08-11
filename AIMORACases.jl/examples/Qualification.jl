@@ -97,6 +97,7 @@ function _nul_paths(command::Cmd)
 end
 
 function _git_content_signature(repository::AbstractString)
+    ispath(joinpath(repository, ".git")) || return "unavailable"
     paths = sort!(_nul_paths(`git -C $repository ls-files --cached --others --exclude-standard -z`))
     modes = Dict{String,String}()
     for record in _nul_paths(`git -C $repository ls-files --stage -z`)
@@ -150,7 +151,7 @@ end
 function _example_signature_context(root::AbstractString)
     workspace = normpath(joinpath(root, ".."))
     engine = abspath(get(ENV, "AIMORA_ENGINE_PATH", joinpath(workspace, "AIMORA.jl")))
-    solver = joinpath(engine, "src", "solvers")
+    solver = abspath(get(ENV, "AIMORA_SOLVER_PATH", joinpath(dirname(engine), "AIMORASolvers.jl")))
     shared_paths = [
         "Project.toml",
         "Manifest.toml",

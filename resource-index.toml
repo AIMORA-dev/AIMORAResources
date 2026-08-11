@@ -34,6 +34,16 @@ uuid = "379ef2ed-aa07-4523-9a5b-6fc193417d96"
 version = "0.1.0"
 
 [[resource]]
+id = "external-reference-sources"
+path = "references/packages.toml"
+kind = "local-cache-manifest"
+
+[[resource]]
+id = "review-library-policy"
+path = "references/review_library"
+kind = "rights-and-provenance-policy"
+
+[[resource]]
 id = "report-templates"
 path = "report-templates"
 kind = "content-library"

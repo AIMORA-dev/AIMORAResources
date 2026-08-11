@@ -56,6 +56,8 @@ end
         "catalogs",
         "reference-models",
         "bpa-emtp-reference",
+        "external-reference-sources",
+        "review-library-policy",
         "report-templates",
         "documentation",
         "teaching",
@@ -71,7 +73,7 @@ end
         RESOURCES_ROOT,
         ["references/bpa_emtp/src/BPAEMTPReference.jl"],
     ) == ["bpa-emtp-reference"]
-    @test length(affected_resources(RESOURCES_ROOT, ["licensing.toml"])) == 9
+    @test length(affected_resources(RESOURCES_ROOT, ["licensing.toml"])) == 11
 
     for (directory, expected) in RESOURCE_PROJECTS
         project = TOML.parsefile(joinpath(
@@ -106,6 +108,8 @@ end
         "AIMORACatalogs.jl",
         "AIMORAReferenceModels.jl",
         "references/bpa_emtp",
+        "references/packages.toml",
+        "references/review_library",
         "report-templates",
         "docs",
     ))

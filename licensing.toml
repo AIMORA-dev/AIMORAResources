@@ -30,6 +30,16 @@ license_file = "references/bpa_emtp/LICENSE"
 notice = "references/bpa_emtp/LEGACY-NOTICE.md"
 
 [[scope]]
+path = "references/packages.toml"
+license = "Metadata only; each named external source retains its own licence and redistribution boundary"
+license_file = "LICENSES/PolyForm-Noncommercial-1.0.0.md"
+
+[[scope]]
+path = "references/review_library"
+license = "Metadata and policy only; local reviewed material is not redistributed"
+license_file = "LICENSES/PolyForm-Noncommercial-1.0.0.md"
+
+[[scope]]
 path = "report-templates"
 license = "PolyForm-Noncommercial-1.0.0"
 license_file = "report-templates/LICENSE"
