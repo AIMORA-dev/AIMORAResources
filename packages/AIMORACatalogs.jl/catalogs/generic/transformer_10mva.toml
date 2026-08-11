@@ -1,0 +1,34 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_transformer_10mva"
+equipment_class = "two_winding_transformer"
+manufacturer = ""
+model = "Generic 10 MVA 33/11 kV transformer"
+provenance = "Synthetic engineering example created for the AIMORA public catalog"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+rated_power_mva = 10.0
+high_voltage_kv = 33.0
+low_voltage_kv = 11.0
+frequency_hz = 50.0
+vector_group = "Dyn11"
+cooling = "ONAN"
+
+[study.power_flow]
+resistance_pu = 0.008
+reactance_pu = 0.08
+no_load_loss_kw = 12.0
+tap_min_pu = 0.90
+tap_max_pu = 1.10
+tap_step_pu = 0.0125
+
+[study.short_circuit]
+positive_sequence_impedance_pu = 0.0804
+zero_sequence_impedance_pu = 0.075
+neutral_grounding = "solid"
+
+[study.emt]
+leakage_inductance_high_h = 0.084
+leakage_inductance_low_h = 0.0093
+magnetizing_current_pu = 0.01
+saturation_model = "piecewise_linear"

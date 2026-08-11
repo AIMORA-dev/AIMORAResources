@@ -1,164 +1,177 @@
+using SHA
 using Test
-using AIMORACases
 using TOML
 
-include(joinpath(AIMORACases.package_root(), "examples", "Qualification.jl"))
-using .AIMORAExampleQualification
+const RESOURCES_ROOT = normpath(joinpath(@__DIR__, ".."))
+include(joinpath(RESOURCES_ROOT, "tools", "changed_resources.jl"))
+using .ChangedResources
 
-@testset "case catalog" begin
-    cases = AIMORACases.available_cases()
-    catalog = TOML.parsefile(
-        joinpath(AIMORACases.package_root(), "examples", "catalog.toml"),
-    )
-    @test catalog["schema"] == "aimora-examples-v2"
-    @test length(cases) == length(catalog["case"])
-    @test length(unique(case.id for case in cases)) == length(cases)
-    @test all(case -> isfile(AIMORACases.case_path(case.id)), cases)
-    @test all(case -> !isempty(strip(case.description)), cases)
-    @test all(
-        row -> isfile(joinpath(AIMORACases.package_root(), row["entrypoint"])),
-        catalog["case"],
-    )
-    @test AIMORACases.case_descriptor(:emt_rlc_energization).study == :emt
-    @test_throws KeyError AIMORACases.case_descriptor(:missing)
+const RESOURCE_PROJECTS = Dict(
+    "AIMORACases.jl" => (
+        name = "AIMORACases",
+        uuid = "c2d99356-2241-4b88-ae11-80a94b927354",
+        version = "0.1.0",
+    ),
+    "AIMORACatalogs.jl" => (
+        name = "AIMORACatalogs",
+        uuid = "2b6c9f6e-dc5c-4462-b175-cd3ce62f4f80",
+        version = "0.1.0",
+    ),
+    "AIMORAReferenceModels.jl" => (
+        name = "AIMORAReferenceModels",
+        uuid = "6a268073-c1b2-474c-bd10-49e12d1609a5",
+        version = "0.1.0",
+    ),
+)
+
+function tracked_paths()
+    output = read(`git -C $RESOURCES_ROOT ls-files -z`, String)
+    return filter(!isempty, split(output, '\0'))
 end
 
-@testset "impact-selected example qualification" begin
-    root = AIMORACases.package_root()
-    targets = example_targets(root)
-    selected = select_changed_targets(
-        targets,
-        [
-            "examples/emt/rlc_energization/run.jl",
-            "examples/line_constants/double_circuit/outputs/sequence_impedance.csv",
-        ],
+@testset "AIMORA Resources repository contract" begin
+    for relative_path in (
+        "licensing.toml",
+        "resource-index.toml",
+        "artifact-policy.toml",
+        "provenance/history-map.toml",
+        "packages/AIMORACases.jl",
+        "packages/AIMORACatalogs.jl",
+        "packages/AIMORAReferenceModels.jl",
+        "references/bpa_emtp",
+        "report-templates",
+        "docs",
+        "teaching",
+        "examples",
+        "provenance",
     )
-    @test getfield.(selected, :id) == ["emt_rlc_energization", "line_constants_double_circuit"]
-    @test only(select_targets(targets, ["transformer_parameters_two_winding_short_circuit"])).directory ==
-          "examples/transformer_parameters/two_winding_short_circuit"
-    @test isempty(select_changed_targets(targets, ["examples/support/ExampleSupport.jl"]))
-    @test_throws ErrorException select_targets(targets, ["missing_example"])
-    @test_throws ErrorException run_examples(root, selected; plan_only = true, worker_count = 6)
+        @test ispath(joinpath(RESOURCES_ROOT, relative_path))
+    end
+
+    resource_index = TOML.parsefile(joinpath(RESOURCES_ROOT, "resource-index.toml"))
+    @test resource_index["schema"] == "aimora-resource-index-v1"
+    resources = resource_index["resource"]
+    @test Set(resource["id"] for resource in resources) == Set((
+        "cases",
+        "catalogs",
+        "reference-models",
+        "bpa-emtp-reference",
+        "report-templates",
+        "documentation",
+        "teaching",
+        "examples",
+        "provenance",
+    ))
+    @test all(ispath(joinpath(RESOURCES_ROOT, resource["path"])) for resource in resources)
+    @test affected_resources(
+        RESOURCES_ROOT,
+        ["packages/AIMORACases.jl/examples/README.md"],
+    ) == ["cases"]
+    @test affected_resources(
+        RESOURCES_ROOT,
+        ["references/bpa_emtp/src/BPAEMTPReference.jl"],
+    ) == ["bpa-emtp-reference"]
+    @test length(affected_resources(RESOURCES_ROOT, ["licensing.toml"])) == 9
+
+    for (directory, expected) in RESOURCE_PROJECTS
+        project = TOML.parsefile(joinpath(
+            RESOURCES_ROOT,
+            "packages",
+            directory,
+            "Project.toml",
+        ))
+        @test project["name"] == expected.name
+        @test project["uuid"] == expected.uuid
+        @test project["version"] == expected.version
+        @test project["license"] == "PolyForm-Noncommercial-1.0.0"
+    end
+
+    bpa_project = TOML.parsefile(joinpath(
+        RESOURCES_ROOT,
+        "references",
+        "bpa_emtp",
+        "Project.toml",
+    ))
+    @test bpa_project["uuid"] == "379ef2ed-aa07-4523-9a5b-6fc193417d96"
+    @test bpa_project["version"] == "0.1.0"
 end
 
-@testset "release receipts and artifact identity" begin
-    mktempdir() do directory
-        target = ExampleTarget("receipt_test", "example", "example/run.jl")
-        signature = "abc123"
-        path = AIMORAExampleQualification._write_receipt(
-            directory,
-            target,
-            signature,
-            1.0,
-        )
-        @test receipt_is_valid(path, signature)
-        @test receipt_is_valid(path, signature, target.id)
-        @test !receipt_is_valid(path, signature, "different_example")
-        write(path, replace(read(path, String), "passed" => "failed"))
-        @test !receipt_is_valid(path, signature)
+@testset "AIMORA Resources licence and provenance contract" begin
+    licensing = TOML.parsefile(joinpath(RESOURCES_ROOT, "licensing.toml"))
+    @test licensing["schema"] == "aimora-resource-licensing-v1"
+    @test licensing["root_license_does_not_override_path_specific_terms"]
+    scopes = licensing["scope"]
+    @test Set(scope["path"] for scope in scopes) == Set((
+        ".",
+        "packages/AIMORACases.jl",
+        "packages/AIMORACatalogs.jl",
+        "packages/AIMORAReferenceModels.jl",
+        "references/bpa_emtp",
+        "report-templates",
+        "docs",
+    ))
+    @test all(isfile(joinpath(RESOURCES_ROOT, scope["license_file"])) for scope in scopes)
+    bpa_scope = only(filter(scope -> scope["path"] == "references/bpa_emtp", scopes))
+    @test isfile(joinpath(RESOURCES_ROOT, bpa_scope["notice"]))
 
-        committed = joinpath(directory, target.directory, "outputs")
-        generated = joinpath(directory, "generated")
-        mkpath(committed)
-        mkpath(generated)
-        write(joinpath(committed, "result.csv"), "x\n1\n")
-        write(joinpath(generated, "result.csv"), "x\n1\n")
-        @test AIMORAExampleQualification._assert_exact_artifacts(
-            directory,
-            target,
-            generated,
-        )
-        write(joinpath(generated, "result.csv"), "x\n2\n")
-        @test_throws ErrorException AIMORAExampleQualification._assert_exact_artifacts(
-            directory,
-            target,
-            generated,
-        )
+    root_license_hash = bytes2hex(open(sha256, joinpath(
+        RESOURCES_ROOT,
+        "LICENSES",
+        "PolyForm-Noncommercial-1.0.0.md",
+    )))
+    for relative_path in (
+        "packages/AIMORACases.jl/LICENSE",
+        "packages/AIMORACatalogs.jl/LICENSE",
+        "packages/AIMORAReferenceModels.jl/LICENSE",
+        "references/bpa_emtp/LICENSE",
+        "report-templates/LICENSE",
+        "docs/LICENSE",
+    )
+        @test bytes2hex(open(sha256, joinpath(RESOURCES_ROOT, relative_path))) ==
+              root_license_hash
+    end
 
-        manifest_target = ExampleTarget(
-            "emt_parsed_deck_trace",
-            "manifest_example",
-            "manifest_example/run.jl",
-        )
-        manifest_outputs = joinpath(directory, manifest_target.directory, "outputs")
-        manifest_generated = joinpath(directory, "manifest_generated")
-        mkpath(manifest_outputs)
-        mkpath(manifest_generated)
-        write(
-            joinpath(manifest_outputs, "report_manifest.json"),
-            "{\"path\":\"outputs/report.csv\"}\n",
-        )
-        write(
-            joinpath(manifest_generated, "report_manifest.json"),
-            "{\"path\":\"$(abspath(manifest_generated))/report.csv\"}\n",
-        )
-        @test AIMORAExampleQualification._assert_exact_artifacts(
-            directory,
-            manifest_target,
-            manifest_generated,
-        )
-
-        realtime_target = ExampleTarget(
-            "emt_realtime_cpu",
-            "realtime_example",
-            "realtime_example/run.jl",
-        )
-        realtime_outputs = joinpath(directory, realtime_target.directory, "outputs")
-        realtime_generated = joinpath(directory, "realtime_generated")
-        mkpath(realtime_outputs)
-        mkpath(realtime_generated)
-        stable_realtime = """{
-  \"engine\": \"CPU\",
-  \"steps\": 10,
-  \"dt_s\": 0.000020000,
-  \"duration_s\": 0.000200000,
-  \"mean_step_s\": MEAN_STEP,
-  \"max_step_s\": MAX_STEP,
-  \"overruns\": 0,
-  \"realtime\": false
-}
-"""
-        write(
-            joinpath(realtime_outputs, "realtime_summary.json"),
-            replace(
-                stable_realtime,
-                "MEAN_STEP" => "0.000001000",
-                "MAX_STEP" => "0.000003000",
-            ),
-        )
-        write(
-            joinpath(realtime_generated, "realtime_summary.json"),
-            replace(
-                stable_realtime,
-                "MEAN_STEP" => "0.000002000",
-                "MAX_STEP" => "0.000004000",
-            ),
-        )
-        @test AIMORAExampleQualification._assert_exact_artifacts(
-            directory,
-            realtime_target,
-            realtime_generated,
-        )
+    history = TOML.parsefile(joinpath(
+        RESOURCES_ROOT,
+        "provenance",
+        "history-map.toml",
+    ))
+    @test history["schema"] == "aimora-resources-history-map-v1"
+    @test length(history["source"]) == 6
+    if success(`git -C $RESOURCES_ROOT rev-parse --verify HEAD`)
+        for source in history["source"]
+            @test success(`git -C $RESOURCES_ROOT merge-base --is-ancestor $(source["commit"]) HEAD`)
+            @test isdir(joinpath(RESOURCES_ROOT, source["target"]))
+        end
     end
 end
 
-@testset "source coverage contract" begin
-    root = AIMORACases.package_root()
-    catalog = TOML.parsefile(joinpath(root, "examples", "catalog.toml"))
-    coverage = TOML.parsefile(joinpath(root, "examples", "source_coverage.toml"))
-    rows = coverage["source"]
-    ids = Set(String(row["id"]) for row in rows)
-    example_ids = Set(String(row["id"]) for row in catalog["case"])
+@testset "AIMORA Resources artifact and privacy contract" begin
+    policy = TOML.parsefile(joinpath(RESOURCES_ROOT, "artifact-policy.toml"))
+    @test policy["schema"] == "aimora-resource-artifact-policy-v1"
+    @test policy["classification_precedes_removal"]
+    @test policy["baseline"]["tracked_csv"] == 130
+    @test policy["baseline"]["tracked_svg"] == 108
+    @test policy["baseline"]["tracked_pdf"] == 0
+    @test Set(classification["state"] for classification in policy["classification"]) ==
+          Set(("retained", "external"))
 
-    @test coverage["schema"] == "aimora-source-coverage-v1"
-    @test coverage["source_count"] == length(rows)
-    @test length(ids) == length(rows)
-    @test all(
-        row -> all(in(example_ids), String.(row["example_ids"])),
-        rows,
-    )
-    @test all(
-        row -> all(in(ids), String.(get(row, "source_ids", String[]))),
-        catalog["case"],
-    )
+    paths = tracked_paths()
+    csv_paths = filter(path -> endswith(lowercase(path), ".csv"), paths)
+    svg_paths = filter(path -> endswith(lowercase(path), ".svg"), paths)
+    pdf_paths = filter(path -> endswith(lowercase(path), ".pdf"), paths)
+    @test length(csv_paths) == 130
+    @test length(svg_paths) == 108
+    @test isempty(pdf_paths)
+    @test all(startswith(path, "packages/AIMORACases.jl/examples/") for path in csv_paths)
+    @test all(startswith(path, "packages/AIMORACases.jl/examples/") for path in svg_paths)
+    @test !isfile(joinpath(RESOURCES_ROOT, ".gitmodules"))
+
+    public_metadata = join((
+        read(joinpath(RESOURCES_ROOT, "README.md"), String),
+        read(joinpath(RESOURCES_ROOT, "resource-index.toml"), String),
+        read(joinpath(RESOURCES_ROOT, "licensing.toml"), String),
+    ), '\n')
+    @test !occursin("AIMORASolvers", public_metadata)
+    @test !occursin("private repository", lowercase(public_metadata))
 end

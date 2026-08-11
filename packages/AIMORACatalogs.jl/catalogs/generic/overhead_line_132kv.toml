@@ -1,0 +1,27 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_overhead_line_132kv"
+equipment_class = "overhead_line"
+manufacturer = ""
+model = "Generic 132 kV overhead line"
+provenance = "Synthetic engineering example created for the AIMORA public catalog"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+rated_voltage_kv = 132.0
+frequency_hz = 50.0
+phase_count = 3
+thermal_rating_a = 600.0
+
+[study.power_flow]
+positive_sequence_resistance_ohm_per_km = 0.08
+positive_sequence_reactance_ohm_per_km = 0.40
+positive_sequence_susceptance_us_per_km = 3.2
+
+[study.short_circuit]
+zero_sequence_resistance_ohm_per_km = 0.32
+zero_sequence_reactance_ohm_per_km = 1.20
+
+[study.emt]
+representation = "geometry_required"
+earth_resistivity_ohm_m = 100.0
+frequency_dependence = "enabled"

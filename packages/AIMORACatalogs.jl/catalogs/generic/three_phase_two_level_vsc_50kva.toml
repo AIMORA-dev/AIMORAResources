@@ -1,0 +1,48 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_three_phase_two_level_vsc_50kva"
+equipment_class = "three_phase_two_level_voltage_source_converter"
+manufacturer = ""
+model = "Generic 50 kVA switch-detailed two-level VSC"
+provenance = "AIMORA-authored synthetic engineering parameter set for the public switch-detailed VSC case; it contains no measured, manufacturer, certified, or third-party values"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+rated_power_kva = 50.0
+grid_line_line_rms_v = 400.0
+dc_source_voltage_v = 800.0
+frequency_hz = 50.0
+phase_count = 3
+wire_count = 3
+parameter_status = "synthetic_generic_exact_case_input"
+uncertainty_kind = "not_statistical"
+uncertainty_statement = "Values define an exact synthetic test input; they are not estimates of a physical product and carry no measurement uncertainty or certification"
+
+[study.emt]
+representation = "three_phase_two_level_voltage_source_converter"
+fidelity = "SwitchingDetailed"
+control_family = "known-angle synchronous-reference-frame grid-following current PI"
+modulation = "minimum_maximum_zero_sequence_injected_pwm_centered_space_vector_equivalent_line_voltage"
+filter_arrangement = "series_l_filter_plus_grounded_wye_transformer_leakage_referred_to_converter_side"
+filter_resistance_ohm = 0.12
+filter_inductance_h = 0.002
+transformer_leakage_resistance_ohm = 0.03
+transformer_leakage_inductance_h = 0.0003
+grid_source_resistance_ohm = 0.08
+dc_source_resistance_ohm = 0.6
+dc_link_capacitance_f = 0.01
+active_power_reference_w = 20000.0
+reactive_power_reference_var = 0.0
+current_limit_a = 180.0
+carrier_frequency_hz = 10000.0
+control_period_s = 0.0001
+control_delay_s = 0.000002
+timestep_s = 0.000001
+commutation_dead_time_s = 0.000002
+semiconductor_model = "generic_piecewise_linear_igbt_with_ideal_zero_recovery_antiparallel_diode"
+valid_frequency_min_hz = 45.0
+valid_frequency_max_hz = 65.0
+valid_grid_line_line_rms_min_v = 320.0
+valid_grid_line_line_rms_max_v = 440.0
+valid_dc_link_voltage_min_v = 650.0
+valid_dc_link_voltage_max_v = 900.0
+unsupported_phenomena = ["phase_locked_loop_dynamics", "grid_forming_control", "four_wire_zero_sequence_current", "lcl_filter_resonance", "transformer_magnetizing_saturation", "semiconductor_reverse_recovery", "nonlinear_device_capacitance", "switching_energy_maps", "electrothermal_state", "manufacturer_parameter_prediction", "standard_conformance_or_certification"]

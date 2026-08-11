@@ -1,0 +1,45 @@
+schema = "aimora-resource-artifact-policy-v1"
+classification_precedes_removal = true
+
+[baseline]
+cases_commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
+tracked_csv = 130
+tracked_svg = 108
+tracked_pdf = 0
+signature_schema = "frozen-git-tree-rows-sha256-v1"
+signature = "e05b948a178c913989e8c5694e44de81591d1a651b6b1d4a6d98bda49a7df0d8"
+disposition = "retain accepted migration baseline until individual evidence and ledger bindings are classified"
+
+[defaults]
+commit = ["canonical input/project", "reproducible runner", "README", "expected scalar metrics", "tolerances", "output schema", "result hashes", "small immutable independent reference", "selected educational figure", "provenance", "licence metadata"]
+externalize = ["complete raw waveforms", "repeated render variants", "PDF reports", "build logs", "caches", "temporary summaries", "fitting intermediates", "duplicate output formats", "large checkpoints"]
+
+[[classification]]
+id = "accepted-case-csv-baseline"
+glob = "packages/AIMORACases.jl/examples/**/*.csv"
+state = "retained"
+reason = "Accepted public case artifacts are preserved through migration; future changes require case-level evidence classification."
+
+[[classification]]
+id = "accepted-case-svg-baseline"
+glob = "packages/AIMORACases.jl/examples/**/*.svg"
+state = "retained"
+reason = "Accepted public explanatory and waveform figures are preserved through migration; repeated future variants are external by default."
+
+[[classification]]
+id = "generated-build-products"
+glob = "**/build/**"
+state = "external"
+reason = "Compiled references and documentation are reproducible products, not tracked migration inputs."
+
+[[exception]]
+condition = "artifact is itself under qualification"
+action = "retain"
+
+[[exception]]
+condition = "exact byte portability is tested or an accepted ledger record binds the artifact"
+action = "retain"
+
+[[exception]]
+condition = "licence, small independent public oracle, or explicit public reproducibility promise requires repository retention"
+action = "retain"

@@ -1,0 +1,39 @@
+schema = "aimora-resources-history-map-v1"
+method = "one six-parent integration commit; original source commits and SHAs remain unchanged and reachable"
+release_tags_at_migration = 0
+
+[[source]]
+repository = "https://github.com/AIMORA-dev/AIMORACases.jl.git"
+commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
+commit_count = 17
+target = "packages/AIMORACases.jl"
+
+[[source]]
+repository = "https://github.com/AIMORA-dev/AIMORACatalogs.jl.git"
+commit = "07222ae077d04efc618c605a652e972d84232d7c"
+commit_count = 6
+target = "packages/AIMORACatalogs.jl"
+
+[[source]]
+repository = "https://github.com/AIMORA-dev/AIMORAReferenceModels.jl.git"
+commit = "b90e16f0d93c657efe04307d04cc81000c3ef035"
+commit_count = 6
+target = "packages/AIMORAReferenceModels.jl"
+
+[[source]]
+repository = "https://github.com/AIMORA-dev/BPAEMTPReference.jl.git"
+commit = "6f13a4a86e64b45a3d953c3facd4b7d4c1a55ef5"
+commit_count = 8
+target = "references/bpa_emtp"
+
+[[source]]
+repository = "https://github.com/AIMORA-dev/AIMORAReportTemplates.git"
+commit = "0fb4229fa6be8861a36939b047396c4b1a9e1cba"
+commit_count = 4
+target = "report-templates"
+
+[[source]]
+repository = "https://github.com/AIMORA-dev/AIMORADocs.git"
+commit = "ca4b0f9e81d74a7a4f894f4fea900a2d970886b7"
+commit_count = 15
+target = "docs"

@@ -1,0 +1,6 @@
+schema = "aimora-report-template-library-v1"
+library_id = "aimora-report-templates"
+version = "0.1.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+template_ids = []
+external_asset_licence_required = true

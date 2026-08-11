@@ -1,0 +1,473 @@
+"""Small analytical and manufactured public reference-model boundary for independent AIMORA checks."""
+module AIMORAReferenceModels
+
+using LinearAlgebra
+
+export amplitude_invariant_clarke_matrix,
+       synchronous_reference_rotation_matrix,
+       phase_to_synchronous_reference,
+       synchronous_to_phase_reference,
+       two_level_pwm_duties,
+       synchronous_current_control_reference,
+       exponential_conductance_voltage_reference,
+       cubic_mna_residual_jacobian_reference,
+       manufactured_cubic_constraint_case,
+       IndependentHarmonicNetworkResult,
+       trapezoidal_reactive_angular_frequency,
+       independent_series_rl_network_equilibrium,
+       independent_series_rl_recurrence_residuals,
+       independent_lumped_companion_periodic_state,
+       independent_lumped_companion_recurrence_residual,
+       independent_coupled_series_rl_periodic_state,
+       independent_coupled_series_rl_recurrence_residuals,
+       independent_peak_phasor_samples,
+       independent_periodic_voltage_error,
+       independent_operating_point_mapping,
+       series_rl_piecewise_constant_current,
+       series_rl_piecewise_constant_trace
+
+"""Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
+function amplitude_invariant_clarke_matrix()
+    return [
+        2.0 / 3.0 -1.0 / 3.0 -1.0 / 3.0
+        0.0 sqrt(3.0) / 3.0 -sqrt(3.0) / 3.0
+        1.0 / 3.0 1.0 / 3.0 1.0 / 3.0
+    ]
+end
+
+"""Return the orthogonal alpha-beta rotation that maps a stationary vector into direct-quadrature-zero coordinates."""
+function synchronous_reference_rotation_matrix(angle_rad::Real)
+    angle = Float64(angle_rad)
+    isfinite(angle) || throw(ArgumentError("synchronous-reference angle must be finite"))
+    cosine = cos(angle)
+    sine = sin(angle)
+    return [
+        cosine sine 0.0
+        -sine cosine 0.0
+        0.0 0.0 1.0
+    ]
+end
+
+function _finite_three_phase_vector(values, name::AbstractString)
+    length(values) == 3 || throw(DimensionMismatch("$name must contain three phases"))
+    vector = Float64[value for value in values]
+    all(isfinite, vector) || throw(ArgumentError("$name must be finite"))
+    return vector
+end
+
+"""Transform a three-phase vector by independent matrix multiplication into direct-quadrature-zero coordinates."""
+function phase_to_synchronous_reference(phase_values, angle_rad::Real)
+    phase = _finite_three_phase_vector(phase_values, "phase vector")
+    stationary = amplitude_invariant_clarke_matrix() * phase
+    return synchronous_reference_rotation_matrix(angle_rad) * stationary
+end
+
+"""Invert the independent direct-quadrature-zero matrix transform into phase coordinates."""
+function synchronous_to_phase_reference(reference_values, angle_rad::Real)
+    synchronous = _finite_three_phase_vector(
+        reference_values,
+        "synchronous-reference vector",
+    )
+    stationary = transpose(synchronous_reference_rotation_matrix(angle_rad)) * synchronous
+    return amplitude_invariant_clarke_matrix() \ stationary
+end
+
+"""Compute ideal two-level sinusoidal or minimum-maximum zero-sequence-injected PWM duties; the latter is centered-space-vector-equivalent in line voltage within the linear region."""
+function two_level_pwm_duties(
+    phase_voltage_reference_v,
+    dc_link_voltage_v::Real;
+    modulation::Symbol = :zero_sequence_injected,
+    minimum_duty::Real = 0.0,
+    maximum_duty::Real = 1.0,
+)
+    reference = _finite_three_phase_vector(
+        phase_voltage_reference_v,
+        "phase-voltage reference",
+    )
+    dc_voltage = Float64(dc_link_voltage_v)
+    isfinite(dc_voltage) && dc_voltage > 0.0 || throw(ArgumentError(
+        "DC-link voltage must be finite and positive",
+    ))
+    lower = Float64(minimum_duty)
+    upper = Float64(maximum_duty)
+    0.0 <= lower < upper <= 1.0 || throw(ArgumentError(
+        "PWM duty bounds must satisfy 0 <= minimum < maximum <= 1",
+    ))
+    common_mode = if modulation === :sinusoidal
+        0.0
+    elseif modulation in (:zero_sequence_injected, :centered_space_vector_equivalent)
+        -0.5 * (maximum(reference) + minimum(reference))
+    else
+        throw(ArgumentError(
+            "modulation must be :sinusoidal, :zero_sequence_injected, or :centered_space_vector_equivalent",
+        ))
+    end
+    return clamp.(0.5 .+ (reference .+ common_mode) ./ dc_voltage, lower, upper)
+end
+
+"""Evaluate one independent matrix-form synchronous current-controller sample for a balanced three-phase grid-following converter."""
+function synchronous_current_control_reference(
+    phase_voltage_v,
+    phase_current_a,
+    angle_rad::Real,
+    dc_link_voltage_v::Real;
+    grid_line_line_rms_v::Real,
+    active_power_reference_w::Real,
+    reactive_power_reference_var::Real,
+    current_limit_a::Real,
+    control_period_s::Real,
+    series_resistance_ohm::Real,
+    series_inductance_h::Real,
+    frequency_hz::Real,
+    proportional_gain_v_per_a::Real,
+    integral_gain_v_per_as::Real,
+    direct_integral_as::Real = 0.0,
+    quadrature_integral_as::Real = 0.0,
+    modulation::Symbol = :zero_sequence_injected,
+    minimum_duty::Real = 0.0,
+    maximum_duty::Real = 1.0,
+)
+    voltage = phase_to_synchronous_reference(phase_voltage_v, angle_rad)
+    current = phase_to_synchronous_reference(phase_current_a, angle_rad)
+    inputs = Float64.((
+        dc_link_voltage_v,
+        grid_line_line_rms_v,
+        active_power_reference_w,
+        reactive_power_reference_var,
+        current_limit_a,
+        control_period_s,
+        series_resistance_ohm,
+        series_inductance_h,
+        frequency_hz,
+        proportional_gain_v_per_a,
+        integral_gain_v_per_as,
+        direct_integral_as,
+        quadrature_integral_as,
+    ))
+    all(isfinite, inputs) || throw(ArgumentError(
+        "synchronous current-controller reference inputs must be finite",
+    ))
+    dc_voltage, grid_voltage, active_reference, reactive_reference,
+        current_limit, control_period, resistance, inductance, frequency,
+        proportional_gain, integral_gain, direct_integral,
+        quadrature_integral = inputs
+    dc_voltage > 0.0 || throw(ArgumentError("DC-link voltage must be positive"))
+    grid_voltage > 0.0 || throw(ArgumentError("grid voltage must be positive"))
+    current_limit > 0.0 || throw(ArgumentError("current limit must be positive"))
+    control_period > 0.0 || throw(ArgumentError("control period must be positive"))
+    resistance >= 0.0 || throw(ArgumentError("series resistance must be nonnegative"))
+    inductance > 0.0 || throw(ArgumentError("series inductance must be positive"))
+    frequency > 0.0 || throw(ArgumentError("frequency must be positive"))
+    proportional_gain >= 0.0 || throw(ArgumentError("proportional gain must be nonnegative"))
+    integral_gain >= 0.0 || throw(ArgumentError("integral gain must be nonnegative"))
+
+    direct_voltage = max(abs(voltage[1]), 0.05 * grid_voltage)
+    current_reference = [
+        (2.0 / 3.0) * active_reference / direct_voltage,
+        -(2.0 / 3.0) * reactive_reference / direct_voltage,
+    ]
+    reference_magnitude = hypot(current_reference...)
+    if reference_magnitude > current_limit
+        current_reference .*= current_limit / reference_magnitude
+    end
+    current_error = current_reference .- current[1:2]
+    integral_candidate = [direct_integral, quadrature_integral] .+
+        control_period .* current_error
+    omega = 2.0 * pi * frequency
+    impedance_feedforward = [
+        resistance * current[1] - omega * inductance * current[2],
+        resistance * current[2] + omega * inductance * current[1],
+    ]
+    voltage_reference = voltage[1:2] .+ impedance_feedforward .+
+        proportional_gain .* current_error .+ integral_gain .* integral_candidate
+    voltage_limit = 0.95 * dc_voltage / sqrt(3.0)
+    reference_voltage_magnitude = hypot(voltage_reference...)
+    saturated = reference_voltage_magnitude > voltage_limit
+    if saturated && reference_voltage_magnitude > 0.0
+        voltage_reference .*= voltage_limit / reference_voltage_magnitude
+    end
+    accepted_integral = saturated ? [direct_integral, quadrature_integral] : integral_candidate
+    phase_reference = synchronous_to_phase_reference(
+        (voltage_reference[1], voltage_reference[2], 0.0),
+        angle_rad,
+    )
+    duties = two_level_pwm_duties(
+        phase_reference,
+        dc_voltage;
+        modulation,
+        minimum_duty,
+        maximum_duty,
+    )
+    return (
+        duties,
+        phase_voltage_reference_v = phase_reference,
+        direct_current_reference_a = current_reference[1],
+        quadrature_current_reference_a = current_reference[2],
+        direct_current_a = current[1],
+        quadrature_current_a = current[2],
+        direct_integral_as = accepted_integral[1],
+        quadrature_integral_as = accepted_integral[2],
+        saturated,
+    )
+end
+
+"""Solve `g*v + Is*expm1(v/Vs) = source_current` by an independent monotone bracket and bisection reference."""
+function exponential_conductance_voltage_reference(
+    source_current_a::Real,
+    linear_conductance_s::Real,
+    saturation_current_a::Real,
+    voltage_scale_v::Real;
+    current_tolerance_a::Real=1.0e-14,
+    maximum_iterations::Integer=256,
+)
+    source_current = Float64(source_current_a)
+    linear_conductance = Float64(linear_conductance_s)
+    saturation_current = Float64(saturation_current_a)
+    voltage_scale = Float64(voltage_scale_v)
+    tolerance = Float64(current_tolerance_a)
+    all(isfinite, (
+        source_current,
+        linear_conductance,
+        saturation_current,
+        voltage_scale,
+        tolerance,
+    )) || throw(ArgumentError("exponential reference inputs must be finite"))
+    linear_conductance >= 0.0 || throw(ArgumentError(
+        "reference linear conductance must be nonnegative",
+    ))
+    saturation_current > 0.0 || throw(ArgumentError(
+        "reference saturation current must be positive",
+    ))
+    voltage_scale > 0.0 || throw(ArgumentError(
+        "reference voltage scale must be positive",
+    ))
+    tolerance > 0.0 || throw(ArgumentError(
+        "reference current tolerance must be positive",
+    ))
+    iterations = Int(maximum_iterations)
+    iterations > 0 || throw(ArgumentError("reference maximum iterations must be positive"))
+
+    residual(voltage_v) = linear_conductance * voltage_v +
+        saturation_current * expm1(voltage_v / voltage_scale) - source_current
+    zero_residual = residual(0.0)
+    abs(zero_residual) <= tolerance && return 0.0
+    lower_voltage = zero_residual > 0.0 ? -voltage_scale : 0.0
+    upper_voltage = zero_residual > 0.0 ? 0.0 : voltage_scale
+    lower_residual = residual(lower_voltage)
+    upper_residual = residual(upper_voltage)
+    expansion_count = 0
+    while !(lower_residual <= 0.0 <= upper_residual)
+        expansion_count += 1
+        expansion_count <= 128 || throw(ArgumentError(
+            "exponential reference could not bracket the monotone solution",
+        ))
+        if lower_residual > 0.0
+            lower_voltage *= 2.0
+            lower_residual = residual(lower_voltage)
+        else
+            upper_voltage *= 2.0
+            upper_residual = residual(upper_voltage)
+        end
+        all(isfinite, (lower_residual, upper_residual)) || throw(ArgumentError(
+            "exponential reference bracket left the finite evaluation domain",
+        ))
+    end
+    for _ in 1:iterations
+        midpoint = lower_voltage + 0.5 * (upper_voltage - lower_voltage)
+        midpoint_residual = residual(midpoint)
+        abs(midpoint_residual) <= tolerance && return midpoint
+        if midpoint_residual < 0.0
+            lower_voltage = midpoint
+        else
+            upper_voltage = midpoint
+        end
+    end
+    midpoint = lower_voltage + 0.5 * (upper_voltage - lower_voltage)
+    abs(residual(midpoint)) <= 10.0 * tolerance || throw(ArgumentError(
+        "exponential reference did not reach its current tolerance",
+    ))
+    return midpoint
+end
+
+"""Independently assemble dense KCL/MNA residual and Jacobian for one passive cubic branch and one ideal voltage equation."""
+function cubic_mna_residual_jacobian_reference(
+    voltage_v,
+    constraint_current_a::Real,
+    linear_admittance_s,
+    source_current_a,
+    positive_node::Integer,
+    negative_node::Integer,
+    linear_conductance_s::Real,
+    cubic_coefficient_a_per_v3::Real,
+    constraint_coefficients,
+    constraint_value_v::Real,
+)
+    voltage = Float64.(voltage_v)
+    admittance = Matrix{Float64}(linear_admittance_s)
+    source_current = Float64.(source_current_a)
+    node_count = length(voltage)
+    size(admittance) == (node_count, node_count) || throw(DimensionMismatch(
+        "reference admittance size must match voltage count",
+    ))
+    length(source_current) == node_count || throw(DimensionMismatch(
+        "reference source-current length must match voltage count",
+    ))
+    coefficients = Float64.(constraint_coefficients)
+    length(coefficients) == node_count || throw(DimensionMismatch(
+        "reference constraint coefficients must cover every node",
+    ))
+    positive = Int(positive_node)
+    negative = Int(negative_node)
+    1 <= positive <= node_count || throw(ArgumentError(
+        "reference positive branch node is outside the network",
+    ))
+    1 <= negative <= node_count || throw(ArgumentError(
+        "reference negative branch node is outside the network",
+    ))
+    positive != negative || throw(ArgumentError("reference cubic branch must not self-loop"))
+    linear_conductance = Float64(linear_conductance_s)
+    cubic_coefficient = Float64(cubic_coefficient_a_per_v3)
+    constraint_current = Float64(constraint_current_a)
+    constraint_value = Float64(constraint_value_v)
+    all(isfinite, voltage) && all(isfinite, admittance) &&
+        all(isfinite, source_current) && all(isfinite, coefficients) &&
+        all(isfinite, (
+            linear_conductance,
+            cubic_coefficient,
+            constraint_current,
+            constraint_value,
+        )) || throw(ArgumentError("reference cubic MNA inputs must be finite"))
+
+    residual = admittance * voltage - source_current
+    jacobian = zeros(Float64, node_count + 1, node_count + 1)
+    jacobian[1:node_count, 1:node_count] .= admittance
+    branch_voltage = voltage[positive] - voltage[negative]
+    branch_current = linear_conductance * branch_voltage +
+        cubic_coefficient * branch_voltage^3
+    differential_conductance = linear_conductance +
+        3.0 * cubic_coefficient * branch_voltage^2
+    residual[positive] += branch_current
+    residual[negative] -= branch_current
+    jacobian[positive, positive] += differential_conductance
+    jacobian[positive, negative] -= differential_conductance
+    jacobian[negative, positive] -= differential_conductance
+    jacobian[negative, negative] += differential_conductance
+    residual .+= coefficients .* constraint_current
+    constraint_residual = dot(coefficients, voltage) - constraint_value
+    jacobian[1:node_count, end] .= coefficients
+    jacobian[end, 1:node_count] .= coefficients
+    complete_residual = vcat(residual, constraint_residual)
+    nonlinear_device_absorbed_power_w = branch_voltage * branch_current
+    ideal_constraint_absorbed_power_w =
+        constraint_current * dot(coefficients, voltage)
+    algebraic_power_balance_residual_w = dot(
+        vcat(voltage, constraint_current),
+        complete_residual,
+    )
+    return (
+        residual=complete_residual,
+        jacobian,
+        branch_current_a=branch_current,
+        branch_differential_conductance_s=differential_conductance,
+        nonlinear_device_absorbed_power_w,
+        ideal_constraint_absorbed_power_w,
+        algebraic_power_balance_residual_w,
+    )
+end
+
+"""Return a manufactured two-node cubic network whose exact voltage is `[2, 1]` V and constraint current is `0.4` A."""
+function manufactured_cubic_constraint_case()
+    exact_voltage_v = [2.0, 1.0]
+    exact_constraint_current_a = 0.4
+    linear_admittance_s = [1.0 0.0; 0.0 1.0]
+    source_current_a = [2.7, 0.3]
+    constraint_coefficients = [1.0, -1.0]
+    evaluation = cubic_mna_residual_jacobian_reference(
+        exact_voltage_v,
+        exact_constraint_current_a,
+        linear_admittance_s,
+        source_current_a,
+        1,
+        2,
+        0.2,
+        0.1,
+        constraint_coefficients,
+        1.0,
+    )
+    return (
+        exact_voltage_v,
+        exact_constraint_current_a,
+        linear_admittance_s,
+        source_current_a,
+        positive_node=1,
+        negative_node=2,
+        linear_conductance_s=0.2,
+        cubic_coefficient_a_per_v3=0.1,
+        constraint_coefficients,
+        constraint_value_v=1.0,
+        residual=evaluation.residual,
+        jacobian=evaluation.jacobian,
+        nonlinear_device_absorbed_power_w=
+            evaluation.nonlinear_device_absorbed_power_w,
+        ideal_constraint_absorbed_power_w=
+            evaluation.ideal_constraint_absorbed_power_w,
+        algebraic_power_balance_residual_w=
+            evaluation.algebraic_power_balance_residual_w,
+    )
+end
+
+"""Advance an R-L current exactly for one interval with constant applied branch voltage."""
+function series_rl_piecewise_constant_current(
+    initial_current_a::Real,
+    branch_voltage_v::Real,
+    resistance_ohm::Real,
+    inductance_h::Real,
+    interval_s::Real,
+)
+    current = Float64(initial_current_a)
+    voltage = Float64(branch_voltage_v)
+    resistance = Float64(resistance_ohm)
+    inductance = Float64(inductance_h)
+    interval = Float64(interval_s)
+    all(isfinite, (current, voltage, resistance, inductance, interval)) ||
+        throw(ArgumentError("series R-L reconstruction inputs must be finite"))
+    resistance >= 0.0 || throw(ArgumentError("series resistance must be nonnegative"))
+    inductance > 0.0 || throw(ArgumentError("series inductance must be positive"))
+    interval >= 0.0 || throw(ArgumentError("series R-L interval must be nonnegative"))
+    if resistance == 0.0
+        return current + interval * voltage / inductance
+    end
+    decay = exp(-resistance * interval / inductance)
+    steady_current = voltage / resistance
+    return steady_current + (current - steady_current) * decay
+end
+
+"""Reconstruct an R-L current trace from independently supplied piecewise-constant interval voltages."""
+function series_rl_piecewise_constant_trace(
+    initial_current_a::Real,
+    interval_voltage_v,
+    resistance_ohm::Real,
+    inductance_h::Real,
+    interval_s::Real,
+)
+    voltages = Float64.(interval_voltage_v)
+    all(isfinite, voltages) || throw(ArgumentError(
+        "series R-L interval voltages must be finite",
+    ))
+    trace = Vector{Float64}(undef, length(voltages) + 1)
+    trace[1] = Float64(initial_current_a)
+    for interval_index in eachindex(voltages)
+        trace[interval_index + 1] = series_rl_piecewise_constant_current(
+            trace[interval_index],
+            voltages[interval_index],
+            resistance_ohm,
+            inductance_h,
+            interval_s,
+        )
+    end
+    return trace
+end
+
+include("consistent_emt_initialization.jl")
+
+end

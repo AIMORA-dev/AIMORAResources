@@ -1,43 +1,18 @@
-# AIMORACases.jl
+# AIMORAResources
 
-`AIMORACases.jl` is the canonical source of public AIMORA examples and benchmark inputs. Documentation, package tests, and qualification systems should consume versioned cases instead of maintaining copies.
+AIMORAResources is the consolidated public repository for AIMORA cases, catalogues, independent reference models, the historical BPA EMTP reference, report templates, documentation, teaching routes, examples, and provenance. Public content remains separated from private held-out evidence and can be released as one coherent Resources revision.
 
-## Organization
+| Path | Resource | Stable identity |
+| --- | --- | --- |
+| `packages/AIMORACases.jl` | Public executable cases | `c2d99356-2241-4b88-ae11-80a94b927354` |
+| `packages/AIMORACatalogs.jl` | Study-aware equipment catalogues | `2b6c9f6e-dc5c-4462-b175-cd3ce62f4f80` |
+| `packages/AIMORAReferenceModels.jl` | Independent analytical/manufactured checks | `6a268073-c1b2-474c-bd10-49e12d1609a5` |
+| `references/bpa_emtp` | Historical compiled BPA EMTP reference | `379ef2ed-aa07-4523-9a5b-6fc193417d96` |
+| `report-templates` | Research, commercial, and education report templates | content library |
+| `docs` | Public AIMORA documentation site | Documenter project |
 
-```text
-examples/
-  catalog.toml
-  emt/                    runnable EMT examples and their input decks
-  line_constants/         line studies and their input decks
-  cable_constants/        cable studies and their input decks
-  transformer_parameters/
-  support/
-src/                      catalog API
-test/                     catalog contract tests
-check.jl                  structure and publication-boundary check
-Makefile                  check, test, and example commands
-```
+Run `julia test/runtests.jl` for the repository, licence, provenance, and artifact-policy contract. Run each Julia package's normal `Pkg.test()` command for package-local behavior; the BPA reference retains its own optional compiler-backed build and test commands, and documentation retains its own build command.
 
-Every catalog row declares its study, description, solver requirement, and compiled-reference compatibility. Each input deck lives beside the Julia `run.jl` that consumes it, so there is no second `cases/` copy to keep in sync. Future power-flow, fault, protection, dynamic, and optimization examples should be added only with an executable study consumer.
+The first Resources integration commit has the six exact source revisions as parents, so the original commits, authors, dates, and messages remain reachable without rewritten SHAs. `provenance/history-map.toml` records the migration boundary, while the old repositories remain available until final migration acceptance.
 
-The source-to-example inclusion and exclusion audit is documented in [`examples/SOURCE_COVERAGE.md`](examples/SOURCE_COVERAGE.md) and enforced from the machine-readable `examples/source_coverage.toml` inventory.
-
-```julia
-using AIMORACases
-
-AIMORACases.available_cases()
-AIMORACases.case_path(:emt_rlc_energization)
-```
-
-The engine repository intentionally contains no examples. Run `make check`, `make test`, and `make example` before publishing a case revision. The `example` target runs the catalog listing and every registered EMT example. Individual study examples also use their local `Makefile`, for example:
-
-```bash
-cd examples/emt/inverter
-make run
-```
-
-Input decks are data, not Fortran source: Julia parses them into typed AIMORA models and executes them through the public engine. An example adapted from another source must add its own provenance and redistribution licence before publication.
-
-## Licence
-
-This repository's AIMORA-authored content is distributed under the PolyForm Noncommercial License 1.0.0. Research, education, personal study, public-interest noncommercial use, and other purposes permitted by that licence are free; commercial use requires a separate written agreement with Ahmed Elkholy <ahmed_elkholy@f-eng.tanta.edu.eg>. There is no licence key, activation, telemetry, or technical feature restriction. Clearly identified third-party material retains its own terms, and copies received under an earlier licence retain those prior grants.
+See `licensing.toml` before redistributing any path. The repository licence does not replace the historical BPA notices or any path-specific third-party terms. Private cases, held-out evidence, restricted data, proprietary simulator artifacts, and qualification receipts remain in `AIMORAValidation` and must never enter this repository.

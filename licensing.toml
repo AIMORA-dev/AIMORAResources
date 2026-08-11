@@ -1,0 +1,40 @@
+schema = "aimora-resource-licensing-v1"
+default_license = "PolyForm-Noncommercial-1.0.0"
+default_license_file = "LICENSES/PolyForm-Noncommercial-1.0.0.md"
+root_license_does_not_override_path_specific_terms = true
+
+[[scope]]
+path = "."
+license = "PolyForm-Noncommercial-1.0.0"
+license_file = "LICENSES/PolyForm-Noncommercial-1.0.0.md"
+
+[[scope]]
+path = "packages/AIMORACases.jl"
+license = "PolyForm-Noncommercial-1.0.0"
+license_file = "packages/AIMORACases.jl/LICENSE"
+
+[[scope]]
+path = "packages/AIMORACatalogs.jl"
+license = "PolyForm-Noncommercial-1.0.0"
+license_file = "packages/AIMORACatalogs.jl/LICENSE"
+
+[[scope]]
+path = "packages/AIMORAReferenceModels.jl"
+license = "PolyForm-Noncommercial-1.0.0"
+license_file = "packages/AIMORAReferenceModels.jl/LICENSE"
+
+[[scope]]
+path = "references/bpa_emtp"
+license = "PolyForm-Noncommercial-1.0.0 for AIMORA-authored files; retained historical terms for BPA source"
+license_file = "references/bpa_emtp/LICENSE"
+notice = "references/bpa_emtp/LEGACY-NOTICE.md"
+
+[[scope]]
+path = "report-templates"
+license = "PolyForm-Noncommercial-1.0.0"
+license_file = "report-templates/LICENSE"
+
+[[scope]]
+path = "docs"
+license = "PolyForm-Noncommercial-1.0.0"
+license_file = "docs/LICENSE"

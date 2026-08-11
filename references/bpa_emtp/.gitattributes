@@ -1,0 +1,2 @@
+src/fortran/** whitespace=-blank-at-eol,-blank-at-eof,-space-before-tab
+examples/*.deck whitespace=-blank-at-eol,-blank-at-eof
