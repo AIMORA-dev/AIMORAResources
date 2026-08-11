@@ -35,9 +35,9 @@ end
         "resource-index.toml",
         "artifact-policy.toml",
         "provenance/history-map.toml",
-        "packages/AIMORACases.jl",
-        "packages/AIMORACatalogs.jl",
-        "packages/AIMORAReferenceModels.jl",
+        "AIMORACases.jl",
+        "AIMORACatalogs.jl",
+        "AIMORAReferenceModels.jl",
         "references/bpa_emtp",
         "report-templates",
         "docs",
@@ -65,7 +65,7 @@ end
     @test all(ispath(joinpath(RESOURCES_ROOT, resource["path"])) for resource in resources)
     @test affected_resources(
         RESOURCES_ROOT,
-        ["packages/AIMORACases.jl/examples/README.md"],
+        ["AIMORACases.jl/examples/README.md"],
     ) == ["cases"]
     @test affected_resources(
         RESOURCES_ROOT,
@@ -76,7 +76,6 @@ end
     for (directory, expected) in RESOURCE_PROJECTS
         project = TOML.parsefile(joinpath(
             RESOURCES_ROOT,
-            "packages",
             directory,
             "Project.toml",
         ))
@@ -103,9 +102,9 @@ end
     scopes = licensing["scope"]
     @test Set(scope["path"] for scope in scopes) == Set((
         ".",
-        "packages/AIMORACases.jl",
-        "packages/AIMORACatalogs.jl",
-        "packages/AIMORAReferenceModels.jl",
+        "AIMORACases.jl",
+        "AIMORACatalogs.jl",
+        "AIMORAReferenceModels.jl",
         "references/bpa_emtp",
         "report-templates",
         "docs",
@@ -120,9 +119,9 @@ end
         "PolyForm-Noncommercial-1.0.0.md",
     )))
     for relative_path in (
-        "packages/AIMORACases.jl/LICENSE",
-        "packages/AIMORACatalogs.jl/LICENSE",
-        "packages/AIMORAReferenceModels.jl/LICENSE",
+        "AIMORACases.jl/LICENSE",
+        "AIMORACatalogs.jl/LICENSE",
+        "AIMORAReferenceModels.jl/LICENSE",
         "references/bpa_emtp/LICENSE",
         "report-templates/LICENSE",
         "docs/LICENSE",
@@ -163,8 +162,8 @@ end
     @test length(csv_paths) == 130
     @test length(svg_paths) == 108
     @test isempty(pdf_paths)
-    @test all(startswith(path, "packages/AIMORACases.jl/examples/") for path in csv_paths)
-    @test all(startswith(path, "packages/AIMORACases.jl/examples/") for path in svg_paths)
+    @test all(startswith(path, "AIMORACases.jl/examples/") for path in csv_paths)
+    @test all(startswith(path, "AIMORACases.jl/examples/") for path in svg_paths)
     @test !isfile(joinpath(RESOURCES_ROOT, ".gitmodules"))
 
     public_metadata = join((

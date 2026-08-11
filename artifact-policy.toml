@@ -16,13 +16,13 @@ externalize = ["complete raw waveforms", "repeated render variants", "PDF report
 
 [[classification]]
 id = "accepted-case-csv-baseline"
-glob = "packages/AIMORACases.jl/examples/**/*.csv"
+glob = "AIMORACases.jl/examples/**/*.csv"
 state = "retained"
 reason = "Accepted public case artifacts are preserved through migration; future changes require case-level evidence classification."
 
 [[classification]]
 id = "accepted-case-svg-baseline"
-glob = "packages/AIMORACases.jl/examples/**/*.svg"
+glob = "AIMORACases.jl/examples/**/*.svg"
 state = "retained"
 reason = "Accepted public explanatory and waveform figures are preserved through migration; repeated future variants are external by default."
 

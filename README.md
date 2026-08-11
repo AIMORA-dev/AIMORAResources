@@ -4,9 +4,9 @@ AIMORAResources is the consolidated public repository for AIMORA cases, catalogu
 
 | Path | Resource | Stable identity |
 | --- | --- | --- |
-| `packages/AIMORACases.jl` | Public executable cases | `c2d99356-2241-4b88-ae11-80a94b927354` |
-| `packages/AIMORACatalogs.jl` | Study-aware equipment catalogues | `2b6c9f6e-dc5c-4462-b175-cd3ce62f4f80` |
-| `packages/AIMORAReferenceModels.jl` | Independent analytical/manufactured checks | `6a268073-c1b2-474c-bd10-49e12d1609a5` |
+| `AIMORACases.jl` | Public executable cases | `c2d99356-2241-4b88-ae11-80a94b927354` |
+| `AIMORACatalogs.jl` | Study-aware equipment catalogues | `2b6c9f6e-dc5c-4462-b175-cd3ce62f4f80` |
+| `AIMORAReferenceModels.jl` | Independent analytical/manufactured checks | `6a268073-c1b2-474c-bd10-49e12d1609a5` |
 | `references/bpa_emtp` | Historical compiled BPA EMTP reference | `379ef2ed-aa07-4523-9a5b-6fc193417d96` |
 | `report-templates` | Research, commercial, and education report templates | content library |
 | `docs` | Public AIMORA documentation site | Documenter project |

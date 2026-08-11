@@ -6,19 +6,19 @@ release_tags_at_migration = 0
 repository = "https://github.com/AIMORA-dev/AIMORACases.jl.git"
 commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
 commit_count = 17
-target = "packages/AIMORACases.jl"
+target = "AIMORACases.jl"
 
 [[source]]
 repository = "https://github.com/AIMORA-dev/AIMORACatalogs.jl.git"
 commit = "07222ae077d04efc618c605a652e972d84232d7c"
 commit_count = 6
-target = "packages/AIMORACatalogs.jl"
+target = "AIMORACatalogs.jl"
 
 [[source]]
 repository = "https://github.com/AIMORA-dev/AIMORAReferenceModels.jl.git"
 commit = "b90e16f0d93c657efe04307d04cc81000c3ef035"
 commit_count = 6
-target = "packages/AIMORAReferenceModels.jl"
+target = "AIMORAReferenceModels.jl"
 
 [[source]]
 repository = "https://github.com/AIMORA-dev/BPAEMTPReference.jl.git"

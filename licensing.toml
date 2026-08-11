@@ -9,19 +9,19 @@ license = "PolyForm-Noncommercial-1.0.0"
 license_file = "LICENSES/PolyForm-Noncommercial-1.0.0.md"
 
 [[scope]]
-path = "packages/AIMORACases.jl"
+path = "AIMORACases.jl"
 license = "PolyForm-Noncommercial-1.0.0"
-license_file = "packages/AIMORACases.jl/LICENSE"
+license_file = "AIMORACases.jl/LICENSE"
 
 [[scope]]
-path = "packages/AIMORACatalogs.jl"
+path = "AIMORACatalogs.jl"
 license = "PolyForm-Noncommercial-1.0.0"
-license_file = "packages/AIMORACatalogs.jl/LICENSE"
+license_file = "AIMORACatalogs.jl/LICENSE"
 
 [[scope]]
-path = "packages/AIMORAReferenceModels.jl"
+path = "AIMORAReferenceModels.jl"
 license = "PolyForm-Noncommercial-1.0.0"
-license_file = "packages/AIMORAReferenceModels.jl/LICENSE"
+license_file = "AIMORAReferenceModels.jl/LICENSE"
 
 [[scope]]
 path = "references/bpa_emtp"

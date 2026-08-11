@@ -25,9 +25,9 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - packages/AIMORACases.jl
-          - packages/AIMORACatalogs.jl
-          - packages/AIMORAReferenceModels.jl
+          - AIMORACases.jl
+          - AIMORACatalogs.jl
+          - AIMORAReferenceModels.jl
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
