@@ -6,6 +6,87 @@ using LinearAlgebra
     @test nameof(AIMORAReferenceModels) === :AIMORAReferenceModels
 end
 
+@testset "independent exact multirate calendar dependency delay and hold" begin
+    writer = IndependentTaskCalendarSpec(
+        "writer",
+        3,
+        0 // 1,
+        2 // 10,
+        0 // 1,
+        1 // 10;
+        priority = 5,
+        write_resources = ["command"],
+    )
+    reader = IndependentTaskCalendarSpec(
+        "reader",
+        1,
+        0 // 1,
+        4 // 10,
+        0 // 1,
+        0 // 1;
+        priority = -5,
+        read_resources = ["command"],
+        write_resources = ["trip"],
+        predecessors = ["writer"],
+    )
+    reference = independent_multirate_task_reference(
+        [reader, writer];
+        start = 0 // 1,
+        stop = 1 // 1,
+        initial_outputs = ["writer" => 0 // 1, "reader" => 0 // 1],
+        sample_value = (specification, activation_index, held) ->
+            specification.name == "writer" ? activation_index // 1 :
+            held["writer"] + activation_index // 10,
+    )
+    @test reference.quantum == 1 // 10
+    @test reference.execution_order == ["writer", "reader"]
+    @test reference.activation_counts == ["reader" => 3, "writer" => 6]
+    @test reference.release_counts == ["reader" => 3, "writer" => 5]
+    @test Dict(reference.maximum_pending_depths) == Dict("reader" => 1, "writer" => 1)
+    @test Dict(reference.held_outputs) == Dict("reader" => 43 // 10, "writer" => 5 // 1)
+    zero_stages = [
+        occurrence.stage for occurrence in reference.occurrences
+        if occurrence.instant == 0 // 1
+    ]
+    @test zero_stages == [
+        :read, :compute, :enqueue, :hold,
+        :read, :compute, :enqueue, :write, :hold,
+    ]
+    @test occursin(r"^[0-9a-f]{64}$", reference.deterministic_signature_sha256)
+    @test reference.deterministic_signature_sha256 == independent_multirate_task_reference(
+        [reader, writer];
+        start = 0 // 1,
+        stop = 1 // 1,
+        initial_outputs = ["writer" => 0 // 1, "reader" => 0 // 1],
+        sample_value = (specification, activation_index, held) ->
+            specification.name == "writer" ? activation_index // 1 :
+            held["writer"] + activation_index // 10,
+    ).deterministic_signature_sha256
+
+    unordered_reader = IndependentTaskCalendarSpec(
+        "reader",
+        1,
+        0 // 1,
+        4 // 10,
+        0 // 1,
+        0 // 1;
+        read_resources = ["command"],
+    )
+    @test_throws ArgumentError independent_multirate_task_reference(
+        [writer, unordered_reader];
+        start = 0 // 1,
+        stop = 1 // 1,
+    )
+    @test_throws ArgumentError IndependentTaskCalendarSpec(
+        "floating",
+        8,
+        0.0,
+        0.1,
+        0.0,
+        0.0,
+    )
+end
+
 @testset "independent three-phase transforms and PWM" begin
     angle = 0.37
     phase = [310.0, -122.0, -188.0]

@@ -2,6 +2,7 @@
 module AIMORAReferenceModels
 
 using LinearAlgebra
+using SHA
 
 export amplitude_invariant_clarke_matrix,
        synchronous_reference_rotation_matrix,
@@ -27,6 +28,10 @@ export amplitude_invariant_clarke_matrix,
        passive_cubic_branch_reference,
        series_rl_trapezoidal_reference,
        directed_linear_event_root_reference,
+       IndependentTaskCalendarSpec,
+       IndependentTaskOccurrence,
+       IndependentTaskReferenceResult,
+       independent_multirate_task_reference,
        series_rl_piecewise_constant_current,
        series_rl_piecewise_constant_trace
 
@@ -635,5 +640,6 @@ function directed_linear_event_root_reference(
 end
 
 include("consistent_emt_initialization.jl")
+include("general_multirate_task_reference.jl")
 
 end

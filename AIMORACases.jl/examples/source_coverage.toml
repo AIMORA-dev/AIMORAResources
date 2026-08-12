@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-12"
-source_count = 477
+source_count = 478
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 58
+"canonical_case_input" = 59
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -17,7 +17,7 @@ source_count = 477
 "validation_suite" = 82
 
 [counts_by_disposition]
-"example" = 61
+"example" = 62
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -25,6 +25,15 @@ source_count = 477
 "pending_export" = 145
 "source_missing" = 63
 "validation_only" = 19
+
+[[source]]
+id = "case-input:emt:general-multirate-task-platform"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/general_multirate_task_platform/run.jl"
+disposition = "example"
+example_ids = ["emt_general_multirate_task_platform"]
+reason = "AIMORA-authored public runner couples sixteen exact rational schedules across all eight task families to a real EMT-controlled source, event and delayed-release collisions, dependency order, split restart, atomic rollback, typed results, and explicit non-physics/non-conformance limits."
 
 [[source]]
 id = "case-input:emt:user-defined-components"
