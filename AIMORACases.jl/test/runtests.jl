@@ -1,6 +1,9 @@
 using Test
+using AIMORA
 using AIMORACases
+using AIMORAProject
 using TOML
+using UUIDs
 
 include(joinpath(AIMORACases.package_root(), "examples", "Qualification.jl"))
 using .AIMORAExampleQualification
@@ -21,6 +24,54 @@ using .AIMORAExampleQualification
     )
     @test AIMORACases.case_descriptor(:emt_rlc_energization).study == :emt
     @test_throws KeyError AIMORACases.case_descriptor(:missing)
+end
+
+@testset "external native extension registry and inert project binding" begin
+    registry = native_extension_registry()
+    @test length(AIMORA.NativeExtensions.registered_extension_identities(registry)) == 3
+    source_control = PublicSampledSaturatingLag(1.0, 1.0e-3, -1.0, 1.0, 10)
+    AIMORA.NativeExtensions.sample_extension_task!(source_control, 0.5, 0, 1.0e-4)
+    @test AIMORA.NativeExtensions.extension_source_value(source_control, 0.0) > 0.0
+    licence = LicenceIdentity(
+        "PolyForm-Noncommercial-1.0.0",
+        "PolyForm Noncommercial 1.0.0",
+    )
+    provenance = ProvenanceSource(
+        ProjectId("source.public_extension_example"),
+        "AIMORA synthetic public native-extension example",
+        licence;
+        source_version = "1.0.0",
+    )
+    declaration = native_extension_declaration(
+        PublicCubicCurrentBranch,
+        ObjectIdentity(ProjectId("device.public_cubic")),
+        [
+            ProjectReference(ReferenceNode, ProjectId("node.positive")),
+            ProjectReference(ReferenceNode, ProjectId("node.negative")),
+        ],
+        [
+            AssetProperty(
+                FieldPath("cubic.linear_conductance_s"),
+                parse_exact_decimal("0.2"),
+                provenance,
+            ),
+        ],
+        provenance,
+    )
+    registration = AIMORA.NativeExtensions.resolve_extension(registry, declaration)
+    @test registration.implementation_type === PublicCubicCurrentBranch
+    @test declaration.implementation.package_uuid ==
+        UUID("c2d99356-2241-4b88-ae11-80a94b927354")
+    @test length(declaration.state) == 9
+    @test extension_declaration_hash(declaration) == extension_declaration_hash(declaration)
+    @test occursin(r"^[0-9a-f]{64}$", string(extension_declaration_hash(declaration)))
+    @test_throws ArgumentError native_extension_declaration(
+        PublicCubicCurrentBranch,
+        ObjectIdentity(ProjectId("device.invalid_terminal_count")),
+        [ProjectReference(ReferenceNode, ProjectId("node.only"))],
+        AssetProperty[],
+        provenance,
+    )
 end
 
 @testset "impact-selected example qualification" begin

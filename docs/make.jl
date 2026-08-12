@@ -39,6 +39,7 @@ makedocs(
         "Studies and Models" => "studies.md",
         "Consistent EMT Initialization" => "consistent-emt-initialization.md",
         "Nonlinear EMT" => "nonlinear-emt.md",
+        "Native Extensions" => "native-extensions.md",
         "Cases and Catalogs" => "cases-and-catalogs.md",
         "Validation" => "validation.md",
         "Contributing" => "development.md",

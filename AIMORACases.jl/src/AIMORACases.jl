@@ -1,8 +1,42 @@
 module AIMORACases
 
+using AIMORA
+using AIMORAProject
 using TOML
 
-export CaseDescriptor, available_cases, case_descriptor, case_path
+export CaseDescriptor,
+       PublicCubicCurrentBranch,
+       PublicSampledSaturatingLag,
+       PublicSeriesRLCompanion,
+       available_cases,
+       case_descriptor,
+       case_path,
+       native_extension_declaration,
+       native_extension_registry
+
+include("native_extension_support.jl")
+include(joinpath(
+    "..",
+    "examples",
+    "emt",
+    "user_defined_components",
+    "public_sampled_saturating_lag.jl",
+))
+include(joinpath(
+    "..",
+    "examples",
+    "emt",
+    "user_defined_components",
+    "public_cubic_current_branch.jl",
+))
+include(joinpath(
+    "..",
+    "examples",
+    "emt",
+    "user_defined_components",
+    "public_series_rl_companion.jl",
+))
+include("native_extension_examples.jl")
 
 struct CaseDescriptor
     id::Symbol

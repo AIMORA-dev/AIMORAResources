@@ -23,6 +23,10 @@ for relative_path in (
     "examples/support/CatalogDeckExample.jl",
     "examples/support/ClassicEMTPExample.jl",
     "examples/emt/inverter/run.jl",
+    "examples/emt/user_defined_components/run.jl",
+    "examples/emt/user_defined_components/public_sampled_saturating_lag.jl",
+    "examples/emt/user_defined_components/public_cubic_current_branch.jl",
+    "examples/emt/user_defined_components/public_series_rl_companion.jl",
     "examples/emt/generated_ieee13_deck/ieee13_minimum_core.deck",
 )
     isfile(joinpath(ROOT, relative_path)) || fail("missing $(relative_path)")

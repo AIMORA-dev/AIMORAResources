@@ -23,6 +23,10 @@ export amplitude_invariant_clarke_matrix,
        independent_peak_phasor_samples,
        independent_periodic_voltage_error,
        independent_operating_point_mapping,
+       sampled_saturating_lag_reference,
+       passive_cubic_branch_reference,
+       series_rl_trapezoidal_reference,
+       directed_linear_event_root_reference,
        series_rl_piecewise_constant_current,
        series_rl_piecewise_constant_trace
 
@@ -466,6 +470,168 @@ function series_rl_piecewise_constant_trace(
         )
     end
     return trace
+end
+
+"""Advance an independently formulated zero-order-held first-order lag and apply output saturation."""
+function sampled_saturating_lag_reference(
+    previous_state::Real,
+    held_input::Real,
+    gain::Real,
+    time_constant_s::Real,
+    task_interval_s::Real,
+    minimum_output::Real,
+    maximum_output::Real,
+)
+    state, input, gain_value, time_constant, interval, minimum, maximum = Float64.((
+        previous_state,
+        held_input,
+        gain,
+        time_constant_s,
+        task_interval_s,
+        minimum_output,
+        maximum_output,
+    ))
+    all(isfinite, (state, input, gain_value, time_constant, interval, minimum, maximum)) ||
+        throw(ArgumentError("sampled-lag reference inputs must be finite"))
+    time_constant > 0.0 || throw(ArgumentError(
+        "sampled-lag reference time constant must be positive",
+    ))
+    interval > 0.0 || throw(ArgumentError(
+        "sampled-lag reference interval must be positive",
+    ))
+    minimum <= maximum || throw(ArgumentError(
+        "sampled-lag reference output bounds are reversed",
+    ))
+    exact_decay = exp(-interval / time_constant)
+    next_state = exact_decay * state + (1.0 - exact_decay) * input
+    return (
+        state = next_state,
+        output = clamp(gain_value * next_state, minimum, maximum),
+        decay = exact_decay,
+    )
+end
+
+"""Evaluate an independent passive cubic branch current, derivative, terminal power, and KCL residual."""
+function passive_cubic_branch_reference(
+    positive_voltage_v::Real,
+    negative_voltage_v::Real,
+    linear_conductance_s::Real,
+    cubic_coefficient_a_per_v3::Real,
+)
+    positive_voltage, negative_voltage, conductance, cubic = Float64.((
+        positive_voltage_v,
+        negative_voltage_v,
+        linear_conductance_s,
+        cubic_coefficient_a_per_v3,
+    ))
+    all(isfinite, (positive_voltage, negative_voltage, conductance, cubic)) ||
+        throw(ArgumentError("cubic-branch reference inputs must be finite"))
+    conductance >= 0.0 && cubic >= 0.0 && (conductance > 0.0 || cubic > 0.0) ||
+        throw(ArgumentError(
+            "cubic-branch reference coefficients must be passive and not both zero",
+        ))
+    voltage = positive_voltage - negative_voltage
+    current = muladd(cubic * voltage * voltage, voltage, conductance * voltage)
+    derivative = conductance + 3.0 * cubic * voltage * voltage
+    return (
+        voltage_v = voltage,
+        positive_current_a = current,
+        negative_current_a = -current,
+        derivative_s = derivative,
+        absorbed_power_w = voltage * current,
+        terminal_kcl_residual_a = current - current,
+    )
+end
+
+"""Evaluate the independent trapezoidal series R-L recurrence without mutating accepted state."""
+function series_rl_trapezoidal_reference(
+    previous_current_a::Real,
+    previous_voltage_v::Real,
+    trial_voltage_v::Real,
+    resistance_ohm::Real,
+    inductance_h::Real,
+    step_s::Real,
+)
+    previous_current, previous_voltage, trial_voltage, resistance, inductance, step = Float64.((
+        previous_current_a,
+        previous_voltage_v,
+        trial_voltage_v,
+        resistance_ohm,
+        inductance_h,
+        step_s,
+    ))
+    all(isfinite, (
+        previous_current,
+        previous_voltage,
+        trial_voltage,
+        resistance,
+        inductance,
+        step,
+    )) || throw(ArgumentError("series R-L trapezoidal reference inputs must be finite"))
+    resistance >= 0.0 || throw(ArgumentError(
+        "series R-L reference resistance must be nonnegative",
+    ))
+    inductance > 0.0 || throw(ArgumentError(
+        "series R-L reference inductance must be positive",
+    ))
+    step > 0.0 || throw(ArgumentError(
+        "series R-L reference timestep must be positive",
+    ))
+    inductive_resistance = 2.0 * inductance / step
+    conductance = inv(resistance + inductive_resistance)
+    history_current = conductance * (
+        previous_voltage + (inductive_resistance - resistance) * previous_current
+    )
+    trial_current = conductance * trial_voltage + history_current
+    constitutive_residual =
+        0.5 * (previous_voltage + trial_voltage) -
+        resistance * 0.5 * (previous_current + trial_current) -
+        inductance * (trial_current - previous_current) / step
+    return (
+        conductance_s = conductance,
+        history_current_a = history_current,
+        current_a = trial_current,
+        constitutive_residual_v = constitutive_residual,
+        stored_energy_j = 0.5 * inductance * trial_current^2,
+        dissipated_power_w = resistance * trial_current^2,
+    )
+end
+
+"""Locate a directed zero of a linearly interpolated event indicator on one accepted bracket."""
+function directed_linear_event_root_reference(
+    left_time_s::Real,
+    right_time_s::Real,
+    left_indicator::Real,
+    right_indicator::Real;
+    direction::Symbol = :any,
+)
+    left_time, right_time, left_value, right_value = Float64.((
+        left_time_s,
+        right_time_s,
+        left_indicator,
+        right_indicator,
+    ))
+    all(isfinite, (left_time, right_time, left_value, right_value)) || throw(
+        ArgumentError("event-root reference inputs must be finite"),
+    )
+    right_time > left_time || throw(ArgumentError(
+        "event-root reference requires a forward time bracket",
+    ))
+    direction in (:any, :rising, :falling) || throw(ArgumentError(
+        "event-root reference direction is unsupported",
+    ))
+    crossed = left_value == 0.0 || right_value == 0.0 || signbit(left_value) != signbit(right_value)
+    crossed || throw(ArgumentError("event-root reference bracket contains no zero"))
+    direction === :rising && !(left_value <= 0.0 <= right_value) && throw(ArgumentError(
+        "event-root reference bracket is not a rising crossing",
+    ))
+    direction === :falling && !(left_value >= 0.0 >= right_value) && throw(ArgumentError(
+        "event-root reference bracket is not a falling crossing",
+    ))
+    left_value == 0.0 && return left_time
+    right_value == 0.0 && return right_time
+    fraction = -left_value / (right_value - left_value)
+    return left_time + fraction * (right_time - left_time)
 end
 
 include("consistent_emt_initialization.jl")

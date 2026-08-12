@@ -176,6 +176,100 @@ end
     @test central_column ≈ manufactured.jacobian[:, 1] rtol=5.0e-9
 end
 
+@testset "independent native extension formulations" begin
+    lag = sampled_saturating_lag_reference(0.1, 0.9, 2.0, 2.0e-3, 0.5e-3, -1.0, 1.0)
+    expected_state = 0.9 + (0.1 - 0.9) * exp(-0.25)
+    @test lag.state ≈ expected_state atol=2.0e-16
+    @test lag.output ≈ 2.0 * expected_state atol=4.0 * eps(Float64)
+    @test sampled_saturating_lag_reference(
+        0.8,
+        1.0,
+        2.0,
+        2.0e-3,
+        0.5e-3,
+        -1.0,
+        1.0,
+    ).output == 1.0
+    @test sampled_saturating_lag_reference(
+        lag.state,
+        0.9,
+        2.0,
+        2.0e-3,
+        0.5e-3,
+        -1.0,
+        1.0,
+    ).state ≈ sampled_saturating_lag_reference(
+        0.1,
+        0.9,
+        2.0,
+        2.0e-3,
+        1.0e-3,
+        -1.0,
+        1.0,
+    ).state atol=2.0e-16
+    @test_throws ArgumentError sampled_saturating_lag_reference(
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0e-3,
+        -1.0,
+        1.0,
+    )
+
+    cubic = passive_cubic_branch_reference(1.5, -0.25, 0.2, 0.03)
+    voltage = 1.75
+    @test cubic.positive_current_a ≈ 0.2 * voltage + 0.03 * voltage^3 atol=2.0e-16
+    @test cubic.negative_current_a == -cubic.positive_current_a
+    @test cubic.derivative_s == 0.2 + 3.0 * 0.03 * voltage^2
+    @test cubic.absorbed_power_w >= 0.0
+    @test cubic.terminal_kcl_residual_a == 0.0
+    perturbation = 1.0e-6
+    forward = passive_cubic_branch_reference(1.5 + perturbation, -0.25, 0.2, 0.03)
+    backward = passive_cubic_branch_reference(1.5 - perturbation, -0.25, 0.2, 0.03)
+    @test (forward.positive_current_a - backward.positive_current_a) /
+          (2.0 * perturbation) ≈ cubic.derivative_s rtol=2.0e-10
+    swapped = passive_cubic_branch_reference(-0.25, 1.5, 0.2, 0.03)
+    @test swapped.positive_current_a == -cubic.positive_current_a
+    @test_throws ArgumentError passive_cubic_branch_reference(1.0, 0.0, -0.1, 0.0)
+
+    rl = series_rl_trapezoidal_reference(0.5, 1.0, 4.0, 2.0, 10.0e-3, 100.0e-6)
+    @test rl.conductance_s == inv(2.0 + 2.0 * 10.0e-3 / 100.0e-6)
+    @test abs(rl.constitutive_residual_v) <= 2.0e-14
+    @test rl.stored_energy_j >= 0.0
+    @test rl.dissipated_power_w >= 0.0
+    @test_throws ArgumentError series_rl_trapezoidal_reference(
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        0.0,
+        1.0e-4,
+    )
+
+    @test directed_linear_event_root_reference(
+        0.0,
+        1.0e-3,
+        -0.25,
+        0.75;
+        direction=:rising,
+    ) == 0.25e-3
+    @test directed_linear_event_root_reference(
+        0.0,
+        1.0e-3,
+        0.75,
+        -0.25;
+        direction=:falling,
+    ) == 0.75e-3
+    @test_throws ArgumentError directed_linear_event_root_reference(
+        0.0,
+        1.0e-3,
+        0.25,
+        0.75;
+        direction=:rising,
+    )
+end
+
 @testset "independent consistent EMT initialization references" begin
     physical_frequency_hz = 50.0
     timestep_s = 500.0e-6

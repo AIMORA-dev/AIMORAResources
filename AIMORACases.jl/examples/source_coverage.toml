@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-10"
-source_count = 476
+snapshot_date = "2026-08-12"
+source_count = 477
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 57
+"canonical_case_input" = 58
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -17,7 +17,7 @@ source_count = 476
 "validation_suite" = 82
 
 [counts_by_disposition]
-"example" = 60
+"example" = 61
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -25,6 +25,15 @@ source_count = 476
 "pending_export" = 145
 "source_missing" = 63
 "validation_only" = 19
+
+[[source]]
+id = "case-input:emt:user-defined-components"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/user_defined_components/run.jl"
+disposition = "example"
+example_ids = ["emt_user_defined_components"]
+reason = "The AIMORA-authored public runner and its three external package-owned source files are the canonical redistributable inputs for the native user-defined-component example."
 
 [[source]]
 id = "case-input:emt:nonlinear-network-discontinuity"
