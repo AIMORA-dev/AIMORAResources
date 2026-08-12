@@ -17,14 +17,34 @@ externalize = ["complete raw waveforms", "repeated render variants", "PDF report
 [[classification]]
 id = "accepted-case-csv-baseline"
 glob = "AIMORACases.jl/examples/**/*.csv"
+source_commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
 state = "retained"
-reason = "Accepted public case artifacts are preserved through migration; future changes require case-level evidence classification."
+reason = "The 130 CSV paths in the immutable accepted Cases migration commit are preserved; later CSV paths require their own classification."
 
 [[classification]]
 id = "accepted-case-svg-baseline"
 glob = "AIMORACases.jl/examples/**/*.svg"
+source_commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
 state = "retained"
-reason = "Accepted public explanatory and waveform figures are preserved through migration; repeated future variants are external by default."
+reason = "The 108 SVG paths in the immutable accepted Cases migration commit are preserved; later SVG paths require their own classification."
+
+[[classification]]
+id = "native-extension-result-contract"
+path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/result_contract.csv"
+state = "retained"
+reason = "Small canonical typed result-contract table whose exact bytes and SHA-256 are accepted U200 public evidence."
+
+[[classification]]
+id = "native-extension-waveform"
+path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/waveform.csv"
+state = "retained"
+reason = "Bounded deterministic public waveform used for exact restart, task, event, KCL, and result-signature reproduction."
+
+[[classification]]
+id = "native-extension-curated-figure"
+path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/waveform.svg"
+state = "retained"
+reason = "One curated educational rendering of the accepted native-extension public case; repeated variants remain external by default."
 
 [[classification]]
 id = "generated-build-products"

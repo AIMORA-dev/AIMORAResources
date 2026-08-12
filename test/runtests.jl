@@ -29,6 +29,11 @@ function tracked_paths()
     return filter(!isempty, split(output, '\0'))
 end
 
+function tree_paths(revision::AbstractString)
+    output = read(`git -C $RESOURCES_ROOT ls-tree -r --name-only -z $revision`, String)
+    return filter(!isempty, split(output, '\0'))
+end
+
 @testset "AIMORA Resources repository contract" begin
     for relative_path in (
         "licensing.toml",
@@ -159,15 +164,37 @@ end
     @test Set(classification["state"] for classification in policy["classification"]) ==
           Set(("retained", "external"))
 
+    baseline_commit = policy["baseline"]["cases_commit"]
+    baseline_paths = tree_paths(baseline_commit)
+    baseline_csv_paths = filter(path -> endswith(lowercase(path), ".csv"), baseline_paths)
+    baseline_svg_paths = filter(path -> endswith(lowercase(path), ".svg"), baseline_paths)
+    baseline_pdf_paths = filter(path -> endswith(lowercase(path), ".pdf"), baseline_paths)
+    @test length(baseline_csv_paths) == policy["baseline"]["tracked_csv"]
+    @test length(baseline_svg_paths) == policy["baseline"]["tracked_svg"]
+    @test length(baseline_pdf_paths) == policy["baseline"]["tracked_pdf"]
+
     paths = tracked_paths()
     csv_paths = filter(path -> endswith(lowercase(path), ".csv"), paths)
     svg_paths = filter(path -> endswith(lowercase(path), ".svg"), paths)
     pdf_paths = filter(path -> endswith(lowercase(path), ".pdf"), paths)
-    @test length(csv_paths) == 130
-    @test length(svg_paths) == 108
     @test isempty(pdf_paths)
     @test all(startswith(path, "AIMORACases.jl/examples/") for path in csv_paths)
     @test all(startswith(path, "AIMORACases.jl/examples/") for path in svg_paths)
+
+    prefixed_baseline = Set(
+        "AIMORACases.jl/" * path for path in vcat(baseline_csv_paths, baseline_svg_paths)
+    )
+    current_artifacts = Set(vcat(csv_paths, svg_paths))
+    added_artifacts = setdiff(current_artifacts, prefixed_baseline)
+    explicit_artifacts = Set(
+        String(classification["path"]) for classification in policy["classification"]
+        if haskey(classification, "path")
+    )
+    @test added_artifacts == explicit_artifacts
+    @test all(
+        classification["state"] in ("retained", "external") for
+        classification in policy["classification"] if haskey(classification, "path")
+    )
     @test !isfile(joinpath(RESOURCES_ROOT, ".gitmodules"))
 
     public_metadata = join((
