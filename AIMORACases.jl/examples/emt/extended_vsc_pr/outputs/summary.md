@@ -1,0 +1,31 @@
+# Stationary PR Grid-Following VSC
+
+- `julia_only`: true
+- `fidelity`: InstantaneousEMT carrier-switching-detailed two-level B200/D200 VSC
+- `controller_family`: StationaryResonantGridFollowing
+- `filter_family`: ShuntLCFilter
+- `wire_form`: ThreeWireForm
+- `timestep_s`: 1.0e-6
+- `duration_s`: 0.04
+- `carrier_frequency_hz`: 10000.0
+- `control_period_s`: 5.0e-5
+- `control_delay_s`: 2.0e-6
+- `final_dc_link_voltage_v`: 794.8021653992663
+- `final_active_power_w`: 14802.769576440773
+- `final_reactive_power_var`: -7117.255947237743
+- `maximum_phase_current_a`: 45.25797688403587
+- `maximum_neutral_kcl_residual_a`: 2.1896510993268947e-9
+- `maximum_nodal_kcl_residual_a`: 1.7960890552615183e-8
+- `maximum_nonlinear_kcl_residual_a`: 1.7960890552615183e-8
+- `relative_energy_residual`: 1.6588490402451655e-11
+- `controller_sample_count`: 801
+- `controller_write_count`: 800
+- `task_occurrence_count`: 6407
+- `boundary_count`: 10
+- `protection_trip_count`: 1
+- `protection_restart_count`: 1
+- `bridge_transition_count`: 3550
+- `deterministic_signature`: 204c8037ea6648f45896d5f6b242137793dd60ae865c9cda3fafeed5bb261734
+- `manufacturer_identity`: none
+- `private_solver_required`: true
+- `unsupported`: vendor or grid-code parameters, standard conformance, arbitrary user controllers, average-value substitution, transformer saturation, destructive failure, ATP/PSCAD equivalence, HIL, and certification

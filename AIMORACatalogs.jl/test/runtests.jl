@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 5
+    @test length(entries) == 6
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -49,4 +49,17 @@ using AIMORACatalogs
     @test bridge_emt[:public_case_valve_position_count] == 52
     @test "flying_capacitor_leg" in bridge_emt[:families]
     @test "arbitrary_topology_synthesis" in bridge_emt[:unsupported_phenomena]
+
+    extended_vsc = AIMORACatalogs.asset(:extended_vsc_control_filter_platform)
+    @test extended_vsc.manufacturer === nothing
+    @test AIMORACatalogs.study_tabs(extended_vsc) == [:emt]
+    extended_vsc_emt = AIMORACatalogs.study_facet(extended_vsc, :emt).parameters
+    @test extended_vsc_emt[:fidelity] == "SwitchingDetailed"
+    @test extended_vsc_emt[:supported_combination_count] == 24
+    @test extended_vsc_emt[:public_case_count] == 4
+    @test "virtual_synchronous_grid_forming" in
+        extended_vsc_emt[:controller_families]
+    @test "lcl" in extended_vsc_emt[:filter_families]
+    @test "atp_or_pscad_equivalence" in
+        extended_vsc_emt[:unsupported_phenomena]
 end

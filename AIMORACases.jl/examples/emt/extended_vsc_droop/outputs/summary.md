@@ -1,0 +1,31 @@
+# Power-Droop Grid-Forming VSC
+
+- `julia_only`: true
+- `fidelity`: InstantaneousEMT carrier-switching-detailed two-level B200/D200 VSC
+- `controller_family`: PowerDroopGridForming
+- `filter_family`: LCLFilter
+- `wire_form`: FourWireForm
+- `timestep_s`: 1.0e-6
+- `duration_s`: 0.04
+- `carrier_frequency_hz`: 10000.0
+- `control_period_s`: 5.0e-5
+- `control_delay_s`: 2.0e-6
+- `final_dc_link_voltage_v`: 785.7468638243311
+- `final_active_power_w`: 13803.075796586425
+- `final_reactive_power_var`: -9370.809319860833
+- `maximum_phase_current_a`: 71.34227334401936
+- `maximum_neutral_kcl_residual_a`: 2.771006535340348e-9
+- `maximum_nodal_kcl_residual_a`: 1.7955292364035813e-8
+- `maximum_nonlinear_kcl_residual_a`: 1.7955292364035813e-8
+- `relative_energy_residual`: 1.956199073029649e-11
+- `controller_sample_count`: 801
+- `controller_write_count`: 800
+- `task_occurrence_count`: 7208
+- `boundary_count`: 8
+- `protection_trip_count`: 0
+- `protection_restart_count`: 0
+- `bridge_transition_count`: 5712
+- `deterministic_signature`: 2ab95ef51a90655c5e64680bc75a4a43cdc1988c0c710bfc70b305ecf21a4d90
+- `manufacturer_identity`: none
+- `private_solver_required`: true
+- `unsupported`: vendor or grid-code parameters, standard conformance, arbitrary user controllers, average-value substitution, transformer saturation, destructive failure, ATP/PSCAD equivalence, HIL, and certification

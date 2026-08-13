@@ -1,0 +1,31 @@
+# Synchronous PLL-dq Grid-Following VSC
+
+- `julia_only`: true
+- `fidelity`: InstantaneousEMT carrier-switching-detailed two-level B200/D200 VSC
+- `controller_family`: SynchronousPLLGridFollowing
+- `filter_family`: SeriesLFilter
+- `wire_form`: ThreeWireForm
+- `timestep_s`: 1.0e-6
+- `duration_s`: 0.04
+- `carrier_frequency_hz`: 10000.0
+- `control_period_s`: 5.0e-5
+- `control_delay_s`: 2.0e-6
+- `final_dc_link_voltage_v`: 778.9838811570373
+- `final_active_power_w`: 16559.16861654516
+- `final_reactive_power_var`: 6715.336721371254
+- `maximum_phase_current_a`: 62.45801355587151
+- `maximum_neutral_kcl_residual_a`: 1.5134934971960945e-9
+- `maximum_nodal_kcl_residual_a`: 1.797208371012715e-8
+- `maximum_nonlinear_kcl_residual_a`: 1.797208371012715e-8
+- `relative_energy_residual`: 2.098379373791782e-11
+- `controller_sample_count`: 801
+- `controller_write_count`: 800
+- `task_occurrence_count`: 6407
+- `boundary_count`: 8
+- `protection_trip_count`: 0
+- `protection_restart_count`: 0
+- `bridge_transition_count`: 3772
+- `deterministic_signature`: 0c6bad2a57be4b36eedf20498a03c18a17d48401deeef913232c37c572610e15
+- `manufacturer_identity`: none
+- `private_solver_required`: true
+- `unsupported`: vendor or grid-code parameters, standard conformance, arbitrary user controllers, average-value substitution, transformer saturation, destructive failure, ATP/PSCAD equivalence, HIL, and certification

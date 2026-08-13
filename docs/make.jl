@@ -41,6 +41,7 @@ makedocs(
         "Nonlinear EMT" => "nonlinear-emt.md",
         "Extended Semiconductor Fidelity" => "extended-semiconductor-fidelity.md",
         "Generic Bridge Topologies" => "generic-bridge-topologies.md",
+        "Extended VSC Controls and Filters" => "extended-vsc-controls-and-filters.md",
         "General Multirate EMT Tasks" => "general-multirate-emt-tasks.md",
         "Native Extensions" => "native-extensions.md",
         "Cases and Catalogs" => "cases-and-catalogs.md",

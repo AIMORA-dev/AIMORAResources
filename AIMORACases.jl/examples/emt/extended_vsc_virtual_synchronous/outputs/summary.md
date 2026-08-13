@@ -1,0 +1,31 @@
+# Virtual-Synchronous Grid-Forming VSC
+
+- `julia_only`: true
+- `fidelity`: InstantaneousEMT carrier-switching-detailed two-level B200/D200 VSC
+- `controller_family`: VirtualSynchronousGridForming
+- `filter_family`: LCLFilter
+- `wire_form`: FourWireForm
+- `timestep_s`: 1.0e-6
+- `duration_s`: 0.04
+- `carrier_frequency_hz`: 10000.0
+- `control_period_s`: 5.0e-5
+- `control_delay_s`: 2.0e-6
+- `final_dc_link_voltage_v`: 780.4031180431017
+- `final_active_power_w`: 11441.013811040764
+- `final_reactive_power_var`: -77652.13493367237
+- `maximum_phase_current_a`: 74.0908074806555
+- `maximum_neutral_kcl_residual_a`: 2.5529778291399907e-9
+- `maximum_nodal_kcl_residual_a`: 1.7951045094832807e-8
+- `maximum_nonlinear_kcl_residual_a`: 1.7951045094832807e-8
+- `relative_energy_residual`: 1.755124074383664e-11
+- `controller_sample_count`: 801
+- `controller_write_count`: 800
+- `task_occurrence_count`: 7208
+- `boundary_count`: 8
+- `protection_trip_count`: 0
+- `protection_restart_count`: 0
+- `bridge_transition_count`: 5438
+- `deterministic_signature`: 8bbb237615f5674db999be585d603a787e4b9295d9572ee6b6ae0df1bae12f3a
+- `manufacturer_identity`: none
+- `private_solver_required`: true
+- `unsupported`: vendor or grid-code parameters, standard conformance, arbitrary user controllers, average-value substitution, transformer saturation, destructive failure, ATP/PSCAD equivalence, HIL, and certification

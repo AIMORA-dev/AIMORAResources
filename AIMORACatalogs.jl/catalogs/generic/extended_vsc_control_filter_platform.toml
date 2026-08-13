@@ -1,0 +1,34 @@
+schema = "aimora-catalog-entry-v1"
+id = "extended_vsc_control_filter_platform"
+equipment_class = "switch_detailed_voltage_source_converter"
+manufacturer = ""
+model = "Generic extended controller, filter, and wire-form VSC platform"
+provenance = "AIMORA-authored generic SI controller, filter, neutral, protection, plant-interface, and disturbance inputs; no manufacturer, proprietary, protected-standard, or certified values"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+uncertainty_kind = "unknown_not_statistical"
+uncertainty_statement = "Equations and case inputs are exact for the named synthetic systems; physical manufacturing and application uncertainty is not estimated"
+rights = "public AIMORA-authored equations and synthetic values"
+orientation = "AC terminal current is positive from converter toward grid; DC current is positive from source into converter; active power is positive DC-to-AC"
+
+[study.emt]
+representation = "instantaneous_carrier_switching_detailed"
+fidelity = "SwitchingDetailed"
+controller_families = ["synchronous_pll_dq_grid_following", "stationary_pr_grid_following", "power_droop_grid_forming", "virtual_synchronous_grid_forming"]
+filter_families = ["series_l", "shunt_lc", "lcl"]
+wire_forms = ["three_wire", "four_wire"]
+supported_combination_count = 24
+sequence_orders = ["positive", "negative", "zero"]
+selected_harmonic_orders = [1, 5, 7, 11, 13]
+public_case_timestep_s = 0.000001
+public_case_duration_s = 0.04
+public_case_carrier_frequency_hz = 10000.0
+public_case_control_period_s = 0.00005
+public_case_count = 4
+parameter_source = "AIMORA-authored generic public contract and synthetic exact public-case inputs"
+parameter_transformation = "direct SI values with typed current/power orientation and no hidden per-unit conversion"
+parameter_uncertainty = "unknown physical uncertainty; deterministic numerical input"
+validity = "named controller/filter/wire combinations admitted by the public contract, finite generic parameters, exact task boundaries, and solvable switching-detailed nodal equations"
+unsupported_phenomena = ["manufacturer_or_vendor_prediction", "protected_grid_code_conformance", "average_value_substitution", "arbitrary_user_controller", "complete_renewable_or_storage_plant", "transformer_saturation", "destructive_or_arc_failure", "atp_or_pscad_equivalence", "hil_qualification", "certification"]

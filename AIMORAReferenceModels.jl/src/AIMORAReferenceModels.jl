@@ -48,11 +48,22 @@ export amplitude_invariant_clarke_matrix,
        independent_bridge_state_is_allowed,
        independent_bridge_passive_backward_euler,
        independent_cascaded_h_bridge_voltage,
+       independent_vsc_current_projection,
+       independent_vsc_power_current_reference,
+       independent_vsc_pll_sample,
+       independent_vsc_resonator_sample,
+       independent_vsc_power_filter_sample,
+       independent_vsc_droop_sample,
+       independent_vsc_swing_sample,
+       independent_vsc_instantaneous_power,
+       independent_vsc_sequence_components,
+       independent_vsc_capacitor_companion_residual,
        series_rl_piecewise_constant_current,
        series_rl_piecewise_constant_trace
 
 include("extended_semiconductor_fidelity.jl")
 include("generic_bridge_topologies.jl")
+include("extended_vsc_control_filter_platform.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

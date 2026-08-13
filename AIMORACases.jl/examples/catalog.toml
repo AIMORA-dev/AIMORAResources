@@ -738,3 +738,47 @@ source_ids = [
     "aimora-reference:generic-bridge-topology-library",
     "validation-suite:power-semiconductor-bridge-topologies",
 ]
+
+[[case]]
+id = "emt_extended_vsc_pll_dq"
+study = "emt"
+path = "examples/emt/extended_vsc_pll_dq/run.jl"
+entrypoint = "examples/emt/extended_vsc_pll_dq/run.jl"
+description = "Switching-detailed synchronous PLL-dq grid-following VSC with a three-wire series-L filter, exact sampled control/PWM, disturbances, plant requests, sequence extraction, checkpoint-safe state, KCL, and energy outputs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["case-input:emt:extended-vsc-pll-dq", "aimora-reference:extended-vsc-control-filter-platform", "validation-suite:extended-vsc-control-filter-platform"]
+
+[[case]]
+id = "emt_extended_vsc_pr"
+study = "emt"
+path = "examples/emt/extended_vsc_pr/run.jl"
+entrypoint = "examples/emt/extended_vsc_pr/run.jl"
+description = "Switching-detailed stationary PR grid-following VSC with selected harmonic resonators, a three-wire shunt-LC filter, exact sampled control/PWM, disturbances, plant requests, sequence extraction, checkpoint-safe state, KCL, and energy outputs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["case-input:emt:extended-vsc-pr", "aimora-reference:extended-vsc-control-filter-platform", "validation-suite:extended-vsc-control-filter-platform"]
+
+[[case]]
+id = "emt_extended_vsc_droop"
+study = "emt"
+path = "examples/emt/extended_vsc_droop/run.jl"
+entrypoint = "examples/emt/extended_vsc_droop/run.jl"
+description = "Switching-detailed power-droop grid-forming VSC with a four-wire LCL filter, explicit neutral, exact sampled control/PWM, unbalance, plant requests, disturbances, checkpoint-safe state, KCL, and energy outputs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["case-input:emt:extended-vsc-droop", "aimora-reference:extended-vsc-control-filter-platform", "validation-suite:extended-vsc-control-filter-platform"]
+
+[[case]]
+id = "emt_extended_vsc_virtual_synchronous"
+study = "emt"
+path = "examples/emt/extended_vsc_virtual_synchronous/run.jl"
+entrypoint = "examples/emt/extended_vsc_virtual_synchronous/run.jl"
+description = "Switching-detailed virtual-synchronous grid-forming VSC with virtual inertia/impedance, a four-wire LCL filter, explicit neutral, exact sampled control/PWM, unbalance, plant requests, disturbances, checkpoint-safe state, KCL, and energy outputs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["case-input:emt:extended-vsc-virtual-synchronous", "aimora-reference:extended-vsc-control-filter-platform", "validation-suite:extended-vsc-control-filter-platform"]

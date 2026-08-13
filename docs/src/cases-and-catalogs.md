@@ -1,5 +1,7 @@
 # Cases and Catalogs
 
+The extended switching-detailed VSC public set includes `emt_extended_vsc_pll_dq`, `emt_extended_vsc_pr`, `emt_extended_vsc_droop`, and `emt_extended_vsc_virtual_synchronous`. Each case produces deterministic CSV data, a scalar summary, and current plus DC/sequence SVG plots; the generic catalogue owner is `extended_vsc_control_filter_platform`.
+
 ## Canonical cases
 
 `AIMORACases.jl` is the single public source for examples and benchmark inputs.

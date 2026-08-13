@@ -53,6 +53,105 @@ using AIMORAReferenceModels
     @test thermal.ambient_heat_flow_w >= 0.0
     @test thermal.stored_energy_j >= 0.0
 end
+
+
+@testset "independent extended VSC control and filter references" begin
+    active = independent_vsc_current_projection(200.0, 100.0, 180.0, :active)
+    @test active == (direct=180.0, quadrature=0.0, limited=true)
+    reactive = independent_vsc_current_projection(200.0, 100.0, 180.0, :reactive)
+    @test reactive.direct ≈ sqrt(180.0^2 - 100.0^2)
+    @test hypot(reactive.direct, reactive.quadrature) ≈ 180.0
+    magnitude = independent_vsc_current_projection(200.0, 100.0, 180.0, :magnitude)
+    @test hypot(magnitude.direct, magnitude.quadrature) ≈ 180.0
+
+    current = independent_vsc_power_current_reference(
+        20.0e3,
+        5.0e3,
+        325.0,
+        0.0,
+        180.0,
+        :active,
+    )
+    @test current.direct ≈ (2.0 / 3.0) * 20.0e3 / 325.0
+    @test current.quadrature ≈ -(2.0 / 3.0) * 5.0e3 / 325.0
+
+    pll = independent_vsc_pll_sample(
+        0.0,
+        0.0,
+        325.0,
+        3.25,
+        50.0,
+        110.0,
+        4.0e3,
+        20.0,
+        45.0,
+        65.0,
+        50.0e-6,
+    )
+    @test pll.error ≈ 3.25 / hypot(325.0, 3.25)
+    @test pll.locked
+
+    resonator = independent_vsc_resonator_sample(
+        0.0,
+        0.0,
+        2.0,
+        2.0 * pi * 50.0,
+        5,
+        80.0,
+        12.0,
+        50.0e-6,
+    )
+    @test resonator.derivative_state > 0.0
+    @test resonator.integral_state > 0.0
+    @test independent_vsc_power_filter_sample(0.0, 100.0, 2.0e-3, 50.0e-6) ≈
+        100.0 * (1.0 - exp(-50.0e-6 / 2.0e-3))
+
+    droop = independent_vsc_droop_sample(0.0, 0.0, 10.0e3, 50.0, 3.0e-5, 50.0e-6)
+    @test droop.frequency_rad_per_s ≈ 2.0 * pi * 50.0 + 3.0e-5 * 10.0e3
+    swing = independent_vsc_swing_sample(
+        0.0,
+        2.0 * pi * 50.0,
+        0.0,
+        10.0e3,
+        50.0,
+        4.0,
+        120.0,
+        50.0e-6,
+    )
+    @test swing.acceleration_rad_per_s2 == 2500.0
+
+    phase_voltage = [325.0, -162.5, -162.5]
+    phase_current = [10.0, -5.0, -5.0]
+    power = independent_vsc_instantaneous_power(phase_voltage, phase_current)
+    @test power.active_w ≈ sum(phase_voltage .* phase_current)
+    @test abs(power.reactive_var) <= 2.0e-12
+
+    angles = range(0.0, 2.0 * pi; length=201)[1:end-1]
+    samples = hcat(([
+        325.0 * cos(angle),
+        325.0 * cos(angle - 2.0 * pi / 3.0),
+        325.0 * cos(angle + 2.0 * pi / 3.0),
+    ] for angle in angles)...)
+    sequence = independent_vsc_sequence_components(samples, angles)
+    @test abs(sequence.positive) ≈ 325.0 atol=2.0e-12
+    @test abs(sequence.negative) <= 2.0e-12
+    @test abs(sequence.zero) <= 2.0e-12
+
+    capacitance = 20.0e-6
+    step = 1.0e-6
+    previous_voltage = 100.0
+    previous_current = 0.0
+    voltage = 101.0
+    current = 2.0 * capacitance * (voltage - previous_voltage) / step - previous_current
+    @test independent_vsc_capacitor_companion_residual(
+        previous_voltage,
+        previous_current,
+        voltage,
+        current,
+        capacitance,
+        step,
+    ) ≈ 0.5 * capacitance * (voltage - previous_voltage)^2
+end
 using LinearAlgebra
 
 @testset "independent reference-model package boundary" begin

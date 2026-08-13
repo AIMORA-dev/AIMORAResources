@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-12"
-source_count = 482
+source_count = 488
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 60
+"canonical_case_input" = 64
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -14,11 +14,11 @@ source_count = 482
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 83
-"aimora_reference" = 2
+"validation_suite" = 84
+"aimora_reference" = 3
 
 [counts_by_disposition]
-"example" = 66
+"example" = 72
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -35,6 +35,60 @@ path = "src/extended_semiconductor_fidelity.jl"
 disposition = "example"
 example_ids = ["emt_extended_semiconductor_commutation"]
 reason = "Independent recovered-charge, nonlinear charge/capacitance/energy, exponential-tail, trilinear-energy, and passive Cauer formulations qualify the generic public commutation example without importing production device or solver code."
+
+[[source]]
+id = "aimora-reference:extended-vsc-control-filter-platform"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/extended_vsc_control_filter_platform.jl"
+disposition = "example"
+example_ids = ["emt_extended_vsc_pll_dq", "emt_extended_vsc_pr", "emt_extended_vsc_droop", "emt_extended_vsc_virtual_synchronous"]
+reason = "Independent current projection, PLL, PR, droop, swing, power, sequence, and passive-filter formulations qualify the public extended VSC cases without importing production VSC, event, checkpoint, or solver code."
+
+[[source]]
+id = "case-input:emt:extended-vsc-pll-dq"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/extended_vsc_pll_dq/run.jl"
+disposition = "example"
+example_ids = ["emt_extended_vsc_pll_dq"]
+reason = "The AIMORA-authored runner is the canonical redistributable synchronous PLL-dq grid-following VSC case."
+
+[[source]]
+id = "case-input:emt:extended-vsc-pr"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/extended_vsc_pr/run.jl"
+disposition = "example"
+example_ids = ["emt_extended_vsc_pr"]
+reason = "The AIMORA-authored runner is the canonical redistributable stationary PR grid-following VSC case."
+
+[[source]]
+id = "case-input:emt:extended-vsc-droop"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/extended_vsc_droop/run.jl"
+disposition = "example"
+example_ids = ["emt_extended_vsc_droop"]
+reason = "The AIMORA-authored runner is the canonical redistributable four-wire power-droop grid-forming VSC case."
+
+[[source]]
+id = "case-input:emt:extended-vsc-virtual-synchronous"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/extended_vsc_virtual_synchronous/run.jl"
+disposition = "example"
+example_ids = ["emt_extended_vsc_virtual_synchronous"]
+reason = "The AIMORA-authored runner is the canonical redistributable four-wire virtual-synchronous grid-forming VSC case."
+
+[[source]]
+id = "validation-suite:extended-vsc-control-filter-platform"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/extended_vsc_control_filter_platform.jl"
+disposition = "example"
+example_ids = ["emt_extended_vsc_pll_dq", "emt_extended_vsc_pr", "emt_extended_vsc_droop", "emt_extended_vsc_virtual_synchronous"]
+reason = "Independent equations, all supported combinations, disturbances, faults, task timing, checkpoint replay, KCL, energy, refinement, mutations, external overlap, and performance qualify the four public controller-family workflows."
 
 [[source]]
 id = "aimora-reference:generic-bridge-topology-library"
