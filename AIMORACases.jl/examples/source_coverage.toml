@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-12"
-source_count = 478
+source_count = 479
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -15,9 +15,10 @@ source_count = 478
 "translation_capability_packet" = 11
 "validation_fixture" = 76
 "validation_suite" = 82
+"aimora_reference" = 1
 
 [counts_by_disposition]
-"example" = 62
+"example" = 63
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -25,6 +26,15 @@ source_count = 478
 "pending_export" = 145
 "source_missing" = 63
 "validation_only" = 19
+
+[[source]]
+id = "aimora-reference:generic-extended-semiconductor-fidelity"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/extended_semiconductor_fidelity.jl"
+disposition = "example"
+example_ids = ["emt_extended_semiconductor_commutation"]
+reason = "Independent recovered-charge, nonlinear charge/capacitance/energy, exponential-tail, trilinear-energy, and passive Cauer formulations qualify the generic public commutation example without importing production device or solver code."
 
 [[source]]
 id = "case-input:emt:general-multirate-task-platform"

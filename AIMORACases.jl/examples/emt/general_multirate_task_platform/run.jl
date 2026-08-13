@@ -300,6 +300,24 @@ function main()
             EMTTaskHoldStage,
         )
     )
+    voltage_series = [
+        String(accepted.trace.node_names[index]) =>
+            vec(accepted.trace.voltage_pu[index, :])
+        for index in eachindex(accepted.trace.node_names)
+    ]
+    csv_path = write_series_csv(
+        joinpath(output_directory, "general_multirate_task_platform.csv"),
+        "time_s",
+        accepted.trace.time_s,
+        voltage_series,
+    )
+    waveform_path = write_waveform_svg(
+        joinpath(output_directory, "general_multirate_task_platform.svg"),
+        accepted.trace.time_s,
+        voltage_series;
+        title="General Multirate EMT Task Platform",
+        y_label="node voltage (pu)",
+    )
     summary_path = write_key_value_summary(
         joinpath(output_directory, "summary.md"),
         "General Multirate EMT Task Platform",
@@ -324,6 +342,8 @@ function main()
             external_protocol_or_realtime_claim = false,
         ),
     )
+    println("CSV: ", csv_path)
+    println("Waveform: ", waveform_path)
     println("Summary: ", summary_path)
 end
 

@@ -81,6 +81,7 @@ Int(get(coverage, "source_count", -1)) == length(coverage_rows) ||
 coverage_ids = String[]
 coverage_by_id = Dict{String,Any}()
 allowed_kinds = Set((
+    "aimora_reference",
     "atpdraw_case",
     "atpdraw_exa_project",
     "canonical_case_input",
@@ -140,6 +141,14 @@ for row in coverage_rows
         local_path = first(split(path, '#'; limit = 2))
         ispath(joinpath(ROOT, local_path)) ||
             fail("coverage row $(source_id) has a stale AIMORACases path: $(path)")
+    elseif kind == "aimora_reference"
+        owner == "AIMORAResources/AIMORAReferenceModels.jl" ||
+            fail("AIMORA reference $(source_id) has an invalid owner")
+        startswith(path, "src/") && endswith(path, ".jl") ||
+            fail("AIMORA reference $(source_id) has an invalid source path")
+        reference_path = joinpath(ROOT, "..", "AIMORAReferenceModels.jl", path)
+        isfile(reference_path) ||
+            fail("AIMORA reference $(source_id) has a stale source path: $(path)")
     elseif kind == "validation_fixture"
         startswith(path, "tests/fixtures/") ||
             fail("validation fixture $(source_id) has an invalid path")

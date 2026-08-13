@@ -1,0 +1,41 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_extended_semiconductor_commutation"
+equipment_class = "power_semiconductor_switch"
+manufacturer = ""
+model = "Generic compositional extended semiconductor"
+provenance = "AIMORA-authored synthetic generic parameter set; no measured, manufacturer, proprietary, certified, or third-party device values"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+uncertainty_kind = "unknown_not_statistical"
+uncertainty_statement = "Values define an illustrative physical contract and are not estimates of a manufactured product"
+rights = "public AIMORA-authored synthetic values"
+orientation = "terminal current and voltage positive from terminal a to terminal b"
+
+[study.emt]
+representation = "compositional_power_semiconductor"
+fidelity = "SwitchingDetailed"
+junction_family = "generic_diode"
+recovered_charge_lifetime_s = 0.000005
+initial_recovered_charge_c = 0.000020
+zero_bias_junction_capacitance_f = 0.000000200
+junction_voltage_v = 50.0
+junction_grading_exponent = 0.45
+terminal_voltage_min_v = -200.0
+terminal_voltage_max_v = 200.0
+on_conductance_s = 2.0
+off_conductance_s = 0.000001
+thermal_capacitance_j_per_k = [0.2, 1.0]
+thermal_resistance_k_per_w = [0.5, 2.0]
+ambient_temperature_k = 293.15
+initial_temperature_k = [300.0, 300.0]
+switching_energy_current_axis_a = [0.0, 20.0]
+switching_energy_blocking_voltage_axis_v = [0.0, 200.0]
+switching_energy_temperature_axis_k = [250.0, 350.0]
+timestep_s = 0.000001
+parameter_source = "AIMORA-authored synthetic exact case input"
+parameter_transformation = "direct SI values without inferred device scaling"
+parameter_uncertainty = "unknown; no manufacturer or measurement inference"
+validity = "generic lumped two-terminal illustration within the declared table, voltage, charge, and temperature domains"
+unsupported_phenomena = ["manufacturer_prediction", "arbitrary_spice_or_hdl_model", "encrypted_or_proprietary_library", "drift_diffusion_pde", "destructive_failure", "lifetime", "standard_conformance", "atp_or_pscad_equivalence", "certification"]

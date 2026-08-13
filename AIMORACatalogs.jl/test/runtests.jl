@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 3
+    @test length(entries) == 4
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -29,4 +29,13 @@ using AIMORACatalogs
     @test "phase_locked_loop_dynamics" in converter_emt[:unsupported_phenomena]
     @test "standard_conformance_or_certification" in
         converter_emt[:unsupported_phenomena]
+
+    semiconductor = AIMORACatalogs.asset(:generic_extended_semiconductor_commutation)
+    @test semiconductor.manufacturer === nothing
+    @test AIMORACatalogs.study_tabs(semiconductor) == [:emt]
+    semiconductor_emt = AIMORACatalogs.study_facet(semiconductor, :emt).parameters
+    @test semiconductor_emt[:fidelity] == "SwitchingDetailed"
+    @test semiconductor_emt[:recovered_charge_lifetime_s] == 5.0e-6
+    @test semiconductor_emt[:junction_grading_exponent] == 0.45
+    @test "manufacturer_prediction" in semiconductor_emt[:unsupported_phenomena]
 end

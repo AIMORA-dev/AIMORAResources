@@ -1,5 +1,58 @@
 using Test
 using AIMORAReferenceModels
+
+@testset "independent extended semiconductor formulations" begin
+    recovery = independent_recovered_charge_backward_euler(
+        2.0e-6,
+        -1.0,
+        2.0e-6,
+        1.0e-6,
+    )
+    @test recovery.accepted_charge_c ≈ 2.0e-6 / 3.0
+    @test abs(recovery.balance_residual_a) <= 4.0e-16
+    for voltage_v in (-20.0, -1.0, 0.0, 10.0)
+        perturbation_v = 1.0e-6
+        derivative = (
+            independent_junction_charge(2.0e-6, 10.0, 0.4, voltage_v + perturbation_v) -
+            independent_junction_charge(2.0e-6, 10.0, 0.4, voltage_v - perturbation_v)
+        ) / (2.0 * perturbation_v)
+        @test derivative ≈ independent_junction_capacitance(
+            2.0e-6,
+            10.0,
+            0.4,
+            voltage_v,
+        ) rtol=1.0e-7
+        @test independent_junction_energy(2.0e-6, 10.0, 0.4, voltage_v) >= 0.0
+    end
+    @test independent_turn_off_tail(10.0, 2.0e-6, 2.0e-6) ≈ 10.0 / exp(1.0)
+    @test independent_turn_off_tail(
+        10.0,
+        2.0e-6,
+        20.0e-6;
+        cutoff_current_a=1.0,
+    ) == 0.0
+    energy_values = reshape(Float64.(1:8), 2, 2, 2)
+    @test independent_trilinear_semiconductor_energy(
+        energy_values,
+        [0.0, 1.0],
+        [0.0, 1.0],
+        [300.0, 400.0],
+        1.0,
+        1.0,
+        400.0,
+    ) == energy_values[2, 2, 2]
+    thermal = independent_cauer_backward_euler(
+        [1.0, 2.0],
+        [0.5, 1.0],
+        [300.0, 300.0],
+        300.0,
+        10.0,
+        1.0,
+    )
+    @test all(temperature -> temperature >= 300.0, thermal.temperature_k)
+    @test thermal.ambient_heat_flow_w >= 0.0
+    @test thermal.stored_energy_j >= 0.0
+end
 using LinearAlgebra
 
 @testset "independent reference-model package boundary" begin

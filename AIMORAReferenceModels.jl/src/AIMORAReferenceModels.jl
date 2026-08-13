@@ -32,8 +32,18 @@ export amplitude_invariant_clarke_matrix,
        IndependentTaskOccurrence,
        IndependentTaskReferenceResult,
        independent_multirate_task_reference,
+       IndependentSemiconductorState,
+       independent_recovered_charge_backward_euler,
+       independent_junction_capacitance,
+       independent_junction_charge,
+       independent_junction_energy,
+       independent_turn_off_tail,
+       independent_trilinear_semiconductor_energy,
+       independent_cauer_backward_euler,
        series_rl_piecewise_constant_current,
        series_rl_piecewise_constant_trace
+
+include("extended_semiconductor_fidelity.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

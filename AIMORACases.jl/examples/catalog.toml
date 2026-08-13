@@ -712,3 +712,14 @@ requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
 source_ids = ["case-input:emt:consistent_initialization_sequence"]
+
+[[case]]
+id = "emt_extended_semiconductor_commutation"
+study = "emt"
+path = "examples/emt/extended_semiconductor_commutation/run.jl"
+entrypoint = "examples/emt/extended_semiconductor_commutation/run.jl"
+description = "Generic recovered-charge, nonlinear-junction-charge, event-energy-map, and passive electrothermal semiconductor commutation with typed public state and explicit non-manufacturer limits."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:generic-extended-semiconductor-fidelity"]

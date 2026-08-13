@@ -10,6 +10,8 @@ The case also serializes an in-process integrator at an accepted boundary and pr
 make run
 ```
 
-The generated `summary.md` records family and stage counts, collision coverage, maximum pending depth, the typed rollback failure, and the deterministic result signature.
+## Output artifacts
+
+The generated `general_multirate_task_platform.csv` records the accepted EMT node-voltage trace, and `general_multirate_task_platform.svg` plots that trace so the event-first task collision and held source response can be inspected. The generated `summary.md` records family and stage counts, collision coverage, maximum pending depth, the typed rollback failure, and the deterministic result signature. The waveform should remain finite and show a response after the 75-microsecond input event; the summary should confirm all eight task families, the exact collision, split-restart equality, and the deliberate rollback failure code.
 
 The task recurrences are synthetic and dimensionless. They qualify AIMORA's exact calendar, dependency, delayed-hold, event-order, rollback, restart, and result contracts only; they do not qualify protection, carrier, converter-control, machine, source, thermal, interface, or user-defined physics. The case makes no ATP, PSCAD, FMI, HELICS, hard-real-time, HIL, protocol-conformance, safety, or certification claim.
