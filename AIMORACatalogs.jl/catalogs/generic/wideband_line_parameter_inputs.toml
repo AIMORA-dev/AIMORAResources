@@ -1,0 +1,34 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_wideband_line_parameter_inputs"
+equipment_class = "line_parameter_route"
+manufacturer = ""
+model = "Generic overhead, cable, soil, connection, and mixed-route parameter inputs"
+provenance = "AIMORA-authored synthetic SI geometry, material, soil, connection, and route records; no vendor or protected-standard values"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+units = "SI"
+phase_basis = ["phase_a", "phase_b", "phase_c"]
+rights = "public AIMORA-authored synthetic values"
+uncertainty_kind = "explicit_unknown_or_bounded_alternative"
+validity = "Only the published geometry, material, soil, frequency, route, and scale limits"
+
+[study.line_parameters]
+representation = "coupled_complex_phase_domain_z_y_per_metre"
+fidelity = "frequency_domain_parameter_preparation"
+frequency_domain_hz = [0.1, 1000000.0]
+maximum_frequency_count = 401
+maximum_soil_layers = 4
+maximum_route_segments = 32
+maximum_route_length_m = 2000000.0
+conductor_records = ["round_overhead_bundle_equivalent", "round_cable_conductor"]
+cable_records = ["three_single_core_generic"]
+material_records = ["generic_conductor", "generic_dielectric"]
+soil_records = ["homogeneous_isotropic", "two_layer_isotropic"]
+connection_records = ["explicit_phase_order", "phase_permutation"]
+route_kinds = ["overhead", "cable", "mixed"]
+parameter_source = "AIMORA-authored public synthetic geometry and material records"
+parameter_transformation = "direct SI input with explicit phase-basis mapping and length-weighted route composition"
+parameter_uncertainty = "physical uncertainty is explicit and never inferred from the synthetic values"
+unsupported_phenomena = ["rational_fitting", "passivity_enforcement_of_a_fit", "time_domain_line_realization", "propagation_history", "anisotropic_or_ionized_soil", "terrain_or_tower_field_solution", "vendor_prediction", "protected_standard_conformance", "atp_or_pscad_equivalence", "certification"]

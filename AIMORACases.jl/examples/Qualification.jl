@@ -509,11 +509,21 @@ end
 
 function _prepare_workers(root::AbstractString, count::Int)
     count <= 1 && return Int[]
+    engine = abspath(get(
+        ENV,
+        "AIMORA_ENGINE_PATH",
+        joinpath(root, "..", "..", "AIMORA.jl"),
+    ))
     environment = Dict(
         "JULIA_NUM_THREADS" => "1",
         "OPENBLAS_NUM_THREADS" => "1",
         "OMP_NUM_THREADS" => "1",
-        "AIMORA_ENGINE_PATH" => abspath(get(ENV, "AIMORA_ENGINE_PATH", joinpath(root, "..", "AIMORA.jl"))),
+        "AIMORA_ENGINE_PATH" => engine,
+        "AIMORA_SOLVER_PATH" => abspath(get(
+            ENV,
+            "AIMORA_SOLVER_PATH",
+            joinpath(dirname(engine), "AIMORASolvers.jl"),
+        )),
     )
     worker_ids = addprocs(
         count;

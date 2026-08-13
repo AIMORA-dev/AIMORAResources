@@ -2,13 +2,13 @@ schema = "aimora-resource-artifact-policy-v1"
 classification_precedes_removal = true
 
 [baseline]
-cases_commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
-tracked_csv = 130
-tracked_svg = 108
+cases_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
+tracked_csv = 139
+tracked_svg = 123
 tracked_pdf = 0
 signature_schema = "frozen-git-tree-rows-sha256-v1"
-signature = "e05b948a178c913989e8c5694e44de81591d1a651b6b1d4a6d98bda49a7df0d8"
-disposition = "retain accepted migration baseline until individual evidence and ledger bindings are classified"
+signature = "1b35a658c9b4ec048756a48d473111fc150ed18386e4f92269a60249ad952868"
+disposition = "retain the remotely confirmed pre-L200 public-product baseline; later CSV and SVG paths require individual classification"
 
 [defaults]
 commit = ["canonical input/project", "reproducible runner", "README", "expected scalar metrics", "tolerances", "output schema", "result hashes", "small immutable independent reference", "selected educational figure", "provenance", "licence metadata"]
@@ -17,34 +17,70 @@ externalize = ["complete raw waveforms", "repeated render variants", "PDF report
 [[classification]]
 id = "accepted-case-csv-baseline"
 glob = "AIMORACases.jl/examples/**/*.csv"
-source_commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
+source_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
 state = "retained"
-reason = "The 130 CSV paths in the immutable accepted Cases migration commit are preserved; later CSV paths require their own classification."
+reason = "The 139 CSV paths in the immutable accepted pre-L200 Resources commit are preserved; later CSV paths require their own classification."
 
 [[classification]]
 id = "accepted-case-svg-baseline"
 glob = "AIMORACases.jl/examples/**/*.svg"
-source_commit = "25ced61dc6a70204f01b2429a6120682ccf0ea22"
+source_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
 state = "retained"
-reason = "The 108 SVG paths in the immutable accepted Cases migration commit are preserved; later SVG paths require their own classification."
+reason = "The 123 SVG paths in the immutable accepted pre-L200 Resources commit are preserved; later SVG paths require their own classification."
 
 [[classification]]
-id = "native-extension-result-contract"
-path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/result_contract.csv"
+id = "wideband-overhead-frequency-data"
+path = "AIMORACases.jl/examples/line_parameters/overhead/outputs/frequency_scan.csv"
 state = "retained"
-reason = "Small canonical typed result-contract table whose exact bytes and SHA-256 are accepted U200 public evidence."
+reason = "Small deterministic public frequency scan supporting the overhead parameter report and curated figure."
 
 [[classification]]
-id = "native-extension-waveform"
-path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/waveform.csv"
+id = "wideband-overhead-matrix-data"
+path = "AIMORACases.jl/examples/line_parameters/overhead/outputs/series_impedance_60hz.csv"
 state = "retained"
-reason = "Bounded deterministic public waveform used for exact restart, task, event, KCL, and result-signature reproduction."
+reason = "Small canonical public 60 Hz overhead phase-matrix artifact."
 
 [[classification]]
-id = "native-extension-curated-figure"
-path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/waveform.svg"
+id = "wideband-overhead-curated-figure"
+path = "AIMORACases.jl/examples/line_parameters/overhead/outputs/frequency_scan.svg"
 state = "retained"
-reason = "One curated educational rendering of the accepted native-extension public case; repeated variants remain external by default."
+reason = "One curated public rendering of overhead self and mutual impedance magnitudes."
+
+[[classification]]
+id = "wideband-cable-frequency-data"
+path = "AIMORACases.jl/examples/line_parameters/cable/outputs/frequency_scan.csv"
+state = "retained"
+reason = "Small deterministic public frequency scan supporting the cable parameter report and curated figure."
+
+[[classification]]
+id = "wideband-cable-matrix-data"
+path = "AIMORACases.jl/examples/line_parameters/cable/outputs/series_impedance_60hz.csv"
+state = "retained"
+reason = "Small canonical public 60 Hz cable phase-matrix artifact."
+
+[[classification]]
+id = "wideband-cable-curated-figure"
+path = "AIMORACases.jl/examples/line_parameters/cable/outputs/frequency_scan.svg"
+state = "retained"
+reason = "One curated public rendering of cable self and mutual impedance magnitudes."
+
+[[classification]]
+id = "wideband-mixed-route-frequency-data"
+path = "AIMORACases.jl/examples/line_parameters/mixed_route/outputs/frequency_scan.csv"
+state = "retained"
+reason = "Small deterministic public frequency scan supporting the phase-mapped mixed-route report and curated figure."
+
+[[classification]]
+id = "wideband-mixed-route-matrix-data"
+path = "AIMORACases.jl/examples/line_parameters/mixed_route/outputs/series_impedance_60hz.csv"
+state = "retained"
+reason = "Small canonical public 60 Hz phase-mapped mixed-route matrix artifact."
+
+[[classification]]
+id = "wideband-mixed-route-curated-figure"
+path = "AIMORACases.jl/examples/line_parameters/mixed_route/outputs/frequency_scan.svg"
+state = "retained"
+reason = "One curated public rendering of mixed-route self and mutual impedance magnitudes."
 
 [[classification]]
 id = "generated-build-products"

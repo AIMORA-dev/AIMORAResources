@@ -3,7 +3,7 @@ using Documenter
 const REPOSITORY_ROOT = @__DIR__
 const AIMORA_PATH = let
     configured = strip(get(ENV, "AIMORA_DOCS_ENGINE_PATH", ""))
-    workspace_candidate = normpath(joinpath(REPOSITORY_ROOT, "..", "AIMORA.jl"))
+    workspace_candidate = normpath(joinpath(REPOSITORY_ROOT, "..", "..", "AIMORA.jl"))
     if !isempty(configured)
         abspath(configured)
     elseif isfile(joinpath(workspace_candidate, "src", "AIMORA.jl"))
@@ -43,6 +43,7 @@ makedocs(
         "Generic Bridge Topologies" => "generic-bridge-topologies.md",
         "Extended VSC Controls and Filters" => "extended-vsc-controls-and-filters.md",
         "General Multirate EMT Tasks" => "general-multirate-emt-tasks.md",
+        "Wideband Line Parameters" => "wideband-line-parameters.md",
         "Native Extensions" => "native-extensions.md",
         "Cases and Catalogs" => "cases-and-catalogs.md",
         "Validation" => "validation.md",

@@ -3,7 +3,7 @@
 const REPOSITORY_ROOT = @__DIR__
 const AIMORA_PATH = let
     configured = strip(get(ENV, "AIMORA_DOCS_ENGINE_PATH", ""))
-    workspace_candidate = normpath(joinpath(REPOSITORY_ROOT, "..", "AIMORA.jl"))
+    workspace_candidate = normpath(joinpath(REPOSITORY_ROOT, "..", "..", "AIMORA.jl"))
     if !isempty(configured)
         abspath(configured)
     elseif isfile(joinpath(workspace_candidate, "src", "AIMORA.jl"))
@@ -22,6 +22,7 @@ const REQUIRED_FILES = (
     "src/getting-started.md",
     "src/architecture.md",
     "src/studies.md",
+    "src/wideband-line-parameters.md",
     "src/cases-and-catalogs.md",
     "src/validation.md",
     "src/development.md",

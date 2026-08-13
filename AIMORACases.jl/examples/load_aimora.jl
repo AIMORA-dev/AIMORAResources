@@ -1,6 +1,6 @@
 const AIMORA_EXAMPLE_ENGINE_PATH = let
     configured = get(ENV, "AIMORA_ENGINE_PATH", "")
-    candidate = normpath(joinpath(@__DIR__, "..", "..", "AIMORA.jl"))
+    candidate = normpath(joinpath(@__DIR__, "..", "..", "..", "AIMORA.jl"))
     if !isempty(configured)
         abspath(configured)
     else

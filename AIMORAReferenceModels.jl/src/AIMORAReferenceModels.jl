@@ -64,6 +64,7 @@ export amplitude_invariant_clarke_matrix,
 include("extended_semiconductor_fidelity.jl")
 include("generic_bridge_topologies.jl")
 include("extended_vsc_control_filter_platform.jl")
+include("wideband_line_parameters.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

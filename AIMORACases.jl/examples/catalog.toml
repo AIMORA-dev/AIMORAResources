@@ -484,6 +484,39 @@ reference_compatible = true
 result_kind = "frequency_scan"
 
 [[case]]
+id = "line_parameters_overhead"
+study = "line_parameters"
+path = "examples/line_parameters/overhead/run.jl"
+entrypoint = "examples/line_parameters/overhead/run.jl"
+description = "Generic wideband overhead-line Z and Y derivation with homogeneous soil, typed provenance, physical diagnostics, interchange, report, matrix data, and SVG frequency plot."
+requires_solver = true
+reference_compatible = false
+result_kind = "frequency_scan"
+source_ids = ["case-input:line-parameters:overhead", "aimora-reference:wideband-line-parameters", "validation-suite:wideband-line-parameters"]
+
+[[case]]
+id = "line_parameters_cable"
+study = "line_parameters"
+path = "examples/line_parameters/cable/run.jl"
+entrypoint = "examples/line_parameters/cable/run.jl"
+description = "Generic three-single-core cable wideband Z and Y derivation with typed material and soil data, diagnostics, interchange, report, matrix data, and SVG frequency plot."
+requires_solver = true
+reference_compatible = false
+result_kind = "frequency_scan"
+source_ids = ["case-input:line-parameters:cable", "aimora-reference:wideband-line-parameters", "validation-suite:wideband-line-parameters"]
+
+[[case]]
+id = "line_parameters_mixed_route"
+study = "line_parameters"
+path = "examples/line_parameters/mixed_route/run.jl"
+entrypoint = "examples/line_parameters/mixed_route/run.jl"
+description = "Generic overhead and phase-mapped cable route over two-layer soil with route-integrated matrices, typed provenance, diagnostics, interchange, report, and SVG frequency plot."
+requires_solver = true
+reference_compatible = false
+result_kind = "frequency_scan"
+source_ids = ["case-input:line-parameters:mixed-route", "aimora-reference:wideband-line-parameters", "validation-suite:wideband-line-parameters"]
+
+[[case]]
 id = "transformer_parameters_multiphase_sequence_tests"
 study = "transformer_parameters"
 path = "examples/transformer_parameters/multiphase_sequence_tests/run.jl"

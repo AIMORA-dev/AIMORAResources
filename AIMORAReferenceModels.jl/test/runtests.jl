@@ -1,6 +1,8 @@
 using Test
 using AIMORAReferenceModels
 
+include("wideband_line_parameters.jl")
+
 @testset "independent extended semiconductor formulations" begin
     recovery = independent_recovered_charge_backward_euler(
         2.0e-6,

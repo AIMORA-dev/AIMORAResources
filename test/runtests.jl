@@ -158,8 +158,8 @@ end
     policy = TOML.parsefile(joinpath(RESOURCES_ROOT, "artifact-policy.toml"))
     @test policy["schema"] == "aimora-resource-artifact-policy-v1"
     @test policy["classification_precedes_removal"]
-    @test policy["baseline"]["tracked_csv"] == 130
-    @test policy["baseline"]["tracked_svg"] == 108
+    @test policy["baseline"]["tracked_csv"] == 139
+    @test policy["baseline"]["tracked_svg"] == 123
     @test policy["baseline"]["tracked_pdf"] == 0
     @test Set(classification["state"] for classification in policy["classification"]) ==
           Set(("retained", "external"))
@@ -182,7 +182,8 @@ end
     @test all(startswith(path, "AIMORACases.jl/examples/") for path in svg_paths)
 
     prefixed_baseline = Set(
-        "AIMORACases.jl/" * path for path in vcat(baseline_csv_paths, baseline_svg_paths)
+        startswith(path, "AIMORACases.jl/") ? path : "AIMORACases.jl/" * path
+        for path in vcat(baseline_csv_paths, baseline_svg_paths)
     )
     current_artifacts = Set(vcat(csv_paths, svg_paths))
     added_artifacts = setdiff(current_artifacts, prefixed_baseline)
