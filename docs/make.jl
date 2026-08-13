@@ -40,6 +40,7 @@ makedocs(
         "Consistent EMT Initialization" => "consistent-emt-initialization.md",
         "Nonlinear EMT" => "nonlinear-emt.md",
         "Extended Semiconductor Fidelity" => "extended-semiconductor-fidelity.md",
+        "Generic Bridge Topologies" => "generic-bridge-topologies.md",
         "General Multirate EMT Tasks" => "general-multirate-emt-tasks.md",
         "Native Extensions" => "native-extensions.md",
         "Cases and Catalogs" => "cases-and-catalogs.md",

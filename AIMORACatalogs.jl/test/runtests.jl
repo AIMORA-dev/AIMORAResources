@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 4
+    @test length(entries) == 5
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -38,4 +38,15 @@ using AIMORACatalogs
     @test semiconductor_emt[:recovered_charge_lifetime_s] == 5.0e-6
     @test semiconductor_emt[:junction_grading_exponent] == 0.45
     @test "manufacturer_prediction" in semiconductor_emt[:unsupported_phenomena]
+
+    bridge_library = AIMORACatalogs.asset(:generic_bridge_topology_library)
+    @test bridge_library.manufacturer === nothing
+    @test AIMORACatalogs.study_tabs(bridge_library) == [:emt]
+    bridge_emt = AIMORACatalogs.study_facet(bridge_library, :emt).parameters
+    @test bridge_emt[:fidelity] == "SwitchingDetailed"
+    @test bridge_emt[:topology_schema] == "aimora_bridge_topology_v1"
+    @test bridge_emt[:public_case_topology_count] == 11
+    @test bridge_emt[:public_case_valve_position_count] == 52
+    @test "flying_capacitor_leg" in bridge_emt[:families]
+    @test "arbitrary_topology_synthesis" in bridge_emt[:unsupported_phenomena]
 end

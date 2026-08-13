@@ -1,0 +1,21 @@
+# Generic Bridge Topology Library
+
+- `fidelity`: SwitchingDetailed generic topology composition
+- `topology_count`: 11
+- `family_count`: 10
+- `valve_position_count`: 52
+- `timestep_s`: 1.0e-5
+- `sample_count`: 48
+- `checkpoint_sample`: 24
+- `exact_split_replay`: true
+- `extended_fidelity_positions`: 1
+- `final_conducting_positions`: 31
+- `final_requested_positions`: 17
+- `final_transition_count`: 38
+- `maximum_kcl_residual_a`: 4.324145208567387e-14
+- `maximum_stored_energy_j`: 9.027048224380392e-8
+- `minimum_stored_energy_j`: 9.19713726616043e-11
+- `final_signature_count`: 11
+- `manufacturer_identity`: none
+- `private_solver_required`: true
+- `unsupported`: modulation and controls, complete converter systems, arbitrary topology synthesis, vendor prediction, destructive failure, ATP/PSCAD equivalence, protected-standard conformance, HIL, and certification

@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-12"
-source_count = 479
+source_count = 482
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 59
+"canonical_case_input" = 60
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -14,11 +14,11 @@ source_count = 479
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 82
-"aimora_reference" = 1
+"validation_suite" = 83
+"aimora_reference" = 2
 
 [counts_by_disposition]
-"example" = 63
+"example" = 66
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -35,6 +35,33 @@ path = "src/extended_semiconductor_fidelity.jl"
 disposition = "example"
 example_ids = ["emt_extended_semiconductor_commutation"]
 reason = "Independent recovered-charge, nonlinear charge/capacitance/energy, exponential-tail, trilinear-energy, and passive Cauer formulations qualify the generic public commutation example without importing production device or solver code."
+
+[[source]]
+id = "aimora-reference:generic-bridge-topology-library"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/generic_bridge_topologies.jl"
+disposition = "example"
+example_ids = ["emt_generic_bridge_topology_library"]
+reason = "Independent oriented incidence, allowed-state, KCL, passive recurrence, terminal-power, and cascaded-cell voltage formulations qualify the public generic bridge case without importing production topology or solver code."
+
+[[source]]
+id = "case-input:emt:generic-bridge-topology-library"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/generic_bridge_topology_library/run.jl"
+disposition = "example"
+example_ids = ["emt_generic_bridge_topology_library"]
+reason = "The AIMORA-authored mixed public runner is the canonical synthetic input and executable case for the admitted diode, thyristor, self-commutated, chopper, multigroup, three-level, flying-capacitor, and cascaded H-bridge topology families."
+
+[[source]]
+id = "validation-suite:power-semiconductor-bridge-topologies"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/power_semiconductor_bridge_topologies.jl"
+disposition = "example"
+example_ids = ["emt_generic_bridge_topology_library"]
+reason = "Focused private validation exercises every published generic topology family, exact incidence and state contracts, passive state, fault refusal, nonlinear-owner uniqueness, and transaction aliasing while the public case provides the inspectable mixed workflow."
 
 [[source]]
 id = "case-input:emt:general-multirate-task-platform"

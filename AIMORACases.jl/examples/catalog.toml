@@ -723,3 +723,18 @@ requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
 source_ids = ["aimora-reference:generic-extended-semiconductor-fidelity"]
+
+[[case]]
+id = "emt_generic_bridge_topology_library"
+study = "emt"
+path = "examples/emt/generic_bridge_topology_library/run.jl"
+entrypoint = "examples/emt/generic_bridge_topology_library/run.jl"
+description = "Mixed switching-detailed diode, thyristor, full-bridge, chopper, multigroup, NPC, T-type, flying-capacitor, and cascaded H-bridge execution with exact topology state, one nonlinear device, scheduled protection/fault operations, passive energy, terminal KCL, deterministic checkpoint replay, and curated SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = [
+    "case-input:emt:generic-bridge-topology-library",
+    "aimora-reference:generic-bridge-topology-library",
+    "validation-suite:power-semiconductor-bridge-topologies",
+]

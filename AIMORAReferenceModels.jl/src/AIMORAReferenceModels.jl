@@ -40,10 +40,19 @@ export amplitude_invariant_clarke_matrix,
        independent_turn_off_tail,
        independent_trilinear_semiconductor_energy,
        independent_cauer_backward_euler,
+       IndependentBridgeTopology,
+       independent_bridge_topology,
+       independent_bridge_incidence,
+       independent_bridge_kcl,
+       independent_bridge_terminal_power,
+       independent_bridge_state_is_allowed,
+       independent_bridge_passive_backward_euler,
+       independent_cascaded_h_bridge_voltage,
        series_rl_piecewise_constant_current,
        series_rl_piecewise_constant_trace
 
 include("extended_semiconductor_fidelity.jl")
+include("generic_bridge_topologies.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

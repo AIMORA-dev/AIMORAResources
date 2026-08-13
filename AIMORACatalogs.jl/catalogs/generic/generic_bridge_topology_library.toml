@@ -1,0 +1,37 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_bridge_topology_library"
+equipment_class = "power_semiconductor_bridge_topology"
+manufacturer = ""
+model = "Generic switching-detailed bridge topology composition"
+provenance = "AIMORA-authored generic oriented connection and state contracts with synthetic public case parameters; no manufacturer, proprietary, certified, or third-party equipment values"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+uncertainty_kind = "unknown_not_statistical"
+uncertainty_statement = "Topology incidence is exact for the named generic circuit; constituent synthetic device and passive values do not estimate manufactured equipment"
+rights = "public AIMORA-authored topology and synthetic values"
+orientation = "valve and passive current positive from each declared from_node to to_node; external terminal current enters the aggregate"
+
+[study.emt]
+representation = "compositional_power_semiconductor_bridge_topology"
+fidelity = "SwitchingDetailed"
+topology_schema = "aimora_bridge_topology_v1"
+result_schema = "aimora_bridge_result_v1"
+families = ["single_phase_graetz_diode", "single_phase_graetz_thyristor", "single_phase_graetz_half_controlled", "polyphase_bridge", "two_level_bridge", "full_bridge", "step_down_chopper", "step_up_chopper", "bidirectional_chopper", "multi_group_series_or_parallel", "neutral_point_clamped_leg", "t_type_leg", "flying_capacitor_leg", "cascaded_h_bridge_phase"]
+phase_count_min = 1
+phase_count_max = 12
+group_count_min = 1
+group_count_max = 4
+cascaded_cell_count_min = 1
+cascaded_cell_count_max = 16
+valve_position_count_max = 256
+passive_position_count_max = 128
+public_case_timestep_s = 0.000010
+public_case_topology_count = 11
+public_case_valve_position_count = 52
+parameter_source = "AIMORA-authored generic circuit incidence and synthetic exact public-case input"
+parameter_transformation = "direct oriented node/branch construction and direct SI constituent values"
+parameter_uncertainty = "topology exact within the named circuit family; constituent-value uncertainty unknown"
+validity = "named bridge hardware connections, gate-state constraints, compatible accepted constituent devices, finite passives, explicit faults, and solvable global nodal equations within declared count limits"
+unsupported_phenomena = ["modulation_or_converter_controls", "complete_transformer_filter_or_dc_system", "arbitrary_topology_synthesis", "vendor_or_manufacturer_prediction", "destructive_failure", "atp_or_pscad_equivalence", "protected_standard_conformance", "hil_qualification", "certification"]
