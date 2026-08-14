@@ -5,6 +5,7 @@ include("wideband_line_parameters.jl")
 include("coupled_line_fitting_passivity.jl")
 include("coupled_line_runtime.jl")
 include("transformer_apparatus.jl")
+include("modern_machine_families.jl")
 
 @testset "independent extended semiconductor formulations" begin
     recovery = independent_recovered_charge_backward_euler(

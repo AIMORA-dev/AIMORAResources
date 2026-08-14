@@ -1,6 +1,83 @@
 schema = "aimora-examples-v2"
 
 [[case]]
+id = "emt_machine_wound_field_synchronous"
+study = "emt"
+path = "examples/emt/machine_wound_field_synchronous/run.jl"
+entrypoint = "examples/emt/machine_wound_field_synchronous/run.jl"
+description = "Wound-field synchronous generator with explicit field/damper state, saturation, shaft, unbalance, event, energy, exact restart, report, and SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:modern-machine-families"]
+
+[[case]]
+id = "emt_machine_cage_induction"
+study = "emt"
+path = "examples/emt/machine_cage_induction/run.jl"
+entrypoint = "examples/emt/machine_cage_induction/run.jl"
+description = "Single-cage induction motor with explicit rotor state, slip, shaft, unbalance, torque event, energy, exact restart, report, and SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:modern-machine-families"]
+
+[[case]]
+id = "emt_machine_deep_bar_induction"
+study = "emt"
+path = "examples/emt/machine_deep_bar_induction/run.jl"
+entrypoint = "examples/emt/machine_deep_bar_induction/run.jl"
+description = "Four-branch passive deep-bar induction motor with explicit rotor state, shaft, event, energy, exact restart, report, and SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:modern-machine-families"]
+
+[[case]]
+id = "emt_machine_permanent_magnet"
+study = "emt"
+path = "examples/emt/machine_permanent_magnet/run.jl"
+entrypoint = "examples/emt/machine_permanent_magnet/run.jl"
+description = "Salient permanent-magnet synchronous generator with permanent flux, shaft, unbalance, event, energy, exact restart, report, and SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:modern-machine-families"]
+
+[[case]]
+id = "emt_machine_doubly_fed_induction"
+study = "emt"
+path = "examples/emt/machine_doubly_fed_induction/run.jl"
+entrypoint = "examples/emt/machine_doubly_fed_induction/run.jl"
+description = "Doubly fed induction generator with explicit rotor port and power, shaft, event, energy, exact restart, report, and SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:modern-machine-families"]
+
+[[case]]
+id = "emt_machine_synchronous_condenser"
+study = "emt"
+path = "examples/emt/machine_synchronous_condenser/run.jl"
+entrypoint = "examples/emt/machine_synchronous_condenser/run.jl"
+description = "Synchronous condenser with field/damper circuits, excitation task, unbalance, reference event, energy, exact restart, report, and SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:modern-machine-families"]
+
+[[case]]
+id = "emt_machine_multimass_controls"
+study = "emt"
+path = "examples/emt/machine_multimass_controls/run.jl"
+entrypoint = "examples/emt/machine_multimass_controls/run.jl"
+description = "Eight-mass wound-field machine with excitation, governor, stabilizer, limiter, event, energy, exact restart, report, and SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:modern-machine-families"]
+
+[[case]]
 id = "emt_transformer_low_frequency"
 study = "emt"
 path = "examples/emt/transformer_low_frequency/run.jl"
@@ -9,7 +86,7 @@ description = "Coupled low-frequency terminal-matrix transformer with fixed-step
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:modern_transformer_reactor_hierarchy"]
+source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
 id = "emt_transformer_bctran"
@@ -20,7 +97,7 @@ description = "Three-phase three-winding BCTRAN-style nine-terminal product with
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:modern_transformer_reactor_hierarchy"]
+source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
 id = "emt_transformer_hybrid"
@@ -31,7 +108,7 @@ description = "Hybrid leakage/capacitance/nonlinear-core transformer with couple
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:modern_transformer_reactor_hierarchy"]
+source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
 id = "emt_transformer_magnetic_equivalent"
@@ -42,7 +119,7 @@ description = "Unified nonlinear magnetic-equivalent-circuit transformer with fi
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:modern_transformer_reactor_hierarchy"]
+source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
 id = "emt_transformer_wideband_black_box"
@@ -53,7 +130,7 @@ description = "Passive twelve-port twenty-four-state wideband transformer with r
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:modern_transformer_reactor_hierarchy"]
+source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
 id = "emt_transformer_grey_box"
@@ -64,7 +141,7 @@ description = "Physical thirty-two-node grey-box transformer ladder with interna
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:modern_transformer_reactor_hierarchy"]
+source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
 id = "emt_transformer_white_box"
@@ -75,7 +152,7 @@ description = "Geometry-owned four-winding eight-section white-box transformer w
 requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
-source_ids = ["validation-suite:modern_transformer_reactor_hierarchy"]
+source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
 id = "emt_general_multirate_task_platform"

@@ -1,0 +1,36 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_modern_machine_families"
+equipment_class = "phase_domain_electromechanical_machine_family"
+manufacturer = ""
+model = "Generic modern EMT machine family set"
+provenance = "AIMORA-authored synthetic X200 public products; no manufacturer, utility, protected-standard, ATP, or PSCAD data"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+public_cases = ["emt_machine_wound_field_synchronous", "emt_machine_cage_induction", "emt_machine_deep_bar_induction", "emt_machine_permanent_magnet", "emt_machine_doubly_fed_induction", "emt_machine_synchronous_condenser", "emt_machine_multimass_controls"]
+families = ["wound_field_synchronous", "cage_induction", "wound_rotor_induction", "permanent_magnet_synchronous", "doubly_fed_induction", "synchronous_condenser"]
+rated_voltage_v_rms = 230.0
+rated_frequency_hz = 60.0
+pole_pairs = 2
+timestep_s = 1.0e-5
+phase_order = ["a", "b", "c"]
+terminal_order = ["a", "b", "c", "neutral"]
+current_orientation = "positive_into_machine"
+mechanical_torque_orientation = "positive_into_shaft"
+parameter_natures = ["PhysicalModelParameter", "ScalingBasisParameter", "NumericalPolicyParameter"]
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty = "exact synthetic values; manufacturer, measurement, field, and model-form uncertainty are unknown"
+validity = "Only the exact generic family, topology, SI parameters, source, timestep, task, event, and output selections in the seven public products"
+
+[study.emt]
+representation = "three_phase_explicit_neutral_power_invariant_zero_d_q_fixed_step_machine"
+fidelity = "field_coupled_detailed"
+electrical_state = ["stator_flux", "field_and_damper_when_selected", "rotor_cage_or_wound_branches_when_selected", "permanent_flux_when_selected", "convex_cross_saturation"]
+mechanical_state = ["one_to_eight_public_shaft_masses", "angle", "speed", "elastic_twist", "coupling_torque"]
+control_state = ["excitation", "governor", "stabilizer", "limits", "sample_calendar"]
+initialization = "explicit_typed_machine_initial_state_without_hidden_settling"
+events = ["terminal_source_unbalance", "mechanical_torque_command", "voltage_reference_command"]
+outputs = ["phase_zero_d_q_currents", "field_rotor_and_converter_port_quantities_when_available", "torque_speed_shaft", "control", "power_energy", "KCL", "restart"]
+restart = "exact_electrical_mechanical_control_event_history_checkpoint_replay"
+unsupported_phenomena = ["vendor_controller_equivalence", "finite_element_air_gap", "magnetic_hysteresis", "thermal_aging", "arbitrary_internal_fault", "protection_certification", "atp_or_pscad_equivalence", "field_or_hil_qualification"]

@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 16
+    @test length(entries) == 17
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -131,6 +131,16 @@ using AIMORACatalogs
             "atp_or_pscad_equivalence" in emt[:unsupported_phenomena] &&
             "certification" in emt[:unsupported_phenomena]
     end
+
+    machines = AIMORACatalogs.asset(:generic_modern_machine_families)
+    @test machines.manufacturer === nothing
+    @test AIMORACatalogs.study_tabs(machines) == [:emt]
+    @test length(machines.common[:families]) == 6
+    @test length(machines.common[:public_cases]) == 7
+    @test machines.common[:terminal_order] == ["a", "b", "c", "neutral"]
+    machine_emt = AIMORACatalogs.study_facet(machines, :emt).parameters
+    @test machine_emt[:fidelity] == "field_coupled_detailed"
+    @test "atp_or_pscad_equivalence" in machine_emt[:unsupported_phenomena]
     @test AIMORACatalogs.study_facet(
         AIMORACatalogs.asset(:generic_transformer_wideband_black_box),
         :emt,

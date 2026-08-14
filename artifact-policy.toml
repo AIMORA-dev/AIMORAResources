@@ -419,6 +419,132 @@ state = "retained"
 reason = "One curated public transient rendering for the sectioned white-box winding product."
 
 [[classification]]
+id = "modern-machine-wound-field-waveform-data"
+path = "AIMORACases.jl/examples/emt/machine_wound_field_synchronous/outputs/machine_waveforms.csv"
+state = "retained"
+reason = "Deterministic public waveform data for the wound-field synchronous-machine product and its curated plots."
+
+[[classification]]
+id = "modern-machine-wound-field-waveform-figure"
+path = "AIMORACases.jl/examples/emt/machine_wound_field_synchronous/outputs/machine_waveforms.svg"
+state = "retained"
+reason = "Curated public electrical waveform rendering for the wound-field synchronous-machine product."
+
+[[classification]]
+id = "modern-machine-wound-field-mechanical-figure"
+path = "AIMORACases.jl/examples/emt/machine_wound_field_synchronous/outputs/machine_mechanical.svg"
+state = "retained"
+reason = "Curated public speed and torque rendering for the wound-field synchronous-machine product."
+
+[[classification]]
+id = "modern-machine-cage-induction-waveform-data"
+path = "AIMORACases.jl/examples/emt/machine_cage_induction/outputs/machine_waveforms.csv"
+state = "retained"
+reason = "Deterministic public waveform data for the cage-induction-machine product and its curated plots."
+
+[[classification]]
+id = "modern-machine-cage-induction-waveform-figure"
+path = "AIMORACases.jl/examples/emt/machine_cage_induction/outputs/machine_waveforms.svg"
+state = "retained"
+reason = "Curated public electrical waveform rendering for the cage-induction-machine product."
+
+[[classification]]
+id = "modern-machine-cage-induction-mechanical-figure"
+path = "AIMORACases.jl/examples/emt/machine_cage_induction/outputs/machine_mechanical.svg"
+state = "retained"
+reason = "Curated public speed and torque rendering for the cage-induction-machine product."
+
+[[classification]]
+id = "modern-machine-deep-bar-waveform-data"
+path = "AIMORACases.jl/examples/emt/machine_deep_bar_induction/outputs/machine_waveforms.csv"
+state = "retained"
+reason = "Deterministic public waveform data for the four-branch deep-bar induction-machine product and its curated plots."
+
+[[classification]]
+id = "modern-machine-deep-bar-waveform-figure"
+path = "AIMORACases.jl/examples/emt/machine_deep_bar_induction/outputs/machine_waveforms.svg"
+state = "retained"
+reason = "Curated public electrical waveform rendering for the four-branch deep-bar induction-machine product."
+
+[[classification]]
+id = "modern-machine-deep-bar-mechanical-figure"
+path = "AIMORACases.jl/examples/emt/machine_deep_bar_induction/outputs/machine_mechanical.svg"
+state = "retained"
+reason = "Curated public speed and torque rendering for the four-branch deep-bar induction-machine product."
+
+[[classification]]
+id = "modern-machine-permanent-magnet-waveform-data"
+path = "AIMORACases.jl/examples/emt/machine_permanent_magnet/outputs/machine_waveforms.csv"
+state = "retained"
+reason = "Deterministic public waveform data for the permanent-magnet synchronous-machine product and its curated plots."
+
+[[classification]]
+id = "modern-machine-permanent-magnet-waveform-figure"
+path = "AIMORACases.jl/examples/emt/machine_permanent_magnet/outputs/machine_waveforms.svg"
+state = "retained"
+reason = "Curated public electrical waveform rendering for the permanent-magnet synchronous-machine product."
+
+[[classification]]
+id = "modern-machine-permanent-magnet-mechanical-figure"
+path = "AIMORACases.jl/examples/emt/machine_permanent_magnet/outputs/machine_mechanical.svg"
+state = "retained"
+reason = "Curated public speed and torque rendering for the permanent-magnet synchronous-machine product."
+
+[[classification]]
+id = "modern-machine-doubly-fed-waveform-data"
+path = "AIMORACases.jl/examples/emt/machine_doubly_fed_induction/outputs/machine_waveforms.csv"
+state = "retained"
+reason = "Deterministic public waveform data for the doubly fed induction-machine product and its curated plots."
+
+[[classification]]
+id = "modern-machine-doubly-fed-waveform-figure"
+path = "AIMORACases.jl/examples/emt/machine_doubly_fed_induction/outputs/machine_waveforms.svg"
+state = "retained"
+reason = "Curated public electrical waveform rendering for the doubly fed induction-machine product."
+
+[[classification]]
+id = "modern-machine-doubly-fed-mechanical-figure"
+path = "AIMORACases.jl/examples/emt/machine_doubly_fed_induction/outputs/machine_mechanical.svg"
+state = "retained"
+reason = "Curated public speed and torque rendering for the doubly fed induction-machine product."
+
+[[classification]]
+id = "modern-machine-synchronous-condenser-waveform-data"
+path = "AIMORACases.jl/examples/emt/machine_synchronous_condenser/outputs/machine_waveforms.csv"
+state = "retained"
+reason = "Deterministic public waveform data for the synchronous-condenser product and its curated plots."
+
+[[classification]]
+id = "modern-machine-synchronous-condenser-waveform-figure"
+path = "AIMORACases.jl/examples/emt/machine_synchronous_condenser/outputs/machine_waveforms.svg"
+state = "retained"
+reason = "Curated public electrical waveform rendering for the synchronous-condenser product."
+
+[[classification]]
+id = "modern-machine-synchronous-condenser-mechanical-figure"
+path = "AIMORACases.jl/examples/emt/machine_synchronous_condenser/outputs/machine_mechanical.svg"
+state = "retained"
+reason = "Curated public speed and torque rendering for the synchronous-condenser product."
+
+[[classification]]
+id = "modern-machine-multimass-control-waveform-data"
+path = "AIMORACases.jl/examples/emt/machine_multimass_controls/outputs/machine_waveforms.csv"
+state = "retained"
+reason = "Deterministic public waveform data for the eight-mass controlled-machine product and its curated plots."
+
+[[classification]]
+id = "modern-machine-multimass-control-waveform-figure"
+path = "AIMORACases.jl/examples/emt/machine_multimass_controls/outputs/machine_waveforms.svg"
+state = "retained"
+reason = "Curated public electrical waveform rendering for the eight-mass controlled-machine product."
+
+[[classification]]
+id = "modern-machine-multimass-control-mechanical-figure"
+path = "AIMORACases.jl/examples/emt/machine_multimass_controls/outputs/machine_mechanical.svg"
+state = "retained"
+reason = "Curated public shaft-speed and torque rendering for the eight-mass controlled-machine product."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"

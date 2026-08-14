@@ -47,6 +47,7 @@ makedocs(
         "Coupled Line Fitting and Passivity" => "coupled-line-fitting-passivity.md",
         "Coupled Frequency-Dependent Line Runtime" => "coupled-frequency-dependent-line-runtime.md",
         "Transformer and Reactor Hierarchy" => "transformer-reactor-hierarchy.md",
+        "Modern EMT Machine Families" => "modern-emt-machine-families.md",
         "Native Extensions" => "native-extensions.md",
         "Cases and Catalogs" => "cases-and-catalogs.md",
         "Validation" => "validation.md",

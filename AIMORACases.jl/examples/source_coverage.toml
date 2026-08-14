@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-13"
-source_count = 504
+source_count = 505
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -14,11 +14,11 @@ source_count = 504
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 88
-"aimora_reference" = 6
+"validation_suite" = 87
+"aimora_reference" = 8
 
 [counts_by_disposition]
-"example" = 88
+"example" = 89
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -28,13 +28,22 @@ source_count = 504
 "validation_only" = 19
 
 [[source]]
-id = "validation-suite:modern_transformer_reactor_hierarchy"
-owner = "AIMORAValidation"
-kind = "validation_suite"
-path = "scripts/compare_modern_transformer_reactor_hierarchy.jl"
+id = "aimora-reference:modern-machine-families"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/modern_machine_families.jl"
+disposition = "example"
+example_ids = ["emt_machine_wound_field_synchronous", "emt_machine_cage_induction", "emt_machine_deep_bar_induction", "emt_machine_permanent_magnet", "emt_machine_doubly_fed_induction", "emt_machine_synchronous_condenser", "emt_machine_multimass_controls"]
+reason = "Independent public electromagnetic, shaft, control, initialization, event, energy, and restart formulations support the seven generic modern-machine products without exposing private qualification traceability."
+
+[[source]]
+id = "aimora-reference:modern-transformer-reactor-hierarchy"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/transformer_apparatus.jl"
 disposition = "example"
 example_ids = ["emt_transformer_low_frequency", "emt_transformer_bctran", "emt_transformer_hybrid", "emt_transformer_magnetic_equivalent", "emt_transformer_wideband_black_box", "emt_transformer_grey_box", "emt_transformer_white_box"]
-reason = "Independent, adversarial, refinement, external, performance, event, energy, restart, and tier-boundary evidence qualifies the seven public transformer apparatus products."
+reason = "Independent public connection, magnetic, passive-terminal, ladder, winding-section, energy, event, and restart formulations support the seven transformer apparatus products without exposing private qualification traceability."
 
 [[source]]
 id = "aimora-reference:wideband-line-parameters"

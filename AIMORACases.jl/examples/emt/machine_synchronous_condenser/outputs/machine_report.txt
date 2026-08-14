@@ -1,0 +1,18 @@
+AIMORA modern EMT machine report
+machine=emt_machine_synchronous_condenser
+family=synchronous_condenser
+operating_mode=condenser
+signature_sha256=4a73647990e76f05dcde52e987e5ca773923577bfa905eea9c3d9320eb9ea052
+accepted_steps=1000
+events=1
+control_samples=201
+maximum_flux_residual_wb=3.786743778753357e-14
+maximum_kcl_residual_a=4.973799150320701e-14
+maximum_energy_residual_j=9.778648829422698e-7
+maximum_energy_quadrature_defect_j=0.0013886667160183108
+maximum_angular_momentum_residual_nms=8.715023060851257e-14
+limitation=generic fixed-step phase-domain family; no vendor, standard, protection, thermal, field, HIL, or certification equivalence
+restart_exact=true
+snapshot_signature_sha256=4a73647990e76f05dcde52e987e5ca773923577bfa905eea9c3d9320eb9ea052
+uncertainty=exact generic inputs; manufacturer, measurement, field, and model-form uncertainty are unknown
+validity_domain=the exact redistributable controlled wound-field synchronous condenser topology, source, parameters, 60 Hz waveform, 10 microsecond timestep, event, and output selection

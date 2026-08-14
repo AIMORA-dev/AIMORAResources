@@ -1,7 +1,10 @@
 module ExampleSupport
 
 using Printf
-using AIMORA.DeckParser: parse_deck_lines
+using AIMORA
+
+const PARSE_DECK_LINES = isdefined(AIMORA, :DeckParser) ?
+    AIMORA.DeckParser.parse_deck_lines : nothing
 
 export artifact_directory,
        parse_example_deck,
@@ -38,8 +41,11 @@ end
 
 """Parse an example deck without embedding the checkout location in results."""
 function parse_example_deck(path::AbstractString)
+    PARSE_DECK_LINES === nothing && error(
+        "deck parsing requires an activated solver distribution that provides AIMORA.DeckParser",
+    )
     full_path = abspath(path)
-    return parse_deck_lines(
+    return PARSE_DECK_LINES(
         readlines(full_path);
         source = portable_input_path(full_path),
         source_path = full_path,

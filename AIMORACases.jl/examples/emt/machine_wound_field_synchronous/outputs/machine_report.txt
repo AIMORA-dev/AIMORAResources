@@ -1,0 +1,18 @@
+AIMORA modern EMT machine report
+machine=emt_machine_wound_field_synchronous
+family=wound_field_synchronous
+operating_mode=generator
+signature_sha256=6aec564e49d162b28ce0008ebd2e34aba561017b229b35d469fe17c1fa8c1fd8
+accepted_steps=1000
+events=1
+control_samples=0
+maximum_flux_residual_wb=3.787650823984924e-14
+maximum_kcl_residual_a=5.684341886080802e-14
+maximum_energy_residual_j=9.192962082127387e-7
+maximum_energy_quadrature_defect_j=0.001388780127905359
+maximum_angular_momentum_residual_nms=8.54088934992836e-14
+limitation=generic fixed-step phase-domain family; no vendor, standard, protection, thermal, field, HIL, or certification equivalence
+restart_exact=true
+snapshot_signature_sha256=6aec564e49d162b28ce0008ebd2e34aba561017b229b35d469fe17c1fa8c1fd8
+uncertainty=exact generic inputs; manufacturer, measurement, field, and model-form uncertainty are unknown
+validity_domain=the exact redistributable wound-field synchronous generator with field and d/q damper circuits topology, source, parameters, 60 Hz waveform, 10 microsecond timestep, event, and output selection
