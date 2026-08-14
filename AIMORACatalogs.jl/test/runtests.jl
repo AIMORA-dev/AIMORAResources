@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 9
+    @test length(entries) == 16
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -94,4 +94,53 @@ using AIMORACatalogs
     @test line_runtime.common[:unknown_uncertainty_explicit]
     @test !line_runtime.common[:uncertainty_set_complete]
     @test "ulm_file_compatibility" in runtime_facet[:unsupported_phenomena]
+
+    transformer_tier_ids = (
+        :generic_transformer_low_frequency_terminal,
+        :generic_transformer_bctran_terminal,
+        :generic_transformer_hybrid,
+        :generic_transformer_magnetic_equivalent,
+        :generic_transformer_wideband_black_box,
+        :generic_transformer_grey_box_ladder,
+        :generic_transformer_white_box_winding,
+    )
+    transformer_tiers = AIMORACatalogs.asset.(transformer_tier_ids)
+    @test getfield.(transformer_tiers, :manufacturer) == ntuple(_ -> nothing, 7)
+    @test all(
+        entry -> AIMORACatalogs.study_tabs(entry) == [:emt],
+        transformer_tiers,
+    )
+    @test getindex.(getfield.(transformer_tiers, :common), :public_case) == (
+        "emt_transformer_low_frequency",
+        "emt_transformer_bctran",
+        "emt_transformer_hybrid",
+        "emt_transformer_magnetic_equivalent",
+        "emt_transformer_wideband_black_box",
+        "emt_transformer_grey_box",
+        "emt_transformer_white_box",
+    )
+    @test getindex.(getfield.(transformer_tiers, :common), :timestep_s) ==
+        ntuple(_ -> 1.0e-5, 7)
+    @test all(transformer_tiers) do entry
+        common = entry.common
+        emt = AIMORACatalogs.study_facet(entry, :emt).parameters
+        common[:parameter_status] == "synthetic_generic_exact_case_input" &&
+            common[:terminal_current_orientation] == "positive_into_apparatus" &&
+            length(common[:parameter_natures]) == 3 &&
+            startswith(emt[:restart], "exact_") &&
+            "atp_or_pscad_equivalence" in emt[:unsupported_phenomena] &&
+            "certification" in emt[:unsupported_phenomena]
+    end
+    @test AIMORACatalogs.study_facet(
+        AIMORACatalogs.asset(:generic_transformer_wideband_black_box),
+        :emt,
+    ).parameters[:port_count] == 12
+    @test AIMORACatalogs.study_facet(
+        AIMORACatalogs.asset(:generic_transformer_grey_box_ladder),
+        :emt,
+    ).parameters[:represented_node_count] == 32
+    @test AIMORACatalogs.study_facet(
+        AIMORACatalogs.asset(:generic_transformer_white_box_winding),
+        :emt,
+    ).parameters[:section_count_per_winding] == 8
 end

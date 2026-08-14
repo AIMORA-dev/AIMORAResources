@@ -1,0 +1,34 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_transformer_magnetic_equivalent"
+equipment_class = "magnetic_equivalent_circuit_transformer"
+manufacturer = ""
+model = "Generic nonlinear magnetic-equivalent-circuit transformer"
+provenance = "AIMORA-authored synthetic T200 public product; explicit electrical and connected magnetic graph data with no vendor, measurement, protected-standard, ATP, or PSCAD data"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+tier = "magnetic_equivalent_circuit"
+public_case = "emt_transformer_magnetic_equivalent"
+rated_power_va = 1.0e7
+rated_voltage_v = 3.3e4
+rated_frequency_hz = 100.0
+timestep_s = 1.0e-5
+terminal_current_orientation = "positive_into_apparatus"
+magnetic_sign = "branch_flux_follows_graph_incidence_and_signed_winding_turns"
+parameter_natures = ["PhysicalModelParameter", "ScalingBasisParameter", "NumericalPolicyParameter"]
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty = "exact synthetic values; material, geometry, measurement, manufacturer, and model-form uncertainty are unknown"
+validity = "Only the exact connected magnetic graph, electrical matrices, material curve, source, timestep, event, and 100 Hz public execution"
+
+[study.emt]
+representation = "coupled_electrical_and_magnetic_equivalent_circuit"
+fidelity = "magnetic_equivalent_circuit"
+terminal_count = 2
+magnetic_branch_count = 2
+magnetic_continuity = "explicit_graph_incidence"
+initialization = "explicit_deenergized_or_coupled_model_consistent_sinusoidal"
+event = "terminal_fault_at_0.005_s"
+outputs = ["terminal_and_coil_quantities", "branch_flux_flux_density_mmf_and_potential", "loss_and_energy", "KCL_and_magnetic_continuity"]
+restart = "exact_electrical_magnetic_history_checkpoint_replay"
+unsupported_phenomena = ["unrepresented_winding_internal_voltage", "vendor_material_prediction", "atp_or_pscad_equivalence", "protected_standard_conformance", "insulation_design", "lifetime", "certification"]

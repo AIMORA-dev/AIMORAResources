@@ -1,0 +1,34 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_transformer_grey_box_ladder"
+equipment_class = "represented_transformer_ladder"
+manufacturer = ""
+model = "Generic thirty-two-node physical transformer ladder"
+provenance = "AIMORA-authored synthetic T200 public product; exact physical R-L-C-G ladder with no vendor, measured, protected-standard, ATP, or PSCAD response"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+tier = "grey_box_ladder"
+public_case = "emt_transformer_grey_box"
+rated_power_va = 1.0e7
+rated_voltage_v = 3.3e4
+rated_frequency_hz = 100.0
+timestep_s = 1.0e-5
+terminal_current_orientation = "positive_into_apparatus"
+parameter_natures = ["PhysicalModelParameter", "ScalingBasisParameter", "NumericalPolicyParameter"]
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty = "terminal behavior does not uniquely identify the interior; measurement, manufacturer, field, and model-form uncertainty are unknown"
+validity = "Only the exact 32-node 31-branch physical ladder, source, timestep, event, and 100 Hz public execution"
+
+[study.emt]
+representation = "physical_RLCG_ladder_with_explicit_internal_nodes"
+fidelity = "grey_box_ladder"
+represented_node_count = 32
+represented_branch_count = 31
+external_terminal_count = 2
+identification_residual_relative = 1.0e-4
+initialization = "explicit_deenergized_or_model_consistent_sinusoidal"
+event = "terminal_fault_at_0.005_s"
+outputs = ["terminal_voltage_and_current", "represented_node_voltage", "branch_voltage_and_current", "charge", "energy", "internal_KCL"]
+restart = "exact_ladder_history_checkpoint_replay"
+unsupported_phenomena = ["unrepresented_turn_voltage", "unique_parameter_identification", "geometry_complete_white_box", "vendor_prediction", "atp_or_pscad_equivalence", "protected_standard_conformance", "insulation_design", "lifetime", "certification"]

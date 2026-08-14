@@ -1,0 +1,35 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_transformer_white_box_winding"
+equipment_class = "sectioned_transformer_winding_model"
+manufacturer = ""
+model = "Generic four-winding geometry-owned section model"
+provenance = "AIMORA-authored synthetic T200 public product; exact section geometry and complete coupled per-length R-L-C-G matrices with no vendor, measured, protected-standard, ATP, or PSCAD data"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+tier = "white_box_winding"
+public_case = "emt_transformer_white_box"
+rated_power_va = 1.0e7
+rated_voltage_v = 3.3e4
+rated_frequency_hz = 100.0
+timestep_s = 1.0e-5
+terminal_current_orientation = "positive_into_apparatus"
+parameter_natures = ["PhysicalModelParameter", "ScalingBasisParameter", "NumericalPolicyParameter"]
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty = "exact synthetic geometry; material, field, manufacturing, measurement, and model-form uncertainty are unknown"
+validity = "Only the exact four-winding eight-section-per-winding geometry, 10 Hz through 40 kHz band, matrices, source, timestep, event, and public execution"
+
+[study.emt]
+representation = "geometry_owned_complete_coupled_multiconductor_winding_sections"
+fidelity = "white_box_winding"
+winding_count = 4
+section_count_per_winding = 8
+section_length_m = 0.1
+frequency_domain_hz = [10.0, 40000.0]
+section_refinement_residual_relative = 1.0e-3
+initialization = "explicit_deenergized_or_model_consistent_sinusoidal"
+event = "terminal_fault_at_0.005_s"
+outputs = ["terminal_voltage_and_current", "winding_section_voltage_and_current", "represented_node_voltage", "charge", "energy", "internal_KCL"]
+restart = "exact_section_history_checkpoint_replay"
+unsupported_phenomena = ["field_solution", "thermal_aging", "destructive_insulation_failure", "vendor_prediction", "atp_or_pscad_equivalence", "protected_standard_conformance", "insulation_design", "lifetime", "certification"]

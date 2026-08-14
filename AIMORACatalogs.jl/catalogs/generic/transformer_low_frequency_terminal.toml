@@ -1,0 +1,32 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_transformer_low_frequency_terminal"
+equipment_class = "transformer_reactor_apparatus"
+manufacturer = ""
+model = "Generic coupled low-frequency terminal transformer"
+provenance = "AIMORA-authored synthetic T200 public product; direct SI matrices with no vendor, measurement, protected-standard, ATP, or PSCAD data"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+tier = "low_frequency_terminal"
+public_case = "emt_transformer_low_frequency"
+rated_power_va = 1.0e7
+rated_voltage_v = 3.3e4
+rated_frequency_hz = 100.0
+timestep_s = 1.0e-5
+terminal_current_orientation = "positive_into_apparatus"
+instantaneous_voltage_basis = "peak_SI"
+parameter_natures = ["PhysicalModelParameter", "ScalingBasisParameter", "NumericalPolicyParameter"]
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty = "exact synthetic values; measurement, manufacturer, field, and model-form uncertainty are unknown"
+validity = "Only the exact two-terminal matrices, topology, source, timestep, event, and 100 Hz public execution"
+
+[study.emt]
+representation = "complete_coupled_terminal_RLCG_matrix"
+fidelity = "low_frequency_terminal"
+terminal_count = 2
+initialization = "explicit_deenergized_or_model_consistent_sinusoidal"
+event = "terminal_fault_at_0.005_s"
+outputs = ["terminal_voltage", "terminal_current", "power", "stored_and_dissipated_energy", "KCL", "typed_unavailable_internal_quantities"]
+restart = "exact_typed_checkpoint_replay"
+unsupported_phenomena = ["core_local_flux", "winding_internal_voltage", "wideband_terminal_response", "vendor_prediction", "atp_or_pscad_equivalence", "protected_standard_conformance", "insulation_design", "lifetime", "certification"]

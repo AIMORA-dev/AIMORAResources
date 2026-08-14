@@ -335,6 +335,90 @@ state = "retained"
 reason = "Curated cumulative supplied-energy rendering for the mixed-route runtime product."
 
 [[classification]]
+id = "transformer-low-frequency-waveform-data"
+path = "AIMORACases.jl/examples/emt/transformer_low_frequency/outputs/transformer_waveforms.csv"
+state = "retained"
+reason = "Small deterministic terminal waveform, power, energy, and KCL data for the low-frequency transformer product."
+
+[[classification]]
+id = "transformer-low-frequency-curated-figure"
+path = "AIMORACases.jl/examples/emt/transformer_low_frequency/outputs/transformer_waveforms.svg"
+state = "retained"
+reason = "One curated public transient rendering for the low-frequency transformer product."
+
+[[classification]]
+id = "transformer-bctran-waveform-data"
+path = "AIMORACases.jl/examples/emt/transformer_bctran/outputs/transformer_waveforms.csv"
+state = "retained"
+reason = "Small deterministic terminal waveform, power, energy, and KCL data for the BCTRAN transformer product."
+
+[[classification]]
+id = "transformer-bctran-curated-figure"
+path = "AIMORACases.jl/examples/emt/transformer_bctran/outputs/transformer_waveforms.svg"
+state = "retained"
+reason = "One curated public transient rendering for the BCTRAN transformer product."
+
+[[classification]]
+id = "transformer-hybrid-waveform-data"
+path = "AIMORACases.jl/examples/emt/transformer_hybrid/outputs/transformer_waveforms.csv"
+state = "retained"
+reason = "Small deterministic terminal waveform, power, energy, and KCL data for the hybrid nonlinear-core transformer product."
+
+[[classification]]
+id = "transformer-hybrid-curated-figure"
+path = "AIMORACases.jl/examples/emt/transformer_hybrid/outputs/transformer_waveforms.svg"
+state = "retained"
+reason = "One curated public transient rendering for the hybrid nonlinear-core transformer product."
+
+[[classification]]
+id = "transformer-magnetic-equivalent-waveform-data"
+path = "AIMORACases.jl/examples/emt/transformer_magnetic_equivalent/outputs/transformer_waveforms.csv"
+state = "retained"
+reason = "Small deterministic terminal waveform, power, energy, and KCL data for the magnetic-equivalent-circuit transformer product."
+
+[[classification]]
+id = "transformer-magnetic-equivalent-curated-figure"
+path = "AIMORACases.jl/examples/emt/transformer_magnetic_equivalent/outputs/transformer_waveforms.svg"
+state = "retained"
+reason = "One curated public transient rendering for the magnetic-equivalent-circuit transformer product."
+
+[[classification]]
+id = "transformer-wideband-black-box-waveform-data"
+path = "AIMORACases.jl/examples/emt/transformer_wideband_black_box/outputs/transformer_waveforms.csv"
+state = "retained"
+reason = "Small deterministic terminal waveform, power, energy, and KCL data for the passive wideband black-box transformer product."
+
+[[classification]]
+id = "transformer-wideband-black-box-curated-figure"
+path = "AIMORACases.jl/examples/emt/transformer_wideband_black_box/outputs/transformer_waveforms.svg"
+state = "retained"
+reason = "One curated public transient rendering for the passive wideband black-box transformer product."
+
+[[classification]]
+id = "transformer-grey-box-waveform-data"
+path = "AIMORACases.jl/examples/emt/transformer_grey_box/outputs/transformer_waveforms.csv"
+state = "retained"
+reason = "Small deterministic terminal waveform, power, energy, and internal-KCL data for the represented grey-box ladder product."
+
+[[classification]]
+id = "transformer-grey-box-curated-figure"
+path = "AIMORACases.jl/examples/emt/transformer_grey_box/outputs/transformer_waveforms.svg"
+state = "retained"
+reason = "One curated public transient rendering for the represented grey-box ladder product."
+
+[[classification]]
+id = "transformer-white-box-waveform-data"
+path = "AIMORACases.jl/examples/emt/transformer_white_box/outputs/transformer_waveforms.csv"
+state = "retained"
+reason = "Small deterministic terminal waveform, power, energy, and internal-KCL data for the sectioned white-box winding product."
+
+[[classification]]
+id = "transformer-white-box-curated-figure"
+path = "AIMORACases.jl/examples/emt/transformer_white_box/outputs/transformer_waveforms.svg"
+state = "retained"
+reason = "One curated public transient rendering for the sectioned white-box winding product."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"

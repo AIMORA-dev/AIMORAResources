@@ -1,0 +1,34 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_transformer_wideband_black_box"
+equipment_class = "wideband_transformer_terminal_model"
+manufacturer = ""
+model = "Generic passive twelve-port transformer black box"
+provenance = "AIMORA-authored synthetic T200 public product; exact stable reciprocal positive-real realization with no vendor, measured, protected-standard, ATP, or PSCAD response"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+tier = "wideband_black_box"
+public_case = "emt_transformer_wideband_black_box"
+rated_power_va = 1.0e7
+rated_voltage_v = 3.3e4
+rated_frequency_hz = 100.0
+timestep_s = 1.0e-5
+terminal_current_orientation = "positive_into_apparatus"
+parameter_natures = ["PhysicalModelParameter", "ScalingBasisParameter", "NumericalPolicyParameter"]
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty = "exact synthetic realization; measurement, fit-source, manufacturer, and model-form uncertainty are unknown"
+validity = "Only the exact ordered ports, 24-state realization, 10 Hz through 40 kHz band, source, timestep, event, and public execution"
+
+[study.emt]
+representation = "real_stable_reciprocal_positive_real_multiport_state_space"
+fidelity = "wideband_black_box"
+port_count = 12
+state_count = 24
+frequency_domain_hz = [10.0, 40000.0]
+continuous_passivity_margin_s = 0.02
+initialization = "explicit_deenergized_or_exact_discrete_sinusoidal_state"
+event = "terminal_fault_at_0.005_s"
+outputs = ["ordered_port_voltage_and_current", "passive_rational_state", "power", "stored_and_dissipated_energy", "passivity_margin"]
+restart = "exact_rational_history_checkpoint_replay"
+unsupported_phenomena = ["physical_core_state", "winding_section_voltage", "out_of_band_extrapolation", "vendor_prediction", "atp_or_pscad_equivalence", "protected_standard_conformance", "insulation_design", "lifetime", "certification"]

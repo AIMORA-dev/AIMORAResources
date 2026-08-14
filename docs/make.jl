@@ -46,6 +46,7 @@ makedocs(
         "Wideband Line Parameters" => "wideband-line-parameters.md",
         "Coupled Line Fitting and Passivity" => "coupled-line-fitting-passivity.md",
         "Coupled Frequency-Dependent Line Runtime" => "coupled-frequency-dependent-line-runtime.md",
+        "Transformer and Reactor Hierarchy" => "transformer-reactor-hierarchy.md",
         "Native Extensions" => "native-extensions.md",
         "Cases and Catalogs" => "cases-and-catalogs.md",
         "Validation" => "validation.md",

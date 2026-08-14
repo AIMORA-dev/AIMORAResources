@@ -67,6 +67,7 @@ include("extended_vsc_control_filter_platform.jl")
 include("wideband_line_parameters.jl")
 include("coupled_line_fitting_passivity.jl")
 include("coupled_line_runtime.jl")
+include("transformer_apparatus.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()
