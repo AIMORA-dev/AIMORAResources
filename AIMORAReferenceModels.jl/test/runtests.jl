@@ -3,6 +3,7 @@ using AIMORAReferenceModels
 
 include("wideband_line_parameters.jl")
 include("coupled_line_fitting_passivity.jl")
+include("coupled_line_runtime.jl")
 
 @testset "independent extended semiconductor formulations" begin
     recovery = independent_recovered_charge_backward_euler(

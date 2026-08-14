@@ -550,6 +550,39 @@ result_kind = "frequency_fit"
 source_ids = ["case-input:line-fitting:mixed-route", "aimora-reference:coupled-line-fitting-passivity", "validation-suite:coupled-line-fitting-passivity"]
 
 [[case]]
+id = "coupled_line_runtime_overhead"
+study = "emt"
+path = "examples/line_runtime/overhead/run.jl"
+entrypoint = "examples/line_runtime/overhead/run.jl"
+description = "Generic overhead-line complete coupled L205 realization and exact declared soil alternative executed through identical discrete initialization, phase-domain Norton, fault, output, energy/KCL, uncertainty-envelope, and typed-restart policies."
+requires_solver = true
+reference_compatible = false
+result_kind = "time_series"
+source_ids = ["case-input:coupled-line-runtime:overhead", "aimora-reference:coupled-line-runtime", "validation-suite:coupled-line-runtime"]
+
+[[case]]
+id = "coupled_line_runtime_cable"
+study = "emt"
+path = "examples/line_runtime/cable/run.jl"
+entrypoint = "examples/line_runtime/cable/run.jl"
+description = "Generic cable complete coupled L205 realization and exact declared soil alternative executed with full terminal mutual coupling, identical fault/output policy, energy/KCL uncertainty envelopes, portable snapshots, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "time_series"
+source_ids = ["case-input:coupled-line-runtime:cable", "aimora-reference:coupled-line-runtime", "validation-suite:coupled-line-runtime"]
+
+[[case]]
+id = "coupled_line_runtime_mixed_route"
+study = "emt"
+path = "examples/line_runtime/mixed_route/run.jl"
+entrypoint = "examples/line_runtime/mixed_route/run.jl"
+description = "Generic overhead/cable route and both exact declared soil alternatives executed as separately fitted coupled runtimes through the explicit phase-mapped junction, identical fault/output policy, uncertainty envelopes, and exact per-segment restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "time_series"
+source_ids = ["case-input:coupled-line-runtime:mixed-route", "aimora-reference:coupled-line-runtime", "validation-suite:coupled-line-runtime"]
+
+[[case]]
 id = "transformer_parameters_multiphase_sequence_tests"
 study = "transformer_parameters"
 path = "examples/transformer_parameters/multiphase_sequence_tests/run.jl"

@@ -1,0 +1,36 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_coupled_line_runtime"
+equipment_class = "frequency_dependent_line_runtime"
+manufacturer = ""
+model = "Generic complete coupled overhead and cable EMT runtime"
+provenance = "AIMORA-authored synthetic L200/L205 overhead, cable, and separately executed mixed-route products; no vendor, protected-standard, ATP, PSCAD, or ULM data"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+units = "SI and dimensionless normalized power waves"
+phase_basis = ["phase_a", "phase_b", "phase_c"]
+terminal_current_orientation = "positive_into_each_line_terminal"
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty_kind = "exact recorded source and fit alternatives"
+declared_soil_resistivity_alternative_ohm_m = 110.0
+uncertainty_set_complete = false
+unknown_uncertainty_explicit = true
+validity = "Only the recorded L200/L205 signatures, phase and port orders, reference impedances, 1 Hz through 10 kHz public fit band, fixed timestep, and declared event network"
+
+[study.emt]
+representation = "complete_reciprocal_coupled_phase_domain_bilinear_norton_runtime"
+fidelity = "full_sending_receiving_mutual_coupling"
+frequency_domain_hz = [1.0, 10000.0]
+default_timestep_s = 1.0e-5
+discretization = "bilinear_endpoint_trapezoidal"
+initialization = "exact_discrete_sinusoidal_operating_point"
+terminal_mapping = "normalized_power_wave_to_complete_norton_companion"
+accepted_mutation = "once_after_complete_nodal_solve"
+events = ["receiving_end_fault_application", "fault_clearing"]
+outputs = ["terminal_voltages", "inward_currents", "incident_outgoing_waves", "history_currents", "terminal_power", "cumulative_energy", "kcl_residual", "time_aligned_uncertainty_envelopes"]
+restart = "typed_integrity_bound_portable_toml_snapshot"
+uncertainty_execution = "every_exact_declared_fit_through_identical_timestep_initialization_events_outputs_and_restart"
+public_products = ["overhead", "cable", "mixed_route"]
+mixed_route_policy = "separately_executed_uniform_segments_with_explicit_node_mapping"
+unsupported_phenomena = ["ulm_file_compatibility", "atp_or_pscad_equivalence", "vendor_prediction", "protected_standard_conformance", "measurement_accuracy", "certification", "variable_timestep_or_dassl", "silent_frequency_or_timestep_extrapolation"]

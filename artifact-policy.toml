@@ -227,6 +227,114 @@ state = "retained"
 reason = "Curated sampled passivity rendering for the separately fitted cable route segment."
 
 [[classification]]
+id = "coupled-runtime-overhead-waveform-data"
+path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_waveforms.csv"
+state = "retained"
+reason = "Small deterministic public terminal waveform data for the complete overhead-line runtime and declared event schedule."
+
+[[classification]]
+id = "coupled-runtime-overhead-energy-data"
+path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_energy_kcl.csv"
+state = "retained"
+reason = "Small deterministic public power, cumulative-energy, terminal-KCL, and fault-state data for the overhead runtime."
+
+[[classification]]
+id = "coupled-runtime-overhead-uncertainty-data"
+path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_uncertainty.csv"
+state = "retained"
+reason = "Time-aligned public voltage, current, power, energy, and KCL envelope for the exact declared overhead soil alternative."
+
+[[classification]]
+id = "coupled-runtime-overhead-refinement-data"
+path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_refinement.csv"
+state = "retained"
+reason = "Small deterministic public 10/5 microsecond voltage, current, power, energy, and KCL timestep-refinement evidence for the nominal and declared overhead alternatives."
+
+[[classification]]
+id = "coupled-runtime-overhead-waveform-figure"
+path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_waveforms.svg"
+state = "retained"
+reason = "Curated receiving-end phase-voltage rendering for the overhead runtime product."
+
+[[classification]]
+id = "coupled-runtime-overhead-energy-figure"
+path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_energy.svg"
+state = "retained"
+reason = "Curated cumulative supplied-energy rendering for the overhead runtime product."
+
+[[classification]]
+id = "coupled-runtime-cable-waveform-data"
+path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_waveforms.csv"
+state = "retained"
+reason = "Small deterministic public terminal waveform data for the complete cable runtime and declared event schedule."
+
+[[classification]]
+id = "coupled-runtime-cable-energy-data"
+path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_energy_kcl.csv"
+state = "retained"
+reason = "Small deterministic public power, cumulative-energy, terminal-KCL, and fault-state data for the cable runtime."
+
+[[classification]]
+id = "coupled-runtime-cable-uncertainty-data"
+path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_uncertainty.csv"
+state = "retained"
+reason = "Time-aligned public voltage, current, power, energy, and KCL envelope for the exact declared cable soil alternative."
+
+[[classification]]
+id = "coupled-runtime-cable-refinement-data"
+path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_refinement.csv"
+state = "retained"
+reason = "Small deterministic public 10/5 microsecond voltage, current, power, energy, and KCL timestep-refinement evidence for the nominal and declared cable alternatives."
+
+[[classification]]
+id = "coupled-runtime-cable-waveform-figure"
+path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_waveforms.svg"
+state = "retained"
+reason = "Curated receiving-end phase-voltage rendering for the cable runtime product."
+
+[[classification]]
+id = "coupled-runtime-cable-energy-figure"
+path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_energy.svg"
+state = "retained"
+reason = "Curated cumulative supplied-energy rendering for the cable runtime product."
+
+[[classification]]
+id = "coupled-runtime-mixed-route-waveform-data"
+path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_waveforms.csv"
+state = "retained"
+reason = "Small deterministic public terminal waveform data for the separately executed overhead/cable route."
+
+[[classification]]
+id = "coupled-runtime-mixed-route-energy-data"
+path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_energy_kcl.csv"
+state = "retained"
+reason = "Small deterministic public power, cumulative-energy, terminal-KCL, and fault-state data for the phase-mapped route."
+
+[[classification]]
+id = "coupled-runtime-mixed-route-uncertainty-data"
+path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_uncertainty.csv"
+state = "retained"
+reason = "Time-aligned public envelope for both exact declared soil alternatives through the unchanged route junction and event policy."
+
+[[classification]]
+id = "coupled-runtime-mixed-route-refinement-data"
+path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_refinement.csv"
+state = "retained"
+reason = "Small deterministic public 10/5 microsecond voltage, current, power, energy, and KCL timestep-refinement evidence for the nominal and declared mixed-route alternatives."
+
+[[classification]]
+id = "coupled-runtime-mixed-route-waveform-figure"
+path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_waveforms.svg"
+state = "retained"
+reason = "Curated receiving-end phase-voltage rendering for the mixed-route runtime product."
+
+[[classification]]
+id = "coupled-runtime-mixed-route-energy-figure"
+path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_energy.svg"
+state = "retained"
+reason = "Curated cumulative supplied-energy rendering for the mixed-route runtime product."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"

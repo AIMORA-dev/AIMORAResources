@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 8
+    @test length(entries) == 9
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -79,4 +79,19 @@ using AIMORACatalogs
     @test fitting_facet[:continuous_passivity_certificate] ==
         "bounded_real_hamiltonian"
     @test "emt_line_history_execution" in fitting_facet[:unsupported_phenomena]
+
+    line_runtime = AIMORACatalogs.asset(:generic_coupled_line_runtime)
+    @test AIMORACatalogs.study_tabs(line_runtime) == [:emt]
+    runtime_facet = AIMORACatalogs.study_facet(line_runtime, :emt).parameters
+    @test runtime_facet[:default_timestep_s] == 1.0e-5
+    @test runtime_facet[:initialization] ==
+        "exact_discrete_sinusoidal_operating_point"
+    @test runtime_facet[:mixed_route_policy] ==
+        "separately_executed_uniform_segments_with_explicit_node_mapping"
+    @test runtime_facet[:uncertainty_execution] ==
+        "every_exact_declared_fit_through_identical_timestep_initialization_events_outputs_and_restart"
+    @test line_runtime.common[:declared_soil_resistivity_alternative_ohm_m] == 110.0
+    @test line_runtime.common[:unknown_uncertainty_explicit]
+    @test !line_runtime.common[:uncertainty_set_complete]
+    @test "ulm_file_compatibility" in runtime_facet[:unsupported_phenomena]
 end

@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-13"
-source_count = 498
+source_count = 503
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 70
+"canonical_case_input" = 73
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -14,11 +14,11 @@ source_count = 498
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 86
-"aimora_reference" = 5
+"validation_suite" = 87
+"aimora_reference" = 6
 
 [counts_by_disposition]
-"example" = 82
+"example" = 87
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -116,6 +116,51 @@ path = "tests/suite/coupled_line_fitting_passivity.jl"
 disposition = "example"
 example_ids = ["line_fitting_overhead", "line_fitting_cable", "line_fitting_mixed_route"]
 reason = "Private focused validation owns independent, coupled, adversarial, uncertainty, refinement, energy, import, deterministic, and performance evidence for the three public fitting workflows."
+
+[[source]]
+id = "aimora-reference:coupled-line-runtime"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/coupled_line_runtime.jl"
+disposition = "example"
+example_ids = ["coupled_line_runtime_overhead", "coupled_line_runtime_cable", "coupled_line_runtime_mixed_route"]
+reason = "Independent bilinear recurrence, dense causal convolution, complete wave/Norton mapping, discrete sinusoidal initialization, terminal KCL/energy, and immutable continuation qualify the public runtime products without importing production discretization, stamp, history, event, snapshot, report, or private solver code."
+
+[[source]]
+id = "case-input:coupled-line-runtime:overhead"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/line_runtime/overhead/run.jl"
+disposition = "example"
+example_ids = ["coupled_line_runtime_overhead"]
+reason = "The exact public L200/L205 generic overhead artifacts, exact declared 110 ohm-metre soil alternative, and deterministic shared fault/restart network are the canonical redistributable coupled overhead runtime inputs."
+
+[[source]]
+id = "case-input:coupled-line-runtime:cable"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/line_runtime/cable/run.jl"
+disposition = "example"
+example_ids = ["coupled_line_runtime_cable"]
+reason = "The exact public L200/L205 generic cable artifacts, exact declared 110 ohm-metre soil alternative, and deterministic shared fault/restart network are the canonical redistributable coupled cable runtime inputs."
+
+[[source]]
+id = "case-input:coupled-line-runtime:mixed-route"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/line_runtime/mixed_route/run.jl"
+disposition = "example"
+example_ids = ["coupled_line_runtime_mixed_route"]
+reason = "The separately accepted overhead and cable fits, both exact declared 110 ohm-metre soil alternatives, explicit a-b-c to c-a-b junction mapping, and deterministic shared fault/restart network are the canonical redistributable mixed-route runtime inputs."
+
+[[source]]
+id = "validation-suite:coupled-line-runtime"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/coupled_frequency_dependent_line_runtime.jl"
+disposition = "example"
+example_ids = ["coupled_line_runtime_overhead", "coupled_line_runtime_cable", "coupled_line_runtime_mixed_route"]
+reason = "Private focused validation owns production/reference comparison, dense convolution, coupled events, KCL/energy, refinement, restart, uncertainty, mutations, P0-P2, retained BPA overlap, clone, privacy, and release evidence for the three products."
 
 [[source]]
 id = "aimora-reference:generic-extended-semiconductor-fidelity"
