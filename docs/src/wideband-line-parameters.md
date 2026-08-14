@@ -28,6 +28,8 @@ The result reports symmetry error, the smallest Hermitian loss eigenvalue, condi
 
 The public examples `line_parameters_overhead`, `line_parameters_cable`, and `line_parameters_mixed_route` write a text report, versioned TOML data, a 60 Hz phase-matrix CSV, a frequency-scan CSV, and one curated SVG. The generic catalogue entry is `generic_wideband_line_parameter_inputs`.
 
+Coupled rational preparation is documented separately in [Coupled Line Fitting and Passivity](coupled-line-fitting-passivity.md). L200 parameters remain the only physical source; fitting does not modify them.
+
 ## Evidence and limits
 
 Independent Julia equations cover overhead potential coefficients, ideal coaxial admittance, conductor reduction, phase-mapped route sums, and deterministic uncertainty radii without reusing production assembly or report code. External comparisons are meaningful only for the exact geometry, conductor, soil, units, frequency, and reduction overlap reported by that tool; they do not establish equivalence to ATP, PSCAD, protected standards, vendor models, field measurements, or certification.

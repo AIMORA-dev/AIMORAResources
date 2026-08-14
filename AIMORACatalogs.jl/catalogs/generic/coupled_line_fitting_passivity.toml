@@ -1,0 +1,30 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_coupled_line_fitting_passivity"
+equipment_class = "line_fit_preparation"
+manufacturer = ""
+model = "Generic coupled overhead and cable rational fitting"
+provenance = "AIMORA-authored synthetic L200 overhead, cable, and mixed-route segment products; no vendor or protected-standard data"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+units = "SI and dimensionless power-wave scattering"
+phase_basis = ["phase_a", "phase_b", "phase_c"]
+rights = "public AIMORA-authored synthetic values"
+uncertainty_kind = "source-bound deterministic alternatives"
+validity = "Only the published source signatures, frequency grids, segment lengths, ports, reference impedances, and fit settings"
+
+[study.line_fitting]
+representation = "complete_reciprocal_shared_pole_two_terminal_scattering"
+fidelity = "immutable_frequency_domain_preparation"
+frequency_domain_hz = [1.0, 10000.0]
+frequency_count = 81
+candidate_pole_orders = [20, 40, 60, 80]
+relative_fit_error_limit = 0.05
+maximum_direct_term_singular_value = 0.92
+maximum_pole_relocation_sweeps = 64
+physical_admittance_enforcement_perturbation_limit = 0.02
+continuous_passivity_certificate = "bounded_real_hamiltonian"
+enforcement = "certified_positive_conductance_linear_fractional_transform"
+public_products = ["overhead", "cable", "separately_fitted_mixed_route_segments"]
+unsupported_phenomena = ["emt_line_history_execution", "network_stamp", "switching_or_fault_interaction", "checkpoint_or_restart", "ulm_file_compatibility", "atp_or_pscad_equivalence", "vendor_prediction", "protected_standard_conformance", "measurement_accuracy", "certification"]

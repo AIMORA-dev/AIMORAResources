@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="34" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#111827">Coupled Fit Error</text>
+<rect x="92.0" y="70.0" width="700.0" height="400.0" fill="#f8fafc" stroke="#cbd5e1"/>
+<line x1="92.0" y1="70.0" x2="792.0" y2="70.0" stroke="#e2e8f0"/>
+<text x="82.0" y="74.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">2.078e-05</text>
+<line x1="92.0" y1="170.0" x2="792.0" y2="170.0" stroke="#e2e8f0"/>
+<text x="82.0" y="174.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">2.072e-05</text>
+<line x1="92.0" y1="270.0" x2="792.0" y2="270.0" stroke="#e2e8f0"/>
+<text x="82.0" y="274.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">2.067e-05</text>
+<line x1="92.0" y1="370.0" x2="792.0" y2="370.0" stroke="#e2e8f0"/>
+<text x="82.0" y="374.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">2.061e-05</text>
+<line x1="92.0" y1="470.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="82.0" y="474.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">2.055e-05</text>
+<line x1="92.0" y1="70.0" x2="92.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="92.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">-0.2</text>
+<line x1="267.0" y1="70.0" x2="267.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="267.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.9</text>
+<line x1="442.0" y1="70.0" x2="442.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="442.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">2</text>
+<line x1="617.0" y1="70.0" x2="617.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="617.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">3.1</text>
+<line x1="792.0" y1="70.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="792.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">4.2</text>
+<polyline points="123.818,370.848 131.773,371.529 139.727,372.278 147.682,372.801 155.636,372.610 163.591,372.338 171.545,372.010 179.500,371.655 187.455,371.300 195.409,370.971 203.364,370.693 211.318,370.489 219.273,370.377 227.227,370.259 235.182,370.477 243.136,370.659 251.091,370.868 259.045,371.049 267.000,371.143 274.955,371.093 282.909,370.858 290.864,370.427 298.818,369.826 306.773,369.122 314.727,368.412 322.682,367.690 330.636,366.998 338.591,367.434 346.545,367.728 354.500,368.191 362.455,368.672 370.409,368.974 378.364,368.906 386.318,368.341 394.273,367.266 402.227,365.799 410.182,364.184 418.136,362.501 426.091,360.851 434.045,361.872 442.000,362.613 449.955,363.776 457.909,364.902 465.864,365.466 473.818,365.021 481.773,363.382 489.727,360.732 497.682,357.625 505.636,354.039 513.591,350.659 521.545,353.397 529.500,356.541 537.455,359.696 545.409,362.361 553.364,363.278 561.318,361.697 569.273,357.858 577.227,353.093 585.182,343.535 593.136,338.317 601.091,347.112 609.045,364.507 617.000,374.146 624.955,380.796 632.909,382.196 640.864,379.211 648.818,362.578 656.773,340.247 664.727,344.608 672.682,376.090 680.636,411.315 688.591,435.142 696.545,428.341 704.500,389.852 712.455,340.306 720.409,328.650 728.364,376.037 736.318,412.349 744.273,246.514 752.227,88.182 760.182,451.818" fill="none" stroke="#2563eb" stroke-width="2"/>
+<text x="442.0" y="535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#334155">log10 frequency (Hz)</text>
+<text x="24" y="270.0" text-anchor="middle" transform="rotate(-90 24 270.0)" font-family="sans-serif" font-size="14" fill="#334155">relative error</text>
+<line x1="816.0" y1="90.0" x2="836.0" y2="90.0" stroke="#2563eb" stroke-width="3"/>
+<text x="844.0" y="94.0" font-family="sans-serif" font-size="12" fill="#334155">relative spectral error</text>
+</svg>

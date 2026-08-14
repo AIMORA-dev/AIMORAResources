@@ -517,6 +517,39 @@ result_kind = "frequency_scan"
 source_ids = ["case-input:line-parameters:mixed-route", "aimora-reference:wideband-line-parameters", "validation-suite:wideband-line-parameters"]
 
 [[case]]
+id = "line_fitting_overhead"
+study = "line_fitting"
+path = "examples/line_fitting/overhead/run.jl"
+entrypoint = "examples/line_fitting/overhead/run.jl"
+description = "Generic three-phase overhead segment prepared as a complete common-pole coupled terminal fit with continuous global passivity certification and response, error, and passivity artifacts."
+requires_solver = true
+reference_compatible = false
+result_kind = "frequency_fit"
+source_ids = ["case-input:line-fitting:overhead", "aimora-reference:coupled-line-fitting-passivity", "validation-suite:coupled-line-fitting-passivity"]
+
+[[case]]
+id = "line_fitting_cable"
+study = "line_fitting"
+path = "examples/line_fitting/cable/run.jl"
+entrypoint = "examples/line_fitting/cable/run.jl"
+description = "Generic three-single-core cable segment prepared as a complete common-pole coupled terminal fit with bounded physical-domain passivity enforcement."
+requires_solver = true
+reference_compatible = false
+result_kind = "frequency_fit"
+source_ids = ["case-input:line-fitting:cable", "aimora-reference:coupled-line-fitting-passivity", "validation-suite:coupled-line-fitting-passivity"]
+
+[[case]]
+id = "line_fitting_mixed_route"
+study = "line_fitting"
+path = "examples/line_fitting/mixed_route/run.jl"
+entrypoint = "examples/line_fitting/mixed_route/run.jl"
+description = "Generic overhead/cable mixed route whose unlike uniform segments are fitted and continuously certified separately without a length-averaged propagation substitute."
+requires_solver = true
+reference_compatible = false
+result_kind = "frequency_fit"
+source_ids = ["case-input:line-fitting:mixed-route", "aimora-reference:coupled-line-fitting-passivity", "validation-suite:coupled-line-fitting-passivity"]
+
+[[case]]
 id = "transformer_parameters_multiphase_sequence_tests"
 study = "transformer_parameters"
 path = "examples/transformer_parameters/multiphase_sequence_tests/run.jl"

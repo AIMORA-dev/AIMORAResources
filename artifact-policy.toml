@@ -83,6 +83,150 @@ state = "retained"
 reason = "One curated public rendering of mixed-route self and mutual impedance magnitudes."
 
 [[classification]]
+id = "coupled-line-overhead-response-data"
+path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_response.csv"
+state = "retained"
+reason = "Small deterministic public source-versus-fit response data for the overhead fitting product."
+
+[[classification]]
+id = "coupled-line-overhead-error-data"
+path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_error.csv"
+state = "retained"
+reason = "Small deterministic public fit-error data supporting the overhead acceptance report."
+
+[[classification]]
+id = "coupled-line-overhead-passivity-data"
+path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_passivity.csv"
+state = "retained"
+reason = "Small deterministic sampled passivity diagnostic accompanying the continuous overhead certificate."
+
+[[classification]]
+id = "coupled-line-overhead-response-figure"
+path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_response.svg"
+state = "retained"
+reason = "Curated public source-versus-fit response rendering for the overhead fitting product."
+
+[[classification]]
+id = "coupled-line-overhead-error-figure"
+path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_error.svg"
+state = "retained"
+reason = "Curated public relative-error rendering for the overhead fitting product."
+
+[[classification]]
+id = "coupled-line-overhead-passivity-figure"
+path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_passivity.svg"
+state = "retained"
+reason = "Curated sampled passivity rendering whose diagnostic boundary is documented with the continuous certificate."
+
+[[classification]]
+id = "coupled-line-cable-response-data"
+path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_response.csv"
+state = "retained"
+reason = "Small deterministic public source-versus-fit response data for the cable fitting product."
+
+[[classification]]
+id = "coupled-line-cable-error-data"
+path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_error.csv"
+state = "retained"
+reason = "Small deterministic public fit-error data supporting the cable acceptance report."
+
+[[classification]]
+id = "coupled-line-cable-passivity-data"
+path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_passivity.csv"
+state = "retained"
+reason = "Small deterministic sampled passivity diagnostic accompanying the continuous cable certificate."
+
+[[classification]]
+id = "coupled-line-cable-response-figure"
+path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_response.svg"
+state = "retained"
+reason = "Curated public source-versus-fit response rendering for the cable fitting product."
+
+[[classification]]
+id = "coupled-line-cable-error-figure"
+path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_error.svg"
+state = "retained"
+reason = "Curated public relative-error rendering for the cable fitting product."
+
+[[classification]]
+id = "coupled-line-cable-passivity-figure"
+path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_passivity.svg"
+state = "retained"
+reason = "Curated sampled passivity rendering whose diagnostic boundary is documented with the continuous certificate."
+
+[[classification]]
+id = "coupled-line-mixed-overhead-response-data"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_response.csv"
+state = "retained"
+reason = "Small deterministic public response data for the separately fitted overhead route segment."
+
+[[classification]]
+id = "coupled-line-mixed-overhead-error-data"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_error.csv"
+state = "retained"
+reason = "Small deterministic public fit-error data for the separately fitted overhead route segment."
+
+[[classification]]
+id = "coupled-line-mixed-overhead-passivity-data"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_passivity.csv"
+state = "retained"
+reason = "Small deterministic sampled passivity diagnostic for the separately fitted overhead route segment."
+
+[[classification]]
+id = "coupled-line-mixed-overhead-response-figure"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_response.svg"
+state = "retained"
+reason = "Curated public response rendering for the separately fitted overhead route segment."
+
+[[classification]]
+id = "coupled-line-mixed-overhead-error-figure"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_error.svg"
+state = "retained"
+reason = "Curated public relative-error rendering for the separately fitted overhead route segment."
+
+[[classification]]
+id = "coupled-line-mixed-overhead-passivity-figure"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_passivity.svg"
+state = "retained"
+reason = "Curated sampled passivity rendering for the separately fitted overhead route segment."
+
+[[classification]]
+id = "coupled-line-mixed-cable-response-data"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_response.csv"
+state = "retained"
+reason = "Small deterministic public response data for the separately fitted cable route segment."
+
+[[classification]]
+id = "coupled-line-mixed-cable-error-data"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_error.csv"
+state = "retained"
+reason = "Small deterministic public fit-error data for the separately fitted cable route segment."
+
+[[classification]]
+id = "coupled-line-mixed-cable-passivity-data"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_passivity.csv"
+state = "retained"
+reason = "Small deterministic sampled passivity diagnostic for the separately fitted cable route segment."
+
+[[classification]]
+id = "coupled-line-mixed-cable-response-figure"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_response.svg"
+state = "retained"
+reason = "Curated public response rendering for the separately fitted cable route segment."
+
+[[classification]]
+id = "coupled-line-mixed-cable-error-figure"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_error.svg"
+state = "retained"
+reason = "Curated public relative-error rendering for the separately fitted cable route segment."
+
+[[classification]]
+id = "coupled-line-mixed-cable-passivity-figure"
+path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_passivity.svg"
+state = "retained"
+reason = "Curated sampled passivity rendering for the separately fitted cable route segment."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"

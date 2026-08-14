@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-13"
-source_count = 493
+source_count = 498
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 67
+"canonical_case_input" = 70
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -14,11 +14,11 @@ source_count = 493
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 85
-"aimora_reference" = 4
+"validation_suite" = 86
+"aimora_reference" = 5
 
 [counts_by_disposition]
-"example" = 77
+"example" = 82
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -71,6 +71,51 @@ path = "tests/suite/wideband_line_parameters.jl"
 disposition = "example"
 example_ids = ["line_parameters_overhead", "line_parameters_cable", "line_parameters_mixed_route"]
 reason = "Focused private validation exercises homogeneous identity, layered-soil limits, overhead/cable construction, phase-mapped route composition, uncertainty, interchange, physical diagnostics, refusal, and deterministic reporting for the three public workflows."
+
+[[source]]
+id = "aimora-reference:coupled-line-fitting-passivity"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/coupled_line_fitting_passivity.jl"
+disposition = "example"
+example_ids = ["line_fitting_overhead", "line_fitting_cable", "line_fitting_mixed_route"]
+reason = "Independent rational response, power-wave transforms, invariant-subspace angles, continuous manufactured gain bounds, and offline energy equations qualify the public coupled fits without importing production response, fitting, enforcement, certificate, or interchange code."
+
+[[source]]
+id = "case-input:line-fitting:overhead"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/line_fitting/overhead/run.jl"
+disposition = "example"
+example_ids = ["line_fitting_overhead"]
+reason = "The AIMORA-authored 81-point overhead runner is the canonical redistributable public coupled-fitting input."
+
+[[source]]
+id = "case-input:line-fitting:cable"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/line_fitting/cable/run.jl"
+disposition = "example"
+example_ids = ["line_fitting_cable"]
+reason = "The AIMORA-authored 81-point three-single-core cable runner is the canonical redistributable public coupled-fitting input."
+
+[[source]]
+id = "case-input:line-fitting:mixed-route"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/line_fitting/mixed_route/run.jl"
+disposition = "example"
+example_ids = ["line_fitting_mixed_route"]
+reason = "The AIMORA-authored mixed-route runner is the canonical public proof that unlike uniform segments are fitted separately."
+
+[[source]]
+id = "validation-suite:coupled-line-fitting-passivity"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/coupled_line_fitting_passivity.jl"
+disposition = "example"
+example_ids = ["line_fitting_overhead", "line_fitting_cable", "line_fitting_mixed_route"]
+reason = "Private focused validation owns independent, coupled, adversarial, uncertainty, refinement, energy, import, deterministic, and performance evidence for the three public fitting workflows."
 
 [[source]]
 id = "aimora-reference:generic-extended-semiconductor-fidelity"

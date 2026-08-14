@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560">
+<rect width="960" height="560" fill="#ffffff"/>
+<text x="480" y="34" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#111827">Sampled Passivity Diagnostic</text>
+<rect x="92.0" y="70.0" width="700.0" height="400.0" fill="#f8fafc" stroke="#cbd5e1"/>
+<line x1="92.0" y1="70.0" x2="792.0" y2="70.0" stroke="#e2e8f0"/>
+<text x="82.0" y="74.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">1</text>
+<line x1="92.0" y1="170.0" x2="792.0" y2="170.0" stroke="#e2e8f0"/>
+<text x="82.0" y="174.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">1</text>
+<line x1="92.0" y1="270.0" x2="792.0" y2="270.0" stroke="#e2e8f0"/>
+<text x="82.0" y="274.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">1</text>
+<line x1="92.0" y1="370.0" x2="792.0" y2="370.0" stroke="#e2e8f0"/>
+<text x="82.0" y="374.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">1</text>
+<line x1="92.0" y1="470.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="82.0" y="474.0" text-anchor="end" font-family="monospace" font-size="12" fill="#475569">1</text>
+<line x1="92.0" y1="70.0" x2="92.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="92.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">-0.2</text>
+<line x1="267.0" y1="70.0" x2="267.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="267.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">0.9</text>
+<line x1="442.0" y1="70.0" x2="442.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="442.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">2</text>
+<line x1="617.0" y1="70.0" x2="617.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="617.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">3.1</text>
+<line x1="792.0" y1="70.0" x2="792.0" y2="470.0" stroke="#e2e8f0"/>
+<text x="792.0" y="492.0" text-anchor="middle" font-family="monospace" font-size="12" fill="#475569">4.2</text>
+<polyline points="123.818,132.079 131.773,131.956 139.727,131.931 147.682,131.736 155.636,131.435 163.591,131.176 171.545,131.111 179.500,131.267 187.455,131.526 195.409,131.878 203.364,132.276 211.318,132.644 219.273,132.902 227.227,132.985 235.182,132.858 243.136,132.517 251.091,132.010 259.045,131.432 267.000,130.769 274.955,130.316 282.909,130.308 290.864,130.823 298.818,131.607 306.773,132.502 314.727,133.420 322.682,134.132 330.636,134.447 338.591,134.244 346.545,133.496 354.500,132.321 362.455,130.998 370.409,129.428 378.364,128.696 386.318,129.176 394.273,130.892 402.227,132.746 410.182,134.798 418.136,136.457 426.091,137.204 434.045,136.731 442.000,134.980 449.955,132.320 457.909,129.097 465.864,126.294 473.818,125.907 481.773,128.479 489.727,132.601 497.682,136.879 505.636,140.477 513.591,142.080 521.545,140.985 529.500,137.104 537.455,131.312 545.409,123.568 553.364,119.806 561.318,122.268 569.273,130.928 577.227,142.668 585.182,149.876 593.136,150.087 601.091,146.937 609.045,137.369 617.000,119.930 624.955,107.927 632.909,108.638 640.864,123.708 648.818,139.576 656.773,139.895 664.727,131.370 672.682,115.035 680.636,98.280 688.591,88.182 696.545,102.044 704.500,126.816 712.455,146.567 720.409,150.942 728.364,156.681 736.318,199.537 744.273,289.068 752.227,451.818 760.182,269.178" fill="none" stroke="#2563eb" stroke-width="2"/>
+<text x="442.0" y="535" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#334155">log10 frequency (Hz)</text>
+<text x="24" y="270.0" text-anchor="middle" transform="rotate(-90 24 270.0)" font-family="sans-serif" font-size="14" fill="#334155">maximum scattering singular value</text>
+<line x1="816.0" y1="90.0" x2="836.0" y2="90.0" stroke="#2563eb" stroke-width="3"/>
+<text x="844.0" y="94.0" font-family="sans-serif" font-size="12" fill="#334155">maximum singular value</text>
+</svg>

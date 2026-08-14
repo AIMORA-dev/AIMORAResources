@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 7
+    @test length(entries) == 8
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -71,4 +71,12 @@ using AIMORACatalogs
     @test line_facet[:maximum_soil_layers] == 4
     @test line_facet[:route_kinds] == ["overhead", "cable", "mixed"]
     @test "time_domain_line_realization" in line_facet[:unsupported_phenomena]
+
+    line_fitting = AIMORACatalogs.asset(:generic_coupled_line_fitting_passivity)
+    @test AIMORACatalogs.study_tabs(line_fitting) == [:line_fitting]
+    fitting_facet = AIMORACatalogs.study_facet(line_fitting, :line_fitting).parameters
+    @test fitting_facet[:candidate_pole_orders] == [20, 40, 60, 80]
+    @test fitting_facet[:continuous_passivity_certificate] ==
+        "bounded_real_hamiltonian"
+    @test "emt_line_history_execution" in fitting_facet[:unsupported_phenomena]
 end
