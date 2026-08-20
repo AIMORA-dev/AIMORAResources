@@ -1,22 +1,79 @@
 # AIMORAResources
 
-AIMORAResources is the consolidated public repository for AIMORA cases, catalogues, independent reference models, the historical BPA EMTP reference, report templates, documentation, teaching routes, examples, and provenance. Public content remains separated from private held-out evidence and can be released as one coherent Resources revision.
+`AIMORAResources` is the canonical public owner for AIMORA cases, catalogues, independent reference models, documentation, report templates, teaching material, provenance, and redistributable scientific-reference content.
 
-| Path | Resource | Stable identity |
-| --- | --- | --- |
-| `AIMORACases.jl` | Public executable cases | `c2d99356-2241-4b88-ae11-80a94b927354` |
-| `AIMORACatalogs.jl` | Study-aware equipment catalogues | `2b6c9f6e-dc5c-4462-b175-cd3ce62f4f80` |
-| `AIMORAReferenceModels.jl` | Independent analytical/manufactured checks | `6a268073-c1b2-474c-bd10-49e12d1609a5` |
-| `references/bpa_emtp` | Historical compiled BPA EMTP reference | `379ef2ed-aa07-4523-9a5b-6fc193417d96` |
-| `references/packages.toml` | Exact manifest for ignored local external-source checkouts | provenance manifest |
-| `references/review_library` | Rights-aware policy for private and open review material | policy/index only |
-| `report-templates` | Research, commercial, and education report templates | content library |
-| `docs` | Public AIMORA documentation site | Documenter project |
+## Repository map
 
-Run `julia test/runtests.jl` for the repository, licence, provenance, and artifact-policy contract. Run each Julia package's normal `Pkg.test()` command for package-local behavior; the BPA reference retains its own optional compiler-backed build and test commands, and documentation retains its own build command.
+| Path | Purpose |
+| --- | --- |
+| `AIMORACases.jl/` | Versioned executable public examples and case catalogue |
+| `AIMORACatalogs.jl/` | Public engineering catalogues and catalogue APIs |
+| `AIMORAReferenceModels.jl/` | Independent public analytical/manufactured reference models |
+| `docs/` | Documenter-based professional user, engineering, and developer manual |
+| `report-templates/` | Versioned declarative report profiles and licence metadata |
+| `examples/reporting/` | Public semantic-reporting fixtures and claim boundaries |
+| `provenance/` | Source, transformation, and rights records |
+| `references/` | Tracked redistributable reference source and exact external-package pins |
+| `teaching/` | Teaching material and lawful educational assets |
 
-The first Resources integration commit has the six exact source revisions as parents, so the original commits, authors, dates, and messages remain reachable without rewritten SHAs. `provenance/history-map.toml` records the migration boundary, while the old repositories remain available until final migration acceptance.
+## Professional documentation
 
-See `licensing.toml` before redistributing any path. The repository licence does not replace the historical BPA notices or any path-specific third-party terms. Private cases, held-out evidence, restricted data, proprietary simulator artifacts, and qualification receipts remain in `AIMORAValidation` and must never enter this repository.
+Start at:
 
-Downloaded external repositories, books, papers, and account-authorized review files are materialized only under the workspace-local `.aimora/cache/references/` directory. They are never committed into this public repository.
+```text
+docs/src/professional-manual.md
+```
+
+The manual covers architecture, every public model family, implemented and planned studies, deck-card families, all registered cases through their canonical per-case READMEs, solver activation and diagnostics, result interpretation, semantic reporting, troubleshooting, source coverage, and terminology.
+
+Build and check it with:
+
+```bash
+julia --startup-file=no docs/check_content.jl
+make -C docs build
+```
+
+## Public cases
+
+`AIMORACases.jl/examples/catalog.toml` is the machine-readable case index. Each released case owns a substantive README, Julia entry point, input, local Makefile, canonical outputs, and provenance.
+
+```bash
+cd AIMORACases.jl
+make check
+make test
+make example
+```
+
+Run one case:
+
+```bash
+make -C AIMORACases.jl/examples/emt/rlc_energization run
+```
+
+The engine repository intentionally does not duplicate examples.
+
+## Report templates
+
+The versioned template inventory is:
+
+```text
+report-templates/v1/manifest.toml
+```
+
+Profiles cover general engineering, reproducible research, qualification, education, EMT, line/cable constants, transformer parameters, and combined reports. Templates own structure and required semantic roles, not engineering equations or result transformations.
+
+## Reporting example
+
+`examples/reporting/complete_report/` documents the complete typed-result-to-publication lifecycle implemented by `AIMORAPlatform/AIMORAReporting.jl`. Its manufactured fixture validates reporting behavior only and is not a numerical-solver qualification claim.
+
+## Scientific and rights boundary
+
+- Public cases and references must be lawfully redistributable.
+- Restricted source material remains outside the tracked public tree and is integrity-pinned where permitted.
+- Examples use AIMORA Julia APIs; compiled historical programs and private oracle data are not runtime dependencies.
+- A public example demonstrates a declared case, not universal compatibility or certification.
+- Publisher-, standard-, client-, manufacturer-, logo-, font-, and artwork-specific templates require exact rights and compatibility evidence.
+
+## Licence
+
+AIMORA-authored content is distributed under the PolyForm Noncommercial License 1.0.0 unless a path identifies different terms. Research, education, personal study, public-interest noncommercial use, and other purposes permitted by that licence are free. Commercial use requires a separate written agreement with Ahmed Elkholy <ahmed_elkholy@f-eng.tanta.edu.eg>. Third-party material retains its own terms.
