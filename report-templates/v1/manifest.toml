@@ -1,0 +1,66 @@
+schema = "aimora-report-template-manifest-v1"
+version = "1.0.0"
+
+[[template]]
+id = "engineering-standard"
+path = "engineering-standard.toml"
+family = "engineering"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
+
+[[template]]
+id = "research-reproducible"
+path = "research-reproducible.toml"
+family = "research"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
+
+[[template]]
+id = "qualification"
+path = "qualification.toml"
+family = "validation"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
+
+[[template]]
+id = "education-laboratory"
+path = "education-laboratory.toml"
+family = "education"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
+
+[[template]]
+id = "emt-study"
+path = "emt-study.toml"
+family = "emt"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
+
+[[template]]
+id = "line-cable-constants"
+path = "line-cable-constants.toml"
+family = "line-cable-constants"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
+
+[[template]]
+id = "transformer-parameters"
+path = "transformer-parameters.toml"
+family = "transformer-parameters"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
+
+[[template]]
+id = "combined-study"
+path = "combined-study.toml"
+family = "combined"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+trust = "builtin-reviewed"
