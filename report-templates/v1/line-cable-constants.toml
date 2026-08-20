@@ -1,0 +1,21 @@
+id = "line-cable-constants"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "line-cable-constants"
+trust = "builtin-reviewed"
+supported_studies = ["line_constants", "cable_constants"]
+required_roles = ["executive-summary", "geometry", "results", "quality", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "text", "json", "tex", "csv", "svg", "tikz"]
+
+[constants]
+require_geometry = true
+require_conductor_order = true
+require_materials_and_earth = true
+require_frequency_grid = true
+require_matrix_units = true
+require_transform_convention = true
+require_conditioning_and_passivity = true
+require_validity_band = true
+
+[sections]
+order = ["executive-summary", "geometry", "materials-and-earth", "method", "results", "quality", "findings", "limitations", "provenance", "appendices"]
