@@ -1,0 +1,40 @@
+name: One-time fix for restored documentation verification trigger
+
+on:
+  push:
+    branches:
+      - agent/restore-documentation-reporting
+    paths:
+      - .github/workflows/fix-restore-workflow-loop.yml
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/restore-documentation-reporting
+          fetch-depth: 0
+          token: ${{ github.token }}
+      - name: Exclude the generated verification marker and remove this fixer
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('.github/workflows/restore-documentation-verification.yml')
+          text = path.read_text()
+          needle = '      - docs/**\n      - report-templates/**\n'
+          replacement = '      - docs/**\n      - !docs/RESTORE_VERIFICATION.md\n      - report-templates/**\n'
+          if needle in text and '!docs/RESTORE_VERIFICATION.md' not in text:
+              text = text.replace(needle, replacement)
+              path.write_text(text)
+          PY
+          git config user.name "AIMORA restore verification"
+          git config user.email "actions@users.noreply.github.com"
+          git rm -- .github/workflows/fix-restore-workflow-loop.yml
+          git add -- .github/workflows/restore-documentation-verification.yml
+          git commit -m "Prevent documentation verification marker loop"
+          git push origin HEAD:agent/restore-documentation-reporting
