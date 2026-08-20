@@ -1,0 +1,100 @@
+name: Verify restored AIMORA documentation and templates
+
+on:
+  push:
+    branches:
+      - agent/restore-documentation-reporting
+    paths:
+      - docs/**
+      - report-templates/**
+      - examples/reporting/**
+      - README.md
+      - .github/workflows/restore-documentation-verification.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: restore-documentation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  documentation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/restore-documentation-reporting
+          fetch-depth: 0
+          token: ${{ github.token }}
+      - uses: julia-actions/setup-julia@v2
+        with:
+          version: '1.10'
+      - uses: julia-actions/cache@v2
+
+      - name: Apply deterministic checker correction
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('docs/check_content.jl')
+          text = path.read_text()
+          text = text.replace(
+              'startswith(target, ("http://", "https://", "mailto:", "#")) && continue',
+              'any(prefix -> startswith(target, prefix), ("http://", "https://", "mailto:", "#")) && continue',
+          )
+          path.write_text(text)
+          PY
+
+      - name: Documentation content coverage
+        run: julia --startup-file=no docs/check_content.jl
+
+      - name: Instantiate documentation environment
+        run: julia --startup-file=no --project=docs -e 'using Pkg; Pkg.instantiate()'
+
+      - name: Build Documenter site
+        run: julia --startup-file=no --project=docs docs/make.jl
+
+      - name: Validate report templates with AIMORAReporting contract
+        shell: bash
+        run: |
+          git clone --depth=1 --branch agent/restore-documentation-reporting https://github.com/ahmelkholy/AIMORAPlatform.git /tmp/AIMORAPlatform
+          julia --startup-file=no --project=/tmp/AIMORAPlatform/AIMORAReporting.jl -e '
+            using AIMORAReporting
+            using TOML
+            root = abspath("report-templates/v1")
+            manifest = TOML.parsefile(joinpath(root, "manifest.toml"))
+            for row in manifest["template"]
+                template = load_template(joinpath(root, row["path"]); trusted=true)
+                isempty(validate_template(template)) || error("invalid template $(template.id)")
+            end
+          '
+
+      - name: Repository diff check
+        run: git diff --check
+
+      - name: Record corrections and verification
+        if: success()
+        shell: bash
+        run: |
+          cat > docs/RESTORE_VERIFICATION.md <<EOF
+          # Restored documentation verification
+
+          - workflow: ${GITHUB_WORKFLOW}
+          - run: ${GITHUB_RUN_ID}
+          - tested_commit: ${GITHUB_SHA}
+          - julia: 1.10
+          - content_coverage: PASS
+          - documenter_build: PASS
+          - report_template_validation: PASS
+          - git_diff_check: PASS
+          EOF
+          git config user.name "AIMORA restore verification"
+          git config user.email "actions@users.noreply.github.com"
+          git add -- docs report-templates examples/reporting README.md .github/workflows/restore-documentation-verification.yml
+          if ! git diff --cached --quiet; then
+            git commit -m "Verify restored documentation and templates"
+            git push origin HEAD:agent/restore-documentation-reporting
+          fi
