@@ -1,0 +1,26 @@
+schema = "aimora-public-report-case-v1"
+id = "reporting_complete_semantic_report"
+name = "Complete semantic reporting example"
+study = "reporting"
+implementation_owner = "AIMORAPlatform/AIMORAReporting.jl"
+entrypoint = "AIMORAReporting.jl/examples/complete_report/run.jl"
+result_kind = "report_bundle"
+requires_solver = false
+public = true
+manufactured_fixture = true
+reference_compatible = false
+
+outputs = [
+  "report.md",
+  "report.html",
+  "report.txt",
+  "report.json",
+  "report.tex",
+  "data/key-results.csv",
+  "figures/capacitor-voltage-waveform.svg",
+  "tikz/capacitor-voltage-waveform.tex",
+  "manifest.toml",
+]
+
+claim_boundary = "Validates reporting semantics and deterministic rendering only; it is not a numerical-solver qualification claim."
+source_ids = ["aimora-requirement:REQ-REPORTING-001", "aimora-requirement:REQ-REPORT-PUBLICATION-001", "aimora-requirement:REQ-REPORT-TEMPLATES-001"]
