@@ -1,0 +1,46 @@
+schema = "aimora-public-science-provenance-v1"
+id = "emt-measurement-chains"
+owner = "AIMORAResources"
+rights = "AIMORA-authored equations, synthetic parameters, runners, records, summaries, and plots under the path-controlling AIMORAResources licence; cited publications and standards retain their own rights"
+redistribution = "Only bibliographic facts and independently restated equations are recorded; no protected standard prose/table/sample, publication figure/table, vendor data, field record, ATP/PSCAD source, or private evidence is redistributed"
+uncertainty = "Synthetic values are exact inputs; manufacturer, calibration, field, installation, environmental, timestamp, protected-class, and model-form uncertainty are explicitly unknown"
+public_cases = ["emt_measurement_linear_ct", "emt_measurement_saturating_ct", "emt_measurement_inductive_vt", "emt_measurement_cvt_transient", "emt_measurement_electronic_current", "emt_measurement_electronic_voltage", "emt_measurement_three_phase_chain"]
+catalog_entry = "generic_emt_measurement_chains"
+independent_owner = "AIMORAReferenceModels.jl/src/measurement_chains.jl plus the existing independent transformer Tellinen owner"
+
+[[authority]]
+id = "tellinen_scalar_hysteresis_1998"
+citation = "J. Tellinen, A Simple Scalar Model for Magnetic Hysteresis, IEEE Transactions on Magnetics 34(4), 1998"
+use = "scalar limiting-curve hysteresis equations and reversal-state boundary"
+copied_content = false
+
+[[authority]]
+id = "oppenheim_schafer_dsp_2010"
+citation = "A. V. Oppenheim and R. W. Schafer, Discrete-Time Signal Processing, third edition, 2010"
+use = "sampling, clipping/quantization, finite-window RMS/DFT, phase and frequency formulation"
+copied_content = false
+
+[[authority]]
+id = "shannon_sampling_1949"
+citation = "C. E. Shannon, Communication in the Presence of Noise, Proceedings of the IRE 37(1), 1949"
+use = "sampling/bandwidth authority and explicit anti-aliasing limits"
+copied_content = false
+
+[[authority]]
+id = "harris_dft_windows_1978"
+citation = "F. J. Harris, On the Use of Windows for Harmonic Analysis with the Discrete Fourier Transform, Proceedings of the IEEE 66(1), 1978"
+use = "window coherent-gain and spectral-leakage authority"
+copied_content = false
+
+[[authority]]
+id = "instrument_transformer_publications"
+citation = "Lawfully cited CT/CVT transient-model publications listed in the private qualification source dossier"
+use = "independently restated winding, magnetic, divider, compensation, burden, and transient equations"
+copied_content = false
+
+[[authority]]
+id = "ieee_c37_111_metadata"
+citation = "IEEE C37.111 COMTRADE revision metadata for interoperability identification"
+use = "bounded independently implemented CFG/DAT field and encoding interoperability; no standard conformance claim"
+copied_content = false
+protected_content_redistributed = false

@@ -1,5 +1,7 @@
 # Cases and Catalogs
 
+The EMT measurement public set includes seven generic products covering linear and saturating/remanent CTs, inductive VT, explicit CVT, electronic current and voltage sensors, and a complete three-phase sampled chain. Each writes physical/sample and estimator/diagnostic CSV/SVG pairs, a synthetic COMTRADE CFG/DAT record, and exact restart evidence; the generic catalogue owner is `generic_emt_measurement_chains`. See [EMT Instruments and Measurement Chains](emt-measurement-chains.md) for equations, clocks, signs, state, validity, and explicit exclusions.
+
 The modern EMT machine public set includes seven generic products covering wound-field synchronous, standard cage, four-branch deep-bar, permanent-magnet, doubly fed induction, synchronous-condenser, and eight-mass controlled-machine execution. Each writes deterministic CSV data, a typed report and summary, and electrical plus mechanical SVG plots; the generic catalogue owner is `generic_modern_machine_families`. See [Modern EMT Machine Families](modern-emt-machine-families.md) for equations, state, signs, validity, evidence, and explicit exclusions.
 
 The extended switching-detailed VSC public set includes `emt_extended_vsc_pll_dq`, `emt_extended_vsc_pr`, `emt_extended_vsc_droop`, and `emt_extended_vsc_virtual_synchronous`. Each case produces deterministic CSV data, a scalar summary, and current plus DC/sequence SVG plots; the generic catalogue owner is `extended_vsc_control_filter_platform`.

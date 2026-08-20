@@ -1,7 +1,7 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-13"
-source_count = 505
+snapshot_date = "2026-08-20"
+source_count = 506
 
 [counts_by_kind]
 "atpdraw_case" = 93
@@ -15,10 +15,10 @@ source_count = 505
 "translation_capability_packet" = 11
 "validation_fixture" = 76
 "validation_suite" = 87
-"aimora_reference" = 8
+"aimora_reference" = 9
 
 [counts_by_disposition]
-"example" = 89
+"example" = 90
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -44,6 +44,15 @@ path = "src/transformer_apparatus.jl"
 disposition = "example"
 example_ids = ["emt_transformer_low_frequency", "emt_transformer_bctran", "emt_transformer_hybrid", "emt_transformer_magnetic_equivalent", "emt_transformer_wideband_black_box", "emt_transformer_grey_box", "emt_transformer_white_box"]
 reason = "Independent public connection, magnetic, passive-terminal, ladder, winding-section, energy, event, and restart formulations support the seven transformer apparatus products without exposing private qualification traceability."
+
+[[source]]
+id = "aimora-reference:emt-measurement-chains"
+owner = "AIMORAResources/AIMORAReferenceModels.jl"
+kind = "aimora_reference"
+path = "src/measurement_chains.jl"
+disposition = "example"
+example_ids = ["emt_measurement_linear_ct", "emt_measurement_saturating_ct", "emt_measurement_inductive_vt", "emt_measurement_cvt_transient", "emt_measurement_electronic_current", "emt_measurement_electronic_voltage", "emt_measurement_three_phase_chain"]
+reason = "Independent public instrument recurrence, CVT charge/RLC/KCL, analog filter, exact acquisition/delay, quantizer, RMS/DFT/sequence/frequency, and COMTRADE byte formulations plus the established independent Tellinen owner support all seven measurement products without importing production runtime or private qualification traceability."
 
 [[source]]
 id = "aimora-reference:wideband-line-parameters"

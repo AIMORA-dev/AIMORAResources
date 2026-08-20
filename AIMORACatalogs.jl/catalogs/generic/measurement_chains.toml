@@ -1,0 +1,40 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_emt_measurement_chains"
+equipment_class = "emt_instrument_and_measurement_chain_family"
+manufacturer = ""
+model = "Generic CT, VT, CVT, electronic-sensor, and sampled measurement products"
+provenance = "AIMORA-authored synthetic A200 public products with explicit SI apparatus, burden, filter, clock, quantizer, estimator, file, uncertainty, and limit declarations; no vendor, field, protected-standard, ATP, or PSCAD data"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+public_cases = ["emt_measurement_linear_ct", "emt_measurement_saturating_ct", "emt_measurement_inductive_vt", "emt_measurement_cvt_transient", "emt_measurement_electronic_current", "emt_measurement_electronic_voltage", "emt_measurement_three_phase_chain"]
+families = ["linear_current_transformer", "magnetic_current_transformer", "inductive_voltage_transformer", "coupling_capacitor_voltage_transformer", "electronic_current_sensor", "electronic_voltage_sensor", "three_phase_sampled_chain"]
+timestep_s = 1.0e-5
+clock_tick_s = 1.0e-5
+sample_period_ticks = 5
+sample_rate_hz = 2.0e4
+delay_ticks = 10
+delay_s = 1.0e-4
+window_sample_count = 80
+nominal_frequency_hz = 50.0
+event_time_s = 5.0e-3
+current_orientation = "positive_into_dotted_primary_and_burden"
+voltage_orientation = "dotted_terminal_minus_undotted_or_declared_reference"
+phase_order = ["a", "b", "c"]
+parameter_natures = ["PhysicalModelParameter", "ScalingBasisParameter", "NumericalPolicyParameter"]
+rights = "public AIMORA-authored synthetic values and derived artifacts"
+uncertainty = "exact synthetic values; manufacturer, calibration, field, installation, environmental, timestamp, instrument-class, and model-form uncertainty are unknown"
+validity = "Only the exact generic apparatus, burden, transducer, filter, clock, quantizer, estimator, COMTRADE subset, timestep, event, and output selections in the seven public products"
+
+[study.emt]
+representation = "coupled_physical_instrument_or_electronic_loading_then_accepted_step_analog_and_exact_clocked_digital_chain"
+fidelity = "explicit_instrument_loading_and_causal_sampled_measurement"
+physical_families = ["linear_ct", "tellinen_saturating_and_remanent_ct", "inductive_vt", "explicit_cvt", "series_loading_electronic_current_sensor", "shunt_loading_electronic_voltage_sensor"]
+digital_outputs = ["instantaneous", "sliding_rms", "fundamental_rms_phasor", "zero_positive_negative_sequence", "frequency", "integer_code", "quality"]
+file_output = "deterministic_registered_synthetic_COMTRADE_2013_CFG_and_BINARY32_DAT_subset"
+initialization = "explicit_transformer_or_transducer_state_and_exact_clock_origin"
+event = "source_magnitude_change_at_0.005_s"
+restart = "exact_physical_filter_clock_queue_quantizer_window_phasor_frequency_file_cursor_and_output_checkpoint_replay"
+outputs = ["primary_secondary_burden_divider_transducer_and_filter_state", "held_clipped_engineering_and_integer_code", "RMS_phasor_sequence_frequency_quality", "KCL_flux_charge_power_energy_and_latency", "COMTRADE_CFG_DAT", "CSV_SVG_summary_and_signatures"]
+unsupported_phenomena = ["manufacturer_or_vendor_prediction", "protected_accuracy_or_merging_unit_class", "calibration", "field_recording_equivalence", "protection_behavior", "ferroresonance_outside_declared_CVT_domain", "arbitrary_COMTRADE_revision_or_encoding", "atp_or_pscad_equivalence", "HIL_qualification", "certification"]

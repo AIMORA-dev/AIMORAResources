@@ -155,6 +155,83 @@ result_kind = "waveform"
 source_ids = ["aimora-reference:modern-transformer-reactor-hierarchy"]
 
 [[case]]
+id = "emt_measurement_linear_ct"
+study = "emt"
+path = "examples/emt/emt_measurement_linear_ct/run.jl"
+entrypoint = "examples/emt/emt_measurement_linear_ct/run.jl"
+description = "Linear current transformer with explicit burden/cable branches, coupled fixed-step execution, analog filter, exact sampling and delay, RMS/phasor output, COMTRADE, SVGs, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "measurement_waveform"
+source_ids = ["aimora-reference:emt-measurement-chains"]
+
+[[case]]
+id = "emt_measurement_saturating_ct"
+study = "emt"
+path = "examples/emt/emt_measurement_saturating_ct/run.jl"
+entrypoint = "examples/emt/emt_measurement_saturating_ct/run.jl"
+description = "Magnetic-equivalent-circuit current transformer with Tellinen saturation/remanence, explicit burden, coupled fixed-step execution, causal digital chain, COMTRADE, SVGs, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "measurement_waveform"
+source_ids = ["aimora-reference:emt-measurement-chains"]
+
+[[case]]
+id = "emt_measurement_inductive_vt"
+study = "emt"
+path = "examples/emt/emt_measurement_inductive_vt/run.jl"
+entrypoint = "examples/emt/emt_measurement_inductive_vt/run.jl"
+description = "Inductive voltage transformer with explicit winding/burden dynamics, event-sensitive coupled execution, causal filter/sample/delay/estimator path, COMTRADE, SVGs, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "measurement_waveform"
+source_ids = ["aimora-reference:emt-measurement-chains"]
+
+[[case]]
+id = "emt_measurement_cvt_transient"
+study = "emt"
+path = "examples/emt/emt_measurement_cvt_transient/run.jl"
+entrypoint = "examples/emt/emt_measurement_cvt_transient/run.jl"
+description = "Coupling-capacitor VT with divider, compensation reactor, suppression branch, electromagnetic unit, burden, causal digital chain, COMTRADE, SVGs, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "measurement_waveform"
+source_ids = ["aimora-reference:emt-measurement-chains"]
+
+[[case]]
+id = "emt_measurement_electronic_current"
+study = "emt"
+path = "examples/emt/emt_measurement_electronic_current/run.jl"
+entrypoint = "examples/emt/emt_measurement_electronic_current/run.jl"
+description = "Series-loading electronic current sensor with passive transducer/filter state, exact sampling/delay/estimators, COMTRADE, SVGs, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "measurement_waveform"
+source_ids = ["aimora-reference:emt-measurement-chains"]
+
+[[case]]
+id = "emt_measurement_electronic_voltage"
+study = "emt"
+path = "examples/emt/emt_measurement_electronic_voltage/run.jl"
+entrypoint = "examples/emt/emt_measurement_electronic_voltage/run.jl"
+description = "Shunt-loading electronic voltage sensor with passive transducer/filter state, exact sampling/delay/estimators, COMTRADE, SVGs, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "measurement_waveform"
+source_ids = ["aimora-reference:emt-measurement-chains"]
+
+[[case]]
+id = "emt_measurement_three_phase_chain"
+study = "emt"
+path = "examples/emt/emt_measurement_three_phase_chain/run.jl"
+entrypoint = "examples/emt/emt_measurement_three_phase_chain/run.jl"
+description = "Three-phase sampled chain with passive filters, rational clock, deterministic delay, ties-to-even quantization, RMS/DFT/sequence/frequency outputs, COMTRADE, SVGs, and exact restart."
+requires_solver = true
+reference_compatible = false
+result_kind = "measurement_waveform"
+source_ids = ["aimora-reference:emt-measurement-chains"]
+
+[[case]]
 id = "emt_general_multirate_task_platform"
 study = "emt"
 path = "examples/emt/general_multirate_task_platform/run.jl"

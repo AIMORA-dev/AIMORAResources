@@ -24,6 +24,7 @@ const REQUIRED_FILES = (
     "src/studies.md",
     "src/wideband-line-parameters.md",
     "src/transformer-reactor-hierarchy.md",
+    "src/emt-measurement-chains.md",
     "src/cases-and-catalogs.md",
     "src/validation.md",
     "src/development.md",

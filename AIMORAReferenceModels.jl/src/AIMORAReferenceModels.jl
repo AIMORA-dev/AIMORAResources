@@ -676,5 +676,6 @@ end
 
 include("consistent_emt_initialization.jl")
 include("general_multirate_task_reference.jl")
+include("measurement_chains.jl")
 
 end

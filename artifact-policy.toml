@@ -545,6 +545,174 @@ state = "retained"
 reason = "Curated public shaft-speed and torque rendering for the eight-mass controlled-machine product."
 
 [[classification]]
+id = "measurement-linear-ct-waveform-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_waveforms.csv"
+state = "retained"
+reason = "Small deterministic physical and delayed-sample waveform data for the linear-CT public product."
+
+[[classification]]
+id = "measurement-linear-ct-diagnostic-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_diagnostics.csv"
+state = "retained"
+reason = "Small deterministic RMS, phasor, stored-energy, KCL, and quality data for the linear-CT public product."
+
+[[classification]]
+id = "measurement-linear-ct-waveform-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_waveforms.svg"
+state = "retained"
+reason = "Curated physical and sampled-response rendering for the linear-CT public product."
+
+[[classification]]
+id = "measurement-linear-ct-diagnostic-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_diagnostics.svg"
+state = "retained"
+reason = "Curated causal estimator and physical-diagnostic rendering for the linear-CT public product."
+
+[[classification]]
+id = "measurement-saturating-ct-waveform-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_waveforms.csv"
+state = "retained"
+reason = "Small deterministic magnetic CT physical and delayed-sample waveform data with remanence and saturation."
+
+[[classification]]
+id = "measurement-saturating-ct-diagnostic-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_diagnostics.csv"
+state = "retained"
+reason = "Small deterministic estimator, stored-energy, KCL, and quality data for the magnetic CT product."
+
+[[classification]]
+id = "measurement-saturating-ct-waveform-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_waveforms.svg"
+state = "retained"
+reason = "Curated saturated/remanent CT physical and sampled-response rendering."
+
+[[classification]]
+id = "measurement-saturating-ct-diagnostic-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_diagnostics.svg"
+state = "retained"
+reason = "Curated estimator and physical-diagnostic rendering for the saturated/remanent CT product."
+
+[[classification]]
+id = "measurement-inductive-vt-waveform-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_waveforms.csv"
+state = "retained"
+reason = "Small deterministic physical and delayed-sample waveform data for the inductive-VT product."
+
+[[classification]]
+id = "measurement-inductive-vt-diagnostic-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_diagnostics.csv"
+state = "retained"
+reason = "Small deterministic estimator, stored-energy, KCL, and quality data for the inductive-VT product."
+
+[[classification]]
+id = "measurement-inductive-vt-waveform-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_waveforms.svg"
+state = "retained"
+reason = "Curated physical and sampled-response rendering for the inductive-VT product."
+
+[[classification]]
+id = "measurement-inductive-vt-diagnostic-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_diagnostics.svg"
+state = "retained"
+reason = "Curated estimator and physical-diagnostic rendering for the inductive-VT product."
+
+[[classification]]
+id = "measurement-cvt-waveform-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_waveforms.csv"
+state = "retained"
+reason = "Small deterministic divider, compensation, electromagnetic-unit, and delayed-sample waveform data for the CVT product."
+
+[[classification]]
+id = "measurement-cvt-diagnostic-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_diagnostics.csv"
+state = "retained"
+reason = "Small deterministic estimator, stored-energy, KCL, and quality data for the explicit CVT product."
+
+[[classification]]
+id = "measurement-cvt-waveform-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_waveforms.svg"
+state = "retained"
+reason = "Curated CVT transient and delayed-sample response rendering."
+
+[[classification]]
+id = "measurement-cvt-diagnostic-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_diagnostics.svg"
+state = "retained"
+reason = "Curated estimator and physical-diagnostic rendering for the explicit CVT product."
+
+[[classification]]
+id = "measurement-electronic-current-waveform-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_waveforms.csv"
+state = "retained"
+reason = "Small deterministic source, loaded observation, transducer, and delayed-sample data for the electronic current sensor."
+
+[[classification]]
+id = "measurement-electronic-current-diagnostic-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_diagnostics.csv"
+state = "retained"
+reason = "Small deterministic estimator and quality data for the electronic current-sensor product."
+
+[[classification]]
+id = "measurement-electronic-current-waveform-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_waveforms.svg"
+state = "retained"
+reason = "Curated loaded electronic current-sensor and delayed-sample response rendering."
+
+[[classification]]
+id = "measurement-electronic-current-diagnostic-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_diagnostics.svg"
+state = "retained"
+reason = "Curated causal estimator and quality rendering for the electronic current sensor."
+
+[[classification]]
+id = "measurement-electronic-voltage-waveform-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_waveforms.csv"
+state = "retained"
+reason = "Small deterministic source, loaded observation, transducer, and delayed-sample data for the electronic voltage sensor."
+
+[[classification]]
+id = "measurement-electronic-voltage-diagnostic-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_diagnostics.csv"
+state = "retained"
+reason = "Small deterministic estimator and quality data for the electronic voltage-sensor product."
+
+[[classification]]
+id = "measurement-electronic-voltage-waveform-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_waveforms.svg"
+state = "retained"
+reason = "Curated loaded electronic voltage-sensor and delayed-sample response rendering."
+
+[[classification]]
+id = "measurement-electronic-voltage-diagnostic-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_diagnostics.svg"
+state = "retained"
+reason = "Curated causal estimator and quality rendering for the electronic voltage sensor."
+
+[[classification]]
+id = "measurement-three-phase-waveform-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_waveforms.csv"
+state = "retained"
+reason = "Small deterministic three-phase source, filter, and held-sample waveform data."
+
+[[classification]]
+id = "measurement-three-phase-diagnostic-data"
+path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_diagnostics.csv"
+state = "retained"
+reason = "Small deterministic sequence, frequency, and quality data for the complete sampled chain."
+
+[[classification]]
+id = "measurement-three-phase-waveform-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_waveforms.svg"
+state = "retained"
+reason = "Curated three-phase physical and held-sample waveform rendering."
+
+[[classification]]
+id = "measurement-three-phase-diagnostic-figure"
+path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_diagnostics.svg"
+state = "retained"
+reason = "Curated sequence, frequency, and validity rendering for the complete sampled chain."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"

@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 17
+    @test length(entries) == 18
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -153,4 +153,18 @@ using AIMORACatalogs
         AIMORACatalogs.asset(:generic_transformer_white_box_winding),
         :emt,
     ).parameters[:section_count_per_winding] == 8
+
+    measurements = AIMORACatalogs.asset(:generic_emt_measurement_chains)
+    @test measurements.manufacturer === nothing
+    @test AIMORACatalogs.study_tabs(measurements) == [:emt]
+    @test length(measurements.common[:families]) == 7
+    @test length(measurements.common[:public_cases]) == 7
+    @test measurements.common[:sample_rate_hz] == 2.0e4
+    @test measurements.common[:delay_s] == 1.0e-4
+    measurement_emt = AIMORACatalogs.study_facet(measurements, :emt).parameters
+    @test measurement_emt[:fidelity] ==
+        "explicit_instrument_loading_and_causal_sampled_measurement"
+    @test "fundamental_rms_phasor" in measurement_emt[:digital_outputs]
+    @test "atp_or_pscad_equivalence" in measurement_emt[:unsupported_phenomena]
+    @test "certification" in measurement_emt[:unsupported_phenomena]
 end
