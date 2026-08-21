@@ -1,0 +1,19 @@
+id = "combined-study"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "combined"
+trust = "builtin-reviewed"
+supported_studies = ["combined"]
+required_roles = ["executive-summary", "dependency-graph", "study-comparison", "consolidated-findings", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "text", "json", "tex", "csv", "svg", "tikz"]
+
+[combined]
+require_dependency_dag = true
+require_upstream_hashes = true
+require_state_mappings = true
+require_representation_comparison = true
+require_invalidated_and_skipped_results = true
+require_consolidated_findings = true
+
+[sections]
+order = ["executive-summary", "dependency-graph", "study-comparison", "state-and-unit-mappings", "consolidated-findings", "invalidated-results", "limitations", "provenance", "appendices"]

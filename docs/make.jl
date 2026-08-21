@@ -19,24 +19,26 @@ end
 pushfirst!(LOAD_PATH, AIMORA_PATH)
 using AIMORA
 
-makedocs(
-    sitename = "AIMORA",
-    modules = [AIMORA],
-    repo = Documenter.Remotes.GitHub("AIMORA-dev", "AIMORADocs"),
-    remotes = Dict(
-        AIMORA_PATH => Documenter.Remotes.GitHub("AIMORA-dev", "AIMORA.jl"),
-    ),
-    format = Documenter.HTML(
-        canonical = "https://aimora-dev.github.io/AIMORADocs/",
-        edit_link = "main",
-        inventory_version = "0.1.0",
-        prettyurls = get(ENV, "CI", "false") == "true",
-    ),
-    pages = [
-        "Home" => "index.md",
+const PAGES = [
+    "Home" => "index.md",
+    "Professional Manual" => [
+        "Manual Overview" => "professional-manual.md",
         "Getting Started" => "getting-started.md",
-        "Architecture" => "architecture.md",
-        "Studies and Models" => "studies.md",
+        "Architecture" => "architecture-reference.md",
+        "Study Reference" => "study-reference.md",
+        "Model Reference" => "model-reference.md",
+        "Deck-Card Reference" => "deck-card-reference.md",
+        "Example Catalogue" => "example-catalog.md",
+        "Solver Reference" => "solver-reference.md",
+        "Results and Reporting" => "results-and-reporting.md",
+        "Troubleshooting" => "troubleshooting.md",
+        "Source Coverage" => "source-coverage.md",
+        "Glossary" => "glossary.md",
+    ],
+    "Engineering Topics" => [
+        "Architecture Notes" => "architecture.md",
+        "Studies" => "studies.md",
+        "Cases and Catalogues" => "cases-and-catalogs.md",
         "Consistent EMT Initialization" => "consistent-emt-initialization.md",
         "Nonlinear EMT" => "nonlinear-emt.md",
         "Extended Semiconductor Fidelity" => "extended-semiconductor-fidelity.md",
@@ -50,11 +52,28 @@ makedocs(
         "Modern EMT Machine Families" => "modern-emt-machine-families.md",
         "EMT Instruments and Measurement Chains" => "emt-measurement-chains.md",
         "Native Extensions" => "native-extensions.md",
-        "Cases and Catalogs" => "cases-and-catalogs.md",
         "Validation" => "validation.md",
-        "Contributing" => "development.md",
-        "Public API" => "api.md",
     ],
+    "Developer Reference" => [
+        "Public API" => "api.md",
+        "Development" => "development.md",
+    ],
+]
+
+makedocs(
+    sitename = "AIMORA",
+    modules = [AIMORA],
+    repo = Documenter.Remotes.GitHub("AIMORA-dev", "AIMORAResources"),
+    remotes = Dict(
+        AIMORA_PATH => Documenter.Remotes.GitHub("AIMORA-dev", "AIMORA.jl"),
+    ),
+    format = Documenter.HTML(
+        canonical = "https://aimora-dev.github.io/AIMORAResources/",
+        edit_link = "main",
+        inventory_version = "0.1.0",
+        prettyurls = get(ENV, "CI", "false") == "true",
+    ),
+    pages = PAGES,
     checkdocs = :none,
     warnonly = [:cross_references, :missing_docs],
 )

@@ -1,0 +1,22 @@
+id = "emt-study"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "emt"
+trust = "builtin-reviewed"
+supported_studies = ["emt"]
+required_roles = ["executive-summary", "study-definition", "method", "results", "quality", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "text", "json", "tex", "csv", "svg", "tikz"]
+
+[emt]
+require_timestep = true
+require_duration = true
+require_initialization = true
+require_events = true
+require_requested_channels = true
+require_kcl_or_balance = true
+require_energy_or_passivity_when_applicable = true
+require_restart_statement = true
+require_event_preserving_figures = true
+
+[sections]
+order = ["executive-summary", "study-definition", "model", "initialization", "events-and-controls", "method", "results", "quality", "findings", "limitations", "provenance", "appendices"]

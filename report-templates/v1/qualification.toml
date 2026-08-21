@@ -1,0 +1,19 @@
+id = "qualification"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "validation"
+trust = "builtin-reviewed"
+supported_studies = ["validation", "combined"]
+required_roles = ["executive-summary", "scope", "evidence", "results", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "text", "json", "tex", "csv", "svg"]
+
+[evidence]
+require_claim_boundary = true
+require_test_manifest = true
+require_exact_revisions = true
+require_acceptance_criteria = true
+require_failures_and_exclusions = true
+require_artifact_checksums = true
+
+[sections]
+order = ["executive-summary", "scope", "requirements", "method", "evidence", "results", "deviations", "limitations", "conclusion", "provenance", "appendices"]

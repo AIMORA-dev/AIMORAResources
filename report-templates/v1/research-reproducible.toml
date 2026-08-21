@@ -1,0 +1,19 @@
+id = "research-reproducible"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "research"
+trust = "builtin-reviewed"
+supported_studies = ["emt", "line_constants", "cable_constants", "transformer_parameters", "validation", "combined"]
+required_roles = ["executive-summary", "study-definition", "method", "results", "quality", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "json", "tex", "csv", "svg", "tikz"]
+
+[reproducibility]
+require_result_hashes = true
+require_upstream_hashes = true
+require_environment = true
+require_source_date = true
+require_data_companions = true
+require_limitations = true
+
+[sections]
+order = ["abstract", "executive-summary", "study-definition", "method", "results", "quality", "discussion", "limitations", "data-and-code-availability", "provenance", "references", "supplement"]
