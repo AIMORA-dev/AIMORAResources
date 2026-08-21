@@ -24,6 +24,7 @@ const PAGES = [
     "Professional Manual" => [
         "Manual Overview" => "professional-manual.md",
         "Getting Started" => "getting-started.md",
+        "Professional Workflow" => "professional-workflow.md",
         "Architecture" => "architecture-reference.md",
         "Study Reference" => "study-reference.md",
         "Model Reference" => "model-reference.md",
@@ -31,6 +32,7 @@ const PAGES = [
         "Example Catalogue" => "example-catalog.md",
         "Solver Reference" => "solver-reference.md",
         "Results and Reporting" => "results-and-reporting.md",
+        "Results and Validation" => "results-and-validation.md",
         "Troubleshooting" => "troubleshooting.md",
         "Source Coverage" => "source-coverage.md",
         "Glossary" => "glossary.md",
@@ -58,6 +60,12 @@ const PAGES = [
         "Public API" => "api.md",
         "Development" => "development.md",
     ],
+    "Generated Public Inventories" => [
+        "Study Catalogue" => "generated/study-catalog.md",
+        "Model Declaration Index" => "generated/model-index.md",
+        "Deck and Card Declaration Index" => "generated/deck-card-index.md",
+        "Case Catalogue" => "generated/case-catalog.md",
+    ],
 ]
 
 makedocs(
@@ -72,6 +80,7 @@ makedocs(
         edit_link = "main",
         inventory_version = "0.1.0",
         prettyurls = get(ENV, "CI", "false") == "true",
+        size_threshold = 1_000_000,
     ),
     pages = PAGES,
     checkdocs = :none,

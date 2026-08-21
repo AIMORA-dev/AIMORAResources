@@ -1,176 +1,300 @@
-# Study Reference
+# Study Reference and Capability Maturity
 
-The study catalogue is an availability contract. `implemented` means an executable public study workflow exists at the referenced revision. `planned` means AIMORA exposes a design or future API boundary but must refuse production execution. This reference mirrors the public `StudyCatalog` without turning roadmap entries into product claims.
+AIMORA uses typed study descriptors so roadmap breadth is visible without confusing a declared interface with an implemented calculation. The generated [Complete Study Catalog](generated/study-catalog.md) lists every descriptor directly from the engine and is the authoritative inventory for identifiers, domains, and maturity.
 
-## Implemented studies
+## Maturity is part of the numerical contract
 
-| Study ID | Engineering purpose | Typical products |
-| --- | --- | --- |
-| `emt` | Instantaneous electromagnetic-transient simulation with topology events, nonlinear devices, controls, machines, lines, restart, and reporting | time series, event traces, energy/KCL diagnostics, checkpoint, CSV, SVG, semantic report |
-| `line_constants` | Overhead-line impedance, admittance, sequence/modal quantities, and frequency response from geometry and material data | Z/Y matrices, sequence constants, modal data, frequency curves, engineering report |
-| `cable_constants` | Cable/sheath/screen impedance, admittance, modal quantities, and frequency scans | conductor/sheath matrices, modal results, frequency curves, construction report |
-| `transformer_parameters` | Conversion of nameplate/test/design data into transformer branch and coupling parameters | parameter tables, generated branch data, test reconciliation, uncertainty/limitations report |
+| Status | User meaning | Required behavior |
+|---|---|---|
+| `implemented` | A supported execution path exists for a declared validity domain | Validate input, execute, return a typed result and diagnostics |
+| `prototype` | Experimental numerical path or interface | Mark experimental behavior and qualification gaps explicitly |
+| `planned` | Roadmap/API descriptor only | Return a typed `not_implemented` result; never fabricate values |
+| `legacy_reference` | Historical/reference capability | Use only for declared comparison or qualification, not production execution |
 
-## Planned static, network, and planning studies
+A filename, function stub, menu entry, or catalog row does not prove implementation. The descriptor status and returned result status control the claim.
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `power_flow` | AC balanced power flow | planned |
-| `unbalanced_power_flow` | AC unbalanced multiphase power flow | planned |
-| `dc_power_flow` | DC power flow | planned |
-| `voltage_drop` | Voltage-drop calculation | planned |
-| `load_allocation` | Load allocation | planned |
-| `load_growth` | Load growth and planning | planned |
-| `contingency` | Contingency and N-1 screening | planned |
-| `voltage_stability` | Voltage-stability margin | planned |
-| `hosting_capacity` | DER hosting capacity | planned |
-| `optimal_power_flow` | Optimal power flow | planned |
+# Implemented studies
 
-## Planned fault and protection studies
+At the current public-engine revision, the typed catalog marks four study families as implemented.
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `short_circuit` | General short-circuit study | planned |
-| `iec_short_circuit` | IEC-style short circuit | planned |
-| `ansi_short_circuit` | ANSI-style short circuit | planned |
-| `unbalanced_fault` | Unbalanced fault analysis | planned |
-| `dc_short_circuit` | DC short circuit | planned |
-| `protection` | Protection coordination | planned |
-| `relay_settings` | Relay-setting calculation | planned |
-| `time_current_coordination` | Time-current coordination | planned |
-| `fuse_recloser_coordination` | Fuse/recloser coordination | planned |
-| `distance_protection` | Distance protection | planned |
-| `differential_protection` | Differential protection | planned |
-| `protection_optimization` | Protection-setting optimization | planned |
+## Electromagnetic transient (`emt`)
 
-## Planned safety, grounding, and insulation studies
+### Purpose
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `arc_flash` | Arc-flash calculation | planned |
-| `arc_flash_labels` | Arc-flash label generation | planned |
-| `grounding_grid` | Grounding-grid design | planned |
-| `step_touch_voltage` | Step and touch voltage | planned |
-| `grounding_conductor_sizing` | Grounding-conductor sizing | planned |
-| `lightning_surge_risk` | Lightning and surge-risk screening | planned |
-| `insulation_coordination` | Insulation coordination | planned |
+Time-domain simulation of fast electrical and electromechanical phenomena with explicit events, dynamic state, delayed histories, nonlinear devices, sampled controls, and checkpoint/restart behavior.
 
-## Planned dynamic and transient studies
+### Typical applications
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `rms_transient_stability` | RMS transient stability | planned |
-| `switching_transients` | Switching-transient workflow | planned; detailed phenomena may currently be studied only through explicit EMT cases |
-| `lightning_transients` | Lightning and surge-transient workflow | planned; explicit EMT cases remain case-specific |
-| `transformer_inrush` | Transformer energization and inrush workflow | planned; explicit EMT apparatus cases remain model-specific |
-| `motor_starting_dynamic` | Dynamic motor starting | planned |
-| `ferroresonance` | Ferroresonance workflow | planned; public EMT examples do not constitute a general study API |
+- RLC energization and discharge;
+- capacitor-bank switching, interruption, restrike, and recovery voltage;
+- travelling-wave line and cable transients;
+- lightning and surge cases;
+- transformer energization and nonlinear magnetic behavior;
+- machine events, unbalance, torque changes, and control response;
+- switching-detailed converters, bridge topologies, faults, block, clearance, and restart;
+- nonlinear-network discontinuities;
+- multirate control/protection tasks;
+- deterministic restart and qualification cases.
 
-## Planned power-quality studies
+### Required input classes
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `harmonic_load_flow` | Harmonic load flow | planned |
-| `harmonic_resonance` | Harmonic resonance | planned |
-| `filter_sizing` | Harmonic-filter sizing | planned |
-| `flicker` | Flicker | planned |
-| `voltage_sag_swell` | Voltage sag and swell | planned |
-| `voltage_unbalance` | Voltage unbalance | planned |
+- topology and terminal identities;
+- model parameters with units, bases, signs, and provenance;
+- initial-state policy;
+- timestep and horizon;
+- event calendar and collision priority;
+- control sample/delay/hold calendars where present;
+- requested outputs and analysis windows;
+- solver and convergence policy.
 
-## Planned machine studies
+### Numerical state
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `induction_machine` | Induction-machine study | planned; machine models may be executable inside admitted EMT cases |
-| `synchronous_machine` | Synchronous-machine study | planned; machine models may be executable inside admitted EMT cases |
-| `generator_capability` | Generator capability/loading | planned |
-| `motor_torque_speed` | Motor torque-speed checks | planned |
-| `machine_thermal` | Machine thermal loading | planned |
-| `excitation_governor` | Excitation and governor workflow | planned; sampled controls may be executable inside admitted EMT cases |
+An EMT case may contain differential, algebraic, discrete, delayed-history, scheduler, and random state. A checkpoint must preserve every state family necessary to reproduce uninterrupted execution.
 
-## Planned renewable, converter, and storage studies
+### Result contract
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `pv_string_sizing` | PV string sizing | planned |
-| `pv_inverter_sizing` | PV inverter sizing | planned |
-| `pv_cable_sizing` | PV DC/AC cable sizing | planned |
-| `pv_yield` | PV yield and clipping | planned |
-| `grid_following_inverter` | Grid-following inverter workflow | planned; open component prototypes do not prove a network study |
-| `grid_forming_inverter` | Grid-forming inverter workflow | planned |
-| `bess_sizing` | Battery-energy-storage sizing | planned |
-| `storage_dispatch` | Storage dispatch | planned |
-| `wind_turbine` | Wind-turbine study | planned |
-| `ride_through` | Ride-through compliance | planned |
+Depending on the model and case, results can include:
 
-## Planned cable, conductor, and equipment sizing studies
+- instantaneous terminal voltages and currents;
+- powers and integrated energies;
+- switching/gate/conduction states;
+- line/cable histories and travelling-wave quantities;
+- transformer flux and internal-node quantities;
+- machine electrical, mechanical, and control state;
+- converter DC/AC quantities and harmonic metadata;
+- event occurrence and ordering;
+- nonlinear iteration/convergence diagnostics;
+- KCL, energy, passivity, and restart residuals;
+- warnings, assumptions, and metadata.
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `cable_ampacity` | Cable ampacity | planned |
-| `dynamic_cable_rating` | Dynamic cable thermal rating | planned |
-| `cable_thermal_capacity` | Cable thermal overload capacity | planned |
-| `cable_short_circuit_withstand` | Cable short-circuit withstand | planned |
-| `cable_pulling` | Cable pulling and tension | planned |
-| `duct_bank_derating` | Duct-bank/tray derating | planned |
-| `sheath_bonding` | Cable sheath bonding/circulating current | planned |
-| `conductor_sizing` | Conductor sizing | planned |
-| `transformer_sizing` | Transformer sizing | planned |
-| `generator_sizing` | Generator sizing | planned |
-| `motor_sizing` | Motor sizing | planned |
-| `switchgear_rating` | Switchgear rating | planned |
-| `ct_vt_sizing` | CT/VT sizing | planned |
-| `ups_battery_sizing` | UPS and battery sizing | planned |
+### Acceptance
 
-## Planned optimization, reliability, and asset studies
+A successful process exit is not sufficient. Review model validity, event occurrence, convergence, conservation/passivity diagnostics, expected outputs, and comparison evidence. Where exact replay is claimed, the restarted trajectory must match the uninterrupted trajectory according to the case contract.
 
-| Study ID | Name | Status |
-| --- | --- | --- |
-| `feeder_reconfiguration` | Feeder reconfiguration | planned |
-| `capacitor_placement` | Capacitor-placement optimization | planned |
-| `der_placement_sizing` | DER placement and sizing | planned |
-| `cable_sizing_optimization` | Cable-sizing optimization | planned |
-| `reliability_indices` | Reliability indices | planned |
-| `outage_impact` | Outage impact | planned |
-| `asset_aging` | Asset loading and aging | planned |
-| `transformer_loss_of_life` | Transformer loss of life | planned |
-| `cable_thermal_aging` | Cable thermal aging | planned |
+### Limitations
 
-## Common execution contract
+EMT support is model- and case-specific. It does not imply that every declared machine, converter, control, protection, thermal, electromagnetic-field, manufacturer, or standards workflow is qualified.
 
-Every implemented study must expose:
+## Overhead-line constants (`line_constants`)
 
-- strict typed inputs and readiness diagnostics;
-- project/scenario/study identity;
-- representation and fidelity;
-- explicit settings, tolerances, units, bases, assumptions, and validity domain;
-- selected solver capability and revision;
-- immutable typed result with content hash;
-- warnings and unsupported behavior;
-- public case and report provider;
-- independent qualification evidence appropriate to the claim.
+### Purpose
 
-## EMT study workflow
+Calculate phase-domain impedance and capacitance/admittance quantities from overhead-conductor geometry, material data, bundle arrangement, earth model, and frequency.
 
-1. Parse and validate the deck/project.
-2. Confirm all component and solver capabilities.
-3. Establish a consistent initial state or declare accepted initial discontinuities.
-4. Execute fixed-step/network/control/event schedules.
-5. Localize discontinuities and preserve rollback/checkpoint state.
-6. Produce typed traces and diagnostics.
-7. Check finite values, KCL, energy, passivity, timestep refinement, and exact restart as applicable.
+### Required inputs
 
-## Line and cable constants workflow
+- conductor identity and phase order;
+- x/y coordinates and units;
+- radius/GMR and resistance;
+- bundle count and spacing;
+- frequency or frequency grid;
+- earth resistivity and ground-return assumptions;
+- transposition/section policy;
+- requested phase, sequence, modal, or report outputs.
 
-1. Validate geometry, materials, units, conductor ordering, earth data, and frequency grid.
-2. Build primitive impedance/admittance matrices.
-3. Reduce or transform only through declared conductor/bonding rules.
-4. Compute sequence/modal quantities where mathematically admitted.
-5. Report conditioning, symmetry/passivity, frequency range, and transformation conventions.
+### Outputs
 
-## Transformer-parameter workflow
+- phase impedance matrices;
+- phase capacitance/admittance matrices;
+- sequence/modal quantities where requested;
+- characteristic quantities and propagation information where supported;
+- frequency scans, text reports, CSV data, and plots in registered cases;
+- assumptions and geometry validation diagnostics.
 
-1. Validate ratings, winding order, connection, test data, bases, and units.
-2. Reconcile test values and convert to a single declared convention.
-3. Generate branch/coupling parameters.
-4. Report residuals, assumptions, uncertainty, and data that cannot be inferred.
+### Acceptance
+
+Check physical geometry, units, matrix dimensions, symmetry/reciprocity expectations, continuity over frequency, positive-real behavior where applicable, and reproduction of reference/benchmark cases.
+
+### Limitations
+
+This study is not an ampacity, sag-tension, lightning-risk, insulation-coordination, or thermal-rating calculation. Those require separate implemented studies.
+
+## Cable constants (`cable_constants`)
+
+### Purpose
+
+Calculate cable impedance/admittance and frequency-scan quantities from conductor, insulation, sheath/screen, armor, layer, placement, material, bonding, and installation data supported by the model.
+
+### Required inputs
+
+- radial layer geometry and conductor order;
+- material resistivity/permeability;
+- dielectric permittivity and losses where represented;
+- sheath/screen/armor properties;
+- phase placement, burial/ground assumptions, and earth properties;
+- bonding/reduction assumptions represented by the selected case;
+- frequency grid and output request.
+
+### Outputs
+
+- complete conductor/phase impedance matrices;
+- capacitance/admittance matrices;
+- reduced, sequence, modal, or characteristic quantities where requested;
+- frequency scans and case reports;
+- geometry/matrix diagnostics and assumptions.
+
+### Acceptance
+
+Check radial and placement geometry, units, conductor ordering, matrix conditioning, reciprocity/symmetry, passivity/positive-real behavior, frequency continuity, and reference comparisons.
+
+### Limitations
+
+Cable constants do not automatically provide cable ampacity, thermal transients, pulling tension, duct-bank derating, sheath-current optimization, short-circuit thermal withstand, aging, or installation design. Those remain separate study contracts unless implemented.
+
+## Transformer-parameter conversion (`transformer_parameters`)
+
+### Purpose
+
+Convert transformer ratings, winding information, short-circuit/no-load tests, vector group, bases, taps, and related input into a consistent parameter/report representation and generated electrical branches.
+
+### Required inputs
+
+- transformer rating and frequency;
+- winding ratings, connections, vector group, and ordering;
+- short-circuit test impedances and losses with test basis;
+- no-load current/loss where magnetizing data are required;
+- temperature and tap position;
+- unit and per-unit base convention;
+- allocation assumptions for incomplete multiwinding test data.
+
+### Outputs
+
+- winding/branch resistance and leakage quantities;
+- ratios and base conversions;
+- magnetizing branch quantities where supported;
+- matrices or generated branch data;
+- human-readable report;
+- assumptions, warnings, and source metadata.
+
+### Acceptance
+
+Check base conversion, positivity, winding ordering, vector-group interpretation, reproduction of supplied tests, loss consistency, and transparent treatment of underdetermined allocation.
+
+### Limitations
+
+Parameter conversion is not a complete transformer design, thermal, insulation, inrush, wideband, protection, or manufacturer-certification study. It does not create missing test data.
+
+# Planned study domains
+
+The current catalog also declares planned interfaces across the domains below. Their presence supports architecture and data planning; it is not a statement that numerical results are available.
+
+## Static network analysis
+
+Includes balanced and unbalanced AC power flow, DC power flow, voltage drop, load allocation, voltage stability, contingency screening, hosting capacity, and optimal power flow.
+
+Before implementation, each study requires:
+
+- network/asset schemas and phase conventions;
+- bus type and control policy;
+- initialization and convergence behavior;
+- limits and infeasibility reporting;
+- typed quantities, bases, assumptions, and warnings;
+- benchmark systems and independent validation.
+
+## Fault analysis
+
+Includes short-circuit, IEC-style and ANSI-style calculations, unbalanced faults, and DC faults.
+
+Implementation must distinguish standard/method revision, prefault assumptions, voltage factors, sequence/phase data, grounding, source contribution, machine/converter treatment, asymmetry, peak/interrupting duty, and equipment-rating comparison.
+
+No result should be labeled IEC or ANSI compliant without an implemented, reviewed method and traceable standard basis.
+
+## Protection
+
+Includes protection coordination, relay settings, time-current coordination, fuse/recloser coordination, distance protection, differential protection, and settings optimization.
+
+Required future contracts include relay characteristic provenance, CT/VT data, pickup/time settings, operating quantities, zones, communication logic, breaker clearing, tolerances, selectivity margins, and plotted/structured coordination evidence.
+
+## Arc flash, grounding, and safety
+
+Includes arc flash, labels, grounding-grid design, step/touch voltage, grounding-conductor sizing, and lightning/surge risk screening.
+
+These are safety-critical. Implementation requires explicit standard/method editions, working distances, enclosure/electrode configuration, protective-device clearing, soil model, fault-current distribution, uncertainty, labels/reports, and independent verification. A generic transient result is not an arc-flash or grounding study.
+
+## Dynamic and transient-stability studies
+
+Includes RMS transient stability, switching/lightning transients, transformer inrush, motor starting, ferroresonance, and insulation coordination.
+
+Some physical phenomena can already be represented through specific EMT cases, but that does not make every separately named study workflow implemented. A production study requires its own input, orchestration, result, and qualification contract.
+
+## Power quality and harmonics
+
+Includes harmonic load flow, harmonic resonance, filter sizing, flicker, voltage sag/swell, and voltage unbalance.
+
+Implementation requires spectrum/source definitions, frequency-dependent network data, aggregation and diversity policy, standards/reporting basis, resonance metrics, time aggregation, and uncertainty. An FFT of one waveform is not automatically a harmonic-load-flow or compliance study.
+
+## Machines
+
+Includes induction/synchronous machine workflows, generator capability/loading, motor torque-speed, machine thermal, and excitation/governor studies.
+
+Executable EMT machine models already exist for declared products, but system-level sizing, capability, thermal, or standardized workflows remain separate maturity claims.
+
+## Renewables, converters, and storage
+
+Includes PV string/inverter/cable sizing, PV yield, grid-following and grid-forming studies, BESS sizing, storage dispatch, wind-turbine models, and ride-through checks.
+
+Switch-detailed and control cases do not by themselves establish a complete renewable-plant, energy-yield, storage-sizing, or grid-code compliance workflow.
+
+## Thermal and mechanical cable studies
+
+Includes ampacity, dynamic rating, overload capacity, short-circuit withstand, pulling, and installation derating.
+
+These require thermal/material/installation models, environmental boundary conditions, standard basis, and uncertainty separate from the cable electrical-constants calculation.
+
+## Equipment sizing
+
+Includes conductor, transformer, generator, motor, switchgear, CT/VT, UPS/battery, grounding-conductor, and other sizing workflows.
+
+Sizing must combine electrical duty, thermal/mechanical constraints, standard margins, operating scenarios, and explicit selection criteria. It must not be inferred from a single nominal load-flow or fault value.
+
+## Optimization and planning
+
+Includes feeder reconfiguration, capacitor placement, DER placement/sizing, cable-sizing optimization, storage dispatch, protection optimization, and related planning.
+
+An optimization result must define objective, variables, constraints, scenarios, solver status, optimality/gap, infeasibility behavior, and sensitivity. A numerical candidate without a feasible engineering verification is not an accepted design.
+
+## Reliability and aging
+
+Includes reliability indices, outage impact, asset aging, transformer loss of life, and cable thermal aging.
+
+Implementation requires failure/repair data provenance, network state model, uncertainty, load/environment histories, thermal/aging standards or equations, and reproducible scenario/Monte Carlo policy.
+
+# Study input and result interfaces
+
+## Run request
+
+A run request identifies the study and optionally a case path and output directory. Production orchestration should additionally capture the revision, environment, solver policy, and output selection.
+
+## Typed result
+
+A study result contains:
+
+- study identifier;
+- status: `ok`, `warning`, `failed`, `not_implemented`, or `invalid_input`;
+- quantities keyed by stable symbols, each with value, unit, optional base, and description;
+- assumptions;
+- warnings with code, severity, and message;
+- metadata.
+
+An `ok` result with a noninformational warning should be promoted to a warning state. Callers must inspect status and warnings rather than assuming any returned object is acceptable.
+
+## Validity assessment
+
+Scientific model contracts can bind requested fidelity and numerical/physical domain quantities. A validity assessment identifies missing quantities, wrong types, nonfinite values, bounds violations, and fidelity mismatch. The caller can reject the request through a typed validity-domain error.
+
+# Adding a new study
+
+A new descriptor should not be marked implemented until the repository contains:
+
+1. a stable study ID, name, domain, and source owner;
+2. input schema with units, bases, signs, and provenance;
+3. validation and validity-domain rules;
+4. deterministic orchestration and solver binding;
+5. typed result quantities, assumptions, warnings, and metadata;
+6. explicit failure and not-implemented behavior;
+7. independent or analytical verification;
+8. at least one runnable public case where licensing allows;
+9. regression/qualification tests;
+10. complete user documentation and release note.
+
+The generated catalog makes all descriptors visible and prevents roadmap items from being omitted from documentation. Maturity remains the boundary between visibility and a supported numerical claim.
