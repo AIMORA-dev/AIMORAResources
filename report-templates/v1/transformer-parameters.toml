@@ -1,0 +1,20 @@
+id = "transformer-parameters"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "transformer-parameters"
+trust = "builtin-reviewed"
+supported_studies = ["transformer_parameters"]
+required_roles = ["executive-summary", "test-data", "results", "quality", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "text", "json", "tex", "csv"]
+
+[transformer]
+require_winding_order = true
+require_ratings_and_bases = true
+require_connections = true
+require_test_conditions = true
+require_conversion_convention = true
+require_reconstruction_residuals = true
+require_nonidentifiable_parameters = true
+
+[sections]
+order = ["executive-summary", "test-data", "ratings-and-connections", "method", "results", "quality", "findings", "limitations", "provenance", "appendices"]

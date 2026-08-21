@@ -1,0 +1,18 @@
+id = "education-laboratory"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "education"
+trust = "builtin-reviewed"
+supported_studies = ["emt", "line_constants", "cable_constants", "transformer_parameters"]
+required_roles = ["objectives", "study-definition", "method", "results", "questions", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "text", "json", "tex", "csv", "svg"]
+
+[education]
+require_learning_objectives = true
+require_preparation = true
+require_observations = true
+require_interpretation_questions = true
+require_safety_and_limitations = true
+
+[sections]
+order = ["objectives", "background", "preparation", "study-definition", "method", "results", "observations", "questions", "limitations", "provenance"]

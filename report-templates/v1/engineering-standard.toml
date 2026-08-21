@@ -1,0 +1,18 @@
+id = "engineering-standard"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+family = "engineering"
+trust = "builtin-reviewed"
+supported_studies = ["emt", "line_constants", "cable_constants", "transformer_parameters", "validation", "combined"]
+required_roles = ["executive-summary", "study-definition", "results", "quality", "limitations", "provenance"]
+output_profiles = ["markdown", "html", "text", "json", "tex", "csv", "svg"]
+
+[document_control]
+require_report_number = true
+require_revision = true
+require_prepared_by = true
+require_checked_by = true
+require_approval_before_freeze = true
+
+[sections]
+order = ["executive-summary", "study-definition", "method", "results", "quality", "findings", "limitations", "provenance", "appendices"]
