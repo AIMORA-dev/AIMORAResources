@@ -1,7 +1,9 @@
 export IndependentPassiveLadderResult,
        IndependentPartitionedRLCResult,
+       IndependentSwitchedPassiveLinkResult,
        independent_exact_passive_ladder,
        independent_exact_passive_rlc,
+       independent_exact_switched_passive_link,
        independent_partitioned_passive_rlc
 
 """Independent exact trace for a source-fed series-RL and shunt-RC ladder."""
@@ -14,6 +16,215 @@ struct IndependentPassiveLadderResult
     resistive_loss_w::Vector{Float64}
     storage_rate_w::Vector{Float64}
     power_balance_residual_w::Vector{Float64}
+end
+
+"""Independent piecewise-exact trace for one passive link whose parallel switched branch opens once."""
+struct IndependentSwitchedPassiveLinkResult
+    time_s::Vector{Float64}
+    source_current_a::Vector{Float64}
+    first_node_voltage_v::Vector{Float64}
+    second_node_voltage_v::Vector{Float64}
+    link_current_a::Vector{Float64}
+    nodal_kcl_residual_a::Matrix{Float64}
+    power_balance_residual_w::Vector{Float64}
+end
+
+function _independent_switched_link_dynamics(
+    source_voltage_v,
+    source_resistance_ohm,
+    source_inductance_h,
+    first_shunt_resistance_ohm,
+    first_shunt_capacitance_f,
+    second_shunt_resistance_ohm,
+    second_shunt_capacitance_f,
+    link_conductance_s,
+)
+    dynamics = [
+        -source_resistance_ohm / source_inductance_h -inv(source_inductance_h) 0.0
+        inv(first_shunt_capacitance_f) -(inv(first_shunt_resistance_ohm) + link_conductance_s) / first_shunt_capacitance_f link_conductance_s / first_shunt_capacitance_f
+        0.0 link_conductance_s / second_shunt_capacitance_f -(link_conductance_s + inv(second_shunt_resistance_ohm)) / second_shunt_capacitance_f
+    ]
+    return dynamics, [source_voltage_v / source_inductance_h, 0.0, 0.0]
+end
+
+"""
+Evaluate a source-RL, two-node shunt-RC network with a resistive link and one
+parallel switched resistive branch that opens at an exact declared instant.
+The two continuous node voltages and source current are propagated by
+independent matrix exponentials on each side of the topology change.
+"""
+function independent_exact_switched_passive_link(;
+    start_time_s::Real,
+    stop_time_s::Real,
+    output_step_s::Real,
+    switch_open_time_s::Real,
+    source_voltage_v::Real,
+    source_resistance_ohm::Real,
+    source_inductance_h::Real,
+    first_shunt_resistance_ohm::Real,
+    first_shunt_capacitance_f::Real,
+    second_shunt_resistance_ohm::Real,
+    second_shunt_capacitance_f::Real,
+    link_resistance_ohm::Real,
+    switch_closed_conductance_s::Real,
+    switch_open_conductance_s::Real = 0.0,
+    initial_source_current_a::Real = 0.0,
+    initial_first_node_voltage_v::Real = 0.0,
+    initial_second_node_voltage_v::Real = 0.0,
+)
+    start_time, stop_time, output_step, open_time = Float64.(tuple(
+        start_time_s,
+        stop_time_s,
+        output_step_s,
+        switch_open_time_s,
+    ))
+    source_voltage, source_resistance, source_inductance,
+        first_shunt_resistance, first_shunt_capacitance,
+        second_shunt_resistance, second_shunt_capacitance,
+        link_resistance, closed_switch_conductance,
+        open_switch_conductance, initial_current, initial_first_voltage,
+        initial_second_voltage = Float64.(tuple(
+            source_voltage_v,
+            source_resistance_ohm,
+            source_inductance_h,
+            first_shunt_resistance_ohm,
+            first_shunt_capacitance_f,
+            second_shunt_resistance_ohm,
+            second_shunt_capacitance_f,
+            link_resistance_ohm,
+            switch_closed_conductance_s,
+            switch_open_conductance_s,
+            initial_source_current_a,
+            initial_first_node_voltage_v,
+            initial_second_node_voltage_v,
+        ))
+    all(isfinite, (
+        start_time,
+        stop_time,
+        output_step,
+        open_time,
+        source_voltage,
+        source_resistance,
+        source_inductance,
+        first_shunt_resistance,
+        first_shunt_capacitance,
+        second_shunt_resistance,
+        second_shunt_capacitance,
+        link_resistance,
+        closed_switch_conductance,
+        open_switch_conductance,
+        initial_current,
+        initial_first_voltage,
+        initial_second_voltage,
+    )) || throw(ArgumentError(
+        "independent switched passive-link inputs must be finite",
+    ))
+    start_time < open_time < stop_time && output_step > 0.0 || throw(
+        ArgumentError(
+            "independent switched passive-link calendar must contain one interior opening",
+        ),
+    )
+    source_resistance >= 0.0 && source_inductance > 0.0 &&
+        first_shunt_resistance > 0.0 && first_shunt_capacitance > 0.0 &&
+        second_shunt_resistance > 0.0 && second_shunt_capacitance > 0.0 &&
+        link_resistance > 0.0 && closed_switch_conductance >= 0.0 &&
+        open_switch_conductance >= 0.0 || throw(ArgumentError(
+            "independent switched passive-link elements must be passive with positive storage",
+        ))
+    interval_ratio = (stop_time - start_time) / output_step
+    interval_count = round(Int, interval_ratio)
+    abs(interval_ratio - interval_count) <=
+        32eps(max(abs(interval_ratio), 1.0)) || throw(ArgumentError(
+            "independent switched passive-link horizon must divide by its output step",
+        ))
+    event_ratio = (open_time - start_time) / output_step
+    event_index = round(Int, event_ratio)
+    abs(event_ratio - event_index) <= 32eps(max(abs(event_ratio), 1.0)) ||
+        throw(ArgumentError(
+            "independent switched passive-link opening must align with an output sample",
+        ))
+    closed_link_conductance = inv(link_resistance) +
+        closed_switch_conductance
+    open_link_conductance = inv(link_resistance) + open_switch_conductance
+    closed_dynamics, forcing = _independent_switched_link_dynamics(
+        source_voltage,
+        source_resistance,
+        source_inductance,
+        first_shunt_resistance,
+        first_shunt_capacitance,
+        second_shunt_resistance,
+        second_shunt_capacitance,
+        closed_link_conductance,
+    )
+    open_dynamics, _ = _independent_switched_link_dynamics(
+        source_voltage,
+        source_resistance,
+        source_inductance,
+        first_shunt_resistance,
+        first_shunt_capacitance,
+        second_shunt_resistance,
+        second_shunt_capacitance,
+        open_link_conductance,
+    )
+    initial_state = [initial_current, initial_first_voltage, initial_second_voltage]
+    closed_equilibrium = -(closed_dynamics \ forcing)
+    event_state = closed_equilibrium +
+        exp(closed_dynamics * (open_time - start_time)) *
+        (initial_state - closed_equilibrium)
+    open_equilibrium = -(open_dynamics \ forcing)
+    times = start_time .+ collect(0:interval_count) .* output_step
+    source_current = Vector{Float64}(undef, length(times))
+    first_voltage = similar(source_current)
+    second_voltage = similar(source_current)
+    link_current = similar(source_current)
+    kcl_residual = Matrix{Float64}(undef, 2, length(times))
+    power_balance_residual = similar(source_current)
+    for sample_index in eachindex(times)
+        time_s = times[sample_index]
+        before_or_at_opening = time_s <= open_time
+        dynamics = before_or_at_opening ? closed_dynamics : open_dynamics
+        link_conductance = before_or_at_opening ?
+            closed_link_conductance : open_link_conductance
+        state = if before_or_at_opening
+            closed_equilibrium + exp(closed_dynamics * (time_s - start_time)) *
+                (initial_state - closed_equilibrium)
+        else
+            open_equilibrium + exp(open_dynamics * (time_s - open_time)) *
+                (event_state - open_equilibrium)
+        end
+        derivative = dynamics * state + forcing
+        current, voltage_1, voltage_2 = state
+        link_current_value = link_conductance * (voltage_1 - voltage_2)
+        source_current[sample_index] = current
+        first_voltage[sample_index] = voltage_1
+        second_voltage[sample_index] = voltage_2
+        link_current[sample_index] = link_current_value
+        kcl_residual[1, sample_index] = current - link_current_value -
+            voltage_1 / first_shunt_resistance -
+            first_shunt_capacitance * derivative[2]
+        kcl_residual[2, sample_index] = link_current_value -
+            voltage_2 / second_shunt_resistance -
+            second_shunt_capacitance * derivative[3]
+        source_power = source_voltage * current
+        resistive_loss = source_resistance * current^2 +
+            voltage_1^2 / first_shunt_resistance +
+            voltage_2^2 / second_shunt_resistance +
+            link_conductance * (voltage_1 - voltage_2)^2
+        storage_rate = source_inductance * current * derivative[1] +
+            first_shunt_capacitance * voltage_1 * derivative[2] +
+            second_shunt_capacitance * voltage_2 * derivative[3]
+        power_balance_residual[sample_index] =
+            source_power - resistive_loss - storage_rate
+    end
+    return IndependentSwitchedPassiveLinkResult(
+        times,
+        source_current,
+        first_voltage,
+        second_voltage,
+        link_current,
+        kcl_residual,
+        power_balance_residual,
+    )
 end
 
 function _independent_passive_ladder_parameters(
