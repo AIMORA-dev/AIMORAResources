@@ -59,7 +59,20 @@ export amplitude_invariant_clarke_matrix,
        independent_vsc_sequence_components,
        independent_vsc_capacitor_companion_residual,
        series_rl_piecewise_constant_current,
-       series_rl_piecewise_constant_trace
+       series_rl_piecewise_constant_trace,
+       IndependentPortableArray,
+       IndependentPortableRecord,
+       IndependentPortableMetadata,
+       IndependentPortableSection,
+       IndependentPortableSnapshot,
+       independent_portable_array,
+       independent_portable_array_values,
+       independent_portable_snapshot_bytes,
+       independent_decode_portable_snapshot,
+       IndependentPortableHybridTaskOccurrence,
+       IndependentPortableHybridEventOccurrence,
+       IndependentPortableHybridReference,
+       independent_portable_hybrid_reference
 
 include("extended_semiconductor_fidelity.jl")
 include("generic_bridge_topologies.jl")
@@ -69,6 +82,7 @@ include("coupled_line_fitting_passivity.jl")
 include("coupled_line_runtime.jl")
 include("transformer_apparatus.jl")
 include("modern_machine_families.jl")
+include("portable_emt_snapshots.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()
@@ -676,6 +690,7 @@ end
 
 include("consistent_emt_initialization.jl")
 include("general_multirate_task_reference.jl")
+include("portable_hybrid_snapshot_reference.jl")
 include("measurement_chains.jl")
 
 end

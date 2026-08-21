@@ -7,6 +7,7 @@ include("coupled_line_runtime.jl")
 include("transformer_apparatus.jl")
 include("modern_machine_families.jl")
 include("measurement_chains.jl")
+include("portable_emt_snapshots.jl")
 
 @testset "independent extended semiconductor formulations" begin
     recovery = independent_recovered_charge_backward_euler(
