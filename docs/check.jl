@@ -18,6 +18,9 @@ fail(message) = error("Documentation check failed: $(message)")
 const REQUIRED_FILES = (
     "README.md",
     "make.jl",
+    "check_content.jl",
+    "content_audit.jl",
+    "generate_reference_pages.jl",
     "src/index.md",
     "src/getting-started.md",
     "src/architecture.md",
@@ -29,12 +32,24 @@ const REQUIRED_FILES = (
     "src/validation.md",
     "src/development.md",
     "src/api.md",
+    "src/professional-workflow.md",
+    "src/results-and-validation.md",
 )
 
 for relative_path in REQUIRED_FILES
     isfile(joinpath(REPOSITORY_ROOT, relative_path)) ||
         fail("missing required file $(relative_path)")
 end
+
+!isempty(AIMORA_PATH) && isfile(joinpath(AIMORA_PATH, "src", "AIMORA.jl")) ||
+    fail("place AIMORA.jl beside this checkout or set AIMORA_DOCS_ENGINE_PATH")
+pushfirst!(LOAD_PATH, AIMORA_PATH)
+using AIMORA
+
+include(joinpath(REPOSITORY_ROOT, "generate_reference_pages.jl"))
+AIMORAReferenceGenerator.generate_reference_pages(AIMORA_PATH, AIMORA)
+include(joinpath(REPOSITORY_ROOT, "content_audit.jl"))
+include(joinpath(REPOSITORY_ROOT, "check_content.jl"))
 
 const PUBLICATION_FORBIDDEN = (
     "AIMORAWorkspace",
@@ -50,11 +65,10 @@ const PUBLICATION_FORBIDDEN = (
 
 markdown_files = [
     joinpath(REPOSITORY_ROOT, "README.md");
-    [
-        joinpath(REPOSITORY_ROOT, "src", name)
-        for name in readdir(joinpath(REPOSITORY_ROOT, "src"))
-        if endswith(name, ".md")
-    ]
+    sort(collect(Iterators.flatten(
+        (joinpath(root, name) for name in names if endswith(name, ".md"))
+        for (root, _, names) in walkdir(joinpath(REPOSITORY_ROOT, "src"))
+    )))
 ]
 
 function check_markdown(path::AbstractString)
@@ -76,11 +90,6 @@ function check_markdown(path::AbstractString)
 end
 
 foreach(check_markdown, markdown_files)
-
-!isempty(AIMORA_PATH) && isfile(joinpath(AIMORA_PATH, "src", "AIMORA.jl")) ||
-    fail("place AIMORA.jl beside this checkout or set AIMORA_DOCS_ENGINE_PATH")
-pushfirst!(LOAD_PATH, AIMORA_PATH)
-using AIMORA
 
 study_ids = Set(study.id for study in AIMORA.StudyCatalog.available_studies())
 for required_study in (:emt, :power_flow, :short_circuit, :protection, :arc_flash)

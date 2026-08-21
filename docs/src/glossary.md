@@ -1,112 +1,125 @@
 # Glossary
 
-**Accepted evidence**
-A result recorded in the project ledger after the exact requirement, implementation revision, registered validation, and publication boundaries pass.
+**Acceptance criterion** — A predefined quantitative or logical condition that a run, model, case, or comparison must satisfy before it is accepted.
 
-**Availability**
-Whether a study or capability is `implemented`, `planned`, `unavailable`, or retained only as a `legacy_reference`.
+**Algebraic state** — A variable solved from instantaneous constraints rather than integrated through time.
 
-**Backend**
-A numerical implementation of the public AIMORA solver contract. The production backend is separately governed and explicitly activated.
+**Average-value model** — A converter representation that averages switching behavior over a carrier interval and omits explicit semiconductor commutations.
 
-**Canonical project**
-The revisioned physical system model containing shared asset identity, topology, ratings, parameters, provenance, profiles, and scenarios. It is not mutable solver state.
+**Base quantity** — Reference voltage, current, power, impedance, speed, or other value used to interpret a per-unit quantity.
 
-**Capability**
-A typed backend declaration identifying a supported study, representation, fidelity, and version.
+**BCTRAN-style model** — A transformer terminal representation based on test-derived multiwinding matrices. The term describes a modeling style, not certification against another product.
 
-**Case**
-A versioned public example input and executable consumer with documentation, outputs, and provenance.
+**Bergeron model** — A travelling-wave line representation using characteristic impedance/admittance and delayed terminal history.
 
-**Checkpoint / snapshot**
-A versioned complete state inventory sufficient to resume an admitted study deterministically.
+**Capability descriptor** — Typed record identifying a study, domain, maturity, and source owner.
 
-**Companion model**
-A discrete-time equivalent used to stamp dynamic components such as inductors and capacitors into the nodal equations.
+**Case** — A reproducible engineering example containing purpose, input, entrypoint, output contract, interpretation, and acceptance evidence.
 
-**Content hash**
-A SHA-256 digest of canonical semantic data. Report approvals and freezes bind this hash.
+**Checkpoint** — Serialized execution state sufficient to resume a run under a compatible model/solver/schema contract.
 
-**Deck**
-A readable or fixed-field electrical input document parsed into typed models. It is data, not source code.
+**Companion model** — A discrete-time equivalent of a dynamic component, typically represented by an instantaneous conductance/admittance plus history source.
 
-**Dependency DAG**
-The directed acyclic graph connecting a result to exact upstream results used by a downstream study or combined report.
+**Constitutive law** — Mathematical relationship between physical quantities of a component, such as nonlinear current as a function of voltage.
 
-**Deterministic build**
-A build that produces identical declared artifacts from identical semantic input, template, toolchain, source date, and environment locks.
+**Control calendar** — Exact release schedule for sensing, estimation, control, modulation, protection, or reporting tasks.
 
-**Diagnostic**
-A typed message with severity, code, component/source location, explanation, and blocking status.
+**Deck** — Text input containing typed or classic fixed-field cards that define a study, topology, models, events, and outputs.
 
-**EMT**
-Electromagnetic-transient simulation using instantaneous time-domain electrical quantities and explicit events.
+**Delayed history** — Stored past values required by travelling-wave, rational, sampled, or delayed-control models.
 
-**Event localization**
-The process of locating a discontinuity or control/event boundary at the required temporal accuracy rather than accepting it at an arbitrary coarse sample.
+**Deterministic replay** — Re-execution that produces the same declared result according to a bitwise or tolerance-based contract.
 
-**Fidelity**
-The physical detail of a model, such as average-value, switching-detailed, state-equivalent, legacy-detailed, or field-coupled detailed.
+**Direct feedthrough** — Output dependence on an input at the same logical instant, important for algebraic-loop analysis.
 
-**Frozen report**
-An approved report whose semantic content is bound to an immutable hash. A correction creates a new revision.
+**EMT** — Electromagnetic transient time-domain study resolving instantaneous electrical quantities and fast events.
 
-**Gitlink**
-A superproject record pinning an exact child-repository commit.
+**Event localization** — Determination of the actual discontinuity time between or on integration steps.
 
-**KCL residual**
-The current-balance residual at network nodes after solution and output reconstruction.
+**Fidelity** — Level and kind of physical/numerical detail represented by a model.
 
-**Manifest**
-A machine-readable inventory of report/source/toolchain/artifact identities and checksums.
+**Fixed-field card** — Input record whose meaning depends on exact character-column positions.
 
-**MNA**
-Modified nodal analysis, including additional equations/unknowns for ideal sources or constraints.
+**Flux linkage** — Magnetic flux linked with a winding, often a dynamic state in machine/transformer models.
 
-**Passivity**
-A property preventing a fitted network model from generating net energy under its declared conditions.
+**Ground return** — Frequency-dependent current-return behavior through earth included in line/cable impedance calculations.
 
-**Planned study**
-A documented future contract that must refuse production execution until implemented and accepted.
+**Grey-box model** — Model combining known physical structure with identified parameters.
 
-**Provider**
-A function that maps a typed study result and its limitations/evidence into a minimum useful semantic report. A provider does not recompute study physics.
+**History source** — Equivalent source representing accumulated dynamic state in a companion formulation.
 
-**Qualification**
-The evidence state of a capability: unqualified, prototype evidence, qualified, or production.
+**Implemented** — Maturity status indicating a callable study path exists for a declared validity domain.
 
-**Readiness**
-A pre-execution check confirming that the project, parameters, model fidelity, solver capabilities, units, and settings are sufficient for the requested study.
+**KCL residual** — Numerical imbalance of currents at a solved node according to Kirchhoff’s current law.
 
-**Renderer**
-An optional adapter that converts semantic visual/report data into HTML, Markdown, TeX, PDF, SVG, CSV, JSON, or another declared format.
+**Legacy reference** — Historical implementation or evidence retained for comparison, not the production execution path.
 
-**Representation**
-The mathematical view of a physical asset used by a study, such as instantaneous EMT, static phasor, dynamic phasor DAE, harmonic frequency domain, short circuit, thermal field, or protection measurement.
+**Modal transformation** — Mapping between phase/conductor quantities and decoupled or approximately decoupled modal quantities.
 
-**Result binding**
-The immutable identity/provenance link from a report or downstream study to an exact typed result.
+**Model contract** — Stable statement of inputs, outputs, state, validity, assumptions, maturity, update order, and evidence.
 
-**Revision**
-A versioned project, result, report, template, or source state. Changing engineering meaning creates a new revision.
+**Multi-mass shaft** — Mechanical model with multiple inertias connected by stiffness and damping.
 
-**Semantic report**
-A renderer-independent typed document containing sections, equations, data tables, plots, diagnostics, provenance, review, and publication state.
+**Multirate task** — Task executing on its own exact sample/release calendar while coupled to the electrical simulation.
 
-**Source coverage**
-The machine-checked mapping from public model/study/parser/case/report owners to canonical documentation.
+**Nodal assembly** — Construction of network equations from model contributions and source/history injections.
 
-**Study realization**
-The explicit representation of a canonical physical asset for one study and fidelity.
+**Not implemented** — Typed result status for a declared study that lacks a production numerical path.
 
-**TACS**
-Transient Analysis of Control Systems: control/signal blocks and sampled tasks coupled to admitted electrical components.
+**Passivity** — Property that a model cannot generate net energy internally under its declared port convention.
 
-**Typed result**
-A versioned result object with explicit quantities, units, bases, settings, provenance, assumptions, warnings, and hashes.
+**Passivity correction** — Transformation of a fitted model to remove passive-behavior violations while controlling approximation error.
 
-**Validity domain**
-The operating, frequency, timestep, geometry, parameter, or evidence range over which a model/result claim is admitted.
+**Per unit (pu)** — Normalized quantity divided by a declared base.
 
-**Visual specification**
-Renderer-neutral axes, units, series, uncertainty, events, transforms, clipping, caption, and accessibility semantics.
+**Phase domain** — Representation directly in physical phase/conductor coordinates rather than sequence or modal coordinates.
+
+**Planned** — Maturity status for a roadmap/API descriptor without a production implementation.
+
+**Pole/residue model** — Rational representation expressed through poles and residues, often converted to state space for runtime.
+
+**Positive-real** — Frequency-domain property related to passivity for impedance/admittance models under appropriate assumptions.
+
+**Prototype** — Experimental capability whose interface, behavior, or qualification may change.
+
+**Provenance** — Traceable source, transformation, uncertainty, and revision of engineering data or evidence.
+
+**Rational fitting** — Approximation of sampled frequency behavior by stable rational functions.
+
+**Reference-compatible case** — Case that can run through a declared historical/reference path for comparison; this does not make the reference the production solver.
+
+**Result contract** — Stable definition of status, quantities, units, assumptions, warnings, metadata, and acceptance evidence.
+
+**Rollback** — Restoration of all mutated execution state after rejected work or event localization.
+
+**Sequence component** — Positive-, negative-, or zero-sequence quantity derived through a specified transformation.
+
+**Solver backend** — Numerical implementation registered behind the public scientific model/study contract.
+
+**Source owner** — Logical source unit responsible for a model, study, parser, or interface declaration.
+
+**State-space realization** — Dynamic representation using state, input, output, and feedthrough matrices.
+
+**Study descriptor** — Typed catalog entry with ID, name, domain, maturity, and source owner.
+
+**Surge impedance** — Characteristic voltage/current ratio of a travelling-wave mode or line under the declared convention.
+
+**TACS** — Control-system style algebraic/dynamic signal composition used with electrical simulation.
+
+**Task release** — Exact instant when a sampled/multirate task executes.
+
+**Terminal order** — Documented ordering of ports, windings, phases, or conductors in vectors and matrices.
+
+**Thevenin equivalent** — Ideal voltage source behind finite impedance representing a network boundary.
+
+**Topology event** — Change in electrical connectivity caused by a switch, fault, breaker, or controlled device.
+
+**Typed quantity** — Value accompanied by a stable key, unit, optional base, and description.
+
+**Validity domain** — Declared physical/numerical/fidelity bounds within which a model is supported.
+
+**Vector fitting** — Iterative method for fitting rational functions to sampled frequency responses.
+
+**White-box model** — Model derived primarily from detailed geometry, materials, and internal physical structure.
+
+**Wideband model** — Frequency-dependent dynamic model intended to reproduce behavior over a broad declared frequency range.

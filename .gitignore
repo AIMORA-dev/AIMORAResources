@@ -1,0 +1,56 @@
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Julia local state
+.julia/
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+
+# Python local state
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Build / scratch
+build/
+dist/
+tmp/
+
+# Generated documentation
+docs/build/
+docs/src/generated/
+
+# Runtime logs / caches
+*.log
+*.pid
+
+# Generated scientific outputs (case-owned placeholders keep output dirs)
+AIMORACases.jl/examples/**/outputs/*
+!AIMORACases.jl/examples/**/outputs/.gitkeep
+!AIMORACases.jl/examples/**/outputs/summary.md
+!AIMORACases.jl/examples/**/outputs/case-results.md
+!AIMORACases.jl/examples/**/outputs/result-overview.md
+!AIMORACases.jl/examples/**/outputs/bridge-report.md
+!AIMORACases.jl/examples/**/outputs/line-report.md
+!AIMORACases.jl/examples/**/outputs/impedance-scan.md
+!AIMORACases.jl/examples/**/outputs/cable-summary.md
+!AIMORACases.jl/examples/**/outputs/cable-frequency-scan.md
+!AIMORACases.jl/examples/**/outputs/machine-summary.md
+!AIMORACases.jl/examples/**/outputs/synchronous-machine-summary.md
+!AIMORACases.jl/examples/**/outputs/advanced-machine-summary.md
+!AIMORACases.jl/examples/**/outputs/induction-machine-summary.md
+!AIMORACases.jl/examples/**/outputs/machine-family-summary.md
+!AIMORACases.jl/examples/**/outputs/multirate-task-summary.md
+!AIMORACases.jl/examples/**/outputs/transformer-summary.md
+!AIMORACases.jl/examples/**/outputs/transformer-report.md
+!AIMORACases.jl/examples/**/outputs/nonlinear-summary.md
+!AIMORACases.jl/examples/**/outputs/switching-summary.md
+!AIMORACases.jl/examples/**/outputs/restart-summary.md
+!AIMORACases.jl/examples/**/outputs/comparison-summary.md
+!AIMORACases.jl/examples/**/outputs/qualification-summary.md
+!AIMORACases.jl/examples/**/outputs/*.svg
