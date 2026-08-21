@@ -1,6 +1,203 @@
-export IndependentPartitionedRLCResult,
+export IndependentPassiveLadderResult,
+       IndependentPartitionedRLCResult,
+       independent_exact_passive_ladder,
        independent_exact_passive_rlc,
        independent_partitioned_passive_rlc
+
+"""Independent exact trace for a source-fed series-RL and shunt-RC ladder."""
+struct IndependentPassiveLadderResult
+    time_s::Vector{Float64}
+    series_current_a::Matrix{Float64}
+    shunt_voltage_v::Matrix{Float64}
+    nodal_kcl_residual_a::Matrix{Float64}
+    source_power_w::Vector{Float64}
+    resistive_loss_w::Vector{Float64}
+    storage_rate_w::Vector{Float64}
+    power_balance_residual_w::Vector{Float64}
+end
+
+function _independent_passive_ladder_parameters(
+    source_voltage_v,
+    series_resistance_ohm,
+    series_inductance_h,
+    shunt_resistance_ohm,
+    shunt_capacitance_f,
+    initial_series_current_a,
+    initial_shunt_voltage_v,
+)
+    source_voltage = Float64(source_voltage_v)
+    series_resistance = Float64[series_resistance_ohm...]
+    series_inductance = Float64[series_inductance_h...]
+    shunt_resistance = Float64[shunt_resistance_ohm...]
+    shunt_capacitance = Float64[shunt_capacitance_f...]
+    initial_current = Float64[initial_series_current_a...]
+    initial_voltage = Float64[initial_shunt_voltage_v...]
+    state_count = length(series_resistance)
+    state_count > 0 || throw(ArgumentError(
+        "independent passive ladder requires at least one section",
+    ))
+    all(length(values) == state_count for values in (
+        series_inductance,
+        shunt_resistance,
+        shunt_capacitance,
+        initial_current,
+        initial_voltage,
+    )) || throw(DimensionMismatch(
+        "independent passive ladder parameter vectors must have equal lengths",
+    ))
+    all(isfinite, vcat(
+        [source_voltage],
+        series_resistance,
+        series_inductance,
+        shunt_resistance,
+        shunt_capacitance,
+        initial_current,
+        initial_voltage,
+    )) || throw(ArgumentError(
+        "independent passive ladder parameters and initial state must be finite",
+    ))
+    all(>=(0.0), series_resistance) &&
+        all(>(0.0), series_inductance) &&
+        all(>(0.0), shunt_resistance) &&
+        all(>(0.0), shunt_capacitance) || throw(ArgumentError(
+            "independent passive ladder requires passive resistors and positive storage",
+        ))
+    return (
+        source_voltage,
+        series_resistance,
+        series_inductance,
+        shunt_resistance,
+        shunt_capacitance,
+        initial_current,
+        initial_voltage,
+    )
+end
+
+"""
+Evaluate a source-fed series-RL and shunt-RC ladder by a dense matrix
+exponential. Section `j` carries current from node `j-1` to node `j`; node
+zero is the ideal source and every node `j` owns one resistor and capacitor
+to ground. This formulation shares no production stamp, timestep, regional
+exchange, rollback, or history implementation.
+"""
+function independent_exact_passive_ladder(;
+    start_time_s::Real,
+    stop_time_s::Real,
+    output_step_s::Real,
+    source_voltage_v::Real,
+    series_resistance_ohm,
+    series_inductance_h,
+    shunt_resistance_ohm,
+    shunt_capacitance_f,
+    initial_series_current_a = zeros(length(series_resistance_ohm)),
+    initial_shunt_voltage_v = zeros(length(series_resistance_ohm)),
+)
+    start_time, stop_time, output_step = Float64.(tuple(
+        start_time_s,
+        stop_time_s,
+        output_step_s,
+    ))
+    all(isfinite, (start_time, stop_time, output_step)) &&
+        start_time < stop_time && output_step > 0.0 || throw(ArgumentError(
+            "independent passive ladder requires a finite forward calendar",
+        ))
+    ratio = (stop_time - start_time) / output_step
+    output_interval_count = round(Int, ratio)
+    abs(ratio - output_interval_count) <= 32eps(max(abs(ratio), 1.0)) ||
+        throw(ArgumentError(
+            "independent passive ladder horizon must divide by its output step",
+        ))
+    source_voltage, series_resistance, series_inductance,
+        shunt_resistance, shunt_capacitance, initial_current,
+        initial_voltage = _independent_passive_ladder_parameters(
+            source_voltage_v,
+            series_resistance_ohm,
+            series_inductance_h,
+            shunt_resistance_ohm,
+            shunt_capacitance_f,
+            initial_series_current_a,
+            initial_shunt_voltage_v,
+        )
+    section_count = length(series_resistance)
+    dynamics = zeros(Float64, 2section_count, 2section_count)
+    forcing = zeros(Float64, 2section_count)
+    for section_index in 1:section_count
+        current_index = section_index
+        voltage_index = section_count + section_index
+        dynamics[current_index, current_index] =
+            -series_resistance[section_index] / series_inductance[section_index]
+        dynamics[current_index, voltage_index] =
+            -inv(series_inductance[section_index])
+        if section_index == 1
+            forcing[current_index] =
+                source_voltage / series_inductance[section_index]
+        else
+            dynamics[current_index, voltage_index - 1] =
+                inv(series_inductance[section_index])
+        end
+        dynamics[voltage_index, current_index] =
+            inv(shunt_capacitance[section_index])
+        if section_index < section_count
+            dynamics[voltage_index, current_index + 1] =
+                -inv(shunt_capacitance[section_index])
+        end
+        dynamics[voltage_index, voltage_index] =
+            -inv(
+                shunt_resistance[section_index] *
+                shunt_capacitance[section_index],
+            )
+    end
+    equilibrium = -(dynamics \ forcing)
+    initial_state = vcat(initial_current, initial_voltage)
+    times = start_time .+ collect(0:output_interval_count) .* output_step
+    series_current = Matrix{Float64}(undef, section_count, length(times))
+    shunt_voltage = similar(series_current)
+    nodal_kcl_residual = similar(series_current)
+    source_power = Vector{Float64}(undef, length(times))
+    resistive_loss = similar(source_power)
+    storage_rate = similar(source_power)
+    power_balance_residual = similar(source_power)
+    for sample_index in eachindex(times)
+        elapsed = times[sample_index] - start_time
+        state = equilibrium +
+            exp(dynamics * elapsed) * (initial_state - equilibrium)
+        derivative = dynamics * state + forcing
+        current = @view(state[1:section_count])
+        voltage = @view(state[(section_count + 1):end])
+        current_derivative = @view(derivative[1:section_count])
+        voltage_derivative = @view(derivative[(section_count + 1):end])
+        series_current[:, sample_index] .= current
+        shunt_voltage[:, sample_index] .= voltage
+        for node_index in 1:section_count
+            outgoing_current = node_index < section_count ?
+                current[node_index + 1] : 0.0
+            nodal_kcl_residual[node_index, sample_index] =
+                current[node_index] - outgoing_current -
+                voltage[node_index] / shunt_resistance[node_index] -
+                shunt_capacitance[node_index] * voltage_derivative[node_index]
+        end
+        source_power[sample_index] = source_voltage * current[1]
+        resistive_loss[sample_index] =
+            sum(series_resistance .* current .^ 2) +
+            sum(voltage .^ 2 ./ shunt_resistance)
+        storage_rate[sample_index] =
+            sum(series_inductance .* current .* current_derivative) +
+            sum(shunt_capacitance .* voltage .* voltage_derivative)
+        power_balance_residual[sample_index] =
+            source_power[sample_index] - resistive_loss[sample_index] -
+            storage_rate[sample_index]
+    end
+    return IndependentPassiveLadderResult(
+        times,
+        series_current,
+        shunt_voltage,
+        nodal_kcl_residual,
+        source_power,
+        resistive_loss,
+        storage_rate,
+        power_balance_residual,
+    )
+end
 
 """Independent passive two-region trace with regional exchange diagnostics."""
 struct IndependentPartitionedRLCResult
