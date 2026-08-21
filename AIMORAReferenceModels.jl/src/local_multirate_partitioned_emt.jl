@@ -1,9 +1,13 @@
 export IndependentPassiveLadderResult,
+       IndependentExponentialHistorySubcycleResult,
+       IndependentLaggedRLCResult,
        IndependentPartitionedRLCResult,
        IndependentSwitchedPassiveLinkResult,
        independent_exact_passive_ladder,
        independent_exact_passive_rlc,
        independent_exact_switched_passive_link,
+       independent_exponential_history_subcycle,
+       independent_lagged_passive_rlc,
        independent_partitioned_passive_rlc
 
 """Independent exact trace for a source-fed series-RL and shunt-RC ladder."""
@@ -725,5 +729,338 @@ function independent_partitioned_passive_rlc(;
         kcl_residuals,
         energy_defects,
         iterations,
+    )
+end
+
+"""Independent exact exponential-history trace under one linearly reconstructed network interval."""
+struct IndependentExponentialHistorySubcycleResult
+    time_s::Vector{Float64}
+    input::Vector{ComplexF64}
+    state::Vector{ComplexF64}
+    endpoint_history::ComplexF64
+    endpoint_gain::ComplexF64
+    exact_endpoint_state::ComplexF64
+    endpoint_identity_error::Float64
+end
+
+function _independent_exponential_history_step(
+    previous_state::ComplexF64,
+    previous_input::ComplexF64,
+    current_input::ComplexF64,
+    pole::ComplexF64,
+    residue::ComplexF64,
+    step_s::Float64,
+)
+    scaled_pole = pole * step_s
+    decay = exp(-scaled_pole)
+    linear_average = -expm1(-scaled_pole) / scaled_pole
+    current_gain = residue * (1.0 - linear_average)
+    previous_gain = residue * (linear_average - decay)
+    return decay * previous_state +
+        current_gain * current_input +
+        previous_gain * previous_input
+end
+
+function _independent_exponential_history_trace(
+    pole::ComplexF64,
+    residue::ComplexF64,
+    network_step_s::Float64,
+    local_substeps::Int,
+    previous_state::ComplexF64,
+    previous_input::ComplexF64,
+    endpoint_input::ComplexF64,
+)
+    local_step_s = network_step_s / local_substeps
+    time = collect(0:local_substeps) .* local_step_s
+    input = ComplexF64[
+        previous_input +
+        (endpoint_input - previous_input) * (index / local_substeps)
+        for index in 0:local_substeps
+    ]
+    state = Vector{ComplexF64}(undef, local_substeps + 1)
+    state[1] = previous_state
+    for index in 1:local_substeps
+        state[index + 1] = _independent_exponential_history_step(
+            state[index],
+            input[index],
+            input[index + 1],
+            pole,
+            residue,
+            local_step_s,
+        )
+    end
+    return time, input, state
+end
+
+"""
+Advance `x' = -p*x + p*r*u(t)` over one network interval using exact
+exponential convolution on each local substep. The input is the causal linear
+reconstruction between the accepted previous endpoint and the proposed
+network endpoint. The returned affine endpoint map is independently obtained
+from zero and unit endpoint probes and is compared with the one-interval
+closed form.
+"""
+function independent_exponential_history_subcycle(;
+    pole_per_s,
+    residue,
+    network_step_s::Real,
+    local_substeps::Integer,
+    previous_state=0.0,
+    previous_input=0.0,
+    endpoint_input=0.0,
+)
+    pole = ComplexF64(pole_per_s)
+    response_residue = ComplexF64(residue)
+    network_step = Float64(network_step_s)
+    substeps = Int(local_substeps)
+    initial_state = ComplexF64(previous_state)
+    initial_input = ComplexF64(previous_input)
+    final_input = ComplexF64(endpoint_input)
+    all(isfinite, (
+        real(pole),
+        imag(pole),
+        real(response_residue),
+        imag(response_residue),
+        network_step,
+        real(initial_state),
+        imag(initial_state),
+        real(initial_input),
+        imag(initial_input),
+        real(final_input),
+        imag(final_input),
+    )) || throw(ArgumentError(
+        "independent exponential-history inputs must be finite",
+    ))
+    real(pole) > 0.0 && network_step > 0.0 && substeps >= 2 || throw(
+        ArgumentError(
+            "independent exponential history requires a stable pole, positive network step, and at least two local substeps",
+        ),
+    )
+    time, input, state = _independent_exponential_history_trace(
+        pole,
+        response_residue,
+        network_step,
+        substeps,
+        initial_state,
+        initial_input,
+        final_input,
+    )
+    _, _, zero_endpoint_state = _independent_exponential_history_trace(
+        pole,
+        response_residue,
+        network_step,
+        substeps,
+        initial_state,
+        initial_input,
+        0.0 + 0.0im,
+    )
+    _, _, unit_endpoint_state = _independent_exponential_history_trace(
+        pole,
+        response_residue,
+        network_step,
+        substeps,
+        initial_state,
+        initial_input,
+        1.0 + 0.0im,
+    )
+    endpoint_history = last(zero_endpoint_state)
+    endpoint_gain = last(unit_endpoint_state) - endpoint_history
+    exact_endpoint = _independent_exponential_history_step(
+        initial_state,
+        initial_input,
+        final_input,
+        pole,
+        response_residue,
+        network_step,
+    )
+    identity_error = abs(
+        last(state) - (endpoint_history + endpoint_gain * final_input),
+    )
+    return IndependentExponentialHistorySubcycleResult(
+        time,
+        input,
+        state,
+        endpoint_history,
+        endpoint_gain,
+        exact_endpoint,
+        identity_error,
+    )
+end
+
+"""Independent one-pass zero-order causal current exchange for a split series-RL/shunt-RC network."""
+struct IndependentLaggedRLCResult
+    time_s::Vector{Float64}
+    interface_current_a::Vector{Float64}
+    positive_terminal_voltage_v::Vector{Float64}
+    negative_terminal_voltage_v::Vector{Float64}
+    voltage_residual_v::Vector{Float64}
+    communication_error_estimate_v::Vector{Float64}
+    interface_value_age_s::Vector{Float64}
+    communication_accepted::Vector{Bool}
+end
+
+"""
+Independently execute a one-pass causal interface exchange. Each window holds
+the current accepted at its starting communication point. Regional endpoint
+voltages use independently written trapezoidal series-RL and shunt-RC
+companions; only after both endpoints are known is the next-window current
+formed from the oriented voltage residual and declared wave impedance.
+"""
+function independent_lagged_passive_rlc(;
+    start_time_s::Real,
+    stop_time_s::Real,
+    communication_step_s::Real,
+    source_amplitude_v::Real,
+    source_frequency_hz::Real,
+    source_phase_rad::Real=0.0,
+    source_offset_v::Real=0.0,
+    source_resistance_ohm::Real,
+    source_inductance_h::Real,
+    load_resistance_ohm::Real,
+    load_capacitance_f::Real,
+    reference_impedance_ohm::Real,
+    relaxation::Real=1.0,
+    voltage_base_v::Real=1.0,
+    communication_error_absolute_v::Real=1.0e-8,
+    communication_error_relative::Real=0.0,
+    initial_interface_current_a::Real=0.0,
+    initial_positive_voltage_v::Real=0.0,
+    initial_negative_voltage_v::Real=0.0,
+    initial_load_capacitor_current_a::Real=0.0,
+)
+    start_time, stop_time, communication_step, source_amplitude,
+        source_frequency, source_phase, source_offset, source_resistance,
+        source_inductance, load_resistance, load_capacitance,
+        reference_impedance, damping, voltage_base, error_absolute,
+        error_relative, initial_current, initial_positive_voltage,
+        initial_negative_voltage, initial_capacitor_current = Float64.(tuple(
+            start_time_s,
+            stop_time_s,
+            communication_step_s,
+            source_amplitude_v,
+            source_frequency_hz,
+            source_phase_rad,
+            source_offset_v,
+            source_resistance_ohm,
+            source_inductance_h,
+            load_resistance_ohm,
+            load_capacitance_f,
+            reference_impedance_ohm,
+            relaxation,
+            voltage_base_v,
+            communication_error_absolute_v,
+            communication_error_relative,
+            initial_interface_current_a,
+            initial_positive_voltage_v,
+            initial_negative_voltage_v,
+            initial_load_capacitor_current_a,
+        ))
+    values = (
+        start_time,
+        stop_time,
+        communication_step,
+        source_amplitude,
+        source_frequency,
+        source_phase,
+        source_offset,
+        source_resistance,
+        source_inductance,
+        load_resistance,
+        load_capacitance,
+        reference_impedance,
+        damping,
+        voltage_base,
+        error_absolute,
+        error_relative,
+        initial_current,
+        initial_positive_voltage,
+        initial_negative_voltage,
+        initial_capacitor_current,
+    )
+    all(isfinite, values) || throw(ArgumentError(
+        "independent lagged RLC inputs must be finite",
+    ))
+    start_time < stop_time && communication_step > 0.0 || throw(
+        ArgumentError("independent lagged RLC calendar must advance"),
+    )
+    source_frequency >= 0.0 && source_resistance >= 0.0 &&
+        source_inductance > 0.0 && load_resistance > 0.0 &&
+        load_capacitance > 0.0 && reference_impedance > 0.0 &&
+        0.0 < damping <= 1.0 && voltage_base > 0.0 &&
+        error_absolute > 0.0 && error_relative >= 0.0 || throw(
+        ArgumentError("independent lagged RLC physical and numerical values are invalid"),
+    )
+    ratio = (stop_time - start_time) / communication_step
+    window_count = round(Int, ratio)
+    abs(ratio - window_count) <= 32eps(max(abs(ratio), 1.0)) || throw(
+        ArgumentError("independent lagged RLC horizon is not commensurate"),
+    )
+    source_voltage(time_s) = source_offset + source_amplitude *
+        sin(2.0 * pi * source_frequency * time_s + source_phase)
+    time = start_time .+ collect(0:window_count) .* communication_step
+    interface_current = Vector{Float64}(undef, window_count + 1)
+    positive_voltage = similar(interface_current)
+    negative_voltage = similar(interface_current)
+    voltage_residual = Vector{Float64}(undef, window_count)
+    communication_error = similar(voltage_residual)
+    value_age = fill(communication_step, window_count)
+    accepted = Vector{Bool}(undef, window_count)
+    interface_current[1] = initial_current
+    positive_voltage[1] = initial_positive_voltage
+    negative_voltage[1] = initial_negative_voltage
+    source_branch_current = initial_current
+    source_branch_voltage = source_voltage(start_time) - initial_positive_voltage
+    load_capacitor_current = initial_capacitor_current
+    source_companion_resistance = source_resistance +
+        2.0 * source_inductance / communication_step
+    source_history_coefficient =
+        2.0 * source_inductance / communication_step - source_resistance
+    load_companion_conductance = 2.0 * load_capacitance / communication_step
+    load_resistance_conductance = inv(load_resistance)
+    for window_index in 1:window_count
+        held_current = interface_current[window_index]
+        source_history_current = (
+            source_history_coefficient * source_branch_current +
+            source_branch_voltage
+        ) / source_companion_resistance
+        next_source_branch_voltage = source_companion_resistance *
+            (held_current - source_history_current)
+        next_positive_voltage = source_voltage(time[window_index + 1]) -
+            next_source_branch_voltage
+        load_history_current =
+            -load_companion_conductance * negative_voltage[window_index] -
+            load_capacitor_current
+        next_negative_voltage = (held_current - load_history_current) /
+            (load_resistance_conductance + load_companion_conductance)
+        next_load_capacitor_current =
+            load_companion_conductance * next_negative_voltage +
+            load_history_current
+        residual = next_positive_voltage - next_negative_voltage
+        error = abs(residual)
+        limit = error_absolute + error_relative * max(
+            voltage_base,
+            abs(next_positive_voltage),
+            abs(next_negative_voltage),
+        )
+        positive_voltage[window_index + 1] = next_positive_voltage
+        negative_voltage[window_index + 1] = next_negative_voltage
+        voltage_residual[window_index] = residual
+        communication_error[window_index] = error
+        accepted[window_index] = error <= limit
+        interface_current[window_index + 1] = held_current +
+            damping * residual / (2.0 * reference_impedance)
+        source_branch_current = held_current
+        source_branch_voltage = next_source_branch_voltage
+        load_capacitor_current = next_load_capacitor_current
+    end
+    return IndependentLaggedRLCResult(
+        time,
+        interface_current,
+        positive_voltage,
+        negative_voltage,
+        voltage_residual,
+        communication_error,
+        value_age,
+        accepted,
     )
 end

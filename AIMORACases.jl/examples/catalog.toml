@@ -243,6 +243,17 @@ result_kind = "task_trace"
 source_ids = ["case-input:emt:general-multirate-task-platform"]
 
 [[case]]
+id = "emt_local_multirate_partitioned_network"
+study = "emt"
+path = "examples/emt/local_multirate_partitioned_network/run.jl"
+entrypoint = "examples/emt/local_multirate_partitioned_network/run.jl"
+description = "Explicit two- and eight-region fixed-step EMT with three local rates, seven conservative interfaces, Semlyen histories, machine/measurement/converter owners, coordinated event/topology restart, deterministic traces, and communication refinement."
+requires_solver = true
+reference_compatible = false
+result_kind = "partition_interface_waveform"
+source_ids = ["case-input:emt:local-multirate-partitioned-network"]
+
+[[case]]
 id = "emt_user_defined_components"
 study = "emt"
 path = "examples/emt/user_defined_components/run.jl"

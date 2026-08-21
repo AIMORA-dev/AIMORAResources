@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-20"
-source_count = 506
+snapshot_date = "2026-08-21"
+source_count = 507
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 73
+"canonical_case_input" = 74
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -287,6 +287,15 @@ path = "examples/emt/general_multirate_task_platform/run.jl"
 disposition = "example"
 example_ids = ["emt_general_multirate_task_platform"]
 reason = "AIMORA-authored public runner couples sixteen exact rational schedules across all eight task families to a real EMT-controlled source, event and delayed-release collisions, dependency order, split restart, atomic rollback, typed results, and explicit non-physics/non-conformance limits."
+
+[[source]]
+id = "case-input:emt:local-multirate-partitioned-network"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/local_multirate_partitioned_network/run.jl"
+disposition = "example"
+example_ids = ["emt_local_multirate_partitioned_network"]
+reason = "AIMORA-authored synthetic public runner declares the exact two- and eight-region local-step plans, oriented interfaces, Semlyen line, apparatus owners, event/topology checkpoint, refinement products, deterministic metrics, and explicit unsupported boundaries without copying an external implementation or proprietary result."
 
 [[source]]
 id = "case-input:emt:user-defined-components"
