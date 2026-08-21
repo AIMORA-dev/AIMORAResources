@@ -83,6 +83,7 @@ include("coupled_line_runtime.jl")
 include("transformer_apparatus.jl")
 include("modern_machine_families.jl")
 include("portable_emt_snapshots.jl")
+include("local_multirate_partitioned_emt.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()
