@@ -18,7 +18,7 @@ source_count = 508
 "aimora_reference" = 9
 
 [counts_by_disposition]
-"example" = 91
+"example" = 92
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14

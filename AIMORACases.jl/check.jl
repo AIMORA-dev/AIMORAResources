@@ -381,11 +381,11 @@ for example_root in example_directories
     else
         ".svg" in extensions ||
             fail("$(result_kind) example $(label) must write an SVG figure")
-        !isempty(intersect(extensions, Set((".csv", ".json", ".toml", ".txt")))) ||
+        !isempty(intersect(extensions, Set((".csv", ".json", ".md", ".toml", ".txt")))) ||
             fail("$(result_kind) example $(label) must write a data or report artifact")
         occursin(".svg", readme) ||
             fail("README for $(label) does not document its SVG figure")
-        any(occursin(extension, readme) for extension in (".csv", ".json", ".toml", ".txt")) ||
+        any(occursin(extension, readme) for extension in (".csv", ".json", ".md", ".toml", ".txt")) ||
             fail("README for $(label) does not document a data or report artifact")
     end
 end
