@@ -54,3 +54,5 @@ AIMORACases.jl/examples/**/outputs/*
 !AIMORACases.jl/examples/**/outputs/comparison-summary.md
 !AIMORACases.jl/examples/**/outputs/qualification-summary.md
 !AIMORACases.jl/examples/**/outputs/*.svg
+!AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_full.aimora-snapshot
+!AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_public_reference.aimora-snapshot

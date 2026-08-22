@@ -7,6 +7,8 @@ include("coupled_line_runtime.jl")
 include("transformer_apparatus.jl")
 include("modern_machine_families.jl")
 include("measurement_chains.jl")
+include("portable_emt_snapshots.jl")
+include("local_multirate_partitioned_emt.jl")
 
 @testset "independent extended semiconductor formulations" begin
     recovery = independent_recovered_charge_backward_euler(
@@ -61,6 +63,85 @@ include("measurement_chains.jl")
     @test thermal.stored_energy_j >= 0.0
 end
 
+@testset "independent exact passive ladder" begin
+    reference = independent_exact_passive_ladder(
+        start_time_s = 0.0,
+        stop_time_s = 4.0e-4,
+        output_step_s = 1.0e-4,
+        source_voltage_v = 120.0,
+        series_resistance_ohm = [0.8, 0.9, 1.0],
+        series_inductance_h = [0.015, 0.012, 0.010],
+        shunt_resistance_ohm = [48.0, 36.0, 24.0],
+        shunt_capacitance_f = [8.0e-5, 1.0e-4, 1.5e-4],
+    )
+    @test reference.time_s == collect(0:4) .* 1.0e-4
+    @test size(reference.series_current_a) == (3, 5)
+    @test size(reference.shunt_voltage_v) == (3, 5)
+    @test all(iszero, reference.series_current_a[:, 1])
+    @test all(iszero, reference.shunt_voltage_v[:, 1])
+    @test maximum(abs, reference.nodal_kcl_residual_a) <= 2.0e-13
+    @test maximum(abs, reference.power_balance_residual_w) <= 2.0e-11
+    @test all(>=(0.0), reference.resistive_loss_w)
+    @test_throws DimensionMismatch independent_exact_passive_ladder(
+        start_time_s = 0.0,
+        stop_time_s = 1.0e-3,
+        output_step_s = 1.0e-4,
+        source_voltage_v = 1.0,
+        series_resistance_ohm = [1.0, 2.0],
+        series_inductance_h = [1.0],
+        shunt_resistance_ohm = [1.0, 2.0],
+        shunt_capacitance_f = [1.0, 2.0],
+    )
+end
+
+@testset "independent switched passive link" begin
+    reference = independent_exact_switched_passive_link(
+        start_time_s = 0.0,
+        stop_time_s = 4.0e-4,
+        output_step_s = 1.0e-4,
+        switch_open_time_s = 2.0e-4,
+        source_voltage_v = 120.0,
+        source_resistance_ohm = 0.8,
+        source_inductance_h = 0.01,
+        first_shunt_resistance_ohm = 40.0,
+        first_shunt_capacitance_f = 1.0e-4,
+        second_shunt_resistance_ohm = 20.0,
+        second_shunt_capacitance_f = 2.0e-4,
+        link_resistance_ohm = 4.0,
+        switch_closed_conductance_s = 0.25,
+    )
+    @test reference.time_s == collect(0:4) .* 1.0e-4
+    @test all(iszero, reference.source_current_a[1:1])
+    @test all(iszero, reference.first_node_voltage_v[1:1])
+    @test all(iszero, reference.second_node_voltage_v[1:1])
+    @test maximum(abs, reference.nodal_kcl_residual_a) <= 2.0e-13
+    @test maximum(abs, reference.power_balance_residual_w) <= 2.0e-11
+    @test reference.link_current_a[3] ≈
+        0.5 * (
+            reference.first_node_voltage_v[3] -
+            reference.second_node_voltage_v[3]
+        )
+    @test reference.link_current_a[4] ≈
+        0.25 * (
+            reference.first_node_voltage_v[4] -
+            reference.second_node_voltage_v[4]
+        )
+    @test_throws ArgumentError independent_exact_switched_passive_link(
+        start_time_s = 0.0,
+        stop_time_s = 4.0e-4,
+        output_step_s = 1.0e-4,
+        switch_open_time_s = 1.5e-4,
+        source_voltage_v = 120.0,
+        source_resistance_ohm = 0.8,
+        source_inductance_h = 0.01,
+        first_shunt_resistance_ohm = 40.0,
+        first_shunt_capacitance_f = 1.0e-4,
+        second_shunt_resistance_ohm = 20.0,
+        second_shunt_capacitance_f = 2.0e-4,
+        link_resistance_ohm = 4.0,
+        switch_closed_conductance_s = 0.25,
+    )
+end
 
 @testset "independent extended VSC control and filter references" begin
     active = independent_vsc_current_projection(200.0, 100.0, 180.0, :active)

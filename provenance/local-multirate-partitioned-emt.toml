@@ -1,0 +1,40 @@
+schema = "aimora-public-science-provenance-v1"
+id = "local-multirate-partitioned-emt"
+owner = "AIMORAResources"
+rights = "AIMORA-authored equations, synthetic parameters, runners, summaries, CSV data, and SVG plots under the path-controlling AIMORAResources licence; cited publications and specifications retain their own rights"
+redistribution = "Only bibliographic facts, public specification concepts, and independently restated equations are recorded; no publication text, figure, table, external implementation, proprietary simulator output, restricted model, or private solver algorithm is redistributed"
+uncertainty = "Synthetic parameters are exact inputs; equipment, field, partition-selection, model-form, and universal active-interface stability uncertainty are explicitly unknown"
+public_cases = ["emt_local_multirate_partitioned_network"]
+catalog_entry = "not_applicable: the case uses synthetic parameters and no reusable manufacturer equipment record"
+independent_owner = "AIMORAReferenceModels.jl analytic passive regional equations plus private AIMORAValidation manufactured, refinement, conservation, mutation, restart, and coupled evidence"
+
+[[authority]]
+id = "dommel_1969"
+citation = "H. W. Dommel, Digital Computer Solution of Electromagnetic Transients in Single- and Multiphase Networks, IEEE Transactions on Power Apparatus and Systems, 1969, https://doi.org/10.1109/TPAS.1969.292459"
+use = "nodal EMT companion, accepted history, transmission-line delay, and energy orientation authority"
+copied_content = false
+
+[[authority]]
+id = "lelarasmee_ruehli_sangiovanni_1982"
+citation = "E. Lelarasmee, A. E. Ruehli, and A. L. Sangiovanni-Vincentelli, The Waveform Relaxation Method for Time-Domain Analysis of Large Scale Integrated Circuits, IEEE TCAD, 1982, https://doi.org/10.1109/TCAD.1982.1270004"
+use = "partitioned subsystem waveform maps, fixed-point iteration, convergence, and time-window authority"
+copied_content = false
+
+[[authority]]
+id = "hairer_norsett_wanner_1993"
+citation = "E. Hairer, S. P. Norsett, and G. Wanner, Solving Ordinary Differential Equations I: Nonstiff Problems, second revised edition, 1993, https://doi.org/10.1007/978-3-540-78862-1"
+use = "one-step consistency, interpolation, local/global error, and refinement authority"
+copied_content = false
+
+[[authority]]
+id = "han_miao_yu_2018"
+citation = "K. Han et al., Multi-Rate and Parallel Electromagnetic Transient Simulation Considering Nonlinear Characteristics of a Power System, Energies 11(2), 2018, https://doi.org/10.3390/en11020468"
+use = "open power-system multirate grouping, integer synchronization, nonlinear treatment, and single-rate comparison context"
+copied_content = false
+
+[[authority]]
+id = "fmi_3_0_2_boundary"
+citation = "Modelica Association Project FMI, Functional Mock-up Interface Specification 3.0.2, 2024, https://fmi-standard.org/docs/3.0.2/"
+use = "communication-point, state, event, and rollback concepts used only to define explicit non-FMI exclusions"
+copied_content = false
+conformance_claim = false

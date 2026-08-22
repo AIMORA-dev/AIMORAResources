@@ -1,0 +1,8 @@
+BEGIN NEW DATA CASE
+ 1.0E-04 6.0E-04
+source src source 1.0e9 1.0 60.0 0.0 1.0
+bergeron_line line source bus 2.0 2.0e-4 1.0e-4 0.8
+resistor load bus 0 2.0
+time_switch tie bus 0 8.0e-4 2.0e-3 false 20.0 0.0
+over16_output VBUS bus
+END

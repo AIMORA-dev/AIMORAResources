@@ -1,0 +1,30 @@
+schema = "aimora-public-science-provenance-v1"
+id = "portable-emt-snapshots"
+owner = "AIMORAResources"
+rights = "AIMORA-authored format, equations, synthetic inputs, runners, snapshots, summaries, CSV data, and SVG plot under the path-controlling AIMORAResources licence; cited specifications and publications retain their own rights"
+redistribution = "No external encoder, external snapshot, standard text, proprietary simulator state, private solver source, private type name, restricted evidence, credential, or machine path is redistributed"
+uncertainty = "Canonical round trip adds no physical uncertainty; the synthetic case inputs are exact and equipment, field, hostile-input security, unexecuted-platform, and universal portability uncertainty remain explicitly unknown"
+public_cases = ["emt_portable_snapshot_restart"]
+catalog_entry = "not_applicable: the snapshot case contains no reusable manufacturer equipment record"
+independent_owner = "AIMORAReferenceModels.jl independent bounded encoder/decoder and hybrid inventory interpretation plus private AIMORAValidation corruption, migration, reconstruction, fresh-process, continuation, mutation, and P0-P2 evidence"
+
+[[authority]]
+id = "rfc_8949"
+citation = "C. Bormann and P. Hoffman, RFC 8949: Concise Binary Object Representation (CBOR), 2020, https://www.rfc-editor.org/rfc/rfc8949"
+use = "public deterministic-encoding design context only; AIMORA uses its own typed framing and does not claim CBOR compatibility"
+copied_content = false
+conformance_claim = false
+
+[[authority]]
+id = "fmi_3_0_2_boundary"
+citation = "Modelica Association Project FMI, Functional Mock-up Interface Specification 3.0.2, 2024, https://fmi-standard.org/docs/3.0.2/"
+use = "state, rollback, and serialization terminology used only to define explicit non-FMI exclusions"
+copied_content = false
+conformance_claim = false
+
+[[authority]]
+id = "nist_fips_180_4"
+citation = "National Institute of Standards and Technology, FIPS PUB 180-4 Secure Hash Standard, 2015, https://doi.org/10.6028/NIST.FIPS.180-4"
+use = "SHA-256 content and section integrity identity"
+copied_content = false
+conformance_claim = false

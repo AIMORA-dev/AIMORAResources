@@ -1,0 +1,25 @@
+# Local Multirate and Partitioned EMT Network
+
+- `accepted`: true
+- `region_count`: 8
+- `interface_count`: 7
+- `distinct_local_rates`: 3
+- `communication_step_s`: 2.5e-6
+- `accepted_windows`: 64
+- `rejected_windows`: 0
+- `regional_local_steps`: (256, 128, 64, 64, 64, 64, 64, 64)
+- `topology_and_machine_event_time_s`: 8.0e-5
+- `maximum_interface_voltage_residual_v`: 1.125980638816415e-5
+- `maximum_interface_kcl_residual_a`: 0.0
+- `maximum_interface_energy_defect_j`: 1.0118484538793705e-11
+- `maximum_communication_error_estimate_v`: 0.006891316273137285
+- `passive_two_region_endpoint_errors`: (6.14120953225044e-6, 1.2282427135794328e-6, 3.6755290898296665e-14)
+- `accepted_to_equal_accuracy_monolithic_difference_v`: 0.11310493223173523
+- `equal_step_to_monolithic_difference_v`: 0.0029432356530962878
+- `coarse_10_microsecond_boundary_refused`: true
+- `split_restart_exact`: true
+- `checkpoint_time_s`: 5.0e-6
+- `checkpoint_signature_sha256`: c8ee2db0e96ea26a4d63d8f77816b525a488deed414d4f3638112f5c60438f37
+- `deterministic_signature_sha256`: e91628ead699673c13415aa789e58fa467c65fc346164e12e408bc374ab73b30
+- `private_solver_required`: true
+- `unsupported`: automatic partition inference, noncommensurate or variable global steps, distributed protocols, network transport, GPU, DASSL, real-time/HIL, universal active-interface stability, standards, and certification
