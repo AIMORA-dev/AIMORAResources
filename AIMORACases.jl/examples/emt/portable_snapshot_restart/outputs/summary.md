@@ -9,7 +9,7 @@
 - `public_state_fields`: 69
 - `public_state_scalars`: 89
 - `canonical_bytes`: 49043
-- `content_sha256`: 4fd4d74ddebaf54f978f06caaf8f21efae887365288bb6a2a2b41849c244443b
+- `content_sha256`: efb3f428d8548f87f39600f60914677a41c65f2c2f2022b57ae30d43c37e6162
 - `deterministic_bytes`: true
 - `deterministic_descriptor`: true
 - `exact_time`: true
@@ -17,7 +17,7 @@
 - `exact_output`: true
 - `checkpoint_state_error`: 0.0
 - `public_reference_bytes`: 1262
-- `public_reference_sha256`: 04b44d9064c3ed098da9b4dfc84b389a9dcf0b354a61661454d92844b2ee1024
+- `public_reference_sha256`: da0f5c316312ca3eebae98916185421084b6ce25cc0884339363741b0a8bec86
 - `public_solver_free_readable`: true
 - `corruption_failure`: integrity
 - `identity_failure`: model_mismatch

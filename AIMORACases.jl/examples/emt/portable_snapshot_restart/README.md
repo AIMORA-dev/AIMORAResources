@@ -12,6 +12,6 @@ make run
 
 ## Output artifacts
 
-The runner writes the two `.aimora-snapshot` products, a split/uninterrupted waveform CSV and SVG, and `summary.md`. The summary records schema/profile/section identities, canonical byte counts and hashes, represented time and step, exact continuation, independent public readability, corruption and identity refusal, and the explicit private/public boundary.
+The runner writes the two `.aimora-snapshot` products, the split/uninterrupted waveform data in `portable_snapshot_restart.csv`, the matching figure in `portable_snapshot_restart.svg`, and `summary.md`. The summary records schema/profile/section identities, canonical byte counts and hashes, represented time and step, exact continuation, independent public readability, corruption and identity refusal, and the explicit private/public boundary.
 
 The case qualifies AIMORA's version-1 canonical snapshot envelope and exact AIMORA continuation for the declared fixed-step network. It does not claim ATP/PSCAD restart compatibility, live migration, encryption, signatures, FMI/SSP/HELICS, DASSL, GPU state, hard-real-time/HIL behavior, hostile-input safety, certification, or portability on an operating system that has not been executed.
