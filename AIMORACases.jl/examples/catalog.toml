@@ -254,6 +254,17 @@ result_kind = "partition_interface_waveform"
 source_ids = ["case-input:emt:local-multirate-partitioned-network"]
 
 [[case]]
+id = "emt_portable_snapshot_restart"
+study = "emt"
+path = "examples/emt/portable_snapshot_restart/run.jl"
+entrypoint = "examples/emt/portable_snapshot_restart/run.jl"
+description = "Canonical portable_full capture, solver-free descriptor inspection, public-reference decoding, exact isolated split restart, and atomic corruption/identity refusal."
+requires_solver = true
+reference_compatible = false
+result_kind = "portable_snapshot_restart"
+source_ids = ["case-input:emt:portable-snapshot-restart"]
+
+[[case]]
 id = "emt_user_defined_components"
 study = "emt"
 path = "examples/emt/user_defined_components/run.jl"

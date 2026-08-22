@@ -147,6 +147,41 @@ function synchronization_trace_error(reference, candidate)
     return maximum_error_v
 end
 
+function monolithic_synchronization_trace_error(prepared, candidate)
+    context = only(prepared.regions).workspace.runtime.context
+    maximum_error_v = 0.0
+    for (candidate_index, time_s) in enumerate(candidate.time_s)
+        reference_index = searchsortedfirst(context.time_s, time_s)
+        reference_index <= length(context.time_s) || error(
+            "monolithic trace omits synchronization time $time_s",
+        )
+        isapprox(
+            context.time_s[reference_index],
+            time_s;
+            atol=16eps(max(abs(time_s), 1.0)),
+            rtol=0.0,
+        ) || error("monolithic and partition synchronization clocks differ")
+        for interface_index in axes(candidate.positive_terminal_voltage_v, 1)
+            reference_voltage_v = context.voltage_pu[
+                context.node_map[Symbol("BUS_$interface_index")],
+                reference_index,
+            ]
+            maximum_error_v = max(
+                maximum_error_v,
+                abs(candidate.positive_terminal_voltage_v[
+                    interface_index,
+                    candidate_index,
+                ] - reference_voltage_v),
+                abs(candidate.negative_terminal_voltage_v[
+                    interface_index,
+                    candidate_index,
+                ] - reference_voltage_v),
+            )
+        end
+    end
+    return maximum_error_v
+end
+
 function coupled_results()
     accepted_study = coupled_partition_study()
     accepted_prepared = AIMORA.prepare_partitioned_emt(accepted_study)
@@ -172,12 +207,43 @@ function coupled_results()
         communication_step=emt_logical_time(1 // 400_000),
         rate_ratios=ntuple(_ -> 1, 8),
     ))
-    accepted.accepted && equal_step_limit.accepted || error(
+    refined_monolithic_step =
+        LocalMultiratePartitionedNetwork.logical_substep(
+            LocalMultiratePartitionedNetwork.COMMUNICATION_STEP,
+            maximum(LocalMultiratePartitionedNetwork.COUPLED_RATE_RATIOS),
+        )
+    refined_monolithic_prepared = AIMORA.prepare_partitioned_emt(
+        coupled_partition_study(;
+            monolithic=true,
+            monolithic_step=refined_monolithic_step,
+        ),
+    )
+    refined_monolithic = AIMORA.execute_partitioned_emt!(
+        refined_monolithic_prepared,
+    )
+    equal_step_monolithic_prepared = AIMORA.prepare_partitioned_emt(
+        coupled_partition_study(; monolithic=true),
+    )
+    equal_step_monolithic = AIMORA.execute_partitioned_emt!(
+        equal_step_monolithic_prepared,
+    )
+    accepted.accepted && equal_step_limit.accepted &&
+        refined_monolithic.accepted && equal_step_monolithic.accepted || error(
         "the event-synchronous coupled partition boundary was not accepted",
     )
-    accepted_error_v = synchronization_trace_error(equal_step_limit, accepted)
+    accepted_error_v = monolithic_synchronization_trace_error(
+        refined_monolithic_prepared,
+        accepted,
+    )
     accepted_error_v <= 1.2 || error(
-        "coupled local-rate result exceeds its equal-step boundary",
+        "coupled local-rate result exceeds its equal-accuracy monolithic boundary",
+    )
+    equal_step_error_v = monolithic_synchronization_trace_error(
+        equal_step_monolithic_prepared,
+        equal_step_limit,
+    )
+    equal_step_error_v <= 5.0e-3 || error(
+        "equal-step partition result exceeds its same-step monolithic boundary",
     )
 
     coarse_study = coupled_partition_study(
@@ -210,6 +276,7 @@ function coupled_results()
         equal_step_limit,
         checkpoint,
         accepted_error_v,
+        equal_step_error_v,
         coarse_failure,
     )
 end
@@ -276,7 +343,7 @@ function main()
         ["passive endpoint error" => reverse(collect(passive.endpoint_errors))],
         title="Passive Communication-Step Refinement",
         x_label="communication step (s)",
-        y_label="maximum boundary difference (V)",
+        y_label="normalized endpoint error",
     )
     summary = write_key_value_summary(
         joinpath(output_directory, "summary.md"),
@@ -296,7 +363,10 @@ function main()
             maximum_interface_energy_defect_j=maximum_or_zero(accepted.interface_energy_defect_j),
             maximum_communication_error_estimate_v=maximum_or_zero(accepted.communication_error_estimate_v),
             passive_two_region_endpoint_errors=passive.endpoint_errors,
-            accepted_to_equal_step_boundary_difference_v=coupled.accepted_error_v,
+            accepted_to_equal_accuracy_monolithic_difference_v=
+                coupled.accepted_error_v,
+            equal_step_to_monolithic_difference_v=
+                coupled.equal_step_error_v,
             coarse_10_microsecond_boundary_refused=true,
             split_restart_exact=true,
             checkpoint_time_s=coupled.checkpoint.time_s,

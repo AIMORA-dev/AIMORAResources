@@ -161,6 +161,7 @@ end
     @test policy["baseline"]["tracked_csv"] == 139
     @test policy["baseline"]["tracked_svg"] == 123
     @test policy["baseline"]["tracked_pdf"] == 0
+    @test policy["baseline"]["tracked_aimora_snapshot"] == 0
     @test Set(classification["state"] for classification in policy["classification"]) ==
           Set(("retained", "external"))
 
@@ -169,23 +170,40 @@ end
     baseline_csv_paths = filter(path -> endswith(lowercase(path), ".csv"), baseline_paths)
     baseline_svg_paths = filter(path -> endswith(lowercase(path), ".svg"), baseline_paths)
     baseline_pdf_paths = filter(path -> endswith(lowercase(path), ".pdf"), baseline_paths)
+    baseline_snapshot_paths = filter(
+        path -> endswith(lowercase(path), ".aimora-snapshot"),
+        baseline_paths,
+    )
     @test length(baseline_csv_paths) == policy["baseline"]["tracked_csv"]
     @test length(baseline_svg_paths) == policy["baseline"]["tracked_svg"]
     @test length(baseline_pdf_paths) == policy["baseline"]["tracked_pdf"]
+    @test length(baseline_snapshot_paths) ==
+        policy["baseline"]["tracked_aimora_snapshot"]
 
     paths = tracked_paths()
     csv_paths = filter(path -> endswith(lowercase(path), ".csv"), paths)
     svg_paths = filter(path -> endswith(lowercase(path), ".svg"), paths)
     pdf_paths = filter(path -> endswith(lowercase(path), ".pdf"), paths)
+    snapshot_paths = filter(
+        path -> endswith(lowercase(path), ".aimora-snapshot"),
+        paths,
+    )
     @test isempty(pdf_paths)
     @test all(startswith(path, "AIMORACases.jl/examples/") for path in csv_paths)
     @test all(startswith(path, "AIMORACases.jl/examples/") for path in svg_paths)
+    @test all(
+        startswith(path, "AIMORACases.jl/examples/") for path in snapshot_paths
+    )
 
     prefixed_baseline = Set(
         startswith(path, "AIMORACases.jl/") ? path : "AIMORACases.jl/" * path
-        for path in vcat(baseline_csv_paths, baseline_svg_paths)
+        for path in vcat(
+            baseline_csv_paths,
+            baseline_svg_paths,
+            baseline_snapshot_paths,
+        )
     )
-    current_artifacts = Set(vcat(csv_paths, svg_paths))
+    current_artifacts = Set(vcat(csv_paths, svg_paths, snapshot_paths))
     added_artifacts = setdiff(current_artifacts, prefixed_baseline)
     explicit_artifacts = Set(
         String(classification["path"]) for classification in policy["classification"]

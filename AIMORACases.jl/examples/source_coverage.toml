@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-21"
-source_count = 507
+snapshot_date = "2026-08-22"
+source_count = 508
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 74
+"canonical_case_input" = 75
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -18,7 +18,7 @@ source_count = 507
 "aimora_reference" = 9
 
 [counts_by_disposition]
-"example" = 90
+"example" = 91
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -296,6 +296,15 @@ path = "examples/emt/local_multirate_partitioned_network/run.jl"
 disposition = "example"
 example_ids = ["emt_local_multirate_partitioned_network"]
 reason = "AIMORA-authored synthetic public runner declares the exact two- and eight-region local-step plans, oriented interfaces, Semlyen line, apparatus owners, event/topology checkpoint, refinement products, deterministic metrics, and explicit unsupported boundaries without copying an external implementation or proprietary result."
+
+[[source]]
+id = "case-input:emt:portable-snapshot-restart"
+owner = "AIMORACases.jl"
+kind = "canonical_case_input"
+path = "examples/emt/portable_snapshot_restart/portable_snapshot_restart.deck"
+disposition = "example"
+example_ids = ["emt_portable_snapshot_restart"]
+reason = "AIMORA-authored synthetic fixed-step Bergeron network and runner produce the public canonical snapshot, descriptor, exact split continuation, public-reference, corruption, identity, and privacy-boundary demonstration without external or proprietary restart content."
 
 [[source]]
 id = "case-input:emt:user-defined-components"

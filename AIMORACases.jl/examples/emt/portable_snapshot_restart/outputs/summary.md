@@ -1,0 +1,26 @@
+# Portable EMT Snapshot and Exact Restart
+
+- `profile`: portable_full
+- `schema`: 1.1
+- `section_identities`: backend.reconstruction_state,emt.public_state
+- `section_visibilities`: private_reconstructible,public
+- `accepted_step`: 3
+- `represented_time_s`: 0.00030000000000000003
+- `public_state_fields`: 69
+- `public_state_scalars`: 89
+- `canonical_bytes`: 49043
+- `content_sha256`: 4fd4d74ddebaf54f978f06caaf8f21efae887365288bb6a2a2b41849c244443b
+- `deterministic_bytes`: true
+- `deterministic_descriptor`: true
+- `exact_time`: true
+- `exact_voltage`: true
+- `exact_output`: true
+- `checkpoint_state_error`: 0.0
+- `public_reference_bytes`: 1262
+- `public_reference_sha256`: 04b44d9064c3ed098da9b4dfc84b389a9dcf0b354a61661454d92844b2ee1024
+- `public_solver_free_readable`: true
+- `corruption_failure`: integrity
+- `identity_failure`: model_mismatch
+- `identity_refusal_atomic`: true
+- `private_solver_required_for_reconstruction`: true
+- `unsupported`: ATP/PSCAD restart compatibility, live migration, encryption, signatures, FMI/SSP/HELICS, DASSL, GPU state, hard-real-time/HIL, hostile-input safety, certification, and unexecuted operating systems

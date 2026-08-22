@@ -6,6 +6,7 @@ cases_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
 tracked_csv = 139
 tracked_svg = 123
 tracked_pdf = 0
+tracked_aimora_snapshot = 0
 signature_schema = "frozen-git-tree-rows-sha256-v1"
 signature = "1b35a658c9b4ec048756a48d473111fc150ed18386e4f92269a60249ad952868"
 disposition = "retain the remotely confirmed pre-L200 public-product baseline; later CSV and SVG paths require individual classification"
@@ -711,6 +712,42 @@ id = "measurement-three-phase-diagnostic-figure"
 path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated sequence, frequency, and validity rendering for the complete sampled chain."
+
+[[classification]]
+id = "local-partition-interface-current-figure"
+path = "AIMORACases.jl/examples/emt/local_multirate_partitioned_network/outputs/local_partition_interface_current.svg"
+state = "retained"
+reason = "Curated current rendering for the seven conservative interfaces in the complete local-multirate public product."
+
+[[classification]]
+id = "local-partition-interface-voltage-figure"
+path = "AIMORACases.jl/examples/emt/local_multirate_partitioned_network/outputs/local_partition_interface_voltage.svg"
+state = "retained"
+reason = "Curated voltage rendering for source-side, middle, and load-side boundaries in the complete local-multirate public product."
+
+[[classification]]
+id = "local-partition-refinement-figure"
+path = "AIMORACases.jl/examples/emt/local_multirate_partitioned_network/outputs/local_partition_refinement.svg"
+state = "retained"
+reason = "Curated communication-step refinement rendering for the independent passive two-region boundary."
+
+[[classification]]
+id = "portable-snapshot-restart-figure"
+path = "AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_snapshot_restart.svg"
+state = "retained"
+reason = "Curated exact split-versus-uninterrupted voltage rendering for the portable snapshot public product."
+
+[[classification]]
+id = "portable-full-snapshot-product"
+path = "AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_full.aimora-snapshot"
+state = "retained"
+reason = "Small canonical private-capability-inspection artifact whose exact byte portability, integrity, public descriptor, and isolated reconstruction are the feature under qualification."
+
+[[classification]]
+id = "portable-public-reference-snapshot"
+path = "AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_public_reference.aimora-snapshot"
+state = "retained"
+reason = "Small immutable public-only snapshot oracle for solver-free decoding and independent canonical-format checks."
 
 [[classification]]
 id = "generated-build-products"
