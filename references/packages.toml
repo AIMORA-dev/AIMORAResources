@@ -1,7 +1,7 @@
 schema_version = 3
 title = "AIMORA local scientific reference package manifest"
 checkout_root = ".aimora/cache/references/packages"
-requirements_owner = "REQUIREMENTS.md#48-scientific-reference-packages-for-every-study"
+requirements_owner = "REQUIREMENTS/REFERENCES.md#48-scientific-reference-packages-for-every-study"
 status_command = "bin/aimora references status"
 sync_command = "bin/aimora references sync"
 update_command = "bin/aimora references update"
