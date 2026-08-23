@@ -39,13 +39,13 @@ For each accepted interval, diagnostics account for terminal, field, rotor-port,
 
 Seven redistributable generic products each execute 1,000 fixed 10 µs steps, apply one source-unbalance and machine command boundary at 5 ms, retain typed state/results, verify an exact midpoint restart, and write CSV, report, summary, and curated SVG artifacts:
 
-- [Wound-field synchronous generator](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/machine_wound_field_synchronous)
-- [Single-cage induction motor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/machine_cage_induction)
-- [Four-branch deep-bar induction motor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/machine_deep_bar_induction)
-- [Permanent-magnet synchronous generator](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/machine_permanent_magnet)
-- [Doubly fed induction generator machine port](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/machine_doubly_fed_induction)
-- [Synchronous condenser](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/machine_synchronous_condenser)
-- [Eight-mass controlled wound-field machine](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/machine_multimass_controls)
+- [Wound-field synchronous generator](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/machine_wound_field_synchronous)
+- [Single-cage induction motor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/machine_cage_induction)
+- [Four-branch deep-bar induction motor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/machine_deep_bar_induction)
+- [Permanent-magnet synchronous generator](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/machine_permanent_magnet)
+- [Doubly fed induction generator machine port](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/machine_doubly_fed_induction)
+- [Synchronous condenser](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/machine_synchronous_condenser)
+- [Eight-mass controlled wound-field machine](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/machine_multimass_controls)
 
 The matching generic catalogue records exact family, terminal/axis/rotor/shaft/control order, source, rights, SI transformation, uncertainty, validity, and parameter nature. These values are original synthetic examples, not manufacturer records.
 

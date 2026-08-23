@@ -222,7 +222,7 @@ Templates declare structure, required section roles, supported studies, output p
 
 ## Complete example
 
-From `AIMORAPlatform/AIMORAReporting.jl`:
+From `AIMORAPlatform/AIMORAReporting`:
 
 ```bash
 make example

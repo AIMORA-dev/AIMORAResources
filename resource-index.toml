@@ -3,7 +3,7 @@ private_validation_owner = "AIMORAValidation"
 
 [[resource]]
 id = "cases"
-path = "AIMORACases.jl"
+path = "AIMORACases"
 kind = "julia-package"
 name = "AIMORACases"
 uuid = "c2d99356-2241-4b88-ae11-80a94b927354"
@@ -11,7 +11,7 @@ version = "0.1.0"
 
 [[resource]]
 id = "catalogs"
-path = "AIMORACatalogs.jl"
+path = "AIMORACatalogs"
 kind = "julia-package"
 name = "AIMORACatalogs"
 uuid = "2b6c9f6e-dc5c-4462-b175-cd3ce62f4f80"
@@ -19,7 +19,7 @@ version = "0.1.0"
 
 [[resource]]
 id = "reference-models"
-path = "AIMORAReferenceModels.jl"
+path = "AIMORAReferenceModels"
 kind = "julia-package"
 name = "AIMORAReferenceModels"
 uuid = "6a268073-c1b2-474c-bd10-49e12d1609a5"

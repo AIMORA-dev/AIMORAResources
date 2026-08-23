@@ -4,7 +4,7 @@ using TOML
 
 resources_root = normpath(joinpath(@__DIR__, ".."))
 docs_root = joinpath(@__DIR__, "src")
-cases_root = joinpath(resources_root, "AIMORACases.jl")
+cases_root = joinpath(resources_root, "AIMORACases")
 examples_root = joinpath(cases_root, "examples")
 templates_root = joinpath(resources_root, "report-templates", "v1")
 

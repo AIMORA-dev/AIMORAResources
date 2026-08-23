@@ -45,7 +45,7 @@ The scheduler checkpoints the exact plan identity, current and last accepted tic
 
 `EMTTaskResult` reports acceptance or a typed `EMTTaskPlatformFailure`, plan and deterministic SHA-256 signatures, exact occurrences, activation counts, maximum pending depth, invalidations, and a final checkpoint. Failure diagnostics identify the task, family, exact instant, stage, code, message, and exact last accepted instant.
 
-The public [`general_multirate_task_platform`](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/general_multirate_task_platform) example executes sixteen period/phase combinations across all eight families. A 75 microsecond physical event collides with task activations and delayed releases; the final held output drives an existing EMT-controlled source. The example proves dependency order, event-first reads, delayed hold, exact split continuation, deterministic results, and full rollback after an injected callback failure.
+The public [`general_multirate_task_platform`](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/general_multirate_task_platform) example executes sixteen period/phase combinations across all eight families. A 75 microsecond physical event collides with task activations and delayed releases; the final held output drives an existing EMT-controlled source. The example proves dependency order, event-first reads, delayed hold, exact split continuation, deterministic results, and full rollback after an injected callback failure.
 
 ## Validity and exclusions
 

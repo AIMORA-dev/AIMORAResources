@@ -6,9 +6,9 @@
 
 | Path | Purpose |
 | --- | --- |
-| `AIMORACases.jl/` | Versioned executable public examples and case catalogue |
-| `AIMORACatalogs.jl/` | Public engineering catalogues and catalogue APIs |
-| `AIMORAReferenceModels.jl/` | Independent public analytical/manufactured reference models |
+| `AIMORACases/` | Versioned executable public examples and case catalogue |
+| `AIMORACatalogs/` | Public engineering catalogues and catalogue APIs |
+| `AIMORAReferenceModels/` | Independent public analytical/manufactured reference models |
 | `docs/` | Documenter-based professional user, engineering, and developer manual |
 | `report-templates/` | Versioned declarative report profiles and licence metadata |
 | `examples/reporting/` | Public semantic-reporting fixtures and claim boundaries |
@@ -35,10 +35,10 @@ make -C docs build
 
 ## Public cases
 
-`AIMORACases.jl/examples/catalog.toml` is the machine-readable case index. Each released case owns a substantive README, Julia entry point, input, local Makefile, canonical outputs, and provenance.
+`AIMORACases/examples/catalog.toml` is the machine-readable case index. Each released case owns a substantive README, Julia entry point, input, local Makefile, canonical outputs, and provenance.
 
 ```bash
-cd AIMORACases.jl
+cd AIMORACases
 make check
 make test
 make example
@@ -47,7 +47,7 @@ make example
 Run one case:
 
 ```bash
-make -C AIMORACases.jl/examples/emt/rlc_energization run
+make -C AIMORACases/examples/emt/rlc_energization run
 ```
 
 The engine repository intentionally does not duplicate examples.
@@ -64,7 +64,7 @@ Profiles cover general engineering, reproducible research, qualification, educat
 
 ## Reporting example
 
-`examples/reporting/complete_report/` documents the complete typed-result-to-publication lifecycle implemented by `AIMORAPlatform/AIMORAReporting.jl`. Its manufactured fixture validates reporting behavior only and is not a numerical-solver qualification claim.
+`examples/reporting/complete_report/` documents the complete typed-result-to-publication lifecycle implemented by `AIMORAPlatform/AIMORAReporting`. Its manufactured fixture validates reporting behavior only and is not a numerical-solver qualification claim.
 
 ## Scientific and rights boundary
 

@@ -8,8 +8,8 @@ AIMORA.jl
 └── numerical backend boundary       separately distributed capability
 
 BPAEMTPReference.jl                  public historical reference
-AIMORACases.jl                       public canonical cases
-AIMORACatalogs.jl                    public model data
+AIMORACases                       public canonical cases
+AIMORACatalogs                    public model data
 ```
 
 Public APIs define typed inputs, state ownership, study orchestration, and

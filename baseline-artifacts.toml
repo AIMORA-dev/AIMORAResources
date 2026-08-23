@@ -1,0 +1,1596 @@
+artifact_count = 264
+schema = "aimora-resource-artifact-baseline-v1"
+signature = "5c06787833a26295b59631ab8824ae9b4ae2df74f5a9037ee6cb03ac4a5353c7"
+signature_schema = "path-blob-classification-bytes-sha256-v1"
+source_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
+
+[[artifact]]
+blob = "0919d8e07efd109aa9261c4986284aaf6da0f85e"
+bytes = 2853
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/cable_constants/cable_geometry_gallery/outputs/cable_geometry_impedance.svg"
+state = "retained"
+[[artifact]]
+blob = "b7c81b29bf54fa794302e445307b8b8a94cce4a8"
+bytes = 371
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/cable_constants/cable_geometry_gallery/outputs/cable_geometry_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "97cd8e171950e70f1bef448facb5cfa99d0561ef"
+bytes = 2759
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/cable_constants/three_phase_single_layer/outputs/cable_characteristic_impedance.svg"
+state = "retained"
+[[artifact]]
+blob = "9eb242ec53556a41c57fef24ddf9fe09065755f5"
+bytes = 206
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/cable_constants/three_phase_single_layer/outputs/cable_frequency_scan.csv"
+state = "retained"
+[[artifact]]
+blob = "1ea131bb4879a029f3348014bc66a64e41aa2cbd"
+bytes = 418
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/cable_constants/three_phase_single_layer/outputs/series_impedance_60hz.csv"
+state = "retained"
+[[artifact]]
+blob = "d5f51505d589ffdfbddd3a9af2101db1f98466bb"
+bytes = 55763
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0001_series_rlc_step/outputs/classic_case0001_series_rlc_step_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "84a31165a6de31ae42b0719ec5423c0208b5ecde"
+bytes = 34997
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0001_series_rlc_step/outputs/classic_case0001_series_rlc_step_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "c47d276f130285191136d4c282b2817b7b473485"
+bytes = 52575
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0002_parallel_rlc_discharge/outputs/classic_case0002_parallel_rlc_discharge_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "e5955d0e8caf3737af277b94077db163d63cce80"
+bytes = 18671
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0002_parallel_rlc_discharge/outputs/classic_case0002_parallel_rlc_discharge_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "e0c4e09a26b5f56d9bd6263c0fc0dd5219eb4230"
+bytes = 179332
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0003_atpdraw_rlc/outputs/classic_case0003_atpdraw_rlc_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "d7f9ddbea7dedd03499dc309c0e8520939dcaf60"
+bytes = 137140
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0003_atpdraw_rlc/outputs/classic_case0003_atpdraw_rlc_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "3f5ac5db57f14cf061be8d26812a16a2f38b3ba9"
+bytes = 194
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0004_500kv_line_constants/outputs/classic_case0004_500kv_line_constants_sequence_constants.csv"
+state = "retained"
+[[artifact]]
+blob = "b56d39088b62112a8e2c742ec08d3b54d2778bc9"
+bytes = 2768
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0004_500kv_line_constants/outputs/classic_case0004_500kv_line_constants_sequence_impedance.svg"
+state = "retained"
+[[artifact]]
+blob = "c2a86c74c3b56ddef24db641b6cdaaaffa621e2c"
+bytes = 192
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0005_345kv_double_circuit/outputs/classic_case0005_345kv_double_circuit_sequence_constants.csv"
+state = "retained"
+[[artifact]]
+blob = "f7d025d05f56e15ff3dc87d2e7498a259e699531"
+bytes = 2768
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0005_345kv_double_circuit/outputs/classic_case0005_345kv_double_circuit_sequence_impedance.svg"
+state = "retained"
+[[artifact]]
+blob = "855db5a7349e0f3b08feaf6a71bc9cee8c748285"
+bytes = 204
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0006_230kv_high_frequency_line/outputs/classic_case0006_230kv_high_frequency_line_sequence_constants.csv"
+state = "retained"
+[[artifact]]
+blob = "0664ab64d01f01280d4dc28b8d86e9337f07d8a2"
+bytes = 2773
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0006_230kv_high_frequency_line/outputs/classic_case0006_230kv_high_frequency_line_sequence_impedance.svg"
+state = "retained"
+[[artifact]]
+blob = "5b7bb785be755a244ff523ad1092ed3e547085f2"
+bytes = 360412
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0007_capacitor_bank_recovery_voltage/outputs/classic_case0007_capacitor_bank_recovery_voltage_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "2ded645abd0116334792f207803dad59723f1406"
+bytes = 99782
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0007_capacitor_bank_recovery_voltage/outputs/classic_case0007_capacitor_bank_recovery_voltage_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "620bf15d553615ca0178957df7973539948da441"
+bytes = 1163697
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0008_back_to_back_capacitor_banks/outputs/classic_case0008_back_to_back_capacitor_banks_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "fa3c90074134f2bf26eb24b8566e3c3513f5c103"
+bytes = 196094
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0008_back_to_back_capacitor_banks/outputs/classic_case0008_back_to_back_capacitor_banks_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "b712077b11de38925debe9062b414eea097d10f8"
+bytes = 991443
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0009_capacitor_restrike/outputs/classic_case0009_capacitor_restrike_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "ec5f3290317e2c1330441b3f6b2eb9b13ff748ee"
+bytes = 196093
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0009_capacitor_restrike/outputs/classic_case0009_capacitor_restrike_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "a89e994b070a27dda7f73acf6b586e9d7e693bdb"
+bytes = 4335
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0010_parallel_ehv_resonance/outputs/classic_case0010_parallel_ehv_resonance_phasors.csv"
+state = "retained"
+[[artifact]]
+blob = "f054e38fb99df4ffac3ce267fe67b7638f8d4816"
+bytes = 3869
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0010_parallel_ehv_resonance/outputs/classic_case0010_parallel_ehv_resonance_voltage_magnitudes.svg"
+state = "retained"
+[[artifact]]
+blob = "17af76c69f3630d46a0df9ac05a3b185e5f9dad1"
+bytes = 615712
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0011_transmission_line_reclosing/outputs/classic_case0011_transmission_line_reclosing_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "0a151f8c8e005504fbb7028e2da7fa17a39a6f5a"
+bytes = 119321
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0011_transmission_line_reclosing/outputs/classic_case0011_transmission_line_reclosing_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "ae6c7eadabaadd7a1d4d95107321b6fa37cf05bb"
+bytes = 169749
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0012_lightning_tower_surge/outputs/classic_case0012_lightning_tower_surge_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "411e53832b59fa21d3d992cb49cbd34665521d09"
+bytes = 59879
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0012_lightning_tower_surge/outputs/classic_case0012_lightning_tower_surge_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "9c6d3a25da905d5c445b36b09a1941f19b933004"
+bytes = 719373
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0013_potential_transformer_ferroresonance/outputs/classic_case0013_potential_transformer_ferroresonance_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "0efc003c1e01aaf56cb0c2241444869b9622c8f0"
+bytes = 195984
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0013_potential_transformer_ferroresonance/outputs/classic_case0013_potential_transformer_ferroresonance_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "5d102baf6b0eeebd9eb87abd5c79d860f0eb6993"
+bytes = 735988
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0014_subsynchronous_resonance/outputs/classic_case0014_subsynchronous_resonance_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "ba01de4453ff56eb196826c8b0aded3c8e3703be"
+bytes = 100486
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0014_subsynchronous_resonance/outputs/classic_case0014_subsynchronous_resonance_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "3f8e97d3aa122acd733d66c146be60a3cedcce66"
+bytes = 211597
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0015_universal_induction_machine/outputs/classic_case0015_universal_induction_machine_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "b4baa0acaa27a14265d6f27219ee50f2ac60fe41"
+bytes = 52077
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0015_universal_induction_machine/outputs/classic_case0015_universal_induction_machine_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "27dd5ed6d0ca9a33f1223438bf61bbd778c60049"
+bytes = 200878
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0050_tacs_thyristor_control/outputs/classic_case0050_tacs_thyristor_control_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "ade9333aa2ecbb8408fc2e94e1670d8c63217e21"
+bytes = 195573
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/classic_emtp/case0050_tacs_thyristor_control/outputs/classic_case0050_tacs_thyristor_control_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "9027cf4d45cc06b559bc15a06cb4272bdeb17fd3"
+bytes = 532
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/core/study_catalog_and_scenario/outputs/emt_input_profile.csv"
+state = "retained"
+[[artifact]]
+blob = "898215ba0f815fe261bed8e5a753086a854ab937"
+bytes = 171
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/core/study_catalog_and_scenario/outputs/inverter_assets.csv"
+state = "retained"
+[[artifact]]
+blob = "3928b18c1067291dc045e42a05709d910039215e"
+bytes = 5881
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/core/study_catalog_and_scenario/outputs/study_catalog.csv"
+state = "retained"
+[[artifact]]
+blob = "e5131dc17b33e704b3ad95e80cd0b372a027fe17"
+bytes = 5601
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/core/study_catalog_and_scenario/outputs/study_status.svg"
+state = "retained"
+[[artifact]]
+blob = "5111f361777a688b2d4fd83688c3c5d4ca4a082e"
+bytes = 1096
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/active_negative_resistance_rl/outputs/active_negative_resistance_rl_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "4d8fbc567e928938e04ac9d5dbbdf2c2d46cffb5"
+bytes = 4213
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/active_negative_resistance_rl/outputs/active_negative_resistance_rl_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "3a72e953c000a0f9f4da566902dea695b19ba2f4"
+bytes = 39435
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/balanced_three_phase_sine/outputs/balanced_three_phase.csv"
+state = "retained"
+[[artifact]]
+blob = "7269913562232597e34c803bc105659c1da3e7d9"
+bytes = 22287
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/balanced_three_phase_sine/outputs/line_to_line_voltages.svg"
+state = "retained"
+[[artifact]]
+blob = "442e03f6e64fa0d7a0c875812d566f80e6861e6a"
+bytes = 22298
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/balanced_three_phase_sine/outputs/phase_voltages.svg"
+state = "retained"
+[[artifact]]
+blob = "e19b0922dca161520ffb05b5ef218c623950e1e8"
+bytes = 16124
+classification = "immutable-reference"
+path = "AIMORACases.jl/examples/emt/checkpoint_restart/outputs/checkpoint.aimora"
+state = "retained"
+[[artifact]]
+blob = "d224cf7bd57ac63cbd88c27afccb58341b00f35a"
+bytes = 16545
+classification = "immutable-reference"
+path = "AIMORACases.jl/examples/emt/checkpoint_restart/outputs/continued.aimora"
+state = "retained"
+[[artifact]]
+blob = "919e3334bb292e40f141d41c6d6f934b743fa90e"
+bytes = 660
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/checkpoint_restart/outputs/restart_comparison.csv"
+state = "retained"
+[[artifact]]
+blob = "39b83cde394f2cd8b07643ad7a4fa90ee9eabf66"
+bytes = 3630
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/checkpoint_restart/outputs/restart_comparison.svg"
+state = "retained"
+[[artifact]]
+blob = "75cd91d4fbdf05006b253cf3f7cb7f979630c11a"
+bytes = 12542
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/complementary_bridge_commutation/outputs/complementary_bridge_commutation.csv"
+state = "retained"
+[[artifact]]
+blob = "e7ad5924b631375aeb7eabaaa5b582e201a091e9"
+bytes = 11682
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/complementary_bridge_commutation/outputs/complementary_bridge_commutation.svg"
+state = "retained"
+[[artifact]]
+blob = "2373cecf15d5a5fc2b1d81db5657afd35ba21bbd"
+bytes = 359
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/consistent_initialization/outputs/formulation_comparison.csv"
+state = "retained"
+[[artifact]]
+blob = "e52c4d4c7aae3a83989d506ff430acf8aa1947e0"
+bytes = 1916
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/consistent_initialization/outputs/frequency_scan.csv"
+state = "retained"
+[[artifact]]
+blob = "4a65b8cb1e03560cc6ded55119d2957fad8df45d"
+bytes = 168
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/consistent_initialization/outputs/initialized_waveforms.csv"
+state = "retained"
+[[artifact]]
+blob = "a855b852f91f021618f34d79eef6e058c761153d"
+bytes = 3099
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/consistent_initialization/outputs/initialized_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "01421d29316312278d89d0dc6da738eec89cbe47"
+bytes = 393
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/consistent_initialization/outputs/operating_point_mapping.csv"
+state = "retained"
+[[artifact]]
+blob = "ffe0a56fef69bb9662291a1a6ad036216c4fb0f3"
+bytes = 956
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/consistent_initialization/outputs/state_inventory.csv"
+state = "retained"
+[[artifact]]
+blob = "b9525215642a2f7eec92df43b7cabb97793327fe"
+bytes = 1112
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/control_network_feedback/outputs/control_network_feedback_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "188050be89a9a0ddcf77a63a6b348218a70ad44f"
+bytes = 4643
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/control_network_feedback/outputs/control_network_feedback_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "1ce88313bc543b45a0f80e7f45c354bc27ff0846"
+bytes = 14590
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/coupled_network_copy_gallery/outputs/coupled_rl_copy_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "8ca0b0827699ddd67d1aed0a572d0ee00c062e98"
+bytes = 7889
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/coupled_network_copy_gallery/outputs/coupled_rl_copy_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "52762b86fb7a282f73470835582b7ad19ff0be8d"
+bytes = 14596
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/coupled_network_copy_gallery/outputs/distributed_line_copy_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "407a91aa8442a8d36e86e5a7eded00f2c560c22b"
+bytes = 7896
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/coupled_network_copy_gallery/outputs/distributed_line_copy_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "3dc1467e3dc0f9ecefb970549ddf8002b187a897"
+bytes = 9737
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/coupled_network_copy_gallery/outputs/four_phase_coupled_rl_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "4c66709af1b3c4a9ed406c3c3c48c303e97f119b"
+bytes = 7895
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/coupled_network_copy_gallery/outputs/four_phase_coupled_rl_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "4e0e04b23ee58c920192c6b41aa2fd46ad4cbb71"
+bytes = 299
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/coupled_network_copy_gallery/outputs/gallery_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "177cc34c3982bdbdee760ff45d6ae5cbc1fe7db6"
+bytes = 255
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/dc_simulator_type16_gallery/outputs/fixed_field_type16_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "dc641c8a74f2ef1f02f06067be1a53ab82a91546"
+bytes = 3471
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/dc_simulator_type16_gallery/outputs/fixed_field_type16_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "177cc34c3982bdbdee760ff45d6ae5cbc1fe7db6"
+bytes = 255
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/dc_simulator_type16_gallery/outputs/free_field_type16_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "6942aa60e95d9dc582fee1466fbbebcdceb2b2af"
+bytes = 3470
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/dc_simulator_type16_gallery/outputs/free_field_type16_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "2191400ff900c1c61bb800d65f19565baaff878b"
+bytes = 175
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/dc_simulator_type16_gallery/outputs/gallery_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "8e01438d83b3f3794d5077549a1ee4dc4c59c491"
+bytes = 5528
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_semiconductor_commutation/outputs/extended_semiconductor_charge.svg"
+state = "retained"
+[[artifact]]
+blob = "351549466bc14978cca4750204a44668143a6c47"
+bytes = 7693
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/extended_semiconductor_commutation/outputs/extended_semiconductor_commutation.csv"
+state = "retained"
+[[artifact]]
+blob = "b2e249c5f4433faa4c68869dd123c7058eb7dc70"
+bytes = 5469
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_semiconductor_commutation/outputs/extended_semiconductor_commutation.svg"
+state = "retained"
+[[artifact]]
+blob = "9118f23c7049f4b947354f01125b0629ddd13c04"
+bytes = 5497
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_semiconductor_commutation/outputs/extended_semiconductor_electrothermal.svg"
+state = "retained"
+[[artifact]]
+blob = "16a9762232953a9c2daab5ef272a841d94e51a81"
+bytes = 387756
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_droop/outputs/extended_vsc_droop.csv"
+state = "retained"
+[[artifact]]
+blob = "38b04695845c443cd61bd2dbb4097234b59cb4ad"
+bytes = 131505
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_droop/outputs/extended_vsc_droop_currents.svg"
+state = "retained"
+[[artifact]]
+blob = "d2ec0d0b5fe70c3f070e1b2a18eb791099306303"
+bytes = 130001
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_droop/outputs/extended_vsc_droop_response.svg"
+state = "retained"
+[[artifact]]
+blob = "7d1bf229478fa91790963e7d0d3a576caf0a003f"
+bytes = 354621
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_pll_dq/outputs/extended_vsc_pll_dq.csv"
+state = "retained"
+[[artifact]]
+blob = "a780c672775801bb41392c6a060750aa59938914"
+bytes = 131516
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_pll_dq/outputs/extended_vsc_pll_dq_currents.svg"
+state = "retained"
+[[artifact]]
+blob = "3e6f3f100807ed9ec1fe2085e0f3e2d0a74835e3"
+bytes = 130144
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_pll_dq/outputs/extended_vsc_pll_dq_response.svg"
+state = "retained"
+[[artifact]]
+blob = "28d8b0bca2287a18615e9ff5780cfce1a34921cd"
+bytes = 320620
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_pr/outputs/extended_vsc_pr.csv"
+state = "retained"
+[[artifact]]
+blob = "cde228a6a2fb699b4be1bcec6d300b22bcd6c326"
+bytes = 131506
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_pr/outputs/extended_vsc_pr_currents.svg"
+state = "retained"
+[[artifact]]
+blob = "83e01410553105b7767d3691ff1a71503ce75057"
+bytes = 129932
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_pr/outputs/extended_vsc_pr_response.svg"
+state = "retained"
+[[artifact]]
+blob = "ccf49b11a88f00739b7a7dad999c9129fe0ba8aa"
+bytes = 388008
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_virtual_synchronous/outputs/extended_vsc_virtual_synchronous.csv"
+state = "retained"
+[[artifact]]
+blob = "c88a84d5cf41d426e977ba95840873439d7e1abe"
+bytes = 131512
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_virtual_synchronous/outputs/extended_vsc_virtual_synchronous_currents.svg"
+state = "retained"
+[[artifact]]
+blob = "77d97cc6a7aece1176b836e4b5ed0c793f0423ed"
+bytes = 130143
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/extended_vsc_virtual_synchronous/outputs/extended_vsc_virtual_synchronous_response.svg"
+state = "retained"
+[[artifact]]
+blob = "782c40ab85630e2c846d538d3fb707adba5dc834"
+bytes = 22363
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/external_three_bus_unbalanced/outputs/load_bus_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "2f7315979541fc6989ea399d5e8b470503647249"
+bytes = 58922
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/external_three_bus_unbalanced/outputs/three_bus_unbalanced.csv"
+state = "retained"
+[[artifact]]
+blob = "79c0910b7be08876253b26484d2c2e0b9fb044ed"
+bytes = 224
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/fault_equivalent_fitting/outputs/fault_equivalent_fit.csv"
+state = "retained"
+[[artifact]]
+blob = "099340ea8f48f13580c7351205f7f6ac845389d7"
+bytes = 3024
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/fault_equivalent_fitting/outputs/fault_equivalent_fit.svg"
+state = "retained"
+[[artifact]]
+blob = "066ffb76d43331a22ec2ba4d007a8194b4ab8f62"
+bytes = 61
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/fault_equivalent_fitting/outputs/network_admittance.csv"
+state = "retained"
+[[artifact]]
+blob = "056f2f46a1491b9c078fd3374a7cfccf95d5dc9e"
+bytes = 2550
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/fixed_source_load_flow_gallery/outputs/fixed_source_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "0754348ef071a8d607bf84ff367192f45f0c416f"
+bytes = 2980
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/fixed_source_load_flow_gallery/outputs/fixed_source_voltage.svg"
+state = "retained"
+[[artifact]]
+blob = "a9c6a42f86defe47470c5f7a45a330c371686b05"
+bytes = 3474
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/frequency_dependent_line/outputs/frequency_response.csv"
+state = "retained"
+[[artifact]]
+blob = "5b43fb2bed2ee5026838f0a2c9ea709b20700b43"
+bytes = 4587
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/frequency_dependent_line/outputs/frequency_response.svg"
+state = "retained"
+[[artifact]]
+blob = "2ba39e52aa397bd826121e4e23fabdfb9a4cdb22"
+bytes = 15287
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/frequency_dependent_line/outputs/line_waveform.csv"
+state = "retained"
+[[artifact]]
+blob = "4da01f4d1fed9ffaf4724e5c0d367c0c72ce3a02"
+bytes = 15707
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/frequency_dependent_line/outputs/line_waveform.svg"
+state = "retained"
+[[artifact]]
+blob = "b10f38c9ac4a1392bc2e3fddb20d11556913c856"
+bytes = 359
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/general_multirate_task_platform/outputs/general_multirate_task_platform.csv"
+state = "retained"
+[[artifact]]
+blob = "d3b0582a2068965256177c8724c6fee882e802d0"
+bytes = 4590
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/general_multirate_task_platform/outputs/general_multirate_task_platform.svg"
+state = "retained"
+[[artifact]]
+blob = "d99b9f5857fbf84c819bc999e0061ed187bc86c7"
+bytes = 896
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/generated_ieee13_deck/outputs/ieee13_buses.csv"
+state = "retained"
+[[artifact]]
+blob = "7505ba05e168d391b28d5a3c74c7aeec86076123"
+bytes = 1977
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/generated_ieee13_deck/outputs/ieee13_elements.csv"
+state = "retained"
+[[artifact]]
+blob = "40353c9259951ef892f621f22508a42e39193ca7"
+bytes = 321
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/generated_ieee13_deck/outputs/ieee13_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "69bd4c69ad9e64416b6c964aba573fce9d9844c4"
+bytes = 3458
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/generated_ieee13_deck/outputs/ieee13_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "083c60cf5ab7a1b460ab6fa71c97cd3ece4d08c6"
+bytes = 5681
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/generic_bridge_topology_library/outputs/generic_bridge_topology_library.csv"
+state = "retained"
+[[artifact]]
+blob = "af9a6c07f73a184af1114e9cd8013cf78e12a05d"
+bytes = 5533
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/generic_bridge_topology_library/outputs/generic_bridge_topology_physics.svg"
+state = "retained"
+[[artifact]]
+blob = "3be0eef252ec1aa1ccc35935581f296fe70b0843"
+bytes = 5528
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/generic_bridge_topology_library/outputs/generic_bridge_topology_states.svg"
+state = "retained"
+[[artifact]]
+blob = "6b7bd83b7b4b4e052742fc3e1acc7450b0067632"
+bytes = 263
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/hysteretic_inductor_runtime/outputs/hysteretic_inductor_runtime_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "333e5adf125b568fa534d661910792ce65c843b3"
+bytes = 2792
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/hysteretic_inductor_runtime/outputs/hysteretic_inductor_runtime_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "0bfc566b6107fb95e2cea8a349da3c68852cce14"
+bytes = 6834
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/ideal_transformer_type18/outputs/ideal_transformer_type18_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "2cf94744bf7b81e519bda56b7493a80fd1ca03d4"
+bytes = 6925
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/ideal_transformer_type18/outputs/ideal_transformer_type18_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "77a383066c214b1adb469d7c3ab5459b63e86bab"
+bytes = 418626
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/inverter/outputs/inverter_current.svg"
+state = "retained"
+[[artifact]]
+blob = "3f89324f87a224c5f860682bcb61583a02a3d795"
+bytes = 418631
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/inverter/outputs/inverter_power.svg"
+state = "retained"
+[[artifact]]
+blob = "0b5ee5ab519f690625f00223976c830063c55490"
+bytes = 825177
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/inverter/outputs/inverter_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "709d4ba0888753acfb6be6c58e047f1c0a8e3362"
+bytes = 245
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/line_models/outputs/bergeron_line_trace.csv"
+state = "retained"
+[[artifact]]
+blob = "016b09ccdc03f3b6fe9c4cf49c7a52c88e1d2a95"
+bytes = 3125
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/line_models/outputs/bergeron_line_waveform.svg"
+state = "retained"
+[[artifact]]
+blob = "3e9c3b1a22bdc67436a627e7c9c5a249eaf55a7c"
+bytes = 219
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/machine_tacs_interface/outputs/machine_tacs_transfer.csv"
+state = "retained"
+[[artifact]]
+blob = "9c7df7f663ca318e7344803138402ce682a0257b"
+bytes = 2774
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/machine_tacs_interface/outputs/machine_tacs_transfer.svg"
+state = "retained"
+[[artifact]]
+blob = "099372e23d8865c5f6f0dd8f57823f034f345b23"
+bytes = 26081
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/mixed_frequency_subnetworks/outputs/mixed_frequency_waveforms.csv"
+state = "retained"
+[[artifact]]
+blob = "dc13b2963dc8dba7a4655d75e48380ef069ce7ab"
+bytes = 29088
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/mixed_frequency_subnetworks/outputs/mixed_frequency_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "1a86dad3b07524c7c31fb385ba4dd0ab960de1d9"
+bytes = 295
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/mixed_frequency_subnetworks/outputs/phasors.csv"
+state = "retained"
+[[artifact]]
+blob = "d566d5c2b478bd7d75dbba7d3f43d7d8728bd276"
+bytes = 182
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/multi_case_sequence/outputs/case_sequence.csv"
+state = "retained"
+[[artifact]]
+blob = "016fda51a5a23e0df1c1e7bfdf89647d4cd8ce7e"
+bytes = 3305
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/multi_case_sequence/outputs/case_sequence.svg"
+state = "retained"
+[[artifact]]
+blob = "c899b6ef80be8ab6f44d5ae898d8b795f7701a59"
+bytes = 8486
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/multirate_sampled_pwm/outputs/multirate_sampled_pwm.csv"
+state = "retained"
+[[artifact]]
+blob = "00b7ddf2acaa65c782b77f065171797be2222067"
+bytes = 12714
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/multirate_sampled_pwm/outputs/multirate_sampled_pwm.svg"
+state = "retained"
+[[artifact]]
+blob = "83b3bda05c03ac23c785cfdbfa7245e89a69ffbd"
+bytes = 548
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_characteristic_gallery/outputs/hysteresis_loop.csv"
+state = "retained"
+[[artifact]]
+blob = "cc5146aab01c4e938e44a37365424934baa6fab3"
+bytes = 3842
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_characteristic_gallery/outputs/hysteresis_loop.svg"
+state = "retained"
+[[artifact]]
+blob = "4a70dda0cd2bb2250f5379f942171f15eae27bc3"
+bytes = 51
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_characteristic_gallery/outputs/saturation_curve.csv"
+state = "retained"
+[[artifact]]
+blob = "559bae9ec6dd0690dc00a93f7158c5c4c4f0faba"
+bytes = 2758
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_characteristic_gallery/outputs/saturation_curve.svg"
+state = "retained"
+[[artifact]]
+blob = "cfbe32bebd6a81ef21b399c20d1ef56abde76d38"
+bytes = 155
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_characteristic_gallery/outputs/zinc_oxide_fit.csv"
+state = "retained"
+[[artifact]]
+blob = "fc5f7894c3f64a8a01eac7a9b744126b47dcb837"
+bytes = 3135
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_characteristic_gallery/outputs/zinc_oxide_fit.svg"
+state = "retained"
+[[artifact]]
+blob = "8d26bcd2b781b56f5b80ec765809b8147b32f94d"
+bytes = 693
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_controls/outputs/nonlinear_controls_trace.csv"
+state = "retained"
+[[artifact]]
+blob = "56ddfdbbb7d93424aace2f596181d9d9109f1d0d"
+bytes = 3678
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_controls/outputs/nonlinear_controls_waveform.svg"
+state = "retained"
+[[artifact]]
+blob = "db0bade275dcf184cf09813f776756fd94445e2b"
+bytes = 233
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_identity_type98_gallery/outputs/gallery_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "6b7bd83b7b4b4e052742fc3e1acc7450b0067632"
+bytes = 263
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_identity_type98_gallery/outputs/named_type96_hysteretic_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "5051eb364649a4df7696b8c5e9bcc8bc19c71bf1"
+bytes = 2798
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_identity_type98_gallery/outputs/named_type96_hysteretic_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "fb4e19e526341c506065daf905823607ca052b4d"
+bytes = 393
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_identity_type98_gallery/outputs/type98_pseudo_nonlinear_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "96623993166688a977528abfef5ac2f1542e86f9"
+bytes = 3186
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_identity_type98_gallery/outputs/type98_pseudo_nonlinear_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "9a03a24efefa70ca784a9598144a26010322f70e"
+bytes = 5011
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_network_discontinuity/outputs/convergence.csv"
+state = "retained"
+[[artifact]]
+blob = "04dbbfea71941fb227918ac7c97f1fd645bdc298"
+bytes = 7042
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_network_discontinuity/outputs/manufactured_topology.csv"
+state = "retained"
+[[artifact]]
+blob = "4ab8a236c6082c33ba83747722e20bb24f93417d"
+bytes = 7593
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_network_discontinuity/outputs/restart_comparison.csv"
+state = "retained"
+[[artifact]]
+blob = "0ff0e0b9d99e35d701b8faa6a4dd7b8532bc2ab5"
+bytes = 34498
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_network_discontinuity/outputs/waveform.csv"
+state = "retained"
+[[artifact]]
+blob = "f45370809a53486b5c018cfb4fc2b3b828c4e194"
+bytes = 15707
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/nonlinear_network_discontinuity/outputs/waveform.svg"
+state = "retained"
+[[artifact]]
+blob = "dd8aef64ce8464a2b92e81b3d1422fc8ed37297d"
+bytes = 51
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/parsed_deck_trace/outputs/grounded_scalar_branch_references.csv"
+state = "retained"
+[[artifact]]
+blob = "e7f676382dd82142c726c3066661db7ba4725645"
+bytes = 2738
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/parsed_deck_trace/outputs/grounded_scalar_branch_references.svg"
+state = "retained"
+[[artifact]]
+blob = "c8d11ee505a2ead7a54b229c464fa00cdc0c3ab3"
+bytes = 325
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/parsed_deck_trace/outputs/parsed_deck_trace.csv"
+state = "retained"
+[[artifact]]
+blob = "b2b09646da3204200bdf59c011de72c67a328860"
+bytes = 4180
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/parsed_deck_trace/outputs/parsed_deck_trace.svg"
+state = "retained"
+[[artifact]]
+blob = "28cbca9d809c1b5ea4b5957a7da4a82f7a790abe"
+bytes = 824
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/parsed_deck_trace/outputs/parsed_deck_trace_over20_finalization.csv"
+state = "retained"
+[[artifact]]
+blob = "ecc7cd86746bef215262e2cd96889082ce6b2038"
+bytes = 294
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/reduced_feeder_inverter/outputs/operating_point_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "47ff8e42381321eac0216f517125dc64515a3489"
+bytes = 478628
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/reduced_feeder_inverter/outputs/operating_point_voltage.svg"
+state = "retained"
+[[artifact]]
+blob = "0ebf400620bb0c23f8a3102f79e47eee058f095a"
+bytes = 428605
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/reduced_feeder_inverter/outputs/reduced_feeder_inverter_power.svg"
+state = "retained"
+[[artifact]]
+blob = "3480bab86f7f5577b717f2aaa41a3c0860aa9bd0"
+bytes = 1185301
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/reduced_feeder_inverter/outputs/reduced_feeder_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "3847024f5e00269c820e978148400acb0bfabd5e"
+bytes = 322319
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/reduced_feeder_inverter/outputs/reduced_feeder_voltage.svg"
+state = "retained"
+[[artifact]]
+blob = "d5f51505d589ffdfbddd3a9af2101db1f98466bb"
+bytes = 55763
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/rlc_energization/outputs/rlc_energization_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "43e0d83cd73300e04fc19f0a550b96bdf1e1e34b"
+bytes = 34976
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/rlc_energization/outputs/rlc_energization_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "b60c49cd6dc1876ceab64b6f50c7a2ed8c54d9db"
+bytes = 1130
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/signed_source_routing/outputs/signed_source_routing_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "e6f0f0f94c61cc0669b53c45953f9cbbe8653d3d"
+bytes = 4655
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/signed_source_routing/outputs/signed_source_routing_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "a881515bdd1df13d1cea7962db74a06fa55c6eaa"
+bytes = 11416
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/single_phase_sine_source/outputs/single_phase_sine.csv"
+state = "retained"
+[[artifact]]
+blob = "846409c45319af26960c03aea2b1b7496e99b4d9"
+bytes = 8424
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/single_phase_sine_source/outputs/single_phase_sine.svg"
+state = "retained"
+[[artifact]]
+blob = "bc58a860d26bbc4a1c5db0709f445fea5a329e9d"
+bytes = 28487
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/source_waveform_gallery/outputs/harmonic_waveform.svg"
+state = "retained"
+[[artifact]]
+blob = "9831d7e6ef295d1b32d208c26a60556c50f2f8c5"
+bytes = 65909
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/source_waveform_gallery/outputs/source_waveforms.csv"
+state = "retained"
+[[artifact]]
+blob = "a1d4170cbf9055056de2fab0e530953e02b97f44"
+bytes = 79873
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/source_waveform_gallery/outputs/standard_source_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "155a1ca721798f421bbb9cb10021d82c35848e67"
+bytes = 147216
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/switch_detailed_three_phase_vsc/outputs/three_phase_vsc_currents.svg"
+state = "retained"
+[[artifact]]
+blob = "959f8d83730dfcdc6c956674912acd916e453667"
+bytes = 50673
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/switch_detailed_three_phase_vsc/outputs/three_phase_vsc_dc_link.svg"
+state = "retained"
+[[artifact]]
+blob = "6bb41dc18486abc7bf99dcc12f1ba51f1f4b5060"
+bytes = 206046
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switch_detailed_three_phase_vsc/outputs/three_phase_vsc_device_states.csv"
+state = "retained"
+[[artifact]]
+blob = "a6de4c2bec12cbfa3e7c913f7e2e48096bfc7190"
+bytes = 420385
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switch_detailed_three_phase_vsc/outputs/three_phase_vsc_waveforms.csv"
+state = "retained"
+[[artifact]]
+blob = "26892df8309d8aaa88b2e1ee65f38ee4f1bdc166"
+bytes = 19864
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switch_type_gallery/outputs/current_zero_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "19a62ffce1d5444571c62f5d6fcaa4b7224abae6"
+bytes = 23249
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/switch_type_gallery/outputs/current_zero_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "1f419561b0456e2e7356bb7412956faa35f81a6e"
+bytes = 173
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switch_type_gallery/outputs/switch_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "1008050e777cfbd1673fb8820e61add3def8c43f"
+bytes = 447
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switch_type_gallery/outputs/type76_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "390d91a56637829d3aa7692fabf14eb7da60e70f"
+bytes = 4241
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/switch_type_gallery/outputs/type76_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "a9f86c75abab638c27680437157e2335f661e3fe"
+bytes = 408
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switching_ensemble/outputs/ensemble_extrema.csv"
+state = "retained"
+[[artifact]]
+blob = "da431a24bdb274181849ea47f1bb9126f006e808"
+bytes = 2830
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/switching_ensemble/outputs/maximum_vs_switch_time.svg"
+state = "retained"
+[[artifact]]
+blob = "0d0a55901da558a709b09ca60ace18819deea485"
+bytes = 433
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switching_ensemble/outputs/switch_schedules.csv"
+state = "retained"
+[[artifact]]
+blob = "3390a89a525a1ef9817041fae450ed9af94e8ee0"
+bytes = 330
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/switching_transient/outputs/switching_transient_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "95812b08f100f2bc03cbd1bcc62889188429de5e"
+bytes = 3141
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/switching_transient/outputs/switching_transient_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "82bb60b3d5b995d736f7491ae24115830375d163"
+bytes = 1682
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/tabulated_and_analytic_sources/outputs/source_program.csv"
+state = "retained"
+[[artifact]]
+blob = "a2413d6b15aa2976fb9dedf4b19b965ecec2fa5f"
+bytes = 5537
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/tabulated_and_analytic_sources/outputs/source_program.svg"
+state = "retained"
+[[artifact]]
+blob = "c1ec3cef9fdb1d624a116f2c78cf2071ec7c5763"
+bytes = 250
+classification = "canonical-input"
+path = "AIMORACases.jl/examples/emt/tabulated_and_analytic_sources/source_signals.csv"
+state = "retained"
+[[artifact]]
+blob = "5df28151e937dd7f98c3fbbc922d1b6ff663c027"
+bytes = 152744
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/transmission_fault_switching/outputs/transmission_fault_switching_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "69b750614801b33cfcb0ee3f43879578f92d9cb4"
+bytes = 32933
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/transmission_fault_switching/outputs/transmission_fault_switching_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "3480bab86f7f5577b717f2aaa41a3c0860aa9bd0"
+bytes = 1185301
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/unified_emt/outputs/unified_emt_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "0ebf400620bb0c23f8a3102f79e47eee058f095a"
+bytes = 428605
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/unified_emt/outputs/unified_power.svg"
+state = "retained"
+[[artifact]]
+blob = "3847024f5e00269c820e978148400acb0bfabd5e"
+bytes = 322319
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/unified_emt/outputs/unified_voltage.svg"
+state = "retained"
+[[artifact]]
+blob = "1a9856a08ac0367434d17c13993eecb9eb05b892"
+bytes = 204629
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type3/outputs/universal_machine_type3_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "93b8df7d6201a564f21a50ca69d7d4a81d0ba75e"
+bytes = 52052
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type3/outputs/universal_machine_type3_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "a0a596b0def2bcb7a7a6fbb4facc119a5ce1b6b7"
+bytes = 1536
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type10_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "9c87b649e68d6ef7723779b05c9b3de62e0885ae"
+bytes = 4457
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type10_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "c2bf3090f856b9f2008cac2a402fb27eb11654f6"
+bytes = 1624
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type11_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "6c9ebaaf57cbb2ecf66ff555682ce8eef8c1d94c"
+bytes = 4457
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type11_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "de0f7d02b65d36ca80c92512ddf8b1c578c8f617"
+bytes = 1583
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type12_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "651398fd43a2d9c789dfce9ad77c9a19bcc5a223"
+bytes = 4461
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type12_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "c511f32bbe9dd9fa1cae9d7dfd900f6633ba7af2"
+bytes = 1633
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type9_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "3126e4fb3448da7f1acd78185d75e2338eb50aa9"
+bytes = 4462
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/c307_automatic_direct_machine_type9_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "cc324d3eb050b361e774f7155ee565c14e5bc33d"
+bytes = 7866
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/deck_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "86fcd9b258926d42eb1d8a40fbd04c0e6017f9cd"
+bytes = 87442
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/detailed_synchronous_machine_universal_section_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "6e4f1fd1519560adeae9aaf97698c021832bf5c9"
+bytes = 8148
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/detailed_synchronous_machine_universal_section_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "d0e9abde7a6e9f4858060aa0d6ee84dbf3eec5e4"
+bytes = 63437
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/machine_type_current_rms.csv"
+state = "retained"
+[[artifact]]
+blob = "71b41f863e85f9d4032e1e96d1a8a3f33e359482"
+bytes = 120971
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/machine_type_current_rms.svg"
+state = "retained"
+[[artifact]]
+blob = "126bc64312f5034e11442e3d0f50846a811e7fe9"
+bytes = 372
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/machine_type_metrics.csv"
+state = "retained"
+[[artifact]]
+blob = "e39ca00f5e491ae4c3d6ed9111e91fb544fd85ad"
+bytes = 1510945
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/synchronous_machine_saturated_delta_fleet_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "41a936e1909d69195a31362b10bc1dd5bc5ec9a0"
+bytes = 100223
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/synchronous_machine_saturated_delta_fleet_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "927eed66fdcb2bb4d645bca46dbd4326b2ba2a87"
+bytes = 3735
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_coupled_fleet_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "d23d8f02156426b791dac830b54fbbc5cfe032e7"
+bytes = 5166
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_coupled_fleet_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "7ade7022423274ee67966d2f5d116d5051a2081d"
+bytes = 3957
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_electromechanical_fleet_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "d80bb7c54028ec1e115909e17282988998bd4184"
+bytes = 5176
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_electromechanical_fleet_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "e7152ed34e761aa2b3f76b40dccd0ea130173cdb"
+bytes = 14337
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_fleet_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "d44737d9d3290bed3efa9234e7fc78c58d79dd25"
+bytes = 8909
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_fleet_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "83d48f5b26ef282d6a7e27b1e79a8636ac42bc55"
+bytes = 4008
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_tacs_fleet_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "16feb823d16b5b1af658fab53f98241171fd93be"
+bytes = 5163
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_direct_tacs_fleet_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "fc67dd3de869fd67a73336eed7b2939e9be04e2a"
+bytes = 11851
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type10_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "7f043351fd20a3049385eff357bc229356e27716"
+bytes = 8866
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type10_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "af9d190bc9de2a840052efe7cddf7ca01c477f49"
+bytes = 12582
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type11_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "9b912c39d5b917e03084fdef188af7b9d7119261"
+bytes = 8637
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type11_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "ec84992872dfa426a691d12afe8ed85e7a4ed474"
+bytes = 11904
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type12_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "14f3ab904d70662c39387d83979ec591ddd78236"
+bytes = 8634
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type12_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "1e13f3a04ce6a296f71094a8a01edabac9a04484"
+bytes = 220298
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type1_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "1c503d8134443e2470be102112b44119085f45bc"
+bytes = 27259
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type1_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "2e7ad592106c9b4938eb775e9324f62fee4d27ba"
+bytes = 215908
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type2_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "feff5285f3e77f8c65ba9f729e03d4024e53d098"
+bytes = 51156
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type2_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "7b4e7a0b78ae47f8564ecd4d1502344e73580f99"
+bytes = 19310
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_manual_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "3353b4da936bef499bd2b6d4a6f4dcb997312d74"
+bytes = 5665
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_manual_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "ff9617bf5d32b193c68525e50c59609a76063337"
+bytes = 21792
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_normalized_predicted_current_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "d985c670ffbe61c1aab5eceae5e3393ff551541a"
+bytes = 5683
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_normalized_predicted_current_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "8f4566604cecfdf9e86a0a6f7e2fb430c3a02c0b"
+bytes = 21792
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_normalized_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "2229cc71ac9d74478b0a01e10b869e2c6bb74517"
+bytes = 5665
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_normalized_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "f9bee119446f776efcfdfb8fd5953d37f59f19d7"
+bytes = 21338
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_predicted_current_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "244888b37135c0d589bfaf9f63ae90896300c480"
+bytes = 5676
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_predicted_current_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "09a6f334401fd67b27cda5f2295f30647d59f793"
+bytes = 21338
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_remanent_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "f95a7245ee847199af2e659163a0946191283215"
+bytes = 5667
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_remanent_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "c9130e5b94ff9dcda4d65232378ed9ec65f53ebd"
+bytes = 204688
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "ddf897b2674a0f56dc02de0489671be73f6977bc"
+bytes = 27093
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type3_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "f1841f7facc635f9f67c37cbcb89b3b20f1c05ac"
+bytes = 211653
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type4_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "d6401d5a0b7a9f20fff9e1ac07a085e6571c765e"
+bytes = 27093
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type4_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "fceadcb82e1a26f6896c9645d9f0c158d6ab42cc"
+bytes = 200553
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type5_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "f02b2f905153865ed45027ee1ae951c47b0923f2"
+bytes = 52041
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type5_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "72463be80a60f0d054790b0e7deba3a186450454"
+bytes = 170712
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type6_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "c432751de5d184c926c54b0d0b07f0c92e3b4d2a"
+bytes = 10732
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type6_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "64da15c058bd0e2fb293bd9c56cb9cf8fffa89e3"
+bytes = 203234
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type7_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "42dc38ef609462c476f3ff85cd81dfef60f6098f"
+bytes = 10286
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type7_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "b51777ee233859af48317a08f825a02e8168c8b1"
+bytes = 14160
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type8_automatic_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "68854b15f765ef8c410b7437fea9bdd8d6dcc2ae"
+bytes = 8862
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type8_automatic_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "058497162d59e90b4e78f44e1da1f1f800fe7377"
+bytes = 117571
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type8_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "1e8af6ddb9323d49964501b39e0c0fc9998c8c47"
+bytes = 49657
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type8_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "4fa3bc03cde43325dbba2e29db6840dabc44718f"
+bytes = 12516
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type9_series_leakage_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "5206e7b6850de8a3b50b4a65514c0dc02f0a1eb2"
+bytes = 8885
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type9_series_leakage_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "becd8ad5b62d063031ae4c74e444e11d591c0fc0"
+bytes = 12490
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type9_timeseries.csv"
+state = "retained"
+[[artifact]]
+blob = "2fa730bef59af3590fbb8d2bb55cd5700d256d7c"
+bytes = 8868
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/universal_machine_type_gallery/outputs/universal_machine_type9_waveforms.svg"
+state = "retained"
+[[artifact]]
+blob = "ad78329cf4f4c6165b3579d4a240e8b49cbdc38e"
+bytes = 974
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/result_contract.csv"
+state = "retained"
+[[artifact]]
+blob = "4725d615238464d7eaaf5c2c8fab7c8f6bdcda2c"
+bytes = 8229
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/waveform.csv"
+state = "retained"
+[[artifact]]
+blob = "bc5053fe0306a2e4bceaeb0a85736117fd218c12"
+bytes = 9954
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/emt/user_defined_components/outputs/waveform.svg"
+state = "retained"
+[[artifact]]
+blob = "f95708d369d74eec5dc2838b67b15ef4bf468dd1"
+bytes = 1239
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/line_constants/double_circuit/outputs/phase_impedance_matrix.csv"
+state = "retained"
+[[artifact]]
+blob = "7ea3b5464be1ca868feab6265981bd521d69e216"
+bytes = 404
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/line_constants/double_circuit/outputs/sequence_constants.csv"
+state = "retained"
+[[artifact]]
+blob = "5f82957292aa106fc8bb2257046289ab3ed3cc17"
+bytes = 2755
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/line_constants/double_circuit/outputs/sequence_impedance.svg"
+state = "retained"
+[[artifact]]
+blob = "f42f5e945be504d978a8107dc0decc7e4be87f70"
+bytes = 655
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/transformer_parameters/multiphase_sequence_tests/outputs/reactance_matrix_ohm.csv"
+state = "retained"
+[[artifact]]
+blob = "929c48f2230a5e2eb975eab6078bbb9c44baa130"
+bytes = 226
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/transformer_parameters/multiphase_sequence_tests/outputs/resistance_matrix_ohm.csv"
+state = "retained"
+[[artifact]]
+blob = "e80e310cdeb13103420aee9346fe2d64887739a9"
+bytes = 2796
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/transformer_parameters/multiphase_sequence_tests/outputs/terminal_self_reactance.svg"
+state = "retained"
+[[artifact]]
+blob = "9bbd2cab21a6877ae4fc5ca95c4c0ebf2ed32544"
+bytes = 99
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/transformer_parameters/saturable_two_winding/outputs/branch_resistance_matrix_ohm.csv"
+state = "retained"
+[[artifact]]
+blob = "afb806f445da9b049dc00c5878fcb311b9fba7b9"
+bytes = 104
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/transformer_parameters/saturable_two_winding/outputs/physical_inductance_matrix_h.csv"
+state = "retained"
+[[artifact]]
+blob = "f223543c5a1ee1390157acc9a909b94a081db7ff"
+bytes = 2713
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/transformer_parameters/saturable_two_winding/outputs/winding_inductance.svg"
+state = "retained"
+[[artifact]]
+blob = "11b821a5f7fb168275770bd3d8e41e11795bff25"
+bytes = 181
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/transformer_parameters/two_winding_short_circuit/outputs/admittance_matrix_s.csv"
+state = "retained"
+[[artifact]]
+blob = "9162fb8c4795bd1ec27a95299a74f3ca1fe0c4e0"
+bytes = 172
+classification = "reproducible-generated-output"
+path = "AIMORACases.jl/examples/transformer_parameters/two_winding_short_circuit/outputs/impedance_matrix_ohm.csv"
+state = "retained"
+[[artifact]]
+blob = "0ed5cef1eef304e3d20db679d7febe324d51307a"
+bytes = 3002
+classification = "curated-public-output"
+path = "AIMORACases.jl/examples/transformer_parameters/two_winding_short_circuit/outputs/winding_impedance.svg"
+state = "retained"
+
+[classification_count]
+canonical-input = 1
+curated-public-output = 123
+immutable-reference = 2
+reproducible-generated-output = 138

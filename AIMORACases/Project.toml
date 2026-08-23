@@ -1,0 +1,29 @@
+name = "AIMORACases"
+uuid = "c2d99356-2241-4b88-ae11-80a94b927354"
+license = "PolyForm-Noncommercial-1.0.0"
+version = "0.1.0"
+authors = ["Ahmed Elkholy"]
+
+[deps]
+AIMORA = "bb4e3f50-0ac0-4ed3-9c38-7355ab8ea495"
+AIMORAProject = "6e87310f-3ba6-4e69-9b4a-8a1fcbcc0c12"
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+UUIDs = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"
+
+[sources]
+AIMORA = {path = "../../AIMORA.jl"}
+AIMORAProject = {path = "../../AIMORAPlatform/AIMORAProject"}
+
+[compat]
+AIMORA = "0.1"
+AIMORAProject = "1"
+julia = "1.10"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

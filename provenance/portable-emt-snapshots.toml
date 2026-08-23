@@ -6,7 +6,7 @@ redistribution = "No external encoder, external snapshot, standard text, proprie
 uncertainty = "Canonical round trip adds no physical uncertainty; the synthetic case inputs are exact and equipment, field, hostile-input security, unexecuted-platform, and universal portability uncertainty remain explicitly unknown"
 public_cases = ["emt_portable_snapshot_restart"]
 catalog_entry = "not_applicable: the snapshot case contains no reusable manufacturer equipment record"
-independent_owner = "AIMORAReferenceModels.jl independent bounded encoder/decoder and hybrid inventory interpretation plus private AIMORAValidation corruption, migration, reconstruction, fresh-process, continuation, mutation, and P0-P2 evidence"
+independent_owner = "AIMORAReferenceModels independent bounded encoder/decoder and hybrid inventory interpretation plus private AIMORAValidation corruption, migration, reconstruction, fresh-process, continuation, mutation, and P0-P2 evidence"
 
 [[authority]]
 id = "rfc_8949"

@@ -1,6 +1,6 @@
 # Complete Semantic Reporting Example
 
-This public example documents the reporting lifecycle implemented by `AIMORAPlatform/AIMORAReporting.jl`. It uses a deterministic manufactured result fixture so the example can exercise result binding, tables, figures, QA, review, approval, freeze, and rendering without becoming a new numerical-solver claim.
+This public example documents the reporting lifecycle implemented by `AIMORAPlatform/AIMORAReporting`. It uses a deterministic manufactured result fixture so the example can exercise result binding, tables, figures, QA, review, approval, freeze, and rendering without becoming a new numerical-solver claim.
 
 ## Purpose
 
@@ -19,7 +19,7 @@ The example demonstrates:
 
 ## Run
 
-From `AIMORAPlatform/AIMORAReporting.jl`:
+From `AIMORAPlatform/AIMORAReporting`:
 
 ```bash
 make example

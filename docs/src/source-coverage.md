@@ -27,7 +27,7 @@ The manual covers project, formats, layout, service, visuals, reporting, and sym
 
 ### Public cases
 
-For every row in `AIMORACases.jl/examples/catalog.toml`, the gate requires:
+For every row in `AIMORACases/examples/catalog.toml`, the gate requires:
 
 - unique case ID;
 - existing entry point;

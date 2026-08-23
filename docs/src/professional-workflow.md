@@ -115,7 +115,7 @@ Before execution, reject:
 
 ## 6. Build or select a case
 
-The canonical public cases live in `AIMORACases.jl/examples`. Locate a suitable case in the generated [Complete Runnable Case Catalog](generated/case-catalog.md).
+The canonical public cases live in `AIMORACases/examples`. Locate a suitable case in the generated [Complete Runnable Case Catalog](generated/case-catalog.md).
 
 A professional case directory should contain:
 
@@ -157,14 +157,14 @@ The solver must not silently relax tolerances, drop an event, replace a model, o
 Use the case Makefile when provided:
 
 ```bash
-make -C AIMORACases.jl/<case-directory> run
+make -C AIMORACases/<case-directory> run
 ```
 
 For package tests:
 
 ```bash
 julia --project=AIMORA.jl -e 'using Pkg; Pkg.test()'
-julia --project=AIMORACases.jl -e 'using Pkg; Pkg.test()'
+julia --project=AIMORACases -e 'using Pkg; Pkg.test()'
 ```
 
 A run record should capture stdout/stderr, process exit code, elapsed time, revision metadata, and the output directory. A successful exit code is only the first gate.

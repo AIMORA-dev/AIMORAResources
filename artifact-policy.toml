@@ -6,746 +6,740 @@ cases_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
 tracked_csv = 139
 tracked_svg = 123
 tracked_pdf = 0
-tracked_aimora_snapshot = 0
+tracked_aimora_snapshot = 2
 signature_schema = "frozen-git-tree-rows-sha256-v1"
 signature = "1b35a658c9b4ec048756a48d473111fc150ed18386e4f92269a60249ad952868"
-disposition = "retain the remotely confirmed pre-L200 public-product baseline; later CSV and SVG paths require individual classification"
+inventory = "baseline-artifacts.toml"
+individually_classified = true
+disposition = "retain the remotely confirmed pre-L200 public-product baseline with one exact path, blob, size, and artifact classification per row; later artifacts require their own classification"
 
 [defaults]
 commit = ["canonical input/project", "reproducible runner", "README", "expected scalar metrics", "tolerances", "output schema", "result hashes", "small immutable independent reference", "selected educational figure", "provenance", "licence metadata"]
 externalize = ["complete raw waveforms", "repeated render variants", "PDF reports", "build logs", "caches", "temporary summaries", "fitting intermediates", "duplicate output formats", "large checkpoints"]
 
 [[classification]]
-id = "accepted-case-csv-baseline"
-glob = "AIMORACases.jl/examples/**/*.csv"
-source_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
-state = "retained"
-reason = "The 139 CSV paths in the immutable accepted pre-L200 Resources commit are preserved; later CSV paths require their own classification."
-
-[[classification]]
-id = "accepted-case-svg-baseline"
-glob = "AIMORACases.jl/examples/**/*.svg"
-source_commit = "94fdcb17440c98953e819cfd7ef68d26857214ef"
-state = "retained"
-reason = "The 123 SVG paths in the immutable accepted pre-L200 Resources commit are preserved; later SVG paths require their own classification."
-
-[[classification]]
 id = "wideband-overhead-frequency-data"
-path = "AIMORACases.jl/examples/line_parameters/overhead/outputs/frequency_scan.csv"
+path = "AIMORACases/examples/line_parameters/overhead/outputs/frequency_scan.csv"
 state = "retained"
 reason = "Small deterministic public frequency scan supporting the overhead parameter report and curated figure."
 
 [[classification]]
 id = "wideband-overhead-matrix-data"
-path = "AIMORACases.jl/examples/line_parameters/overhead/outputs/series_impedance_60hz.csv"
+path = "AIMORACases/examples/line_parameters/overhead/outputs/series_impedance_60hz.csv"
 state = "retained"
 reason = "Small canonical public 60 Hz overhead phase-matrix artifact."
 
 [[classification]]
 id = "wideband-overhead-curated-figure"
-path = "AIMORACases.jl/examples/line_parameters/overhead/outputs/frequency_scan.svg"
+path = "AIMORACases/examples/line_parameters/overhead/outputs/frequency_scan.svg"
 state = "retained"
 reason = "One curated public rendering of overhead self and mutual impedance magnitudes."
 
 [[classification]]
 id = "wideband-cable-frequency-data"
-path = "AIMORACases.jl/examples/line_parameters/cable/outputs/frequency_scan.csv"
+path = "AIMORACases/examples/line_parameters/cable/outputs/frequency_scan.csv"
 state = "retained"
 reason = "Small deterministic public frequency scan supporting the cable parameter report and curated figure."
 
 [[classification]]
 id = "wideband-cable-matrix-data"
-path = "AIMORACases.jl/examples/line_parameters/cable/outputs/series_impedance_60hz.csv"
+path = "AIMORACases/examples/line_parameters/cable/outputs/series_impedance_60hz.csv"
 state = "retained"
 reason = "Small canonical public 60 Hz cable phase-matrix artifact."
 
 [[classification]]
 id = "wideband-cable-curated-figure"
-path = "AIMORACases.jl/examples/line_parameters/cable/outputs/frequency_scan.svg"
+path = "AIMORACases/examples/line_parameters/cable/outputs/frequency_scan.svg"
 state = "retained"
 reason = "One curated public rendering of cable self and mutual impedance magnitudes."
 
 [[classification]]
 id = "wideband-mixed-route-frequency-data"
-path = "AIMORACases.jl/examples/line_parameters/mixed_route/outputs/frequency_scan.csv"
+path = "AIMORACases/examples/line_parameters/mixed_route/outputs/frequency_scan.csv"
 state = "retained"
 reason = "Small deterministic public frequency scan supporting the phase-mapped mixed-route report and curated figure."
 
 [[classification]]
 id = "wideband-mixed-route-matrix-data"
-path = "AIMORACases.jl/examples/line_parameters/mixed_route/outputs/series_impedance_60hz.csv"
+path = "AIMORACases/examples/line_parameters/mixed_route/outputs/series_impedance_60hz.csv"
 state = "retained"
 reason = "Small canonical public 60 Hz phase-mapped mixed-route matrix artifact."
 
 [[classification]]
 id = "wideband-mixed-route-curated-figure"
-path = "AIMORACases.jl/examples/line_parameters/mixed_route/outputs/frequency_scan.svg"
+path = "AIMORACases/examples/line_parameters/mixed_route/outputs/frequency_scan.svg"
 state = "retained"
 reason = "One curated public rendering of mixed-route self and mutual impedance magnitudes."
 
 [[classification]]
 id = "coupled-line-overhead-response-data"
-path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_response.csv"
+path = "AIMORACases/examples/line_fitting/overhead/outputs/coupled_line_response.csv"
 state = "retained"
 reason = "Small deterministic public source-versus-fit response data for the overhead fitting product."
 
 [[classification]]
 id = "coupled-line-overhead-error-data"
-path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_error.csv"
+path = "AIMORACases/examples/line_fitting/overhead/outputs/coupled_line_error.csv"
 state = "retained"
 reason = "Small deterministic public fit-error data supporting the overhead acceptance report."
 
 [[classification]]
 id = "coupled-line-overhead-passivity-data"
-path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_passivity.csv"
+path = "AIMORACases/examples/line_fitting/overhead/outputs/coupled_line_passivity.csv"
 state = "retained"
 reason = "Small deterministic sampled passivity diagnostic accompanying the continuous overhead certificate."
 
 [[classification]]
 id = "coupled-line-overhead-response-figure"
-path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_response.svg"
+path = "AIMORACases/examples/line_fitting/overhead/outputs/coupled_line_response.svg"
 state = "retained"
 reason = "Curated public source-versus-fit response rendering for the overhead fitting product."
 
 [[classification]]
 id = "coupled-line-overhead-error-figure"
-path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_error.svg"
+path = "AIMORACases/examples/line_fitting/overhead/outputs/coupled_line_error.svg"
 state = "retained"
 reason = "Curated public relative-error rendering for the overhead fitting product."
 
 [[classification]]
 id = "coupled-line-overhead-passivity-figure"
-path = "AIMORACases.jl/examples/line_fitting/overhead/outputs/coupled_line_passivity.svg"
+path = "AIMORACases/examples/line_fitting/overhead/outputs/coupled_line_passivity.svg"
 state = "retained"
 reason = "Curated sampled passivity rendering whose diagnostic boundary is documented with the continuous certificate."
 
 [[classification]]
 id = "coupled-line-cable-response-data"
-path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_response.csv"
+path = "AIMORACases/examples/line_fitting/cable/outputs/coupled_line_response.csv"
 state = "retained"
 reason = "Small deterministic public source-versus-fit response data for the cable fitting product."
 
 [[classification]]
 id = "coupled-line-cable-error-data"
-path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_error.csv"
+path = "AIMORACases/examples/line_fitting/cable/outputs/coupled_line_error.csv"
 state = "retained"
 reason = "Small deterministic public fit-error data supporting the cable acceptance report."
 
 [[classification]]
 id = "coupled-line-cable-passivity-data"
-path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_passivity.csv"
+path = "AIMORACases/examples/line_fitting/cable/outputs/coupled_line_passivity.csv"
 state = "retained"
 reason = "Small deterministic sampled passivity diagnostic accompanying the continuous cable certificate."
 
 [[classification]]
 id = "coupled-line-cable-response-figure"
-path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_response.svg"
+path = "AIMORACases/examples/line_fitting/cable/outputs/coupled_line_response.svg"
 state = "retained"
 reason = "Curated public source-versus-fit response rendering for the cable fitting product."
 
 [[classification]]
 id = "coupled-line-cable-error-figure"
-path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_error.svg"
+path = "AIMORACases/examples/line_fitting/cable/outputs/coupled_line_error.svg"
 state = "retained"
 reason = "Curated public relative-error rendering for the cable fitting product."
 
 [[classification]]
 id = "coupled-line-cable-passivity-figure"
-path = "AIMORACases.jl/examples/line_fitting/cable/outputs/coupled_line_passivity.svg"
+path = "AIMORACases/examples/line_fitting/cable/outputs/coupled_line_passivity.svg"
 state = "retained"
 reason = "Curated sampled passivity rendering whose diagnostic boundary is documented with the continuous certificate."
 
 [[classification]]
 id = "coupled-line-mixed-overhead-response-data"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_response.csv"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/overhead_segment_response.csv"
 state = "retained"
 reason = "Small deterministic public response data for the separately fitted overhead route segment."
 
 [[classification]]
 id = "coupled-line-mixed-overhead-error-data"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_error.csv"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/overhead_segment_error.csv"
 state = "retained"
 reason = "Small deterministic public fit-error data for the separately fitted overhead route segment."
 
 [[classification]]
 id = "coupled-line-mixed-overhead-passivity-data"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_passivity.csv"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/overhead_segment_passivity.csv"
 state = "retained"
 reason = "Small deterministic sampled passivity diagnostic for the separately fitted overhead route segment."
 
 [[classification]]
 id = "coupled-line-mixed-overhead-response-figure"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_response.svg"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/overhead_segment_response.svg"
 state = "retained"
 reason = "Curated public response rendering for the separately fitted overhead route segment."
 
 [[classification]]
 id = "coupled-line-mixed-overhead-error-figure"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_error.svg"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/overhead_segment_error.svg"
 state = "retained"
 reason = "Curated public relative-error rendering for the separately fitted overhead route segment."
 
 [[classification]]
 id = "coupled-line-mixed-overhead-passivity-figure"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/overhead_segment_passivity.svg"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/overhead_segment_passivity.svg"
 state = "retained"
 reason = "Curated sampled passivity rendering for the separately fitted overhead route segment."
 
 [[classification]]
 id = "coupled-line-mixed-cable-response-data"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_response.csv"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/cable_segment_response.csv"
 state = "retained"
 reason = "Small deterministic public response data for the separately fitted cable route segment."
 
 [[classification]]
 id = "coupled-line-mixed-cable-error-data"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_error.csv"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/cable_segment_error.csv"
 state = "retained"
 reason = "Small deterministic public fit-error data for the separately fitted cable route segment."
 
 [[classification]]
 id = "coupled-line-mixed-cable-passivity-data"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_passivity.csv"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/cable_segment_passivity.csv"
 state = "retained"
 reason = "Small deterministic sampled passivity diagnostic for the separately fitted cable route segment."
 
 [[classification]]
 id = "coupled-line-mixed-cable-response-figure"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_response.svg"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/cable_segment_response.svg"
 state = "retained"
 reason = "Curated public response rendering for the separately fitted cable route segment."
 
 [[classification]]
 id = "coupled-line-mixed-cable-error-figure"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_error.svg"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/cable_segment_error.svg"
 state = "retained"
 reason = "Curated public relative-error rendering for the separately fitted cable route segment."
 
 [[classification]]
 id = "coupled-line-mixed-cable-passivity-figure"
-path = "AIMORACases.jl/examples/line_fitting/mixed_route/outputs/cable_segment_passivity.svg"
+path = "AIMORACases/examples/line_fitting/mixed_route/outputs/cable_segment_passivity.svg"
 state = "retained"
 reason = "Curated sampled passivity rendering for the separately fitted cable route segment."
 
 [[classification]]
 id = "coupled-runtime-overhead-waveform-data"
-path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_waveforms.csv"
+path = "AIMORACases/examples/line_runtime/overhead/outputs/runtime_waveforms.csv"
 state = "retained"
 reason = "Small deterministic public terminal waveform data for the complete overhead-line runtime and declared event schedule."
 
 [[classification]]
 id = "coupled-runtime-overhead-energy-data"
-path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_energy_kcl.csv"
+path = "AIMORACases/examples/line_runtime/overhead/outputs/runtime_energy_kcl.csv"
 state = "retained"
 reason = "Small deterministic public power, cumulative-energy, terminal-KCL, and fault-state data for the overhead runtime."
 
 [[classification]]
 id = "coupled-runtime-overhead-uncertainty-data"
-path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_uncertainty.csv"
+path = "AIMORACases/examples/line_runtime/overhead/outputs/runtime_uncertainty.csv"
 state = "retained"
 reason = "Time-aligned public voltage, current, power, energy, and KCL envelope for the exact declared overhead soil alternative."
 
 [[classification]]
 id = "coupled-runtime-overhead-refinement-data"
-path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_refinement.csv"
+path = "AIMORACases/examples/line_runtime/overhead/outputs/runtime_refinement.csv"
 state = "retained"
 reason = "Small deterministic public 10/5 microsecond voltage, current, power, energy, and KCL timestep-refinement evidence for the nominal and declared overhead alternatives."
 
 [[classification]]
 id = "coupled-runtime-overhead-waveform-figure"
-path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_waveforms.svg"
+path = "AIMORACases/examples/line_runtime/overhead/outputs/runtime_waveforms.svg"
 state = "retained"
 reason = "Curated receiving-end phase-voltage rendering for the overhead runtime product."
 
 [[classification]]
 id = "coupled-runtime-overhead-energy-figure"
-path = "AIMORACases.jl/examples/line_runtime/overhead/outputs/runtime_energy.svg"
+path = "AIMORACases/examples/line_runtime/overhead/outputs/runtime_energy.svg"
 state = "retained"
 reason = "Curated cumulative supplied-energy rendering for the overhead runtime product."
 
 [[classification]]
 id = "coupled-runtime-cable-waveform-data"
-path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_waveforms.csv"
+path = "AIMORACases/examples/line_runtime/cable/outputs/runtime_waveforms.csv"
 state = "retained"
 reason = "Small deterministic public terminal waveform data for the complete cable runtime and declared event schedule."
 
 [[classification]]
 id = "coupled-runtime-cable-energy-data"
-path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_energy_kcl.csv"
+path = "AIMORACases/examples/line_runtime/cable/outputs/runtime_energy_kcl.csv"
 state = "retained"
 reason = "Small deterministic public power, cumulative-energy, terminal-KCL, and fault-state data for the cable runtime."
 
 [[classification]]
 id = "coupled-runtime-cable-uncertainty-data"
-path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_uncertainty.csv"
+path = "AIMORACases/examples/line_runtime/cable/outputs/runtime_uncertainty.csv"
 state = "retained"
 reason = "Time-aligned public voltage, current, power, energy, and KCL envelope for the exact declared cable soil alternative."
 
 [[classification]]
 id = "coupled-runtime-cable-refinement-data"
-path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_refinement.csv"
+path = "AIMORACases/examples/line_runtime/cable/outputs/runtime_refinement.csv"
 state = "retained"
 reason = "Small deterministic public 10/5 microsecond voltage, current, power, energy, and KCL timestep-refinement evidence for the nominal and declared cable alternatives."
 
 [[classification]]
 id = "coupled-runtime-cable-waveform-figure"
-path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_waveforms.svg"
+path = "AIMORACases/examples/line_runtime/cable/outputs/runtime_waveforms.svg"
 state = "retained"
 reason = "Curated receiving-end phase-voltage rendering for the cable runtime product."
 
 [[classification]]
 id = "coupled-runtime-cable-energy-figure"
-path = "AIMORACases.jl/examples/line_runtime/cable/outputs/runtime_energy.svg"
+path = "AIMORACases/examples/line_runtime/cable/outputs/runtime_energy.svg"
 state = "retained"
 reason = "Curated cumulative supplied-energy rendering for the cable runtime product."
 
 [[classification]]
 id = "coupled-runtime-mixed-route-waveform-data"
-path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_waveforms.csv"
+path = "AIMORACases/examples/line_runtime/mixed_route/outputs/runtime_waveforms.csv"
 state = "retained"
 reason = "Small deterministic public terminal waveform data for the separately executed overhead/cable route."
 
 [[classification]]
 id = "coupled-runtime-mixed-route-energy-data"
-path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_energy_kcl.csv"
+path = "AIMORACases/examples/line_runtime/mixed_route/outputs/runtime_energy_kcl.csv"
 state = "retained"
 reason = "Small deterministic public power, cumulative-energy, terminal-KCL, and fault-state data for the phase-mapped route."
 
 [[classification]]
 id = "coupled-runtime-mixed-route-uncertainty-data"
-path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_uncertainty.csv"
+path = "AIMORACases/examples/line_runtime/mixed_route/outputs/runtime_uncertainty.csv"
 state = "retained"
 reason = "Time-aligned public envelope for both exact declared soil alternatives through the unchanged route junction and event policy."
 
 [[classification]]
 id = "coupled-runtime-mixed-route-refinement-data"
-path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_refinement.csv"
+path = "AIMORACases/examples/line_runtime/mixed_route/outputs/runtime_refinement.csv"
 state = "retained"
 reason = "Small deterministic public 10/5 microsecond voltage, current, power, energy, and KCL timestep-refinement evidence for the nominal and declared mixed-route alternatives."
 
 [[classification]]
 id = "coupled-runtime-mixed-route-waveform-figure"
-path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_waveforms.svg"
+path = "AIMORACases/examples/line_runtime/mixed_route/outputs/runtime_waveforms.svg"
 state = "retained"
 reason = "Curated receiving-end phase-voltage rendering for the mixed-route runtime product."
 
 [[classification]]
 id = "coupled-runtime-mixed-route-energy-figure"
-path = "AIMORACases.jl/examples/line_runtime/mixed_route/outputs/runtime_energy.svg"
+path = "AIMORACases/examples/line_runtime/mixed_route/outputs/runtime_energy.svg"
 state = "retained"
 reason = "Curated cumulative supplied-energy rendering for the mixed-route runtime product."
 
 [[classification]]
 id = "transformer-low-frequency-waveform-data"
-path = "AIMORACases.jl/examples/emt/transformer_low_frequency/outputs/transformer_waveforms.csv"
+path = "AIMORACases/examples/emt/transformer_low_frequency/outputs/transformer_waveforms.csv"
 state = "retained"
 reason = "Small deterministic terminal waveform, power, energy, and KCL data for the low-frequency transformer product."
 
 [[classification]]
 id = "transformer-low-frequency-curated-figure"
-path = "AIMORACases.jl/examples/emt/transformer_low_frequency/outputs/transformer_waveforms.svg"
+path = "AIMORACases/examples/emt/transformer_low_frequency/outputs/transformer_waveforms.svg"
 state = "retained"
 reason = "One curated public transient rendering for the low-frequency transformer product."
 
 [[classification]]
 id = "transformer-bctran-waveform-data"
-path = "AIMORACases.jl/examples/emt/transformer_bctran/outputs/transformer_waveforms.csv"
+path = "AIMORACases/examples/emt/transformer_bctran/outputs/transformer_waveforms.csv"
 state = "retained"
 reason = "Small deterministic terminal waveform, power, energy, and KCL data for the BCTRAN transformer product."
 
 [[classification]]
 id = "transformer-bctran-curated-figure"
-path = "AIMORACases.jl/examples/emt/transformer_bctran/outputs/transformer_waveforms.svg"
+path = "AIMORACases/examples/emt/transformer_bctran/outputs/transformer_waveforms.svg"
 state = "retained"
 reason = "One curated public transient rendering for the BCTRAN transformer product."
 
 [[classification]]
 id = "transformer-hybrid-waveform-data"
-path = "AIMORACases.jl/examples/emt/transformer_hybrid/outputs/transformer_waveforms.csv"
+path = "AIMORACases/examples/emt/transformer_hybrid/outputs/transformer_waveforms.csv"
 state = "retained"
 reason = "Small deterministic terminal waveform, power, energy, and KCL data for the hybrid nonlinear-core transformer product."
 
 [[classification]]
 id = "transformer-hybrid-curated-figure"
-path = "AIMORACases.jl/examples/emt/transformer_hybrid/outputs/transformer_waveforms.svg"
+path = "AIMORACases/examples/emt/transformer_hybrid/outputs/transformer_waveforms.svg"
 state = "retained"
 reason = "One curated public transient rendering for the hybrid nonlinear-core transformer product."
 
 [[classification]]
 id = "transformer-magnetic-equivalent-waveform-data"
-path = "AIMORACases.jl/examples/emt/transformer_magnetic_equivalent/outputs/transformer_waveforms.csv"
+path = "AIMORACases/examples/emt/transformer_magnetic_equivalent/outputs/transformer_waveforms.csv"
 state = "retained"
 reason = "Small deterministic terminal waveform, power, energy, and KCL data for the magnetic-equivalent-circuit transformer product."
 
 [[classification]]
 id = "transformer-magnetic-equivalent-curated-figure"
-path = "AIMORACases.jl/examples/emt/transformer_magnetic_equivalent/outputs/transformer_waveforms.svg"
+path = "AIMORACases/examples/emt/transformer_magnetic_equivalent/outputs/transformer_waveforms.svg"
 state = "retained"
 reason = "One curated public transient rendering for the magnetic-equivalent-circuit transformer product."
 
 [[classification]]
 id = "transformer-wideband-black-box-waveform-data"
-path = "AIMORACases.jl/examples/emt/transformer_wideband_black_box/outputs/transformer_waveforms.csv"
+path = "AIMORACases/examples/emt/transformer_wideband_black_box/outputs/transformer_waveforms.csv"
 state = "retained"
 reason = "Small deterministic terminal waveform, power, energy, and KCL data for the passive wideband black-box transformer product."
 
 [[classification]]
 id = "transformer-wideband-black-box-curated-figure"
-path = "AIMORACases.jl/examples/emt/transformer_wideband_black_box/outputs/transformer_waveforms.svg"
+path = "AIMORACases/examples/emt/transformer_wideband_black_box/outputs/transformer_waveforms.svg"
 state = "retained"
 reason = "One curated public transient rendering for the passive wideband black-box transformer product."
 
 [[classification]]
 id = "transformer-grey-box-waveform-data"
-path = "AIMORACases.jl/examples/emt/transformer_grey_box/outputs/transformer_waveforms.csv"
+path = "AIMORACases/examples/emt/transformer_grey_box/outputs/transformer_waveforms.csv"
 state = "retained"
 reason = "Small deterministic terminal waveform, power, energy, and internal-KCL data for the represented grey-box ladder product."
 
 [[classification]]
 id = "transformer-grey-box-curated-figure"
-path = "AIMORACases.jl/examples/emt/transformer_grey_box/outputs/transformer_waveforms.svg"
+path = "AIMORACases/examples/emt/transformer_grey_box/outputs/transformer_waveforms.svg"
 state = "retained"
 reason = "One curated public transient rendering for the represented grey-box ladder product."
 
 [[classification]]
 id = "transformer-white-box-waveform-data"
-path = "AIMORACases.jl/examples/emt/transformer_white_box/outputs/transformer_waveforms.csv"
+path = "AIMORACases/examples/emt/transformer_white_box/outputs/transformer_waveforms.csv"
 state = "retained"
 reason = "Small deterministic terminal waveform, power, energy, and internal-KCL data for the sectioned white-box winding product."
 
 [[classification]]
 id = "transformer-white-box-curated-figure"
-path = "AIMORACases.jl/examples/emt/transformer_white_box/outputs/transformer_waveforms.svg"
+path = "AIMORACases/examples/emt/transformer_white_box/outputs/transformer_waveforms.svg"
 state = "retained"
 reason = "One curated public transient rendering for the sectioned white-box winding product."
 
 [[classification]]
 id = "modern-machine-wound-field-waveform-data"
-path = "AIMORACases.jl/examples/emt/machine_wound_field_synchronous/outputs/machine_waveforms.csv"
+path = "AIMORACases/examples/emt/machine_wound_field_synchronous/outputs/machine_waveforms.csv"
 state = "retained"
 reason = "Deterministic public waveform data for the wound-field synchronous-machine product and its curated plots."
 
 [[classification]]
 id = "modern-machine-wound-field-waveform-figure"
-path = "AIMORACases.jl/examples/emt/machine_wound_field_synchronous/outputs/machine_waveforms.svg"
+path = "AIMORACases/examples/emt/machine_wound_field_synchronous/outputs/machine_waveforms.svg"
 state = "retained"
 reason = "Curated public electrical waveform rendering for the wound-field synchronous-machine product."
 
 [[classification]]
 id = "modern-machine-wound-field-mechanical-figure"
-path = "AIMORACases.jl/examples/emt/machine_wound_field_synchronous/outputs/machine_mechanical.svg"
+path = "AIMORACases/examples/emt/machine_wound_field_synchronous/outputs/machine_mechanical.svg"
 state = "retained"
 reason = "Curated public speed and torque rendering for the wound-field synchronous-machine product."
 
 [[classification]]
 id = "modern-machine-cage-induction-waveform-data"
-path = "AIMORACases.jl/examples/emt/machine_cage_induction/outputs/machine_waveforms.csv"
+path = "AIMORACases/examples/emt/machine_cage_induction/outputs/machine_waveforms.csv"
 state = "retained"
 reason = "Deterministic public waveform data for the cage-induction-machine product and its curated plots."
 
 [[classification]]
 id = "modern-machine-cage-induction-waveform-figure"
-path = "AIMORACases.jl/examples/emt/machine_cage_induction/outputs/machine_waveforms.svg"
+path = "AIMORACases/examples/emt/machine_cage_induction/outputs/machine_waveforms.svg"
 state = "retained"
 reason = "Curated public electrical waveform rendering for the cage-induction-machine product."
 
 [[classification]]
 id = "modern-machine-cage-induction-mechanical-figure"
-path = "AIMORACases.jl/examples/emt/machine_cage_induction/outputs/machine_mechanical.svg"
+path = "AIMORACases/examples/emt/machine_cage_induction/outputs/machine_mechanical.svg"
 state = "retained"
 reason = "Curated public speed and torque rendering for the cage-induction-machine product."
 
 [[classification]]
 id = "modern-machine-deep-bar-waveform-data"
-path = "AIMORACases.jl/examples/emt/machine_deep_bar_induction/outputs/machine_waveforms.csv"
+path = "AIMORACases/examples/emt/machine_deep_bar_induction/outputs/machine_waveforms.csv"
 state = "retained"
 reason = "Deterministic public waveform data for the four-branch deep-bar induction-machine product and its curated plots."
 
 [[classification]]
 id = "modern-machine-deep-bar-waveform-figure"
-path = "AIMORACases.jl/examples/emt/machine_deep_bar_induction/outputs/machine_waveforms.svg"
+path = "AIMORACases/examples/emt/machine_deep_bar_induction/outputs/machine_waveforms.svg"
 state = "retained"
 reason = "Curated public electrical waveform rendering for the four-branch deep-bar induction-machine product."
 
 [[classification]]
 id = "modern-machine-deep-bar-mechanical-figure"
-path = "AIMORACases.jl/examples/emt/machine_deep_bar_induction/outputs/machine_mechanical.svg"
+path = "AIMORACases/examples/emt/machine_deep_bar_induction/outputs/machine_mechanical.svg"
 state = "retained"
 reason = "Curated public speed and torque rendering for the four-branch deep-bar induction-machine product."
 
 [[classification]]
 id = "modern-machine-permanent-magnet-waveform-data"
-path = "AIMORACases.jl/examples/emt/machine_permanent_magnet/outputs/machine_waveforms.csv"
+path = "AIMORACases/examples/emt/machine_permanent_magnet/outputs/machine_waveforms.csv"
 state = "retained"
 reason = "Deterministic public waveform data for the permanent-magnet synchronous-machine product and its curated plots."
 
 [[classification]]
 id = "modern-machine-permanent-magnet-waveform-figure"
-path = "AIMORACases.jl/examples/emt/machine_permanent_magnet/outputs/machine_waveforms.svg"
+path = "AIMORACases/examples/emt/machine_permanent_magnet/outputs/machine_waveforms.svg"
 state = "retained"
 reason = "Curated public electrical waveform rendering for the permanent-magnet synchronous-machine product."
 
 [[classification]]
 id = "modern-machine-permanent-magnet-mechanical-figure"
-path = "AIMORACases.jl/examples/emt/machine_permanent_magnet/outputs/machine_mechanical.svg"
+path = "AIMORACases/examples/emt/machine_permanent_magnet/outputs/machine_mechanical.svg"
 state = "retained"
 reason = "Curated public speed and torque rendering for the permanent-magnet synchronous-machine product."
 
 [[classification]]
 id = "modern-machine-doubly-fed-waveform-data"
-path = "AIMORACases.jl/examples/emt/machine_doubly_fed_induction/outputs/machine_waveforms.csv"
+path = "AIMORACases/examples/emt/machine_doubly_fed_induction/outputs/machine_waveforms.csv"
 state = "retained"
 reason = "Deterministic public waveform data for the doubly fed induction-machine product and its curated plots."
 
 [[classification]]
 id = "modern-machine-doubly-fed-waveform-figure"
-path = "AIMORACases.jl/examples/emt/machine_doubly_fed_induction/outputs/machine_waveforms.svg"
+path = "AIMORACases/examples/emt/machine_doubly_fed_induction/outputs/machine_waveforms.svg"
 state = "retained"
 reason = "Curated public electrical waveform rendering for the doubly fed induction-machine product."
 
 [[classification]]
 id = "modern-machine-doubly-fed-mechanical-figure"
-path = "AIMORACases.jl/examples/emt/machine_doubly_fed_induction/outputs/machine_mechanical.svg"
+path = "AIMORACases/examples/emt/machine_doubly_fed_induction/outputs/machine_mechanical.svg"
 state = "retained"
 reason = "Curated public speed and torque rendering for the doubly fed induction-machine product."
 
 [[classification]]
 id = "modern-machine-synchronous-condenser-waveform-data"
-path = "AIMORACases.jl/examples/emt/machine_synchronous_condenser/outputs/machine_waveforms.csv"
+path = "AIMORACases/examples/emt/machine_synchronous_condenser/outputs/machine_waveforms.csv"
 state = "retained"
 reason = "Deterministic public waveform data for the synchronous-condenser product and its curated plots."
 
 [[classification]]
 id = "modern-machine-synchronous-condenser-waveform-figure"
-path = "AIMORACases.jl/examples/emt/machine_synchronous_condenser/outputs/machine_waveforms.svg"
+path = "AIMORACases/examples/emt/machine_synchronous_condenser/outputs/machine_waveforms.svg"
 state = "retained"
 reason = "Curated public electrical waveform rendering for the synchronous-condenser product."
 
 [[classification]]
 id = "modern-machine-synchronous-condenser-mechanical-figure"
-path = "AIMORACases.jl/examples/emt/machine_synchronous_condenser/outputs/machine_mechanical.svg"
+path = "AIMORACases/examples/emt/machine_synchronous_condenser/outputs/machine_mechanical.svg"
 state = "retained"
 reason = "Curated public speed and torque rendering for the synchronous-condenser product."
 
 [[classification]]
 id = "modern-machine-multimass-control-waveform-data"
-path = "AIMORACases.jl/examples/emt/machine_multimass_controls/outputs/machine_waveforms.csv"
+path = "AIMORACases/examples/emt/machine_multimass_controls/outputs/machine_waveforms.csv"
 state = "retained"
 reason = "Deterministic public waveform data for the eight-mass controlled-machine product and its curated plots."
 
 [[classification]]
 id = "modern-machine-multimass-control-waveform-figure"
-path = "AIMORACases.jl/examples/emt/machine_multimass_controls/outputs/machine_waveforms.svg"
+path = "AIMORACases/examples/emt/machine_multimass_controls/outputs/machine_waveforms.svg"
 state = "retained"
 reason = "Curated public electrical waveform rendering for the eight-mass controlled-machine product."
 
 [[classification]]
 id = "modern-machine-multimass-control-mechanical-figure"
-path = "AIMORACases.jl/examples/emt/machine_multimass_controls/outputs/machine_mechanical.svg"
+path = "AIMORACases/examples/emt/machine_multimass_controls/outputs/machine_mechanical.svg"
 state = "retained"
 reason = "Curated public shaft-speed and torque rendering for the eight-mass controlled-machine product."
 
 [[classification]]
 id = "measurement-linear-ct-waveform-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_waveforms.csv"
+path = "AIMORACases/examples/emt/emt_measurement_linear_ct/outputs/measurement_waveforms.csv"
 state = "retained"
 reason = "Small deterministic physical and delayed-sample waveform data for the linear-CT public product."
 
 [[classification]]
 id = "measurement-linear-ct-diagnostic-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_diagnostics.csv"
+path = "AIMORACases/examples/emt/emt_measurement_linear_ct/outputs/measurement_diagnostics.csv"
 state = "retained"
 reason = "Small deterministic RMS, phasor, stored-energy, KCL, and quality data for the linear-CT public product."
 
 [[classification]]
 id = "measurement-linear-ct-waveform-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_waveforms.svg"
+path = "AIMORACases/examples/emt/emt_measurement_linear_ct/outputs/measurement_waveforms.svg"
 state = "retained"
 reason = "Curated physical and sampled-response rendering for the linear-CT public product."
 
 [[classification]]
 id = "measurement-linear-ct-diagnostic-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_linear_ct/outputs/measurement_diagnostics.svg"
+path = "AIMORACases/examples/emt/emt_measurement_linear_ct/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated causal estimator and physical-diagnostic rendering for the linear-CT public product."
 
 [[classification]]
 id = "measurement-saturating-ct-waveform-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_waveforms.csv"
+path = "AIMORACases/examples/emt/emt_measurement_saturating_ct/outputs/measurement_waveforms.csv"
 state = "retained"
 reason = "Small deterministic magnetic CT physical and delayed-sample waveform data with remanence and saturation."
 
 [[classification]]
 id = "measurement-saturating-ct-diagnostic-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_diagnostics.csv"
+path = "AIMORACases/examples/emt/emt_measurement_saturating_ct/outputs/measurement_diagnostics.csv"
 state = "retained"
 reason = "Small deterministic estimator, stored-energy, KCL, and quality data for the magnetic CT product."
 
 [[classification]]
 id = "measurement-saturating-ct-waveform-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_waveforms.svg"
+path = "AIMORACases/examples/emt/emt_measurement_saturating_ct/outputs/measurement_waveforms.svg"
 state = "retained"
 reason = "Curated saturated/remanent CT physical and sampled-response rendering."
 
 [[classification]]
 id = "measurement-saturating-ct-diagnostic-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_saturating_ct/outputs/measurement_diagnostics.svg"
+path = "AIMORACases/examples/emt/emt_measurement_saturating_ct/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated estimator and physical-diagnostic rendering for the saturated/remanent CT product."
 
 [[classification]]
 id = "measurement-inductive-vt-waveform-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_waveforms.csv"
+path = "AIMORACases/examples/emt/emt_measurement_inductive_vt/outputs/measurement_waveforms.csv"
 state = "retained"
 reason = "Small deterministic physical and delayed-sample waveform data for the inductive-VT product."
 
 [[classification]]
 id = "measurement-inductive-vt-diagnostic-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_diagnostics.csv"
+path = "AIMORACases/examples/emt/emt_measurement_inductive_vt/outputs/measurement_diagnostics.csv"
 state = "retained"
 reason = "Small deterministic estimator, stored-energy, KCL, and quality data for the inductive-VT product."
 
 [[classification]]
 id = "measurement-inductive-vt-waveform-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_waveforms.svg"
+path = "AIMORACases/examples/emt/emt_measurement_inductive_vt/outputs/measurement_waveforms.svg"
 state = "retained"
 reason = "Curated physical and sampled-response rendering for the inductive-VT product."
 
 [[classification]]
 id = "measurement-inductive-vt-diagnostic-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_inductive_vt/outputs/measurement_diagnostics.svg"
+path = "AIMORACases/examples/emt/emt_measurement_inductive_vt/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated estimator and physical-diagnostic rendering for the inductive-VT product."
 
 [[classification]]
 id = "measurement-cvt-waveform-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_waveforms.csv"
+path = "AIMORACases/examples/emt/emt_measurement_cvt_transient/outputs/measurement_waveforms.csv"
 state = "retained"
 reason = "Small deterministic divider, compensation, electromagnetic-unit, and delayed-sample waveform data for the CVT product."
 
 [[classification]]
 id = "measurement-cvt-diagnostic-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_diagnostics.csv"
+path = "AIMORACases/examples/emt/emt_measurement_cvt_transient/outputs/measurement_diagnostics.csv"
 state = "retained"
 reason = "Small deterministic estimator, stored-energy, KCL, and quality data for the explicit CVT product."
 
 [[classification]]
 id = "measurement-cvt-waveform-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_waveforms.svg"
+path = "AIMORACases/examples/emt/emt_measurement_cvt_transient/outputs/measurement_waveforms.svg"
 state = "retained"
 reason = "Curated CVT transient and delayed-sample response rendering."
 
 [[classification]]
 id = "measurement-cvt-diagnostic-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_cvt_transient/outputs/measurement_diagnostics.svg"
+path = "AIMORACases/examples/emt/emt_measurement_cvt_transient/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated estimator and physical-diagnostic rendering for the explicit CVT product."
 
 [[classification]]
 id = "measurement-electronic-current-waveform-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_waveforms.csv"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_current/outputs/measurement_waveforms.csv"
 state = "retained"
 reason = "Small deterministic source, loaded observation, transducer, and delayed-sample data for the electronic current sensor."
 
 [[classification]]
 id = "measurement-electronic-current-diagnostic-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_diagnostics.csv"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_current/outputs/measurement_diagnostics.csv"
 state = "retained"
 reason = "Small deterministic estimator and quality data for the electronic current-sensor product."
 
 [[classification]]
 id = "measurement-electronic-current-waveform-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_waveforms.svg"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_current/outputs/measurement_waveforms.svg"
 state = "retained"
 reason = "Curated loaded electronic current-sensor and delayed-sample response rendering."
 
 [[classification]]
 id = "measurement-electronic-current-diagnostic-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_current/outputs/measurement_diagnostics.svg"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_current/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated causal estimator and quality rendering for the electronic current sensor."
 
 [[classification]]
 id = "measurement-electronic-voltage-waveform-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_waveforms.csv"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_waveforms.csv"
 state = "retained"
 reason = "Small deterministic source, loaded observation, transducer, and delayed-sample data for the electronic voltage sensor."
 
 [[classification]]
 id = "measurement-electronic-voltage-diagnostic-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_diagnostics.csv"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_diagnostics.csv"
 state = "retained"
 reason = "Small deterministic estimator and quality data for the electronic voltage-sensor product."
 
 [[classification]]
 id = "measurement-electronic-voltage-waveform-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_waveforms.svg"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_waveforms.svg"
 state = "retained"
 reason = "Curated loaded electronic voltage-sensor and delayed-sample response rendering."
 
 [[classification]]
 id = "measurement-electronic-voltage-diagnostic-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_diagnostics.svg"
+path = "AIMORACases/examples/emt/emt_measurement_electronic_voltage/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated causal estimator and quality rendering for the electronic voltage sensor."
 
 [[classification]]
 id = "measurement-three-phase-waveform-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_waveforms.csv"
+path = "AIMORACases/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_waveforms.csv"
 state = "retained"
 reason = "Small deterministic three-phase source, filter, and held-sample waveform data."
 
 [[classification]]
 id = "measurement-three-phase-diagnostic-data"
-path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_diagnostics.csv"
+path = "AIMORACases/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_diagnostics.csv"
 state = "retained"
 reason = "Small deterministic sequence, frequency, and quality data for the complete sampled chain."
 
 [[classification]]
 id = "measurement-three-phase-waveform-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_waveforms.svg"
+path = "AIMORACases/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_waveforms.svg"
 state = "retained"
 reason = "Curated three-phase physical and held-sample waveform rendering."
 
 [[classification]]
 id = "measurement-three-phase-diagnostic-figure"
-path = "AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_diagnostics.svg"
+path = "AIMORACases/examples/emt/emt_measurement_three_phase_chain/outputs/measurement_diagnostics.svg"
 state = "retained"
 reason = "Curated sequence, frequency, and validity rendering for the complete sampled chain."
 
 [[classification]]
 id = "local-partition-interface-current-figure"
-path = "AIMORACases.jl/examples/emt/local_multirate_partitioned_network/outputs/local_partition_interface_current.svg"
+path = "AIMORACases/examples/emt/local_multirate_partitioned_network/outputs/local_partition_interface_current.svg"
 state = "retained"
 reason = "Curated current rendering for the seven conservative interfaces in the complete local-multirate public product."
 
 [[classification]]
 id = "local-partition-interface-voltage-figure"
-path = "AIMORACases.jl/examples/emt/local_multirate_partitioned_network/outputs/local_partition_interface_voltage.svg"
+path = "AIMORACases/examples/emt/local_multirate_partitioned_network/outputs/local_partition_interface_voltage.svg"
 state = "retained"
 reason = "Curated voltage rendering for source-side, middle, and load-side boundaries in the complete local-multirate public product."
 
 [[classification]]
 id = "local-partition-refinement-figure"
-path = "AIMORACases.jl/examples/emt/local_multirate_partitioned_network/outputs/local_partition_refinement.svg"
+path = "AIMORACases/examples/emt/local_multirate_partitioned_network/outputs/local_partition_refinement.svg"
 state = "retained"
 reason = "Curated communication-step refinement rendering for the independent passive two-region boundary."
 
 [[classification]]
+id = "portable-snapshot-restart-data"
+path = "AIMORACases/examples/emt/portable_snapshot_restart/outputs/portable_snapshot_restart.csv"
+state = "retained"
+reason = "Small exact uninterrupted-versus-resumed waveform data backing the public restart comparison and curated figure."
+
+[[classification]]
 id = "portable-snapshot-restart-figure"
-path = "AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_snapshot_restart.svg"
+path = "AIMORACases/examples/emt/portable_snapshot_restart/outputs/portable_snapshot_restart.svg"
 state = "retained"
 reason = "Curated exact split-versus-uninterrupted voltage rendering for the portable snapshot public product."
 
 [[classification]]
 id = "portable-full-snapshot-product"
-path = "AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_full.aimora-snapshot"
+path = "AIMORACases/examples/emt/portable_snapshot_restart/outputs/portable_full.aimora-snapshot"
 state = "retained"
 reason = "Small canonical private-capability-inspection artifact whose exact byte portability, integrity, public descriptor, and isolated reconstruction are the feature under qualification."
 
 [[classification]]
 id = "portable-public-reference-snapshot"
-path = "AIMORACases.jl/examples/emt/portable_snapshot_restart/outputs/portable_public_reference.aimora-snapshot"
+path = "AIMORACases/examples/emt/portable_snapshot_restart/outputs/portable_public_reference.aimora-snapshot"
 state = "retained"
 reason = "Small immutable public-only snapshot oracle for solver-free decoding and independent canonical-format checks."
 

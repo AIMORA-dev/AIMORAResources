@@ -8,7 +8,7 @@ The extended switching-detailed VSC public set includes `emt_extended_vsc_pll_dq
 
 ## Canonical cases
 
-`AIMORACases.jl` is the single public source for examples and benchmark inputs.
+`AIMORACases` is the single public source for examples and benchmark inputs.
 Tests and documentation should reference a case revision instead of copying
 decks.
 
@@ -24,7 +24,7 @@ capabilities and whether the compiled reference can consume it.
 
 ## Equipment catalogs
 
-`AIMORACatalogs.jl` stores open, versioned equipment data with common
+`AIMORACatalogs` stores open, versioned equipment data with common
 nameplate fields and separate study facets.
 
 ```julia

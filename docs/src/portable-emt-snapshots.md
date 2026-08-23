@@ -24,7 +24,7 @@ Restore first bounds and validates the envelope, schema, digests, profile, capab
 
 ## Public workflow
 
-The [`portable_snapshot_restart`](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/portable_snapshot_restart) example writes a `portable_full` snapshot, inspects its solver-free descriptor, restores it into a new workspace, and compares continued output exactly with uninterrupted execution. It also writes and publicly decodes a `portable_public_reference` snapshot and demonstrates corruption and changed-identity refusal.
+The [`portable_snapshot_restart`](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/portable_snapshot_restart) example writes a `portable_full` snapshot, inspects its solver-free descriptor, restores it into a new workspace, and compares continued output exactly with uninterrupted execution. It also writes and publicly decodes a `portable_public_reference` snapshot and demonstrates corruption and changed-identity refusal.
 
 ```julia
 descriptor = AIMORA.PortableSnapshots.inspect_portable_emt_snapshot(path)

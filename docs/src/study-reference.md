@@ -1,6 +1,8 @@
 # Study Reference and Capability Maturity
 
-AIMORA uses typed study descriptors so roadmap breadth is visible without confusing a declared interface with an implemented calculation. The generated [Complete Study Catalog](generated/study-catalog.md) lists every descriptor directly from the engine and is the authoritative inventory for identifiers, domains, and maturity.
+AIMORA uses typed study descriptors so roadmap breadth is visible without confusing a declared interface with an implemented calculation. The generated [Complete Study Catalog](generated/study-catalog.md) lists every descriptor directly from the engine and is the authoritative inventory for identifiers, domains, maturity, and the current implemented/total count.
+
+The catalogue count measures top-level callable study APIs, not overall AIMORA completion. The accepted model, event, solver, restart, converter, machine, line, transformer, control, and validation mechanisms inside `emt` increase EMT capability without creating separate top-level study IDs.
 
 ## Maturity is part of the numerical contract
 
@@ -15,7 +17,7 @@ A filename, function stub, menu entry, or catalog row does not prove implementat
 
 # Implemented studies
 
-At the current public-engine revision, the typed catalog marks four study families as implemented.
+The exact current count is generated from the public engine on the [Complete Study Catalog](generated/study-catalog.md). The implemented families are listed below; their internal capability breadth must be assessed from their model, case, and limitation documentation rather than inferred from the number of top-level study IDs.
 
 ## Electromagnetic transient (`emt`)
 

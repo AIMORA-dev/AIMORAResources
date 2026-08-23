@@ -246,7 +246,10 @@ function _write_study_catalog(path::AbstractString, engine_module)
         println(io)
         println(io, "This page is generated from the engine's typed study catalog. Status is normative: a declared study name does not imply that a numerical implementation exists.")
         println(io)
+        println(io, "These counts measure top-level callable study APIs. They are not an overall product-completion percentage and do not count the model, event, solver, restart, converter, machine, line, transformer, control, or validation capabilities implemented inside the `emt` study as separate studies.")
+        println(io)
         println(io, "- Total descriptors: **$(length(studies))**")
+        println(io, "- Implemented top-level study APIs: **$(get(counts, :implemented, 0)) of $(length(studies))**")
         for status in sort(collect(keys(counts)); by = string)
             println(io, "- `$(status)`: **$(counts[status])**")
         end
@@ -274,7 +277,7 @@ function _bool_text(value)
 end
 
 function _write_case_catalog(path::AbstractString, repository_root::AbstractString)
-    catalog_path = joinpath(repository_root, "AIMORACases.jl", "examples", "catalog.toml")
+    catalog_path = joinpath(repository_root, "AIMORACases", "examples", "catalog.toml")
     isfile(catalog_path) || error("Case catalog not found at $(catalog_path)")
     parsed = TOML.parsefile(catalog_path)
     cases = collect(get(parsed, "case", Any[]))
@@ -307,7 +310,7 @@ function _write_case_catalog(path::AbstractString, repository_root::AbstractStri
         println(io, "From the Resources repository root, run a case through its local Makefile:")
         println(io)
         println(io, "```bash")
-        println(io, "make -C AIMORACases.jl/<case-directory> run")
+        println(io, "make -C AIMORACases/<case-directory> run")
         println(io, "```")
         println(io)
         println(io, "Review the case README before execution, then inspect its `outputs/` directory, typed summary, diagnostics, and any qualification comparison. A successful process exit is necessary but not sufficient: energy, KCL, passivity, convergence, event, and restart evidence must satisfy the case's declared acceptance contract.")
@@ -320,7 +323,7 @@ function _write_case_catalog(path::AbstractString, repository_root::AbstractStri
             result_kind = string(get(case, "result_kind", "unspecified"))
             source_ids = get(case, "source_ids", Any[])
             case_directory = dirname(entrypoint)
-            command = "make -C AIMORACases.jl/$(case_directory) run"
+            command = "make -C AIMORACases/$(case_directory) run"
             println(io)
             println(io, "## `$(id)`")
             println(io)

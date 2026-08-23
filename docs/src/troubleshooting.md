@@ -33,7 +33,7 @@ The workspace launcher validates canonical fetch and push identities. A personal
 Run the example from its documented package environment or set the public engine path:
 
 ```bash
-julia --project=AIMORAResources/AIMORACases.jl -e 'using Pkg; Pkg.instantiate()'
+julia --project=AIMORAResources/AIMORACases -e 'using Pkg; Pkg.instantiate()'
 ```
 
 A public example loader searches the workspace sibling or installed package. It does not download arbitrary code at runtime.

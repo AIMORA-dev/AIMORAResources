@@ -111,7 +111,7 @@ if isfile(deck_page_path)
     end
 end
 
-catalog_path = normpath(joinpath(DOCS_DIR, "..", "AIMORACases.jl", "examples", "catalog.toml"))
+catalog_path = normpath(joinpath(DOCS_DIR, "..", "AIMORACases", "examples", "catalog.toml"))
 case_page_path = joinpath(SRC_DIR, "generated", "case-catalog.md")
 if isfile(catalog_path) && isfile(case_page_path)
     parsed = TOML.parsefile(catalog_path)

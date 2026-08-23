@@ -36,9 +36,9 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - AIMORACases.jl
-          - AIMORACatalogs.jl
-          - AIMORAReferenceModels.jl
+          - AIMORACases
+          - AIMORACatalogs
+          - AIMORAReferenceModels
     steps:
       - uses: actions/checkout@v4
       - uses: julia-actions/setup-julia@v2
@@ -46,18 +46,18 @@ jobs:
           version: '1.10'
       - uses: julia-actions/cache@v2
       - name: Fetch public Cases dependencies
-        if: matrix.package == 'AIMORACases.jl'
+        if: matrix.package == 'AIMORACases'
         run: |
           git clone --depth 1 https://github.com/AIMORA-dev/AIMORA.jl.git "$RUNNER_TEMP/AIMORA.jl"
           git clone --depth 1 https://github.com/AIMORA-dev/AIMORAPlatform.git "$RUNNER_TEMP/AIMORAPlatform"
       - name: Test package
         env:
           AIMORA_CI_ENGINE_PATH: ${{ runner.temp }}/AIMORA.jl
-          AIMORA_CI_FORMATS_PATH: ${{ runner.temp }}/AIMORAPlatform/AIMORAFormats.jl
-          AIMORA_CI_PROJECT_PATH: ${{ runner.temp }}/AIMORAPlatform/AIMORAProject.jl
+          AIMORA_CI_FORMATS_PATH: ${{ runner.temp }}/AIMORAPlatform/AIMORAFormats
+          AIMORA_CI_PROJECT_PATH: ${{ runner.temp }}/AIMORAPlatform/AIMORAProject
         run: |
-          if [[ "${{ matrix.package }}" == "AIMORACases.jl" ]]; then
-            julia --startup-file=no --project=AIMORACases.jl -e 'using Pkg; Pkg.develop([Pkg.PackageSpec(path=ENV["AIMORA_CI_ENGINE_PATH"]), Pkg.PackageSpec(path=ENV["AIMORA_CI_FORMATS_PATH"]), Pkg.PackageSpec(path=ENV["AIMORA_CI_PROJECT_PATH"])]); Pkg.test()'
+          if [[ "${{ matrix.package }}" == "AIMORACases" ]]; then
+            julia --startup-file=no --project=AIMORACases -e 'using Pkg; Pkg.develop([Pkg.PackageSpec(path=ENV["AIMORA_CI_ENGINE_PATH"]), Pkg.PackageSpec(path=ENV["AIMORA_CI_FORMATS_PATH"]), Pkg.PackageSpec(path=ENV["AIMORA_CI_PROJECT_PATH"])]); Pkg.test()'
           else
             julia --startup-file=no --project=${{ matrix.package }} -e 'using Pkg; Pkg.test()'
           fi

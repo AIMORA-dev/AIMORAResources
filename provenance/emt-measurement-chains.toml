@@ -6,7 +6,7 @@ redistribution = "Only bibliographic facts and independently restated equations 
 uncertainty = "Synthetic values are exact inputs; manufacturer, calibration, field, installation, environmental, timestamp, protected-class, and model-form uncertainty are explicitly unknown"
 public_cases = ["emt_measurement_linear_ct", "emt_measurement_saturating_ct", "emt_measurement_inductive_vt", "emt_measurement_cvt_transient", "emt_measurement_electronic_current", "emt_measurement_electronic_voltage", "emt_measurement_three_phase_chain"]
 catalog_entry = "generic_emt_measurement_chains"
-independent_owner = "AIMORAReferenceModels.jl/src/measurement_chains.jl plus the existing independent transformer Tellinen owner"
+independent_owner = "AIMORAReferenceModels/src/measurement_chains.jl plus the existing independent transformer Tellinen owner"
 
 [[authority]]
 id = "tellinen_scalar_hysteresis_1998"

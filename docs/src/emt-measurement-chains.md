@@ -82,13 +82,13 @@ Inward terminal power is positive supplied power. Winding, burden, suppression, 
 
 Each generic product runs 1,000 fixed 10 µs physical steps, samples at 20 kHz, applies 100 µs exact delay, retains an 80-sample rectangular estimator window, releases 199 samples, writes waveform and diagnostic CSV/SVG pairs plus a synthetic COMTRADE CFG/DAT pair, and requires exact restart:
 
-- [Linear CT](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/emt_measurement_linear_ct)
-- [Saturating/remanent CT](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/emt_measurement_saturating_ct)
-- [Inductive VT](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/emt_measurement_inductive_vt)
-- [CVT transient](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/emt_measurement_cvt_transient)
-- [Electronic current sensor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/emt_measurement_electronic_current)
-- [Electronic voltage sensor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/emt_measurement_electronic_voltage)
-- [Three-phase sampled chain](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl/examples/emt/emt_measurement_three_phase_chain)
+- [Linear CT](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/emt_measurement_linear_ct)
+- [Saturating/remanent CT](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/emt_measurement_saturating_ct)
+- [Inductive VT](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/emt_measurement_inductive_vt)
+- [CVT transient](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/emt_measurement_cvt_transient)
+- [Electronic current sensor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/emt_measurement_electronic_current)
+- [Electronic voltage sensor](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/emt_measurement_electronic_voltage)
+- [Three-phase sampled chain](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases/examples/emt/emt_measurement_three_phase_chain)
 
 The matching `generic_emt_measurement_chains` catalogue record preserves exact family, cases, SI bases, orientation, clocks, window, source, rights, uncertainty, validity, and unsupported phenomena. All example parameters are AIMORA-authored synthetic values.
 

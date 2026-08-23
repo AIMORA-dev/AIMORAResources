@@ -46,7 +46,7 @@ Power flow, short circuit, protection, arc flash, grounding, harmonic, sizing, r
 From the initialized workspace:
 
 ```bash
-make -C AIMORAResources/AIMORACases.jl/examples/emt/rlc_energization run
+make -C AIMORAResources/AIMORACases/examples/emt/rlc_energization run
 ```
 
 A dynamic example normally writes a CSV time series, SVG waveform, and Markdown summary under its `outputs/` directory. Static examples write matrices, frequency scans, parameter tables, or text reports appropriate to the study.

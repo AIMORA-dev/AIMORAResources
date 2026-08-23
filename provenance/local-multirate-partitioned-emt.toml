@@ -6,7 +6,7 @@ redistribution = "Only bibliographic facts, public specification concepts, and i
 uncertainty = "Synthetic parameters are exact inputs; equipment, field, partition-selection, model-form, and universal active-interface stability uncertainty are explicitly unknown"
 public_cases = ["emt_local_multirate_partitioned_network"]
 catalog_entry = "not_applicable: the case uses synthetic parameters and no reusable manufacturer equipment record"
-independent_owner = "AIMORAReferenceModels.jl analytic passive regional equations plus private AIMORAValidation manufactured, refinement, conservation, mutation, restart, and coupled evidence"
+independent_owner = "AIMORAReferenceModels analytic passive regional equations plus private AIMORAValidation manufactured, refinement, conservation, mutation, restart, and coupled evidence"
 
 [[authority]]
 id = "dommel_1969"

@@ -27,7 +27,7 @@ Resolution compares that inert record with one explicit registry entry. Project 
 
 ## Public equations and signs
 
-The redistributable case in `AIMORACases.jl/examples/emt/user_defined_components` contains three source files owned by the external Cases package.
+The redistributable case in `AIMORACases/examples/emt/user_defined_components` contains three source files owned by the external Cases package.
 
 The sampled saturating lag uses a zero-order-held input and exact task interval (h_t):
 

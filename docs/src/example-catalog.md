@@ -1,13 +1,13 @@
 # Example Catalogue
 
-`AIMORACases.jl/examples/catalog.toml` is the machine-readable index of public executable cases. Every registered row declares a stable case ID, study family, entry point, engineering description, solver requirement, result kind, source/provenance IDs, and whether comparison with the admitted historical reference is meaningful.
+`AIMORACases/examples/catalog.toml` is the machine-readable index of public executable cases. Every registered row declares a stable case ID, study family, entry point, engineering description, solver requirement, result kind, source/provenance IDs, and whether comparison with the admitted historical reference is meaningful.
 
 The canonical detailed documentation for an individual case is the `README.md` stored beside its `run.jl`, input deck, Makefile, and committed output products. This prevents the manual and executable example from drifting apart.
 
 ## Run the complete gallery
 
 ```bash
-cd AIMORAResources/AIMORACases.jl
+cd AIMORAResources/AIMORACases
 make check
 make test
 make example

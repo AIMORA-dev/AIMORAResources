@@ -15,8 +15,8 @@ The authorized engine preserves the generated `aimora_bpa_emtp_replacement_v4` J
 |---|---:|---|
 | [AIMORA.jl](https://github.com/AIMORA-dev/AIMORA.jl) | Public | Open engine contracts and package entrypoint |
 | [AIMORAResources/references/bpa_emtp](https://github.com/AIMORA-dev/AIMORAResources/tree/main/references/bpa_emtp) | Public | Compiled historical reference |
-| [AIMORAResources/AIMORACases.jl](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases.jl) | Public | Versioned examples and benchmark inputs |
-| [AIMORAResources/AIMORACatalogs.jl](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACatalogs.jl) | Public | Open equipment data and study facets |
-| [AIMORAResources/AIMORAReferenceModels.jl](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORAReferenceModels.jl) | Public | Independent analytical and manufactured scientific checks |
+| [AIMORAResources/AIMORACases](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACases) | Public | Versioned examples and benchmark inputs |
+| [AIMORAResources/AIMORACatalogs](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORACatalogs) | Public | Open equipment data and study facets |
+| [AIMORAResources/AIMORAReferenceModels](https://github.com/AIMORA-dev/AIMORAResources/tree/main/AIMORAReferenceModels) | Public | Independent analytical and manufactured scientific checks |
 
 Installation and licensing information for production capabilities is published through the product distribution channel.
