@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 18
+    @test length(entries) == 20
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -167,4 +167,15 @@ using AIMORACatalogs
     @test "fundamental_rms_phasor" in measurement_emt[:digital_outputs]
     @test "atp_or_pscad_equivalence" in measurement_emt[:unsupported_phenomena]
     @test "certification" in measurement_emt[:unsupported_phenomena]
+
+    surge = AIMORACatalogs.asset(:generic_surge_insulation_platform)
+    @test surge.manufacturer === nothing
+    @test AIMORACatalogs.study_tabs(surge) == [:emt]
+    @test surge.common[:public_case] == "emt_surge_insulation_platform"
+    surge_emt = AIMORACatalogs.study_facet(surge, :emt).parameters
+    @test surge_emt[:public_product_count] == 5
+    @test length(surge_emt[:arc_families]) == 3
+    @test length(surge_emt[:grounding_families]) == 2
+    @test "atp_or_pscad_equivalence" in surge_emt[:unsupported_phenomena]
+    @test "certification" in surge_emt[:unsupported_phenomena]
 end

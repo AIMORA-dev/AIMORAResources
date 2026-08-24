@@ -109,6 +109,24 @@ export independent_magnitude_timer_trace,
        independent_contact_energy_trace,
        independent_breaker_failure
 
+export independent_double_exponential_lightning,
+       independent_double_exponential_integrals,
+       independent_heidler_lightning,
+       independent_combined_arc_step,
+       independent_fault_arc_step,
+       independent_vacuum_surfaces,
+       independent_metal_oxide_characteristic,
+       independent_arrester_duty_step,
+       independent_positive_real_grounding,
+       independent_ionizing_ground_step,
+       independent_traveling_wave_state,
+       independent_traveling_wave_reflection,
+       independent_disruptive_effect_step,
+       independent_leader_progression_step,
+       independent_corona_charge,
+       independent_gis_gil_matrices,
+       independent_wilson_interval
+
 include("extended_semiconductor_fidelity.jl")
 include("generic_bridge_topologies.jl")
 include("extended_vsc_control_filter_platform.jl")
@@ -122,6 +140,7 @@ include("local_multirate_partitioned_emt.jl")
 include("dassl_class_variable_step_emt.jl")
 include("performance_realtime_hil.jl")
 include("emt_protection_breaker.jl")
+include("surge_insulation.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

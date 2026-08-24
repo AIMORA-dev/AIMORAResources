@@ -1196,3 +1196,14 @@ requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
 source_ids = ["aimora-reference:generic-protection-products", "validation-suite:emt-protection-breaker"]
+
+[[case]]
+id = "emt_surge_insulation_platform"
+study = "emt"
+path = "examples/emt/surge_insulation_platform/run.jl"
+entrypoint = "examples/emt/surge_insulation_platform/run.jl"
+description = "Five generic public surge and insulation products spanning three-pole interruption/restrike, an arrester-protected terminal, tower-line-ground backflash, GIS/GIL corona/leader response, and seeded insulation statistics."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:surge-insulation-platform", "validation-suite:surge-insulation-platform"]

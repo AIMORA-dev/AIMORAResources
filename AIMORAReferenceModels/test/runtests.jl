@@ -12,6 +12,7 @@ include("local_multirate_partitioned_emt.jl")
 include("dassl_class_variable_step_emt.jl")
 include("performance_realtime_hil.jl")
 include("emt_protection_breaker.jl")
+include("surge_insulation.jl")
 
 @testset "independent extended semiconductor formulations" begin
     recovery = independent_recovered_charge_backward_euler(

@@ -59,6 +59,7 @@ const PAGES = [
         "Modern EMT Machine Families" => "modern-emt-machine-families.md",
         "EMT Instruments and Measurement Chains" => "emt-measurement-chains.md",
         "EMT Protection and Breaker Logic" => "emt-protection-breaker.md",
+        "Surge and Insulation Platform" => "surge-insulation-platform.md",
         "Native Extensions" => "native-extensions.md",
         "Validation" => "validation.md",
     ],

@@ -1,0 +1,24 @@
+# Generic Surge and Insulation Products
+
+- `product_count`: 5
+- `interruption_peak_voltage_v`: 29.447315894485655
+- `interruption_localized_event_count`: 2
+- `interruption_breaker_event_count`: 6
+- `interruption_chop_count`: 3
+- `interruption_restrike_count`: 3
+- `arrester_peak_residual_voltage_v`: 3440.7797529233167
+- `arrester_absorbed_energy_j`: 4817.841512351701
+- `transformer_apparatus_step_count`: 400
+- `transformer_apparatus_signature`: 8ab0998a541274434df1620068196e4178671e1a6a6cd30883f56f331e300d47
+- `tower_flashover`: true
+- `tower_travel_time_s`: 1.8e-7
+- `maximum_ground_rise_v`: 713364.9908350015
+- `coupled_line_step_count`: 400
+- `coupled_line_runtime_signature`: 7bf9ce7e899e316adca898d79a8334f296402f36dd977437becd78f475892003
+- `coupled_line_minimum_supplied_energy_j`: 0.0
+- `gis_peak_terminal_voltage_v`: 117425.01608145502
+- `statistical_failure_probability`: 0.0361328125
+- `statistical_confidence_lower`: 0.02887982569674902
+- `statistical_confidence_upper`: 0.04512270416425758
+- `deterministic_signatures`: de76dbf9737513d72591295f08ad1bedd2a1bcab8a374c06f990720edcc04acb,5291ea4d63b52cd16146c1accf473d374a5b07a60a530c3cd87241df791a5f8a,7071200a7554d8d59b1e306a5e441b7ade644300a828cba60732e0db47ed5386,394a6438643c93b79a37bad0bf09ff812034c1242e00496fe36a4b08fbebf2f1,c5b0986f15b84c8408a5334c5dd44e1dab5203c942a5f5dd92cec60f3d739c74
+- `scientific_limit`: generic nonvendor nonstandard noncertifying public demonstration; no insulation design or ATP/PSCAD equivalence claim

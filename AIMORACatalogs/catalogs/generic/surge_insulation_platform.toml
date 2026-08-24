@@ -1,0 +1,37 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_surge_insulation_platform"
+equipment_class = "emt_surge_insulation_platform"
+manufacturer = ""
+model = "Generic arc, lightning, grounding, arrester, insulation, corona, and GIS/GIL products"
+provenance = "AIMORA-authored generic synthetic SI parameters; no manufacturer, utility, protected-standard, proprietary, measured, field-validated, design-qualified, or certified values"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+units = "SI peak instantaneous quantities"
+branch_current_orientation = "positive from each explicitly declared positive terminal to negative terminal"
+power_orientation = "positive power enters each device"
+parameter_source = "AIMORA-authored public synthetic parameters"
+parameter_transformation = "direct SI input without inferred RMS per-unit polarity geometry or model family"
+parameter_uncertainty = "synthetic case distributions are explicit; device installation field and model-form uncertainty otherwise unknown"
+rights = "public AIMORA-authored parameters traces reports and plots"
+public_case = "emt_surge_insulation_platform"
+
+[study.emt]
+representation = "fixed_step_instantaneous_surge_and_insulation"
+fidelity = "explicit nonlinear constitutive energy thermal source traveling-wave ionization flashover leader corona GIS/GIL and statistical state"
+product_families = ["three_pole_interruption_restrike", "arrester_protected_terminal", "direct_strike_tower_backflash", "gis_gil_corona_terminal", "seeded_insulation_statistics"]
+arc_families = ["combined_cassie_mayr", "bounded_fault_arc", "vacuum_chop_dielectric_recovery_restrike"]
+arrester_families = ["static_piecewise_power_law_metal_oxide", "two_column_dynamic_equivalent"]
+lightning_families = ["normalized_double_exponential", "normalized_heidler", "deterministic_multistroke"]
+propagation_families = ["positive_real_multiconductor_section", "multisection_tower_or_channel", "phase_domain_terminal_reflection"]
+grounding_families = ["positive_real_rational_ground", "effective_radius_soil_ionization"]
+insulation_families = ["polarity_specific_disruptive_effect", "polarity_specific_leader_progression"]
+corona_families = ["hysteretic_dynamic_charge_and_loss"]
+gis_gil_families = ["passive_multiconductor_rlcg_terminal_section"]
+statistical_families = ["deterministic_seeded_correlated_gaussian_stress_strength_with_wilson_interval"]
+public_product_count = 5
+minimum_timestep_s = 2.0e-8
+maximum_frequency_hz = 1.0e6
+generic_parameters_only = true
+unsupported_phenomena = ["field_resolved_electromagnetics", "induced_lightning_field_solution", "grounding_safety_design", "insulation_design_or_lifetime", "partial_discharge_or_aging", "manufacturer_or_utility_equivalence", "protected_standard_conformance", "field_or_laboratory_validation", "atp_or_pscad_equivalence", "safety_integrity", "certification"]
