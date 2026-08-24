@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-22"
-source_count = 508
+source_count = 511
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 75
+"canonical_case_input" = 76
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -14,11 +14,11 @@ source_count = 508
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 87
-"aimora_reference" = 9
+"validation_suite" = 88
+"aimora_reference" = 10
 
 [counts_by_disposition]
-"example" = 92
+"example" = 95
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -35,6 +35,33 @@ path = "src/modern_machine_families.jl"
 disposition = "example"
 example_ids = ["emt_machine_wound_field_synchronous", "emt_machine_cage_induction", "emt_machine_deep_bar_induction", "emt_machine_permanent_magnet", "emt_machine_doubly_fed_induction", "emt_machine_synchronous_condenser", "emt_machine_multimass_controls"]
 reason = "Independent public electromagnetic, shaft, control, initialization, event, energy, and restart formulations support the seven generic modern-machine products without exposing private qualification traceability."
+
+[[source]]
+id = "aimora-reference:dassl-class-variable-step-emt"
+owner = "AIMORAResources/AIMORAReferenceModels"
+kind = "aimora_reference"
+path = "src/dassl_class_variable_step_emt.jl"
+disposition = "example"
+example_ids = ["emt_dassl_class_variable_step"]
+reason = "Independent passive RLC, wound-field machine, stiff nonlinear/index-one, interpolation, event, energy, and refinement equations qualify the public variable-step case without importing production BDF, Newton, Jacobian, root, rollback, or snapshot code."
+
+[[source]]
+id = "case-input:emt:dassl-class-variable-step"
+owner = "AIMORACases"
+kind = "canonical_case_input"
+path = "examples/emt/dassl_class_variable_step/run.jl"
+disposition = "example"
+example_ids = ["emt_dassl_class_variable_step"]
+reason = "The AIMORA-authored synthetic passive, nonlinear switching, wound-field machine/control, restart, and refusal runner is the canonical redistributable public DASSL-class input."
+
+[[source]]
+id = "validation-suite:dassl-class-variable-step-emt"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "scripts/compare_dassl_class_variable_step_emt.jl"
+disposition = "example"
+example_ids = ["emt_dassl_class_variable_step"]
+reason = "Private focused validation owns independent, coupled, adversarial, uncertainty, conservation/passivity, tolerance/order/root refinement, restart, mutation, external, and performance evidence for the public variable-step product."
 
 [[source]]
 id = "aimora-reference:modern-transformer-reactor-hierarchy"

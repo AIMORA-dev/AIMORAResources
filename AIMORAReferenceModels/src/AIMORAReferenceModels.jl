@@ -72,7 +72,23 @@ export amplitude_invariant_clarke_matrix,
        IndependentPortableHybridTaskOccurrence,
        IndependentPortableHybridEventOccurrence,
        IndependentPortableHybridReference,
-       independent_portable_hybrid_reference
+       independent_portable_hybrid_reference,
+       IndependentPassiveRLCDAEParameters,
+       independent_bdf_derivative_weights,
+       independent_passive_rlc_bdf_step,
+       independent_passive_rlc_dae_residual,
+       independent_passive_rlc_energy_balance,
+       independent_passive_rlc_exact_state,
+       independent_passive_rlc_initial_derivative,
+       IndependentManufacturedIndexOneDAEParameters,
+       independent_manufactured_index_one_state,
+       independent_manufactured_index_one_derivative,
+       independent_manufactured_index_one_residual,
+       independent_manufactured_index_one_jacobians,
+       IndependentRobertsonDAEParameters,
+       independent_robertson_dae_residual,
+       independent_robertson_dae_jacobians,
+       independent_robertson_backward_euler
 
 include("extended_semiconductor_fidelity.jl")
 include("generic_bridge_topologies.jl")
@@ -84,6 +100,7 @@ include("transformer_apparatus.jl")
 include("modern_machine_families.jl")
 include("portable_emt_snapshots.jl")
 include("local_multirate_partitioned_emt.jl")
+include("dassl_class_variable_step_emt.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

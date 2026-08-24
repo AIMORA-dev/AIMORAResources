@@ -49,6 +49,7 @@ const PAGES = [
         "General Multirate EMT Tasks" => "general-multirate-emt-tasks.md",
         "Portable EMT Snapshots" => "portable-emt-snapshots.md",
         "Local Multirate and Partitioned EMT" => "local-multirate-partitioned-emt.md",
+        "Optional DASSL-Class Variable-Step EMT" => "dassl-class-variable-step-emt.md",
         "Wideband Line Parameters" => "wideband-line-parameters.md",
         "Coupled Line Fitting and Passivity" => "coupled-line-fitting-passivity.md",
         "Coupled Frequency-Dependent Line Runtime" => "coupled-frequency-dependent-line-runtime.md",

@@ -254,6 +254,21 @@ result_kind = "partition_interface_waveform"
 source_ids = ["case-input:emt:local-multirate-partitioned-network"]
 
 [[case]]
+id = "emt_dassl_class_variable_step"
+study = "emt"
+path = "examples/emt/dassl_class_variable_step/run.jl"
+entrypoint = "examples/emt/dassl_class_variable_step/run.jl"
+description = "Explicitly selected DASSL-class variable-step EMT with passive dense output, nonlinear exact switching, portable split/restart, wound-field machine/control admission, deterministic diagnostics, and typed unsupported-owner refusal."
+requires_solver = true
+reference_compatible = false
+result_kind = "variable_step_dae_waveform"
+source_ids = [
+    "aimora-reference:dassl-class-variable-step-emt",
+    "case-input:emt:dassl-class-variable-step",
+    "validation-suite:dassl-class-variable-step-emt",
+]
+
+[[case]]
 id = "emt_portable_snapshot_restart"
 study = "emt"
 path = "examples/emt/portable_snapshot_restart/run.jl"

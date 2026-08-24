@@ -744,6 +744,48 @@ state = "retained"
 reason = "Small immutable public-only snapshot oracle for solver-free decoding and independent canonical-format checks."
 
 [[classification]]
+id = "dassl-class-passive-dense-output-data"
+path = "AIMORACases/examples/emt/dassl_class_variable_step/outputs/passive_dense_output.csv"
+state = "retained"
+reason = "Small deterministic requested-grid passive RLC voltage, current, and stored-energy data supporting dense-output and restart inspection."
+
+[[classification]]
+id = "dassl-class-passive-dense-output-figure"
+path = "AIMORACases/examples/emt/dassl_class_variable_step/outputs/passive_dense_output.svg"
+state = "retained"
+reason = "Curated passive RLC variable-step dense-output rendering."
+
+[[classification]]
+id = "dassl-class-nonlinear-switching-data"
+path = "AIMORACases/examples/emt/dassl_class_variable_step/outputs/nonlinear_switching_output.csv"
+state = "retained"
+reason = "Small deterministic nonlinear capacitor and exact switch trajectory retaining left and right discontinuity states."
+
+[[classification]]
+id = "dassl-class-nonlinear-switching-figure"
+path = "AIMORACases/examples/emt/dassl_class_variable_step/outputs/nonlinear_switching_output.svg"
+state = "retained"
+reason = "Curated nonlinear exact-switching variable-step rendering."
+
+[[classification]]
+id = "dassl-class-machine-control-data"
+path = "AIMORACases/examples/emt/dassl_class_variable_step/outputs/machine_control_output.csv"
+state = "retained"
+reason = "Small deterministic wound-field terminal and shaft trace proving admitted machine event and sampled-control execution."
+
+[[classification]]
+id = "dassl-class-machine-control-figure"
+path = "AIMORACases/examples/emt/dassl_class_variable_step/outputs/machine_control_output.svg"
+state = "retained"
+reason = "Curated admitted wound-field machine and sampled-control variable-step rendering."
+
+[[classification]]
+id = "dassl-class-public-result-contract"
+path = "AIMORACases/examples/emt/dassl_class_variable_step/outputs/result_contract.csv"
+state = "retained"
+reason = "Small deterministic public readiness, state inventory, work, restart identity, result identity, and typed refusal table."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"
