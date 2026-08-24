@@ -58,6 +58,7 @@ const PAGES = [
         "Transformer and Reactor Hierarchy" => "transformer-reactor-hierarchy.md",
         "Modern EMT Machine Families" => "modern-emt-machine-families.md",
         "EMT Instruments and Measurement Chains" => "emt-measurement-chains.md",
+        "EMT Protection and Breaker Logic" => "emt-protection-breaker.md",
         "Native Extensions" => "native-extensions.md",
         "Validation" => "validation.md",
     ],

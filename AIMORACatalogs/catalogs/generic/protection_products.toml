@@ -1,0 +1,26 @@
+schema = "aimora-catalog-entry-v1"
+id = "generic_protection_products"
+equipment_class = "emt_protection_scheme"
+manufacturer = ""
+model = "Generic fixed-step protection and three-pole breaker products"
+provenance = "AIMORA-authored generic schemes and synthetic SI settings; no manufacturer, utility, protected-standard, proprietary, measured, or certified values"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[common]
+parameter_status = "synthetic_generic_exact_case_input"
+units = "SI"
+current_orientation = "positive into each explicitly declared protected zone"
+parameter_source = "AIMORA-authored public synthetic settings"
+parameter_transformation = "direct SI input with exact task and event calendars"
+parameter_uncertainty = "device, installation, field, coordination, and model-form uncertainty unknown"
+rights = "public AIMORA-authored settings, diagrams, traces, and plots"
+
+[study.protection]
+representation = "fixed_step_sampled_relay_logic_communication_and_three_pole_breaker"
+fidelity = "generic explicit relay state, exact tasks, deterministic messages, mechanism travel, and physical contact conductance"
+families = ["radial_overcurrent_earth_fault", "directional_distance_line", "transformer_bus_differential", "machine_converter_frequency_rocof", "dc_differential_overcurrent"]
+network_timestep_s = 0.001
+frequency_domain_hz = [0.0, 65.0]
+public_product_count = 5
+generic_settings_only = true
+unsupported_phenomena = ["protected_standard_conformance", "vendor_relay_equivalence", "field_setting_coordination", "field_or_laboratory_timing", "telecommunication_protocol_conformance", "cybersecurity_assurance", "detailed_arc_or_insulation_physics", "hard_realtime_or_physical_hil", "atp_or_pscad_equivalence", "certification"]

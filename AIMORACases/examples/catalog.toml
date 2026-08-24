@@ -1185,3 +1185,14 @@ requires_solver = true
 reference_compatible = false
 result_kind = "waveform"
 source_ids = ["case-input:emt:extended-vsc-virtual-synchronous", "aimora-reference:extended-vsc-control-filter-platform", "validation-suite:extended-vsc-control-filter-platform"]
+
+[[case]]
+id = "emt_generic_protection_products"
+study = "protection"
+path = "examples/emt/generic_protection_products/run.jl"
+entrypoint = "examples/emt/generic_protection_products/run.jl"
+description = "Five generic fixed-step protection products spanning radial overcurrent/earth fault, directional-distance line, transformer/bus differential, machine/converter frequency-ROCOF, and DC differential/overcurrent through exact task logic and real three-pole EMT breaker contacts."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = ["aimora-reference:generic-protection-products", "validation-suite:emt-protection-breaker"]

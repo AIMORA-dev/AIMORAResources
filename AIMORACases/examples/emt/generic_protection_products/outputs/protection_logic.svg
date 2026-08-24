@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1260" height="250" viewBox="0 0 1260 250">
+<rect width="1260" height="250" fill="#ffffff"/>
+<text x="630" y="34" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#111827">AIMORA fixed-step protection mutation path</text>
+<rect x="25" y="80" width="145" height="90" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="3"/>
+<text x="97.5" y="116" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">accepted</text>
+<text x="97.5" y="140" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">measurement</text>
+<line x1="170" y1="125" x2="195" y2="125" stroke="#475569" stroke-width="3"/>
+<path d="M 195 125 l -10 -7 v 14 z" fill="#475569"/>
+<rect x="200" y="80" width="145" height="90" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="3"/>
+<text x="272.5" y="116" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">relay</text>
+<text x="272.5" y="140" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">elements</text>
+<line x1="345" y1="125" x2="370" y2="125" stroke="#475569" stroke-width="3"/>
+<path d="M 370 125 l -10 -7 v 14 z" fill="#475569"/>
+<rect x="375" y="80" width="145" height="90" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="3"/>
+<text x="447.5" y="116" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">local</text>
+<text x="447.5" y="140" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">logic</text>
+<line x1="520" y1="125" x2="545" y2="125" stroke="#475569" stroke-width="3"/>
+<path d="M 545 125 l -10 -7 v 14 z" fill="#475569"/>
+<rect x="550" y="80" width="145" height="90" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="3"/>
+<text x="622.5" y="116" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">message</text>
+<text x="622.5" y="140" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">send/deliver</text>
+<line x1="695" y1="125" x2="720" y2="125" stroke="#475569" stroke-width="3"/>
+<path d="M 720 125 l -10 -7 v 14 z" fill="#475569"/>
+<rect x="725" y="80" width="145" height="90" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="3"/>
+<text x="797.5" y="116" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">remote</text>
+<text x="797.5" y="140" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">logic</text>
+<line x1="870" y1="125" x2="895" y2="125" stroke="#475569" stroke-width="3"/>
+<path d="M 895 125 l -10 -7 v 14 z" fill="#475569"/>
+<rect x="900" y="80" width="145" height="90" rx="10" fill="#f8fafc" stroke="#2563eb" stroke-width="3"/>
+<text x="972.5" y="116" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">trip</text>
+<text x="972.5" y="140" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">command</text>
+<line x1="1045" y1="125" x2="1070" y2="125" stroke="#475569" stroke-width="3"/>
+<path d="M 1070 125 l -10 -7 v 14 z" fill="#475569"/>
+<rect x="1075" y="80" width="145" height="90" rx="10" fill="#f8fafc" stroke="#dc2626" stroke-width="3"/>
+<text x="1147.5" y="116" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">breaker</text>
+<text x="1147.5" y="140" text-anchor="middle" font-family="sans-serif" font-size="17" fill="#111827">contacts</text>
+<text x="630" y="215" text-anchor="middle" font-family="sans-serif" font-size="15" fill="#475569">Every accepted stage is causal, ordered, rollback-capable, and bound to the same exact logical time.</text>
+</svg>

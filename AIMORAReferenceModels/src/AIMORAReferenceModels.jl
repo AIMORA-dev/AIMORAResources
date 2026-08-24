@@ -97,6 +97,18 @@ export amplitude_invariant_clarke_matrix,
        independent_loopback_controller_step,
        independent_realtime_replay_signature
 
+export independent_magnitude_timer_trace,
+       independent_directional_torque,
+       independent_mho_margin,
+       independent_polygon_margin,
+       independent_biased_differential,
+       independent_rocof_trace,
+       independent_incremental_wave_trace,
+       independent_protection_message_calendar,
+       independent_breaker_load_voltage,
+       independent_contact_energy_trace,
+       independent_breaker_failure
+
 include("extended_semiconductor_fidelity.jl")
 include("generic_bridge_topologies.jl")
 include("extended_vsc_control_filter_platform.jl")
@@ -109,6 +121,7 @@ include("portable_emt_snapshots.jl")
 include("local_multirate_partitioned_emt.jl")
 include("dassl_class_variable_step_emt.jl")
 include("performance_realtime_hil.jl")
+include("emt_protection_breaker.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

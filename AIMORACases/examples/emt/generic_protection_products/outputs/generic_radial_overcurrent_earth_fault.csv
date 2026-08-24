@@ -1,0 +1,4 @@
+time_s,element_asserted,trip_command,contact_closed,maximum_load_voltage_v
+0,0,0,1,49.9999975146
+0.001,1,1,1,49.9999975146
+0.002,1,1,0,9.9999998e-07
