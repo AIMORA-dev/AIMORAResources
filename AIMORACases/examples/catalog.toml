@@ -240,7 +240,10 @@ description = "Sixteen exact rational schedules across eight task families coupl
 requires_solver = true
 reference_compatible = false
 result_kind = "task_trace"
-source_ids = ["case-input:emt:general-multirate-task-platform"]
+source_ids = [
+    "case-input:emt:general-multirate-task-platform",
+    "validation-suite:general-multirate-task-platform",
+]
 
 [[case]]
 id = "emt_local_multirate_partitioned_network"
@@ -251,7 +254,10 @@ description = "Explicit two- and eight-region fixed-step EMT with three local ra
 requires_solver = true
 reference_compatible = false
 result_kind = "partition_interface_waveform"
-source_ids = ["case-input:emt:local-multirate-partitioned-network"]
+source_ids = [
+    "case-input:emt:local-multirate-partitioned-network",
+    "validation-suite:local-multirate-partitioned-emt",
+]
 
 [[case]]
 id = "emt_dassl_class_variable_step"
@@ -265,7 +271,7 @@ result_kind = "variable_step_dae_waveform"
 source_ids = [
     "aimora-reference:dassl-class-variable-step-emt",
     "case-input:emt:dassl-class-variable-step",
-    "validation-suite:dassl-class-variable-step-emt",
+    "validation-command:dassl-class-variable-step-emt",
 ]
 
 [[case]]
@@ -640,6 +646,36 @@ description = "Measured fixed-step CPU timing for the open inverter model withou
 requires_solver = false
 reference_compatible = false
 result_kind = "timing"
+
+[[case]]
+id = "emt_performance_execution_modes"
+study = "emt"
+path = "examples/emt/performance_execution_modes/run.jl"
+entrypoint = "examples/emt/performance_execution_modes/run.jl"
+description = "Equal-accuracy serial, sparse, threaded, local-process, and admitted native CUDA execution definitions with the reviewed initial-tower crossover and explicit limits."
+requires_solver = false
+reference_compatible = true
+result_kind = "performance"
+source_ids = [
+    "aimora-reference:performance-realtime-hil",
+    "case-input:emt:performance-execution-modes",
+    "validation-command:performance-execution-modes",
+]
+
+[[case]]
+id = "emt_realtime_loopback"
+study = "emt"
+path = "examples/emt/realtime_loopback/run.jl"
+entrypoint = "examples/emt/realtime_loopback/run.jl"
+description = "Native-Linux absolute-clock fixed-step execution with an independently compiled AIMORA C controller, complete timing samples, independent closed-loop comparison, and explicit physical-HIL refusal."
+requires_solver = false
+reference_compatible = true
+result_kind = "timing"
+source_ids = [
+    "aimora-reference:performance-realtime-hil",
+    "case-input:emt:realtime-loopback",
+    "validation-command:realtime-hil-interfaces",
+]
 
 [[case]]
 id = "emt_reduced_feeder_inverter"

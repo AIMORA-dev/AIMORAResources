@@ -91,6 +91,7 @@ allowed_kinds = Set((
     "classic_case_origin",
     "public_testset",
     "translation_capability_packet",
+    "validation_command",
     "validation_fixture",
     "validation_suite",
 ))
@@ -152,6 +153,9 @@ for row in coverage_rows
     elseif kind == "validation_fixture"
         startswith(path, "tests/fixtures/") ||
             fail("validation fixture $(source_id) has an invalid path")
+    elseif kind == "validation_command"
+        startswith(path, "scripts/compare_") && endswith(path, ".jl") ||
+            fail("validation command $(source_id) has an invalid path")
     elseif kind == "validation_suite"
         startswith(path, "tests/suite/") ||
             fail("validation suite $(source_id) has an invalid path")
@@ -204,6 +208,13 @@ end
 workspace_root = normpath(joinpath(ROOT, ".."))
 validation_root = joinpath(workspace_root, "AIMORAValidation")
 if isdir(joinpath(validation_root, "tests"))
+    for row in coverage_rows
+        String(row["kind"]) == "validation_command" || continue
+        command_path = joinpath(validation_root, String(row["path"]))
+        isfile(command_path) ||
+            fail("source coverage has a stale AIMORAValidation command path: $(row["path"])")
+    end
+
     expected_suites = Set(
         String(row["path"]) for row in coverage_rows if
         String(row["kind"]) == "validation_suite"

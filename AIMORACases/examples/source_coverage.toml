@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
-snapshot_date = "2026-08-22"
-source_count = 511
+snapshot_date = "2026-08-24"
+source_count = 518
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 76
+"canonical_case_input" = 78
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -14,11 +14,12 @@ source_count = 511
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_suite" = 88
-"aimora_reference" = 10
+"validation_command" = 3
+"validation_suite" = 89
+"aimora_reference" = 11
 
 [counts_by_disposition]
-"example" = 95
+"example" = 102
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -26,6 +27,51 @@ source_count = 511
 "pending_export" = 145
 "source_missing" = 63
 "validation_only" = 19
+
+[[source]]
+id = "aimora-reference:performance-realtime-hil"
+owner = "AIMORAResources/AIMORAReferenceModels"
+kind = "aimora_reference"
+path = "src/performance_realtime_hil.jl"
+disposition = "example"
+example_ids = ["emt_performance_execution_modes", "emt_realtime_loopback"]
+reason = "Independent public nodal residual, indexed collection, monotonic calendar, affine scaling, controller, timing and replay equations qualify the software real-code loopback without importing production pacing, interface, solver or snapshot code."
+
+[[source]]
+id = "case-input:emt:performance-execution-modes"
+owner = "AIMORACases"
+kind = "canonical_case_input"
+path = "examples/emt/performance_execution_modes/run.jl"
+disposition = "example"
+example_ids = ["emt_performance_execution_modes"]
+reason = "The analytic nodal system, registered P0-P2 workload definitions and reviewed initial-tower CUDA crossover are the canonical redistributable performance input and aggregate output without private kernels."
+
+[[source]]
+id = "case-input:emt:realtime-loopback"
+owner = "AIMORACases"
+kind = "canonical_case_input"
+path = "examples/emt/realtime_loopback/run.jl"
+disposition = "example"
+example_ids = ["emt_realtime_loopback"]
+reason = "The AIMORA-authored scalar plant, exact C-controller ABI source, channel map and runner are the canonical redistributable public software real-code loopback input."
+
+[[source]]
+id = "validation-command:performance-execution-modes"
+owner = "AIMORAValidation"
+kind = "validation_command"
+path = "scripts/compare_performance_execution_modes.jl"
+disposition = "example"
+example_ids = ["emt_performance_execution_modes"]
+reason = "Private validation owns exact-source sparse, thread, process and CUDA equal-accuracy, crossover, invalidation and deterministic-index evidence."
+
+[[source]]
+id = "validation-command:realtime-hil-interfaces"
+owner = "AIMORAValidation"
+kind = "validation_command"
+path = "scripts/compare_realtime_hil_interfaces.jl"
+disposition = "example"
+example_ids = ["emt_realtime_loopback"]
+reason = "Private validation owns independent calendar, local UDP, C-ABI, fault injection, timing, safe shutdown and explicit hard-real-time and physical-HIL refusal evidence."
 
 [[source]]
 id = "aimora-reference:modern-machine-families"
@@ -55,9 +101,9 @@ example_ids = ["emt_dassl_class_variable_step"]
 reason = "The AIMORA-authored synthetic passive, nonlinear switching, wound-field machine/control, restart, and refusal runner is the canonical redistributable public DASSL-class input."
 
 [[source]]
-id = "validation-suite:dassl-class-variable-step-emt"
+id = "validation-command:dassl-class-variable-step-emt"
 owner = "AIMORAValidation"
-kind = "validation_suite"
+kind = "validation_command"
 path = "scripts/compare_dassl_class_variable_step_emt.jl"
 disposition = "example"
 example_ids = ["emt_dassl_class_variable_step"]
@@ -316,6 +362,15 @@ example_ids = ["emt_general_multirate_task_platform"]
 reason = "AIMORA-authored public runner couples sixteen exact rational schedules across all eight task families to a real EMT-controlled source, event and delayed-release collisions, dependency order, split restart, atomic rollback, typed results, and explicit non-physics/non-conformance limits."
 
 [[source]]
+id = "validation-suite:general-multirate-task-platform"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/general_multirate_task_platform.jl"
+disposition = "example"
+example_ids = ["emt_general_multirate_task_platform"]
+reason = "Focused private validation exercises exact rational releases, task-family ownership, dependency ordering, event collisions, rollback, deterministic replay, and typed task-platform results represented by the public workflow."
+
+[[source]]
 id = "case-input:emt:local-multirate-partitioned-network"
 owner = "AIMORACases"
 kind = "canonical_case_input"
@@ -323,6 +378,15 @@ path = "examples/emt/local_multirate_partitioned_network/run.jl"
 disposition = "example"
 example_ids = ["emt_local_multirate_partitioned_network"]
 reason = "AIMORA-authored synthetic public runner declares the exact two- and eight-region local-step plans, oriented interfaces, Semlyen line, apparatus owners, event/topology checkpoint, refinement products, deterministic metrics, and explicit unsupported boundaries without copying an external implementation or proprietary result."
+
+[[source]]
+id = "validation-suite:local-multirate-partitioned-emt"
+owner = "AIMORAValidation"
+kind = "validation_suite"
+path = "tests/suite/local_multirate_partitioned_emt.jl"
+disposition = "example"
+example_ids = ["emt_local_multirate_partitioned_network"]
+reason = "Focused private validation exercises conservative oriented interfaces, local-rate advancement, event and topology checkpoints, deterministic split replay, KCL, and interface-energy defects represented by the public partitioned-network workflow."
 
 [[source]]
 id = "case-input:emt:portable-snapshot-restart"

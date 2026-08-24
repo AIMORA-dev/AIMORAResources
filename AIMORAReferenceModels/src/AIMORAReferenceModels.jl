@@ -88,7 +88,14 @@ export amplitude_invariant_clarke_matrix,
        IndependentRobertsonDAEParameters,
        independent_robertson_dae_residual,
        independent_robertson_dae_jacobians,
-       independent_robertson_backward_euler
+       independent_robertson_backward_euler,
+       independent_scaled_linear_residual,
+       independent_indexed_collection,
+       independent_realtime_release_ns,
+       independent_realtime_metrics,
+       independent_affine_channel_value,
+       independent_loopback_controller_step,
+       independent_realtime_replay_signature
 
 include("extended_semiconductor_fidelity.jl")
 include("generic_bridge_topologies.jl")
@@ -101,6 +108,7 @@ include("modern_machine_families.jl")
 include("portable_emt_snapshots.jl")
 include("local_multirate_partitioned_emt.jl")
 include("dassl_class_variable_step_emt.jl")
+include("performance_realtime_hil.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
 function amplitude_invariant_clarke_matrix()

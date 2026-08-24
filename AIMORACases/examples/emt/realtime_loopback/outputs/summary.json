@@ -1,0 +1,13 @@
+{
+  "schema": "aimora-realtime-loopback-v1",
+  "accepted_steps": 100,
+  "overruns": 0,
+  "maximum_response_ns": 421433,
+  "maximum_jitter_ns": 418933,
+  "maximum_independent_error": 0.0,
+  "controller_sha256": "819f3a9f48c8bce83f1d902beef0b8391c72f8fab15a37e128f4b0177753eebf",
+  "controller_compiler": "gcc (GCC) 16.2.1 20260810",
+  "profile": "linux_shared_library_soft",
+  "physical_hil": false,
+  "hard_realtime": false
+}

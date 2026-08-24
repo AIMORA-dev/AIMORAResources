@@ -309,6 +309,116 @@ function _assert_realtime_summary(
     return true
 end
 
+function _loopback_summary_fields(path::AbstractString)
+    lines = readlines(path)
+    !isempty(lines) && first(lines) == "metric,value,unit" || error(
+        "real-time loopback summary header is invalid",
+    )
+    fields = Dict{String,Tuple{String,String}}()
+    for line in lines[2:end]
+        columns = split(line, ','; limit=3)
+        length(columns) == 3 || error("real-time loopback summary row is invalid")
+        haskey(fields, columns[1]) && error(
+            "real-time loopback summary repeats $(columns[1])",
+        )
+        fields[columns[1]] = (columns[2], columns[3])
+    end
+    return fields
+end
+
+function _assert_realtime_loopback_summary(path::AbstractString)
+    fields = _loopback_summary_fields(path)
+    required = Set((
+        "accepted_steps",
+        "overruns",
+        "maximum_response_ns",
+        "maximum_jitter_ns",
+        "maximum_independent_error",
+        "controller_sha256",
+        "controller_compiler",
+        "profile",
+        "physical_hil",
+        "hard_realtime",
+    ))
+    Set(keys(fields)) == required || error(
+        "real-time loopback summary fields changed",
+    )
+    parse(Int, fields["accepted_steps"][1]) == 100 || error(
+        "real-time loopback did not accept 100 logical steps",
+    )
+    parse(Int, fields["overruns"][1]) >= 0 || error(
+        "real-time loopback overrun count is invalid",
+    )
+    parse(Int64, fields["maximum_response_ns"][1]) > 0 || error(
+        "real-time loopback response maximum is invalid",
+    )
+    parse(Int64, fields["maximum_jitter_ns"][1]) >= 0 || error(
+        "real-time loopback jitter maximum is invalid",
+    )
+    parse(Float64, fields["maximum_independent_error"][1]) <= 1.0e-12 || error(
+        "real-time loopback independent error exceeds tolerance",
+    )
+    occursin(r"^[0-9a-f]{64}$", fields["controller_sha256"][1]) || error(
+        "real-time loopback controller hash is invalid",
+    )
+    fields["profile"][1] == "linux_shared_library_soft" || error(
+        "real-time loopback profile changed",
+    )
+    fields["physical_hil"][1] == "false" || error(
+        "real-time loopback falsely claims physical HIL",
+    )
+    fields["hard_realtime"][1] == "false" || error(
+        "real-time loopback falsely claims hard real time",
+    )
+    return true
+end
+
+function _assert_realtime_loopback_timing(path::AbstractString)
+    lines = readlines(path)
+    !isempty(lines) && first(lines) ==
+        "step,release_ns,start_ns,completion_ns,jitter_ns,computation_ns,response_ns,slack_ns,overrun" ||
+        error("real-time loopback timing header is invalid")
+    length(lines) == 101 || error("real-time loopback timing sample count changed")
+    for (expected_step, line) in enumerate(lines[2:end])
+        fields = split(line, ',')
+        length(fields) == 9 || error("real-time loopback timing row is invalid")
+        step = parse(Int, fields[1])
+        release = parse(Int64, fields[2])
+        start = parse(Int64, fields[3])
+        completion = parse(Int64, fields[4])
+        jitter = parse(Int64, fields[5])
+        computation = parse(Int64, fields[6])
+        response = parse(Int64, fields[7])
+        slack = parse(Int64, fields[8])
+        overrun = parse(Bool, fields[9])
+        step == expected_step - 1 || error("real-time loopback step order changed")
+        release <= start <= completion || error("real-time loopback timestamps are noncausal")
+        jitter == start - release || error("real-time loopback jitter equation failed")
+        computation == completion - start || error(
+            "real-time loopback computation equation failed",
+        )
+        response == completion - release || error(
+            "real-time loopback response equation failed",
+        )
+        slack == release + 10_000_000 - completion || error(
+            "real-time loopback slack equation failed",
+        )
+        overrun == (response > 10_000_000) || error(
+            "real-time loopback overrun equation failed",
+        )
+    end
+    return true
+end
+
+function _assert_realtime_loopback_svg(path::AbstractString)
+    text = read(path, String)
+    startswith(text, "<svg ") && occursin("Response time (ms)", text) &&
+        occursin("<polyline", text) || error(
+        "real-time loopback response SVG is invalid",
+    )
+    return true
+end
+
 function _read_little_endian_integer(io::IO, ::Type{T}) where {T<:Unsigned}
     value = zero(T)
     for shift in 0:8:(8 * sizeof(T) - 8)
@@ -368,6 +478,12 @@ function _assert_known_variable_artifact(
         return true
     elseif target.id == "emt_realtime_cpu" && relative_path == "realtime_summary.json"
         return _assert_realtime_summary(expected_path, generated_path)
+    elseif target.id == "emt_realtime_loopback" && relative_path == "summary.csv"
+        return _assert_realtime_loopback_summary(generated_path)
+    elseif target.id == "emt_realtime_loopback" && relative_path == "timing.csv"
+        return _assert_realtime_loopback_timing(generated_path)
+    elseif target.id == "emt_realtime_loopback" && relative_path == "response_time.svg"
+        return _assert_realtime_loopback_svg(generated_path)
     elseif target.id == "emt_checkpoint_restart" && endswith(relative_path, ".aimora")
         return _assert_checkpoint_envelopes(expected_path, generated_path)
     end

@@ -56,5 +56,6 @@ AIMORACases/examples/**/outputs/*
 !AIMORACases/examples/**/outputs/*.csv
 !AIMORACases/examples/**/outputs/*.svg
 !AIMORACases/examples/**/outputs/*.aimora
+!AIMORACases/examples/emt/realtime_loopback/outputs/summary.json
 !AIMORACases/examples/emt/portable_snapshot_restart/outputs/portable_full.aimora-snapshot
 !AIMORACases/examples/emt/portable_snapshot_restart/outputs/portable_public_reference.aimora-snapshot

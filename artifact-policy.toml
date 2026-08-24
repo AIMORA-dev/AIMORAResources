@@ -114,6 +114,36 @@ state = "retained"
 reason = "Small deterministic public source-versus-fit response data for the cable fitting product."
 
 [[classification]]
+id = "performance-execution-mode-summary"
+path = "AIMORACases/examples/emt/performance_execution_modes/outputs/mode_summary.csv"
+state = "retained"
+reason = "Small public equal-accuracy P0-P2 execution definition and reviewed initial-tower aggregate result."
+
+[[classification]]
+id = "performance-execution-cuda-crossover-figure"
+path = "AIMORACases/examples/emt/performance_execution_modes/outputs/cuda_crossover.svg"
+state = "retained"
+reason = "Curated public rendering of the measured equal-accuracy native CUDA crossover with its exact-machine limitation."
+
+[[classification]]
+id = "realtime-loopback-summary"
+path = "AIMORACases/examples/emt/realtime_loopback/outputs/summary.csv"
+state = "retained"
+reason = "Small public summary of the exact C-controller software loopback, independent error, timing profile and physical-HIL refusal."
+
+[[classification]]
+id = "realtime-loopback-timing-samples"
+path = "AIMORACases/examples/emt/realtime_loopback/outputs/timing.csv"
+state = "retained"
+reason = "Complete bounded monotonic timing samples for the exact public soft-real-time loopback run."
+
+[[classification]]
+id = "realtime-loopback-response-figure"
+path = "AIMORACases/examples/emt/realtime_loopback/outputs/response_time.svg"
+state = "retained"
+reason = "Curated public response-time rendering for the exact software loopback run."
+
+[[classification]]
 id = "coupled-line-cable-error-data"
 path = "AIMORACases/examples/line_fitting/cable/outputs/coupled_line_error.csv"
 state = "retained"

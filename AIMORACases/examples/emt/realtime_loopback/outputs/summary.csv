@@ -1,0 +1,11 @@
+metric,value,unit
+accepted_steps,100,count
+overruns,0,count
+maximum_response_ns,421433,ns
+maximum_jitter_ns,418933,ns
+maximum_independent_error,0.0,1
+controller_sha256,819f3a9f48c8bce83f1d902beef0b8391c72f8fab15a37e128f4b0177753eebf,sha256
+controller_compiler,gcc (GCC) 16.2.1 20260810,identity
+profile,linux_shared_library_soft,label
+physical_hil,false,boolean
+hard_realtime,false,boolean

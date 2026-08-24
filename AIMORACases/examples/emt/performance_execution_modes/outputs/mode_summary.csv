@@ -1,0 +1,8 @@
+tier,mode,nodes,right_hand_sides,status,maximum_error,scaled_residual
+P0,serial_cpu,3,1,accepted_public_reference,0.0,2.9835024062293864e-17
+P0,sparse_cpu,3,1,accepted_equal_accuracy,0.0,2.9835024062293864e-17
+P1,threaded_independent_batch,96,16,accepted_exact_indexed_identity,0.0,0.0
+P1,local_process_independent_batch,96,16,accepted_exact_indexed_identity,0.0,0.0
+P1,native_cuda_fixed_admittance,96,256,accepted_initial_tower_crossover,1.6653345369377348e-16,4.440892098500626e-16
+P2,sparse_cpu,100000,1,accepted_nonzero_scaled_storage,0.0,6.373804441882948e-17
+P2,native_cuda_fixed_admittance,96,4096,accepted_initial_tower_scale,1.3322676295501878e-15,2.6645352591003757e-15
