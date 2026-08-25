@@ -1,0 +1,25 @@
+# Extended Converter Systems Public Case
+
+- `converter_family_count`: 22
+- `standalone_candidate_intersections`: 66
+- `executable_standalone_intersections`: 52
+- `unsupported_standalone_intersections`: 14
+- `application_count`: 5
+- `executable_application_compositions`: 5
+- `matrix_row_count`: 81
+- `executed_family`: BuckChopper
+- `executed_fidelity`: SwitchingDetailed
+- `fixed_step_s`: 2.5e-7
+- `accepted_step_count`: 1200
+- `event_count`: 14
+- `exact_split_restart`: true
+- `maximum_kcl_residual_a`: 2.1849106551785624e-10
+- `relative_energy_residual`: 0.0009776865331253314
+- `peak_output_voltage_v`: 70.39519742214088
+- `peak_inductor_current_a`: 9.716311847728786
+- `maximum_controlled_junction_temperature_k`: 298.19404901049575
+- `maximum_freewheel_junction_temperature_k`: 298.1597917832352
+- `deterministic_signature`: c34e01e66bc2130da357d99e264835cb4bcec3ab1ba4af28e1113faf9546c796
+- `manufacturer_identity`: none
+- `private_solver_required`: true
+- `unsupported`: manufacturer prediction, product design, arbitrary synthesis, destructive failure, renewable plants, FACTS, HVDC, MMC, ATP/PSCAD equivalence, protected-standard conformance, field validation, safety, HIL, and certification

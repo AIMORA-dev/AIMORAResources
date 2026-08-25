@@ -816,6 +816,198 @@ state = "retained"
 reason = "Small deterministic public readiness, state inventory, work, restart identity, result identity, and typed refusal table."
 
 [[classification]]
+id = "extended-converter-family-fidelity-matrix"
+path = "AIMORACases/examples/emt/extended_converter_systems/outputs/converter_family_fidelity_matrix.csv"
+state = "retained"
+reason = "Small deterministic public inventory of every released converter family and fidelity intersection."
+
+[[classification]]
+id = "extended-converter-result-contract"
+path = "AIMORACases/examples/emt/extended_converter_systems/outputs/converter_result_contract.csv"
+state = "retained"
+reason = "Small deterministic public result, event, restart, and unsupported-intersection contract table."
+
+[[classification]]
+id = "extended-converter-detailed-buck-waveform"
+path = "AIMORACases/examples/emt/extended_converter_systems/outputs/switching_detailed_buck_waveform.csv"
+state = "retained"
+reason = "Curated switching-detailed buck electrical waveform supporting the public executable example."
+
+[[classification]]
+id = "extended-converter-detailed-buck-electrical-figure"
+path = "AIMORACases/examples/emt/extended_converter_systems/outputs/switching_detailed_buck_electrical.svg"
+state = "retained"
+reason = "Curated public rendering of switching-detailed buck voltage and current behavior."
+
+[[classification]]
+id = "extended-converter-detailed-buck-device-figure"
+path = "AIMORACases/examples/emt/extended_converter_systems/outputs/switching_detailed_buck_device_state.svg"
+state = "retained"
+reason = "Curated public rendering of switching-detailed buck conduction and junction-temperature state."
+
+[[classification]]
+id = "generic-protection-radial-result"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_radial_overcurrent_earth_fault.aimora"
+state = "retained"
+reason = "Small canonical public radial overcurrent and earth-fault result product."
+
+[[classification]]
+id = "generic-protection-radial-data"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_radial_overcurrent_earth_fault.csv"
+state = "retained"
+reason = "Small deterministic radial overcurrent and earth-fault public output table."
+
+[[classification]]
+id = "generic-protection-radial-figure"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_radial_overcurrent_earth_fault.svg"
+state = "retained"
+reason = "Curated radial overcurrent and earth-fault public rendering."
+
+[[classification]]
+id = "generic-protection-line-result"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_directional_distance_line.aimora"
+state = "retained"
+reason = "Small canonical public directional and distance line-protection result product."
+
+[[classification]]
+id = "generic-protection-line-data"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_directional_distance_line.csv"
+state = "retained"
+reason = "Small deterministic directional and distance line-protection public output table."
+
+[[classification]]
+id = "generic-protection-line-figure"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_directional_distance_line.svg"
+state = "retained"
+reason = "Curated directional and distance line-protection public rendering."
+
+[[classification]]
+id = "generic-protection-transformer-result"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_transformer_bus_differential.aimora"
+state = "retained"
+reason = "Small canonical public transformer and bus differential result product."
+
+[[classification]]
+id = "generic-protection-transformer-data"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_transformer_bus_differential.csv"
+state = "retained"
+reason = "Small deterministic transformer and bus differential public output table."
+
+[[classification]]
+id = "generic-protection-transformer-figure"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_transformer_bus_differential.svg"
+state = "retained"
+reason = "Curated transformer and bus differential public rendering."
+
+[[classification]]
+id = "generic-protection-dc-result"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_dc_differential_overcurrent.aimora"
+state = "retained"
+reason = "Small canonical public DC differential overcurrent result product."
+
+[[classification]]
+id = "generic-protection-dc-data"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_dc_differential_overcurrent.csv"
+state = "retained"
+reason = "Small deterministic DC differential overcurrent public output table."
+
+[[classification]]
+id = "generic-protection-dc-figure"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_dc_differential_overcurrent.svg"
+state = "retained"
+reason = "Curated DC differential overcurrent public rendering."
+
+[[classification]]
+id = "generic-protection-machine-converter-result"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_machine_converter_frequency_rocof.aimora"
+state = "retained"
+reason = "Small canonical public machine-converter frequency and ROCOF result product."
+
+[[classification]]
+id = "generic-protection-machine-converter-data"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_machine_converter_frequency_rocof.csv"
+state = "retained"
+reason = "Small deterministic machine-converter frequency and ROCOF public output table."
+
+[[classification]]
+id = "generic-protection-machine-converter-figure"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/generic_machine_converter_frequency_rocof.svg"
+state = "retained"
+reason = "Curated machine-converter frequency and ROCOF public rendering."
+
+[[classification]]
+id = "generic-protection-c-loopback-data"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/protection_c_loopback.csv"
+state = "retained"
+reason = "Small deterministic public C-loopback comparison table for the generic protection workflow."
+
+[[classification]]
+id = "generic-protection-logic-figure"
+path = "AIMORACases/examples/emt/generic_protection_products/outputs/protection_logic.svg"
+state = "retained"
+reason = "Curated public rendering of generic protection logic outcomes."
+
+[[classification]]
+id = "surge-arrester-terminal-data"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/arrester_terminal.csv"
+state = "retained"
+reason = "Small deterministic public arrester terminal waveform and energy table."
+
+[[classification]]
+id = "surge-arrester-terminal-figure"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/arrester_terminal.svg"
+state = "retained"
+reason = "Curated public arrester terminal waveform rendering."
+
+[[classification]]
+id = "surge-gis-corona-data"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/gis_corona.csv"
+state = "retained"
+reason = "Small deterministic public GIS and corona waveform table."
+
+[[classification]]
+id = "surge-gis-corona-figure"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/gis_corona.svg"
+state = "retained"
+reason = "Curated public GIS and corona waveform rendering."
+
+[[classification]]
+id = "surge-insulation-statistics-data"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/insulation_statistics.csv"
+state = "retained"
+reason = "Small deterministic public insulation-statistics output table."
+
+[[classification]]
+id = "surge-insulation-statistics-figure"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/insulation_statistics.svg"
+state = "retained"
+reason = "Curated public insulation-statistics rendering."
+
+[[classification]]
+id = "surge-interruption-restrike-data"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/interruption_restrike.csv"
+state = "retained"
+reason = "Small deterministic public interruption and restrike waveform table."
+
+[[classification]]
+id = "surge-interruption-restrike-figure"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/interruption_restrike.svg"
+state = "retained"
+reason = "Curated public interruption and restrike waveform rendering."
+
+[[classification]]
+id = "surge-tower-backflash-data"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/tower_backflash.csv"
+state = "retained"
+reason = "Small deterministic public tower-backflash waveform table."
+
+[[classification]]
+id = "surge-tower-backflash-figure"
+path = "AIMORACases/examples/emt/surge_insulation_platform/outputs/tower_backflash.svg"
+state = "retained"
+reason = "Curated public tower-backflash waveform rendering."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"

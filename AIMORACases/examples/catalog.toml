@@ -1143,6 +1143,22 @@ source_ids = [
 ]
 
 [[case]]
+id = "emt_extended_converter_systems"
+study = "emt"
+path = "examples/emt/extended_converter_systems/run.jl"
+entrypoint = "examples/emt/extended_converter_systems/run.jl"
+description = "Complete public matrix for 52 executable standalone family/fidelity intersections, five average application compositions and 24 typed unsupported candidates, plus an original physical switching-detailed buck workflow with block/restart, exact portable continuation, device state, KCL, energy, result contract and curated SVGs."
+requires_solver = true
+reference_compatible = false
+result_kind = "waveform"
+source_ids = [
+    "case-input:emt:extended-converter-systems",
+    "aimora-reference:extended-converter-systems",
+    "aimora-reference:average-converter-applications",
+    "validation-command:extended-converter-systems",
+]
+
+[[case]]
 id = "emt_extended_vsc_pll_dq"
 study = "emt"
 path = "examples/emt/extended_vsc_pll_dq/run.jl"

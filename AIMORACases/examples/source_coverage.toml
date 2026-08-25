@@ -1,12 +1,12 @@
 schema = "aimora-source-coverage-v1"
 status = "audited"
 snapshot_date = "2026-08-24"
-source_count = 518
+source_count = 526
 
 [counts_by_kind]
 "atpdraw_case" = 93
 "atpdraw_exa_project" = 52
-"canonical_case_input" = 78
+"canonical_case_input" = 79
 "claimed_external_case" = 63
 "claimed_translation_packet" = 14
 "classic_case" = 16
@@ -14,12 +14,12 @@ source_count = 518
 "public_testset" = 11
 "translation_capability_packet" = 11
 "validation_fixture" = 76
-"validation_command" = 3
+"validation_command" = 6
 "validation_suite" = 89
-"aimora_reference" = 11
+"aimora_reference" = 15
 
 [counts_by_disposition]
-"example" = 102
+"example" = 110
 "gallery" = 142
 "negative_test" = 3
 "not_a_deck" = 14
@@ -351,6 +351,78 @@ path = "tests/suite/power_semiconductor_bridge_topologies.jl"
 disposition = "example"
 example_ids = ["emt_generic_bridge_topology_library"]
 reason = "Focused private validation exercises every published generic topology family, exact incidence and state contracts, passive state, fault refusal, nonlinear-owner uniqueness, and transaction aliasing while the public case provides the inspectable mixed workflow."
+
+[[source]]
+id = "case-input:emt:extended-converter-systems"
+owner = "AIMORACases"
+kind = "canonical_case_input"
+path = "examples/emt/extended_converter_systems/run.jl"
+disposition = "example"
+example_ids = ["emt_extended_converter_systems"]
+reason = "The AIMORA-authored runner is the canonical redistributable family/fidelity matrix and original switching-detailed buck input with physical passive state, detailed devices, block/restart and exact portable continuation."
+
+[[source]]
+id = "aimora-reference:extended-converter-systems"
+owner = "AIMORAResources/AIMORAReferenceModels"
+kind = "aimora_reference"
+path = "src/extended_converter_systems.jl"
+disposition = "example"
+example_ids = ["emt_extended_converter_systems"]
+reason = "Independent rectifier, chopper, dual-active-bridge, inverter, multilevel, matrix-converter and cycloconverter equations qualify the released converter families without importing production composition, event, history, snapshot or private solver code."
+
+[[source]]
+id = "aimora-reference:average-converter-applications"
+owner = "AIMORAResources/AIMORAReferenceModels"
+kind = "aimora_reference"
+path = "src/average_converter_applications.jl"
+disposition = "example"
+example_ids = ["emt_extended_converter_systems"]
+reason = "Independent active-filter, DVR, UPS, EV-charger and solid-state-transformer balance and transition formulations qualify the five released application compositions without production runtime reuse."
+
+[[source]]
+id = "validation-command:extended-converter-systems"
+owner = "AIMORAValidation"
+kind = "validation_command"
+path = "scripts/compare_extended_converter_systems.jl"
+disposition = "example"
+example_ids = ["emt_extended_converter_systems"]
+reason = "Private focused qualification owns every executable and unsupported intersection, application composition, independent comparison, refinement, event, restart, physical residual, adversarial, external and P0-P2 evidence while the public case remains inspectable and redistributable."
+
+[[source]]
+id = "aimora-reference:generic-protection-products"
+owner = "AIMORAResources/AIMORAReferenceModels"
+kind = "aimora_reference"
+path = "src/emt_protection_breaker.jl"
+disposition = "example"
+example_ids = ["emt_generic_protection_products"]
+reason = "Independent relay-measurement, pickup, directional, distance, differential, frequency, ROCOF, DC and breaker-timing equations qualify the existing generic protection products without importing production protection or breaker code."
+
+[[source]]
+id = "validation-suite:emt-protection-breaker"
+owner = "AIMORAValidation"
+kind = "validation_command"
+path = "scripts/compare_emt_protection_breaker.jl"
+disposition = "example"
+example_ids = ["emt_generic_protection_products"]
+reason = "Private focused qualification owns independent, coupled, event, restart, adversarial, refinement and physical-residual evidence for the registered public protection products."
+
+[[source]]
+id = "aimora-reference:surge-insulation-platform"
+owner = "AIMORAResources/AIMORAReferenceModels"
+kind = "aimora_reference"
+path = "src/surge_insulation.jl"
+disposition = "example"
+example_ids = ["emt_surge_insulation_platform"]
+reason = "Independent lightning-source, tower, grounding, arrester, flashover and insulation-stress equations qualify the existing public surge case without importing production network, nonlinear, event or snapshot code."
+
+[[source]]
+id = "validation-suite:surge-insulation-platform"
+owner = "AIMORAValidation"
+kind = "validation_command"
+path = "scripts/compare_surge_insulation_platform.jl"
+disposition = "example"
+example_ids = ["emt_surge_insulation_platform"]
+reason = "Private focused qualification owns independent, coupled, external, adversarial, refinement, performance and physical-residual evidence for the registered public surge platform case."
 
 [[source]]
 id = "case-input:emt:general-multirate-task-platform"

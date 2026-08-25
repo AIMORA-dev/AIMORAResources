@@ -3,7 +3,7 @@ using AIMORACatalogs
 
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
-    @test length(entries) == 20
+    @test length(entries) == 21
     @test length(unique(entry.id for entry in entries)) == length(entries)
     @test all(entry -> !isempty(entry.provenance), entries)
     @test all(entry -> !isempty(entry.licence), entries)
@@ -49,6 +49,24 @@ using AIMORACatalogs
     @test bridge_emt[:public_case_valve_position_count] == 52
     @test "flying_capacitor_leg" in bridge_emt[:families]
     @test "arbitrary_topology_synthesis" in bridge_emt[:unsupported_phenomena]
+
+    converter_systems = AIMORACatalogs.asset(:extended_converter_systems)
+    @test converter_systems.manufacturer === nothing
+    @test AIMORACatalogs.study_tabs(converter_systems) == [:emt]
+    converter_systems_emt = AIMORACatalogs.study_facet(
+        converter_systems,
+        :emt,
+    ).parameters
+    @test converter_systems_emt[:family_count] == 22
+    @test converter_systems_emt[:executable_standalone_intersection_count] == 52
+    @test converter_systems_emt[:application_composition_count] == 5
+    @test converter_systems_emt[:executable_product_count] == 57
+    @test converter_systems_emt[:matrix_candidate_count] == 81
+    @test converter_systems_emt[:fixed_step_required_for_switching]
+    @test "ThreePhaseMatrixConverter" in
+        converter_systems_emt[:direct_ac_ac_families]
+    @test "atp_or_pscad_equivalence" in
+        converter_systems_emt[:unsupported_phenomena]
 
     extended_vsc = AIMORACatalogs.asset(:extended_vsc_control_filter_platform)
     @test extended_vsc.manufacturer === nothing

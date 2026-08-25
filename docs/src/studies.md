@@ -18,13 +18,17 @@ The public validity boundary is `SwitchingDetailed`, 45–65 Hz, 320–440 V lin
 
 Typed results include pole and line voltages, phase/filter currents, DC-link voltage and source current, P/Q, six gate states, forward and antiparallel-diode conduction states, semiconductor/resistive loss, stored energy, external power, separately integrated DC-source and AC-terminal energies, whole-network and DC-to-AC residuals, KCL residual, protection state, exact event and commutation occurrences, and harmonic metadata. The canonical public study exercises sag, a prescribed source-side phase-to-ground voltage collapse, converter block, fault clearance, and restart; private qualification isolates the line-voltage RMS and THD effects of declared dead time against an otherwise identical zero-dead-time run.
 
-This slice does not claim PLL dynamics, grid-forming control, four-wire zero-sequence current, LCL resonance, transformer magnetization or saturation, semiconductor reverse recovery, nonlinear device capacitance, switching-energy maps, electrothermal state, manufacturer prediction, adaptive global timesteps, standard conformance, or certification. Other converter topologies, control families, plant models, and compliance domains require separate qualification.
+This original slice does not retroactively gain PLL dynamics, grid-forming control, four-wire zero-sequence current, LCL resonance, transformer magnetization or saturation, semiconductor reverse recovery, nonlinear device capacitance, switching-energy maps or electrothermal state. Those mechanisms and the separately bounded extended converter families are qualified through their own explicit owners and public matrices; manufacturer prediction, adaptive switching timesteps, protected-standard conformance and certification remain unsupported.
+
+## Extended converter-system library
+
+The separately qualified extended library exposes 22 AC/DC, DC/DC, DC/AC, multilevel and direct AC/AC families across exactly 52 executable standalone family/fidelity intersections plus five average-value application compositions. The [Extended Converter Systems](extended-converter-systems.md) chapter defines the selection, equations, state, event, fidelity, result, evidence and limitation boundary and links the runnable public case.
 
 ## Current maturity
 
 | Study | Status | Availability |
 |---|---|---|
-| EMT | Implemented for the named BPA regression and Modern EMT 1.0 sets | Authorized full engine |
+| EMT | Implemented for the named BPA regression, Modern EMT 1.0, and separately accepted bounded EMT capability sets | Authorized full engine |
 | Line constants | Implemented | Authorized full engine |
 | Cable constants | Implemented | Authorized full engine |
 | Power flow | Planned contract | Not yet implemented |

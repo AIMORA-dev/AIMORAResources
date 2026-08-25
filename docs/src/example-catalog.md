@@ -78,6 +78,7 @@ Recommended first case: `emt_rlc_energization`.
 - TACS signal chains and sampled tasks;
 - average and switching converter examples;
 - extended semiconductor behavior;
+- complete extended-converter family/fidelity matrix and one physical switching-detailed public workflow;
 - VSC controls and filters;
 - multirate task scheduling;
 - user-defined component registration.

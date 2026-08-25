@@ -128,12 +128,14 @@ Single-mass and multi-mass shafts declare inertia, stiffness, damping, mechanica
 | Two-level switching VSC | implemented bounded owner | explicit valve states and switching events |
 | Generic diode/controlled-valve bridge | implemented bounded owner | declared topology and nonlinear valve conduction within its accepted bridge cases |
 | Semiconductor-fidelity extensions | implemented bounded owner | declared conduction, reverse recovery, charge, or switching-loss behavior where qualified |
-| Chopper | planned converter-family work | controlled DC switching topology |
-| NPC and T-type converters | planned converter-family work | explicit multilevel switching states and neutral-point behavior |
-| Flying-capacitor converter | planned converter-family work | capacitor-state and switching-sequence behavior |
-| Cascaded H-bridge | planned converter-family work | cell-level or admitted aggregate switching representation |
+| Buck, boost, inverting, four-quadrant and interleaved choppers | implemented bounded owners | average where released plus explicit switching state, physical passive state and detailed-device behavior |
+| Dual-active bridge | implemented bounded owner | isolated average or switching bridge pair with transformer leakage, phase-shift modulation and DC energy state |
+| NPC and T-type converters | implemented bounded owners | explicit multilevel switching states and neutral-point behavior |
+| Flying-capacitor converter | implemented bounded owner | capacitor-state and switching-sequence behavior |
+| Cascaded H-bridge | implemented bounded owner | two-through-eight cell state, capacitor balance and admitted modulation |
+| Matrix converter and cycloconverter | implemented bounded owners | safe direct-conversion incidence/commutation or line-commutated bridge-group firing |
 
-A converter model declares DC/AC terminals, modulation, switching schedule, deadtime, controls, filters, limits, initialization, losses, and fidelity. Average and switching-detailed models answer different questions.
+A converter model declares DC/AC terminals, modulation, switching schedule, deadtime, controls, filters, limits, initialization, losses, and fidelity. Average, switching-state and switching-detailed models answer different questions, and only the exact combinations in the public executable-fidelity matrix are admitted.
 
 ## Measurements and instrument chains
 

@@ -45,6 +45,7 @@ const PAGES = [
         "Nonlinear EMT" => "nonlinear-emt.md",
         "Extended Semiconductor Fidelity" => "extended-semiconductor-fidelity.md",
         "Generic Bridge Topologies" => "generic-bridge-topologies.md",
+        "Extended Converter Systems" => "extended-converter-systems.md",
         "Extended VSC Controls and Filters" => "extended-vsc-controls-and-filters.md",
         "General Multirate EMT Tasks" => "general-multirate-emt-tasks.md",
         "Portable EMT Snapshots" => "portable-emt-snapshots.md",
