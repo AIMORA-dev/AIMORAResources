@@ -4,11 +4,15 @@ using TOML
 
 export CatalogEntry,
        StudyFacet,
+       equipment_library_document,
+       native_equipment_library_document,
        available_assets,
        asset,
        asset_path,
        study_facet,
        study_tabs
+
+include("equipment_library.jl")
 
 struct StudyFacet
     study::Symbol

@@ -23,6 +23,11 @@ get(project, "name", nothing) == "AIMORACatalogs" ||
 
 assets = AIMORACatalogs.available_assets()
 isempty(assets) && fail("equipment catalog is empty")
+equipment_library = AIMORACatalogs.equipment_library_document()
+length(equipment_library["equipment"]) == 14 ||
+    fail("native equipment library must contain 14 structured definitions")
+length(equipment_library["assembly"]) == 2 ||
+    fail("native equipment library must contain two reusable bay definitions")
 for entry in assets
     isempty(strip(entry.provenance)) && fail("asset $(entry.id) has no provenance")
     isempty(strip(entry.licence)) && fail("asset $(entry.id) has no licence")

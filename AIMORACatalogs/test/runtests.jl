@@ -1,6 +1,8 @@
 using Test
 using AIMORACatalogs
 
+include("equipment_library.jl")
+
 @testset "open equipment catalogs" begin
     entries = AIMORACatalogs.available_assets()
     @test length(entries) == 18

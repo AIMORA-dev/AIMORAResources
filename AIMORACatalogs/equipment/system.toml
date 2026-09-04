@@ -1,0 +1,418 @@
+schema = "aimora-equipment-library-v1"
+version = "1.0.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+
+[[collection]]
+scope = "system"
+mutable = false
+
+[[collection]]
+scope = "user"
+mutable = true
+
+[[collection]]
+scope = "project"
+mutable = true
+
+[[equipment]]
+id = "aimora://catalog/system/transformer.two_winding@1.0.0"
+scope = "system"
+category = "transformer"
+label = "Two-winding transformer"
+description = "Structured two-winding transformer with independent winding terminals."
+equipment_class = "transformer.two_winding"
+symbol_id = "transformer.two_winding"
+designator_prefix = "T"
+keywords = ["transformer", "two winding", "power"]
+[[equipment.terminal]]
+id = "primary"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.terminal]]
+id = "secondary"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-TX-2W"
+description = "Two-winding transformer"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/measurement.current_transformer@1.0.0"
+scope = "system"
+category = "current_transformer"
+label = "Current transformer"
+description = "Structured current transformer with primary and secondary terminals."
+equipment_class = "measurement.current_transformer"
+symbol_id = "measurement.current_transformer"
+designator_prefix = "TA"
+keywords = ["ct", "current transformer", "measurement"]
+[[equipment.terminal]]
+id = "primary"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.terminal]]
+id = "secondary"
+role = "electrical"
+direction = "output"
+[[equipment.part]]
+number = "AIM-CT"
+description = "Current transformer"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/measurement.voltage_transformer@1.0.0"
+scope = "system"
+category = "voltage_transformer"
+label = "Voltage transformer"
+description = "Structured voltage transformer with primary and secondary terminals."
+equipment_class = "measurement.voltage_transformer"
+symbol_id = "measurement.voltage_transformer"
+designator_prefix = "TV"
+keywords = ["vt", "pt", "voltage transformer", "measurement"]
+[[equipment.terminal]]
+id = "primary"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.terminal]]
+id = "secondary"
+role = "electrical"
+direction = "output"
+[[equipment.part]]
+number = "AIM-VT"
+description = "Voltage transformer"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/switching.circuit_breaker@1.0.0"
+scope = "system"
+category = "switching"
+label = "Circuit breaker"
+description = "Stateful circuit breaker with two electrical terminals."
+equipment_class = "switching.circuit_breaker"
+symbol_id = "switching.circuit_breaker"
+designator_prefix = "Q"
+keywords = ["breaker", "switchgear", "protection"]
+[[equipment.terminal]]
+id = "line"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.terminal]]
+id = "load"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-CB"
+description = "Circuit breaker"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/switching.disconnector@1.0.0"
+scope = "system"
+category = "switching"
+label = "Disconnector"
+description = "Visible-isolation switching device with two electrical terminals."
+equipment_class = "switching.disconnector"
+symbol_id = "switching.disconnector"
+designator_prefix = "QS"
+keywords = ["disconnector", "isolator", "switchgear"]
+[[equipment.terminal]]
+id = "line"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.terminal]]
+id = "load"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-DS"
+description = "Disconnector"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/network.cable@1.0.0"
+scope = "system"
+category = "cable"
+label = "Power cable"
+description = "Structured power cable section with source and destination terminals."
+equipment_class = "network.cable"
+symbol_id = "network.cable"
+designator_prefix = "W"
+keywords = ["cable", "feeder", "network"]
+[[equipment.terminal]]
+id = "from"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.terminal]]
+id = "to"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-CABLE"
+description = "Power cable"
+unit = "m"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/power.busbar@1.0.0"
+scope = "system"
+category = "bus"
+label = "Busbar"
+description = "Multi-connection electrical busbar."
+equipment_class = "power.busbar"
+symbol_id = "power.busbar"
+designator_prefix = "B"
+keywords = ["bus", "busbar", "node"]
+[[equipment.terminal]]
+id = "bus"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-BUS"
+description = "Busbar section"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/load.static@1.0.0"
+scope = "system"
+category = "load"
+label = "Static load"
+description = "Structured static electrical load."
+equipment_class = "load.static"
+symbol_id = "load.static"
+designator_prefix = "L"
+keywords = ["load", "demand", "consumer"]
+[[equipment.terminal]]
+id = "terminal"
+role = "electrical"
+direction = "input"
+[[equipment.part]]
+number = "AIM-LOAD"
+description = "Static load"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/power.ground@1.0.0"
+scope = "system"
+category = "grounding"
+label = "Grounding connection"
+description = "Protective or functional grounding connection."
+equipment_class = "power.ground"
+symbol_id = "power.ground"
+designator_prefix = "E"
+keywords = ["ground", "earth", "grounding"]
+[[equipment.terminal]]
+id = "terminal"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-GND"
+description = "Grounding connection"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/machine.synchronous_generator@1.0.0"
+scope = "system"
+category = "machine"
+label = "Synchronous generator"
+description = "Structured synchronous electrical machine."
+equipment_class = "machine.synchronous_generator"
+symbol_id = "machine.synchronous_generator"
+designator_prefix = "G"
+keywords = ["generator", "machine", "synchronous"]
+[[equipment.terminal]]
+id = "stator"
+role = "electrical"
+direction = "output"
+[[equipment.terminal]]
+id = "shaft"
+role = "mechanical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-GEN"
+description = "Synchronous generator"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/converter.ac_dc@1.0.0"
+scope = "system"
+category = "converter"
+label = "AC/DC converter"
+description = "Structured AC/DC power converter."
+equipment_class = "converter.ac_dc"
+symbol_id = "converter.ac_dc"
+designator_prefix = "U"
+keywords = ["converter", "rectifier", "inverter", "ac dc"]
+[[equipment.terminal]]
+id = "ac"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.terminal]]
+id = "dc"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-CONV"
+description = "AC/DC converter"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/storage.battery@1.0.0"
+scope = "system"
+category = "storage"
+label = "Battery storage"
+description = "Structured battery energy-storage asset."
+equipment_class = "storage.battery"
+symbol_id = "storage.battery"
+designator_prefix = "BT"
+keywords = ["battery", "storage", "dc"]
+[[equipment.terminal]]
+id = "dc"
+role = "electrical"
+direction = "bidirectional"
+[[equipment.part]]
+number = "AIM-BESS"
+description = "Battery storage"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/power.source@1.0.0"
+scope = "system"
+category = "source"
+label = "Power source"
+description = "Structured electrical source boundary."
+equipment_class = "power.source"
+symbol_id = "power.source"
+designator_prefix = "V"
+keywords = ["source", "grid", "supply"]
+[[equipment.terminal]]
+id = "terminal"
+role = "electrical"
+direction = "output"
+[[equipment.part]]
+number = "AIM-SOURCE"
+description = "Power source"
+unit = "item"
+quantity = 1
+
+[[equipment]]
+id = "aimora://catalog/system/annotation.note@1.0.0"
+scope = "system"
+category = "annotation"
+label = "Bound annotation"
+description = "Annotation bound to a canonical field or cross-reference."
+equipment_class = "annotation.note"
+symbol_id = "power.terminal"
+designator_prefix = "N"
+keywords = ["annotation", "note", "label", "cross reference"]
+[[equipment.terminal]]
+id = "anchor"
+role = "annotation"
+direction = "none"
+[[equipment.part]]
+number = "AIM-NOTE"
+description = "Bound annotation"
+unit = "item"
+quantity = 1
+
+[[assembly]]
+id = "aimora://catalog/system/assembly.feeder_bay@1.0.0"
+scope = "system"
+category = "switching"
+label = "Feeder bay"
+description = "Reusable bus-disconnector-breaker-measurement-cable feeder assembly."
+keywords = ["bay", "feeder", "switchgear", "breaker"]
+[[assembly.member]]
+id = "bus"
+equipment_id = "aimora://catalog/system/power.busbar@1.0.0"
+[[assembly.member]]
+id = "disconnector"
+equipment_id = "aimora://catalog/system/switching.disconnector@1.0.0"
+parent = "bus"
+[[assembly.member.cross_reference]]
+field = "upstream"
+target = "bus"
+[[assembly.member]]
+id = "breaker"
+equipment_id = "aimora://catalog/system/switching.circuit_breaker@1.0.0"
+parent = "disconnector"
+[[assembly.member.cross_reference]]
+field = "upstream"
+target = "disconnector"
+[[assembly.member]]
+id = "current_transformer"
+equipment_id = "aimora://catalog/system/measurement.current_transformer@1.0.0"
+parent = "breaker"
+[[assembly.member.cross_reference]]
+field = "protected_by"
+target = "breaker"
+[[assembly.member]]
+id = "cable"
+equipment_id = "aimora://catalog/system/network.cable@1.0.0"
+parent = "current_transformer"
+[[assembly.member.cross_reference]]
+field = "upstream"
+target = "current_transformer"
+[[assembly.member]]
+id = "annotation"
+equipment_id = "aimora://catalog/system/annotation.note@1.0.0"
+parent = "breaker"
+[[assembly.member.cross_reference]]
+field = "owner"
+target = "breaker"
+
+[[assembly]]
+id = "aimora://catalog/system/assembly.transformer_bay@1.0.0"
+scope = "system"
+category = "transformer"
+label = "Transformer bay"
+description = "Reusable protected transformer bay with CT, VT, grounding, and annotation."
+keywords = ["bay", "transformer", "switchgear", "measurement"]
+[[assembly.member]]
+id = "bus"
+equipment_id = "aimora://catalog/system/power.busbar@1.0.0"
+[[assembly.member]]
+id = "disconnector"
+equipment_id = "aimora://catalog/system/switching.disconnector@1.0.0"
+parent = "bus"
+[[assembly.member]]
+id = "breaker"
+equipment_id = "aimora://catalog/system/switching.circuit_breaker@1.0.0"
+parent = "disconnector"
+[[assembly.member]]
+id = "current_transformer"
+equipment_id = "aimora://catalog/system/measurement.current_transformer@1.0.0"
+parent = "breaker"
+[[assembly.member]]
+id = "voltage_transformer"
+equipment_id = "aimora://catalog/system/measurement.voltage_transformer@1.0.0"
+parent = "breaker"
+[[assembly.member]]
+id = "transformer"
+equipment_id = "aimora://catalog/system/transformer.two_winding@1.0.0"
+parent = "current_transformer"
+[[assembly.member.cross_reference]]
+field = "protected_by"
+target = "breaker"
+[[assembly.member]]
+id = "ground"
+equipment_id = "aimora://catalog/system/power.ground@1.0.0"
+parent = "transformer"
+[[assembly.member]]
+id = "annotation"
+equipment_id = "aimora://catalog/system/annotation.note@1.0.0"
+parent = "transformer"
+[[assembly.member.cross_reference]]
+field = "owner"
+target = "transformer"
