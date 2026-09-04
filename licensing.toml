@@ -24,6 +24,11 @@ license = "PolyForm-Noncommercial-1.0.0"
 license_file = "AIMORAReferenceModels/LICENSE"
 
 [[scope]]
+path = "symbol-collections"
+license = "PolyForm-Noncommercial-1.0.0"
+license_file = "LICENSES/PolyForm-Noncommercial-1.0.0.md"
+
+[[scope]]
 path = "references/bpa_emtp"
 license = "PolyForm-Noncommercial-1.0.0 for AIMORA-authored files; retained historical terms for BPA source"
 license_file = "references/bpa_emtp/LICENSE"

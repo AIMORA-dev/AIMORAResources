@@ -26,6 +26,14 @@ uuid = "6a268073-c1b2-474c-bd10-49e12d1609a5"
 version = "0.1.0"
 
 [[resource]]
+id = "symbol-collections"
+path = "symbol-collections"
+kind = "symbol-collection-manifest"
+name = "AIMORA Symbol Collections"
+version = "0.1.0"
+grammar_revision = "4c1bef574076aa23116b31d3b3c1a190cb78983f"
+
+[[resource]]
 id = "bpa-emtp-reference"
 path = "references/bpa_emtp"
 kind = "historical-reference-package"

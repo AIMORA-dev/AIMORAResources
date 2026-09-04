@@ -1,0 +1,56 @@
+schema = "aimora-symbol-collections-v1"
+version = "0.1.0"
+grammar_owner = "AIMORAPlatform/AIMORASymbols"
+grammar_revision = "4c1bef574076aa23116b31d3b3c1a190cb78983f"
+library_id = "aimora-public-symbols"
+library_version = "0.1.0"
+licence = "PolyForm-Noncommercial-1.0.0"
+search_fields = ["id", "name", "asset_class", "accessibility"]
+
+[[collection]]
+id = "system"
+scope = "system"
+mutable = false
+symbols = [
+  "converter.ac_dc", "load.static", "machine.induction_motor", "machine.synchronous_generator",
+  "measurement.current_transformer", "measurement.voltage_transformer", "network.cable", "network.overhead_line",
+  "passive.shunt_capacitor", "passive.shunt_reactor", "power.busbar", "power.ground", "power.source", "power.terminal",
+  "protection.fuse", "protection.surge_arrester", "storage.battery", "switching.circuit_breaker",
+  "switching.disconnector", "transformer.two_winding",
+]
+
+[[collection]]
+id = "user"
+scope = "user"
+mutable = true
+symbols = []
+
+[[collection]]
+id = "project"
+scope = "project"
+mutable = true
+symbols = []
+
+[[category]]
+id = "conversion"
+symbols = ["converter.ac_dc", "storage.battery"]
+
+[[category]]
+id = "machines"
+symbols = ["machine.induction_motor", "machine.synchronous_generator", "transformer.two_winding"]
+
+[[category]]
+id = "measurement"
+symbols = ["measurement.current_transformer", "measurement.voltage_transformer"]
+
+[[category]]
+id = "network"
+symbols = ["network.cable", "network.overhead_line", "power.busbar", "power.ground", "power.source", "power.terminal"]
+
+[[category]]
+id = "passive_and_load"
+symbols = ["load.static", "passive.shunt_capacitor", "passive.shunt_reactor"]
+
+[[category]]
+id = "protection_and_switching"
+symbols = ["protection.fuse", "protection.surge_arrester", "switching.circuit_breaker", "switching.disconnector"]

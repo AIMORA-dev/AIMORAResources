@@ -9,6 +9,7 @@
 | `AIMORACases/` | Versioned executable public examples and case catalogue |
 | `AIMORACatalogs/` | Public engineering catalogues and catalogue APIs |
 | `AIMORAReferenceModels/` | Independent public analytical/manufactured reference models |
+| `symbol-collections/` | Searchable system, user, and project symbol-collection manifest pinned to the canonical Platform grammar |
 | `docs/` | Documenter-based professional user, engineering, and developer manual |
 | `report-templates/` | Versioned declarative report profiles and licence metadata |
 | `examples/reporting/` | Public semantic-reporting fixtures and claim boundaries |
