@@ -95,7 +95,28 @@ export amplitude_invariant_clarke_matrix,
        independent_realtime_metrics,
        independent_affine_channel_value,
        independent_loopback_controller_step,
-       independent_realtime_replay_signature
+       independent_realtime_replay_signature,
+       IndependentShuntCompensatorEvent,
+       IndependentSwitchingShuntCompensatorTrace,
+       independent_tcr_fundamental_susceptance,
+       independent_tsc_fundamental_susceptance,
+       independent_svc_fundamental_susceptance,
+       independent_switching_shunt_compensator_trace,
+       independent_switching_series_compensator_trace,
+       independent_quadrature_phase_shift_rad,
+       independent_quadrature_phase_shifter_power_w,
+       independent_three_phase_instantaneous_power,
+       independent_statcom_instantaneous_power,
+       independent_dc_link_energy_j,
+       independent_statcom_dc_link_energy_j,
+       independent_statcom_dc_energy_residual_w,
+       independent_lcc_six_pulse_no_load_voltage_v,
+       independent_lcc_six_pulse_average_voltage_v,
+       independent_lcc_extinction_angle_rad,
+       independent_lcc_vdcol_current_order_a,
+       independent_lcc_pole_balance_residual_a,
+       IndependentLCCHVDCTrace,
+       independent_lcc_hvdc_trace
 
 export IndependentAverageBuckTrace,
        independent_average_buck_trace,
@@ -202,6 +223,7 @@ include("performance_realtime_hil.jl")
 include("emt_protection_breaker.jl")
 include("surge_insulation.jl")
 include("extended_converter_systems.jl")
+include("facts_lcc_hvdc.jl")
 include("average_converter_applications.jl")
 
 """Return the amplitude-invariant three-phase Clarke matrix whose rows are alpha, beta, and zero axes."""
