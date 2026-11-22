@@ -40,6 +40,8 @@ make run
 
 ## Outputs
 
+The time-zero row records the initialized network and control state. The first transient source and control updates occur at 50 µs.
+
 - `outputs/signed_source_routing_timeseries.csv`: node and requested source,
   switch, and control channels.
 - `outputs/signed_source_routing_waveforms.svg`: selected routed signals.
