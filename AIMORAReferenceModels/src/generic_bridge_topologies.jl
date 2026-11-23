@@ -144,8 +144,10 @@ function independent_bridge_topology(family::Symbol; parameters...)
             [:dc_positive, :midpoint, :ac_terminal, :dc_negative, :midpoint_path_node],
             nodes,
             [:outer_upper, :midpoint_ac_side, :midpoint_dc_side, :outer_lower],
-            [nodes[1], nodes[3], nodes[5], nodes[3]],
-            [nodes[3], nodes[5], nodes[2], nodes[4]];
+            # Both midpoint valves conduct forward toward the common internal
+            # node. Each polarity uses one gated valve and the opposite diode.
+            [nodes[1], nodes[3], nodes[2], nodes[3]],
+            [nodes[3], nodes[5], nodes[5], nodes[4]];
             state_group_positions=[collect(1:4)],
             state_group_tables=[BitMatrix(Bool[
                 1 0 0 0;
