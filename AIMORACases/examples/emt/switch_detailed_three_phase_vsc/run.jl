@@ -4,6 +4,8 @@ include(normpath(joinpath(@__DIR__, "..", "..", "load_aimora.jl")))
 include(normpath(joinpath(@__DIR__, "..", "..", "support", "ExampleSupport.jl")))
 
 using AIMORA
+using SHA
+using TOML
 using .ExampleSupport
 
 function recorded_indices(sample_count::Int; maximum_samples::Int = 3_001)
@@ -14,10 +16,17 @@ function recorded_indices(sample_count::Int; maximum_samples::Int = 3_001)
     return indices
 end
 
-function main()
+function main(args = ARGS)
+    historical = "--historical" in args
+    paths = filter(!=("--historical"), args)
+    count(==("--historical"), args) <= 1 && length(paths) <= 1 &&
+        all(path -> !startswith(path, "--"), paths) ||
+        throw(ArgumentError("usage: run.jl [--historical] [output_directory]"))
     AIMORA.require_solver()
-    output_dir = artifact_directory(ARGS, joinpath(@__DIR__, "outputs"))
-    trace = AIMORA.EMTStudy.simulate_three_phase_vsc()
+    output_dir = artifact_directory(paths, joinpath(@__DIR__,
+        historical ? "historical-replay" : "outputs"))
+    trace = AIMORA.EMTStudy.simulate_three_phase_vsc(; causal_events = !historical)
+    length(trace.time_s) == 60_001 || error("expected 60001 samples over the 60 ms case")
     metrics = trace.metrics
     parameters = trace.parameters
     zero_sequence_current = vec(sum(trace.filter_current_a; dims = 1))
@@ -156,6 +165,15 @@ function main()
             unsupported = "PLL dynamics, grid-forming control, four-wire zero-sequence current, LCL resonance, transformer magnetization/saturation, reverse recovery, nonlinear device capacitance, switching-energy maps, electrothermal state, manufacturer prediction, and certification",
         ),
     )
+    products = (waveform_csv, device_csv, current_svg, dc_svg, summary_path)
+    open(joinpath(output_dir, "trace_provenance.toml"), "w") do io
+        TOML.print(io, Dict(
+            "schema" => "aimora.three_phase_vsc_example_trace.v1",
+            "execution" => historical ? "historical_sampled" : "causal_intrinsic",
+            "sample_count" => length(trace.time_s),
+            "sha256" => Dict(basename(path) => bytes2hex(open(sha256, path)) for path in products),
+        ); sorted = true)
+    end
     println("Waveforms: ", waveform_csv)
     println("Device states: ", device_csv)
     println("Currents: ", current_svg)

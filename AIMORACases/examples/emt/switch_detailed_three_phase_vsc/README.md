@@ -12,12 +12,17 @@ The 60 ms scenario includes a balanced grid sag, a prescribed source-side phase-
 make run
 ```
 
+The 60 ms example selects causal event execution explicitly. Scheduled controls and disturbance boundaries use the scheduler tick calendar. Intrinsic semiconductor events use their localized physical times between ticks. The Julia API also supports explicitly replaying the historical sampled model with `causal_events=false`.
+
+To reproduce the historical case in a separate directory, run `julia --project=../../.. run.jl --historical` from this example directory with the solver active. The default replay output is `historical-replay/`. The originally distributed artifacts are under `historical/`. The replay reproduces the waveform/device CSVs and both plots byte for byte on the qualified environment. A few last digits in the archived summary can differ with floating-point reductions.
+
 ## Outputs
 
 - `three_phase_vsc_waveforms.csv` records a deterministic bounded view of DC voltage, P/Q, phase currents, line voltages, and block state.
 - `three_phase_vsc_device_states.csv` records phase duties, six applied gates, and active antiparallel-diode counts.
 - `three_phase_vsc_currents.svg` shows the three filter currents across the sag, fault, block, clearance, restart, and final regulation interval.
 - `three_phase_vsc_dc_link.svg` shows the dynamic DC-link response and post-event ripple.
+- `trace_provenance.toml` identifies the execution mode, full sample count, and SHA-256 of each exported artifact.
 - `summary.md` reports control/PWM counts, P/Q tracking, DC ripple, THD metadata, zero-sequence rejection, KCL, separately integrated DC-source/AC-terminal energy balance, commutations, protection events, exact alignment, fidelity, and limitations.
 
 Interpret the final cycle as the regulation and harmonic acceptance window, not the fault interval. The active-power mean should remain within three percent of 20 kW, mean reactive power within 500 var of zero, DC ripple below 5 V, phase-current THD below five percent, line-voltage THD below three percent, zero-sequence current below 0.1 microampere, KCL residual below 0.1 microampere, and both whole-network and separately integrated DC-to-AC relative energy residuals below `1e-5`. The case must also show all-off dead-time samples, natural diode conduction, one block and restart, six exact disturbance/protection boundaries, finite output, and no shoot-through. Private qualification isolates and bounds dead-time waveform distortion against an otherwise identical zero-dead-time execution. Unsupported behavior includes PLL and grid-forming dynamics, LCL resonance, transformer magnetization/saturation, semiconductor reverse recovery and nonlinear capacitance, switching-energy maps, electrothermal state, manufacturer prediction, standard conformance, and certification.

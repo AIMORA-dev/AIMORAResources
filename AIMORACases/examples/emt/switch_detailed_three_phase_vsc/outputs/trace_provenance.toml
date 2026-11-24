@@ -1,0 +1,10 @@
+execution = "causal_intrinsic"
+sample_count = 60001
+schema = "aimora.three_phase_vsc_example_trace.v1"
+
+[sha256]
+"summary.md" = "093b3304744f1cfda131ef2ea7e34863205960d185f22891fa394267a2bf5c11"
+"three_phase_vsc_currents.svg" = "e52b524b889702c6e80a7f843215d91fd2fe24a576e9a5fcfc179e6fdcae1362"
+"three_phase_vsc_dc_link.svg" = "f5d04d0719a3ee4ff926331635e42dbcc5e219432ac4b344bccde72ff890b359"
+"three_phase_vsc_device_states.csv" = "d0ee02f5dbd81e0211905ea547bcb17ac37cea53086213d0def50b43081828f6"
+"three_phase_vsc_waveforms.csv" = "38107e415ae635c947f9d8024822e7348758652392824cdd7da1ce5c59103582"
