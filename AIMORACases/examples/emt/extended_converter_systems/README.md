@@ -11,6 +11,8 @@ Its switching-detailed IGBT and diode retain nonlinear junction charge, diode re
 An exact block/restart calendar exercises freewheeling and restart, while a portable mid-run snapshot proves exact continuation.
 The runner checks typed acceptance, deterministic replay, KCL, charge, energy, nonnegative detailed state and event occurrence before writing artifacts.
 
+The gate columns after the initial sample describe the accepted fixed interval ending at the row time. The exact 30 µs crossing belongs to the ON interval and the exact 70 µs crossing belongs to the OFF interval. Each unblocked carrier period in this case applies 240 ON intervals, totaling 60 µs. Gate state and device conduction are reported separately.
+
 ## Run
 
 Run `make run` from this directory in a workspace whose Julia environment explicitly activates the private production solver.

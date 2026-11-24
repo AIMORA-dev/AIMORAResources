@@ -1346,6 +1346,22 @@ struct IndependentSwitchingBuckTrace
     kcl_residual_a::Vector{Float64}
 end
 
+# Construct each reference pulse window around the exact carrier minima in
+# fractional SI coordinates, independently of the production clock arithmetic.
+function _independent_chopper_interval_gates(start, step, frequency, duty, count)
+    start_s, step_s, frequency_hz, duty_fraction = map(
+        value -> rationalize(BigInt, value), (start, step, frequency, duty),
+    )
+    period_s = inv(frequency_hz)
+    pulse_half_s = duty_fraction * period_s / 2
+    return BitVector(begin
+        time_s = start_s + tick * step_s
+        next_center_s = ceil(BigInt, time_s / period_s) * period_s
+        next_center_s - pulse_half_s < time_s ||
+            time_s <= next_center_s - period_s + pulse_half_s
+    end for tick in 0:(count - 1))
+end
+
 function independent_switching_buck_trace(;
     input_voltage_v::Real,
     duty::Real,
@@ -1424,11 +1440,9 @@ function independent_switching_buck_trace(;
     end
     blocked_state = BitVector(any(interval -> interval[1] <= sample_time < interval[2],
         block_intervals) for sample_time in time)
-    gate_state = BitVector(
-        !blocked_state[sample] &&
-            d >= independent_converter_triangular_carrier(time[sample], carrier_frequency)
-        for sample in eachindex(time)
-    )
+    gate_state = _independent_chopper_interval_gates(
+        start_time, step, carrier_frequency, d, sample_count,
+    ) .& .!blocked_state
     switch_voltage = Vector{Float64}(undef, sample_count)
     current = Vector{Float64}(undef, sample_count)
     voltage = Vector{Float64}(undef, sample_count)
@@ -1595,9 +1609,8 @@ function independent_switching_boost_trace(;
         throw(ArgumentError("independent switching boost horizon must contain integer steps"))
     sample_count = step_count + 1
     time = collect(range(start_time; step, length=sample_count))
-    gate_state = BitVector(
-        d >= independent_converter_triangular_carrier(sample_time, carrier_frequency)
-        for sample_time in time
+    gate_state = _independent_chopper_interval_gates(
+        start_time, step, carrier_frequency, d, sample_count,
     )
     switch_voltage = Vector{Float64}(undef, sample_count)
     current = Vector{Float64}(undef, sample_count)
@@ -1742,9 +1755,8 @@ function independent_switching_inverting_buck_boost_trace(;
         ))
     sample_count = step_count + 1
     time = collect(range(start_time; step, length=sample_count))
-    gate_state = BitVector(
-        d >= independent_converter_triangular_carrier(sample_time, carrier_frequency)
-        for sample_time in time
+    gate_state = _independent_chopper_interval_gates(
+        start_time, step, carrier_frequency, d, sample_count,
     )
     switch_voltage = Vector{Float64}(undef, sample_count)
     current = Vector{Float64}(undef, sample_count)

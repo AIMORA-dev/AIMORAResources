@@ -263,6 +263,16 @@ function execute_public_workflow()
     final_uninterrupted_snapshot.signature_sha256 == final_split_snapshot.signature_sha256 ||
         error("portable converter final snapshot signature changed")
 
+    # The 0.25 µs calendar gives 400 intervals per 100 µs carrier period.
+    # At 30 µs the interval is still ON, and at 70 µs it is still OFF.
+    expected_word = BitVector(tick <= 120 || tick > 280 for tick in 1:400)
+    for first_tick in (1, 801)
+        samples = (first_tick + 1):(first_tick + 400)
+        uninterrupted.requested_gate_state[samples] == expected_word &&
+            uninterrupted.applied_gate_state[samples] == expected_word ||
+            error("public converter applied PWM interval word differs from the exact calendar")
+    end
+
     maximum(abs, uninterrupted.kcl_residual_a) <= 1.0e-6 || error(
         "public converter KCL residual exceeded 1 microampere",
     )
