@@ -417,6 +417,7 @@ function independent_positive_sequence_frequency(
     all(isfinite, (real(previous), imag(previous), real(current), imag(current),
         elapsed, nominal, threshold)) && elapsed > 0.0 && nominal > 0.0 && threshold >= 0.0 ||
         throw(ArgumentError("independent frequency inputs are invalid"))
+    (iszero(previous) || iszero(current)) && return nothing
     abs(previous) >= threshold && abs(current) >= threshold || return nothing
     return nominal + angle(current * conj(previous)) / (2.0 * pi * elapsed)
 end
@@ -545,7 +546,7 @@ function independent_measurement_acquisition(
             )
             if phases == [:a, :b, :c]
                 sequence = independent_measurement_sequence_components(phasors)
-                if abs(sequence.positive) >= threshold
+                if !iszero(sequence.positive) && abs(sequence.positive) >= threshold
                     push!(positive_history, sequence.positive)
                     push!(positive_time_history, source_tick * timestep)
                     required = separation + 1

@@ -133,3 +133,20 @@ using LinearAlgebra
     @test scaled.time_s ≈ [0.0, 50.0e-6]
     @test occursin(r"^[0-9a-f]{64}$", independent_comtrade_signature("cfg\n", binary))
 end
+
+@testset "Independent frequency observability" begin
+    estimate = independent_positive_sequence_frequency
+    @test estimate(0.0im, 0.0im, 1e-3, 50.0) === nothing
+    @test estimate(1.0 + 0.0im, 0.0im, 1e-3, 50.0) === nothing
+    @test estimate(0.0im, 1.0 + 0.0im, 1e-3, 50.0) === nothing
+    @test estimate(1.0 + 0.0im, 1.0 + 0.0im, 1e-3, 50.0; minimum_magnitude=1.0) == 50.0
+    samples = independent_measurement_acquisition(
+        zeros(21, 3), 1e-3;
+        sample_period_ticks=1, nominal_frequency_hz=50.0,
+        window_weights_newest_first=ones(20), phase_order=[:a, :b, :c],
+    )
+    @test last(samples).source_tick == last(samples).release_tick == 20
+    @test last(samples).sliding_rms == zeros(3)
+    @test last(samples).frequency_hz === nothing
+    @test last(samples).quality === :frequency_unavailable
+end
