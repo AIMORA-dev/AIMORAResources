@@ -593,7 +593,7 @@ function run_arrester_product(preparation, output_directory)
         result.accepted || error("arrester terminal failed at $time_s: $(result.failure)")
         source_current[index] = source(time_s)
         terminal_voltage[index] = result.voltage_v[1]
-        arrester_current[index] = source_current[index] - 1.0e-6 * terminal_voltage[index]
+        arrester_current[index] = arrester.accepted_current_a
         absorbed_energy[index] = SurgeExamples.arrester_absorbed_energy_j(arrester)
     end
     series = Pair[
