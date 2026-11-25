@@ -31,6 +31,8 @@ struct ExampleSignatureContext
 end
 
 const RECEIPT_SCHEMA = "aimora.example_receipt.v1"
+const SEMICONDUCTOR_CASE = "emt_extended_semiconductor_commutation"
+const SEMICONDUCTOR_CARD = "catalogs/generic/extended_semiconductor_commutation.toml"
 
 function example_targets(root::AbstractString)
     catalog = TOML.parsefile(joinpath(root, "examples", "catalog.toml"))
@@ -65,7 +67,9 @@ function select_changed_targets(targets::Vector{ExampleTarget}, paths::Vector{St
         prefix = target.directory * "/"
         any(paths) do raw_path
             path = replace(raw_path, '\\' => '/')
-            path == target.directory || startswith(path, prefix)
+            path == target.directory || startswith(path, prefix) ||
+                (target.id == SEMICONDUCTOR_CASE &&
+                 endswith(path, "AIMORACatalogs/" * SEMICONDUCTOR_CARD))
         end && push!(selected, target)
     end
     return sort!(unique(selected); by = target -> target.id)
@@ -187,13 +191,23 @@ function _example_signature(
     root::AbstractString,
     target::ExampleTarget,
 )
+    catalog_signature = if target.id == SEMICONDUCTOR_CASE
+        catalogs = abspath(get(ENV, "AIMORA_CATALOGS_PATH", joinpath(root, "..", "AIMORACatalogs")))
+        _tree_signature(catalogs, ["Project.toml", "src", SEMICONDUCTOR_CARD])
+    else
+        nothing
+    end
     lines = (
         "schema=$(RECEIPT_SCHEMA)",
         "common=$(context.common_signature)",
         "example=$(target.id)",
         "target=$(_tree_signature(root, [target.directory]))",
     )
-    return bytes2hex(sha256(join(lines, '\n') * "\n"))
+    payload = join(lines, '\n') * "\n"
+    if catalog_signature !== nothing
+        payload *= "catalog=$(catalog_signature)\n"
+    end
+    return bytes2hex(sha256(payload))
 end
 
 function example_signature(root::AbstractString, target::ExampleTarget)
@@ -641,6 +655,9 @@ function _prepare_workers(root::AbstractString, count::Int)
             joinpath(dirname(engine), "AIMORASolvers.jl"),
         )),
     )
+    if haskey(ENV, "AIMORA_CATALOGS_PATH")
+        environment["AIMORA_CATALOGS_PATH"] = ENV["AIMORA_CATALOGS_PATH"]
+    end
     worker_ids = addprocs(
         count;
         exeflags = ["--startup-file=no", "--project=$(root)"],

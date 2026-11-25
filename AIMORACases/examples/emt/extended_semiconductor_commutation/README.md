@@ -8,6 +8,8 @@ The parameters are synthetic and have no manufacturer identity. The case demonst
 
 From this directory, use `make run`. The equivalent direct command is `julia run.jl`. The case requires an explicitly activated AIMORA solver backend because it executes the coupled nonlinear network; loading the public case package alone does not expose or initialize private solver source.
 
+The recovered diode takes its declared SI parameters from the generic EMT catalog facet. To run with a separate copy of that card, pass the output directory and card path as the first and second arguments to `run.jl`. The synthetic drive, event-energy values and gated IGBT are defined by the example.
+
 The same runner also solves a two-node circuit where a conductance links the recovered diode and a gated IGBT with an exponential turn-off tail. It applies gate-off and gate-on edges, checks recovered-charge exhaustion and tail cutoff, and restores a checkpoint taken while both recovered charge and tail current are nonzero. Every resumed row must exactly match the uninterrupted signed current, charge, gate and recovery event counters, switching energy, and two-stage temperature history.
 
 ## Output artifacts

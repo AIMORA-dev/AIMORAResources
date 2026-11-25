@@ -12,7 +12,7 @@ Recovered charge uses the accepted backward-Euler balance
 q_n = \max\!\left(0, \frac{q_{n-1}+\Delta t\,i_d}{1+\Delta t/\tau}\right).
 ```
 
-The nonlinear junction satisfies `dq/dv = C(v) > 0`; displacement current is the accepted charge difference divided by the candidate timestep. Turn-off tail current is nonnegative and decays exponentially to its declared cutoff. Switching energy is trilinearly interpolated without extrapolation and is deposited once after an accepted event. The Cauer network has strictly positive thermal resistance and capacitance and rejects heat to a declared ambient temperature.
+The nonlinear junction satisfies `dq/dv = C(v) > 0`. Backward Euler uses `i_n = (q_n - q_{n-1}) / h`. Trapezoidal integration uses `i_n = 2(q_n - q_{n-1}) / h - i_{n-1}` with the previous accepted displacement current. Turn-off tail current is nonnegative and decays exponentially to its declared cutoff. Switching energy is trilinearly interpolated without extrapolation and is deposited once after an accepted event. The Cauer network has strictly positive thermal resistance and capacitance and rejects heat to a declared ambient temperature.
 
 ## Runtime ownership and state
 
@@ -26,7 +26,7 @@ Generic parameters must name a source, SI units, transformation, uncertainty or 
 
 ## Public case
 
-`AIMORACases` case `emt_extended_semiconductor_commutation` uses a synthetic generic recovered diode with nonlinear junction charge, event-energy axes, and a passive two-stage thermal network. It records voltage, current, charge, displacement current, temperature, and cumulative dissipated energy. Public users can inspect the contracts, parameters, independent reference equations, and results; production execution requires an explicitly activated private backend.
+`AIMORACases` case `emt_extended_semiconductor_commutation` reads the generic diode EMT facet from `AIMORACatalogs` and uses it to construct the recovered diode and its junction, event-table axes, and thermal ladder. The coupled exercise connects that diode to a gated IGBT through finite conductance and verifies exact replay from live recovered charge and turn-off tail. Accepted traces include signed port currents, charge and displacement, event counts, switching energies, and both thermal stage temperatures. Public users can inspect the contracts, parameters, independent reference equations, and results; production execution requires an explicitly activated private backend.
 
 ## Limits
 

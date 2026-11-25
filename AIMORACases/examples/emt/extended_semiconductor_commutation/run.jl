@@ -7,13 +7,20 @@ using AIMORA
 using AIMORA.NonlinearNetwork
 using .ExampleSupport
 
-const TIMESTEP_S = 1.0e-6
+const CATALOG_ROOT = abspath(get(ENV, "AIMORA_CATALOGS_PATH",
+    joinpath(@__DIR__, "..", "..", "..", "..", "AIMORACatalogs")))
+isfile(joinpath(CATALOG_ROOT, "Project.toml")) && pushfirst!(LOAD_PATH, CATALOG_ROOT)
+using AIMORACatalogs
+
+const DIODE_CARD = joinpath(dirname(pathof(AIMORACatalogs)), "..", "catalogs", "generic",
+    "extended_semiconductor_commutation.toml")
 const SAMPLE_COUNT = 80
 
-function generic_energy_table()
-    current_axis = [0.0, 20.0]
-    voltage_axis = [0.0, 200.0]
-    temperature_axis = [250.0, 350.0]
+function generic_energy_table(
+    current_axis = [0.0, 20.0],
+    voltage_axis = [0.0, 200.0],
+    temperature_axis = [250.0, 350.0],
+)
     base = Array{Float64}(undef, 2, 2, 2)
     for current_index in 1:2, voltage_index in 1:2, temperature_index in 1:2
         base[current_index, voltage_index, temperature_index] = 1.0e-6 * (
@@ -32,37 +39,54 @@ function generic_energy_table()
     )
 end
 
-function generic_recovered_diode()
-    fidelity = AIMORA.Nonlinear.PowerSemiconductorExtendedFidelity(
+function generic_recovered_diode(card::StudyFacet)
+    parameters = card.parameters
+    provenance = NonlinearParameterProvenance(
+        String(parameters[:parameter_source]), "catalogue SI facet",
+        String(parameters[:parameter_transformation]), String(parameters[:parameter_uncertainty]),
+        String(parameters[:validity]), PhysicalModelParameter,
+    )
+    fidelity = AIMORA.Nonlinear.PowerSemiconductorExtendedFidelity(;
         recovered_charge=AIMORA.Nonlinear.RecoveredChargeFidelity(
-            5.0e-6;
-            initial_charge_c=20.0e-6,
+            parameters[:recovered_charge_lifetime_s];
+            initial_charge_c=parameters[:initial_recovered_charge_c], provenance,
         ),
         junction_charge=AIMORA.Nonlinear.NonlinearJunctionChargeFidelity(
-            200.0e-9,
-            50.0,
-            0.45;
-            voltage_domain_v=(-200.0, 200.0),
+            parameters[:zero_bias_junction_capacitance_f],
+            parameters[:junction_voltage_v],
+            parameters[:junction_grading_exponent];
+            voltage_domain_v=(Float64(parameters[:terminal_voltage_min_v]),
+                Float64(parameters[:terminal_voltage_max_v])), provenance,
         ),
-        switching_energy=generic_energy_table(),
+        switching_energy=generic_energy_table(
+            parameters[:switching_energy_current_axis_a],
+            parameters[:switching_energy_blocking_voltage_axis_v],
+            parameters[:switching_energy_temperature_axis_k],
+        ),
         thermal=AIMORA.Nonlinear.CauerThermalFidelity(
-            [0.2, 1.0],
-            [0.5, 2.0];
-            initial_temperature_k=[300.0, 300.0],
+            parameters[:thermal_capacitance_j_per_k],
+            parameters[:thermal_resistance_k_per_w];
+            ambient_temperature_k=parameters[:ambient_temperature_k],
+            initial_temperature_k=parameters[:initial_temperature_k], provenance,
         ),
+        provenance,
     )
     return AIMORA.Nonlinear.DiodeValveSwitch(
         1,
         0;
-        on_conductance=2.0,
-        off_conductance=1.0e-6,
+        on_conductance=parameters[:on_conductance_s],
+        off_conductance=parameters[:off_conductance_s],
         extended_fidelity=fidelity,
     )
 end
 
-function synthetic_commutation_trace()
-    diode = generic_recovered_diode()
-    time_s = collect(1:SAMPLE_COUNT) .* TIMESTEP_S
+function synthetic_commutation_trace(card::StudyFacet)
+    diode = generic_recovered_diode(card)
+    timestep_s = Float64(card.parameters[:timestep_s])
+    isfinite(timestep_s) && timestep_s > 0.0 || throw(ArgumentError(
+        "catalogued commutation timestep must be finite and positive",
+    ))
+    time_s = collect(1:SAMPLE_COUNT) .* timestep_s
     drive_current_a = [
         sample <= 30 ? 10.0 : sample <= 55 ? -20.0 : -2.0
         for sample in 1:SAMPLE_COUNT
@@ -73,7 +97,7 @@ function synthetic_commutation_trace()
             AIMORA.Branches.ConductanceBranch(1, 0, 0.2),
             AIMORA.Branches.CurrentInjection(
                 1,
-                time -> drive_current_a[clamp(ceil(Int, time / TIMESTEP_S), 1, SAMPLE_COUNT)],
+                time -> drive_current_a[clamp(ceil(Int, time / timestep_s), 1, SAMPLE_COUNT)],
             ),
         ],
     )
@@ -97,7 +121,7 @@ function synthetic_commutation_trace()
         result = AIMORA.NonlinearNodal.advance_nonlinear_step!(
             nonlinear_system,
             time_s[sample],
-            TIMESTEP_S,
+            timestep_s,
         )
         result.accepted || error(
             "private nonlinear commutation solve failed at sample $sample: $(result.failure)",
@@ -124,12 +148,12 @@ function synthetic_commutation_trace()
     )
 end
 
-function gated_commutation_replay()
+function gated_commutation_replay(card::StudyFacet)
     devices = AIMORA.Nonlinear
     nodal = AIMORA.NonlinearNodal
     dt = 0.1e-6
     gate_off_s, gate_on_s = 25.05e-6, 65.05e-6
-    diode = generic_recovered_diode()
+    diode = generic_recovered_diode(card)
     thermal = devices.CauerThermalFidelity([0.2, 1.0], [0.5, 2.0];
         initial_temperature_k=[300.0, 300.0])
     diode_thermal = diode.extended_fidelity.thermal
@@ -223,11 +247,14 @@ function gated_commutation_replay()
     cutoff_row = findfirst(row -> row.tail_edges == 1, rows)
     251 < recovery < cutoff_row < 651 ||
         error("gated commutation event order changed")
-    for (field, accepted_index) in ((:off_j, 251), (:recovery_j, 301), (:on_j, 651))
+    for (field, accepted_index) in ((:off_j, 251), (:on_j, 651))
         deposits = findall(>(0), diff(getproperty.(rows, field)))
         deposits == [accepted_index - 1] ||
             error("gated commutation did not deposit $field exactly once")
     end
+    recovery_deposits = findall(>(0), diff(getproperty.(rows, :recovery_j)))
+    length(recovery_deposits) == 1 && 300 <= only(recovery_deposits) < recovery ||
+        error("expected one deposition during reverse recovery, got accepted samples $(recovery_deposits .+ 1)")
     cutoff = gate_off_s + tail.decay_time_s * log(rows[250].forward_a / tail.cutoff_current_a)
     abs(tail.last_cutoff_time_s - cutoff) <= 1e-12 ||
         error("gated commutation tail cutoff disagrees with the exponential limit")
@@ -240,7 +267,17 @@ end
 
 function main(args=ARGS)
     AIMORA.require_solver()
-    trace = synthetic_commutation_trace()
+    length(args) <= 2 || throw(ArgumentError("usage: run.jl [output_directory [catalog_card]]"))
+    asset = AIMORACatalogs.load_asset(length(args) == 2 ? args[2] : DIODE_CARD)
+    asset.id === :generic_extended_semiconductor_commutation &&
+        asset.equipment_class === :power_semiconductor_switch &&
+        asset.manufacturer === nothing ||
+        throw(ArgumentError("expected the generic extended semiconductor catalog entry"))
+    card = study_facet(asset, :emt)
+    card.parameters[:fidelity] == "SwitchingDetailed" &&
+        card.parameters[:junction_family] == "generic_diode" ||
+        throw(ArgumentError("expected the switching-detailed generic diode catalog facet"))
+    trace = synthetic_commutation_trace(card)
     all(isfinite, trace.terminal_current_a) || error("nonfinite terminal current")
     minimum(trace.stored_charge_c) >= 0.0 || error("negative recovered charge")
     maximum(trace.stored_charge_c[31:end]) < trace.stored_charge_c[30] ||
@@ -299,7 +336,7 @@ function main(args=ARGS)
         joinpath(output_dir, "summary.md"),
         "Generic Extended Semiconductor Commutation",
         (
-            timestep_s=TIMESTEP_S,
+            timestep_s=first(trace.time_s),
             sample_count=SAMPLE_COUNT,
             initial_recovery_charge_c=first(trace.stored_charge_c),
             final_recovery_charge_c=last(trace.stored_charge_c),
@@ -311,7 +348,7 @@ function main(args=ARGS)
             unsupported="manufacturer prediction, arbitrary compact models, destructive failure, lifetime, standards, and certification",
         ),
     )
-    coupled, anchor, cutoff_s = gated_commutation_replay()
+    coupled, anchor, cutoff_s = gated_commutation_replay(card)
     coupled_path = write_series_csv(
         joinpath(output_dir, "gated_commutation_restart.csv"), "time_s",
         getproperty.(coupled, :t),
