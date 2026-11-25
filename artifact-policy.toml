@@ -1032,6 +1032,12 @@ state = "retained"
 reason = "Preserved sampled-clock electrical waveform table from the public three-phase VSC example. The documented --historical replay reproduces it for comparison with the causal example."
 
 [[classification]]
+id = "semiconductor-commutation-restart-trace"
+path = "AIMORACases/examples/emt/extended_semiconductor_commutation/outputs/gated_commutation_restart.csv"
+state = "retained"
+reason = "Reproducible public commutation output with 800 accepted samples. The named catalog case compares 540 rows after restart and exposes electrical work and thermal quantities separately."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"
