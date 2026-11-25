@@ -1050,6 +1050,12 @@ state = "retained"
 reason = "Reproducible public commutation output with eight rows of accepted switching-energy domain and cell margins. The named catalog case verifies this versioned product alongside the accepted-event lookup trace."
 
 [[classification]]
+id = "semiconductor-commutation-timestep-resolution"
+path = "AIMORACases/examples/emt/extended_semiconductor_commutation/outputs/semiconductor_timestep_resolution_v1.csv"
+state = "retained"
+reason = "Reproducible public commutation output with 2574 rows of accepted-interval timestep resolution observations. The named catalog case verifies the versioned product for the recovery and tail mechanisms."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"
