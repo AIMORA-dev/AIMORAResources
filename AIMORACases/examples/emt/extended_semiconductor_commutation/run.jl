@@ -119,8 +119,9 @@ function synthetic_commutation_trace(card::StudyFacet)
     cumulative_energy_j = zeros(Float64, SAMPLE_COUNT)
     event_lookups = AIMORA.Nonlinear.PowerSemiconductorEventLookup[]
     event_margins = AIMORA.Nonlinear.PowerSemiconductorEventMargins[]
+    timestep_resolution = AIMORA.Nonlinear.PowerSemiconductorTimestepResolution[]
     for sample in 1:SAMPLE_COUNT
-        accepted = AIMORA.NonlinearNodal.advance_nonlinear_step_with_semiconductor_margins!(
+        accepted = AIMORA.NonlinearNodal.advance_nonlinear_step_with_semiconductor_resolution!(
             nonlinear_system,
             time_s[sample],
             timestep_s,
@@ -128,6 +129,7 @@ function synthetic_commutation_trace(card::StudyFacet)
         result = accepted.result
         append!(event_lookups, accepted.event_lookups)
         append!(event_margins, accepted.event_margins)
+        append!(timestep_resolution, accepted.timestep_resolution)
         result.accepted || error(
             "private nonlinear commutation solve failed at sample $sample: $(result.failure)",
         )
@@ -152,6 +154,7 @@ function synthetic_commutation_trace(card::StudyFacet)
         cumulative_energy_j,
         event_lookups,
         event_margins,
+        timestep_resolution,
     )
 end
 
@@ -190,6 +193,7 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
 
     event_lookups = devices.PowerSemiconductorEventLookup[]
     event_margins = devices.PowerSemiconductorEventMargins[]
+    timestep_resolution = devices.PowerSemiconductorTimestepResolution[]
     function accepted_row(sample)
         t = sample * dt
         if sample == 640
@@ -197,10 +201,11 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
                 earliest_transition_time_s=gate_on_s)
         end
         if record_events
-            accepted = nodal.advance_nonlinear_step_with_semiconductor_margins!(network, t, dt)
+            accepted = nodal.advance_nonlinear_step_with_semiconductor_resolution!(network, t, dt)
             result = accepted.result
             append!(event_lookups, accepted.event_lookups)
             append!(event_margins, accepted.event_margins)
+            append!(timestep_resolution, accepted.timestep_resolution)
         else
             result = nodal.advance_nonlinear_step!(network, t, dt)
         end
@@ -250,9 +255,12 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
         error("restart checkpoint must contain live charge, tail and accepted event energy")
     checkpoint = nodal.nonlinear_nodal_checkpoint(network)
     first_replay_lookup = length(event_lookups) + 1
+    first_replay_resolution = length(timestep_resolution) + 1
     uninterrupted = map(accepted_row, 261:800)
     uninterrupted_lookups = copy(event_lookups)
     uninterrupted_margins = copy(event_margins)
+    uninterrupted_resolution = copy(timestep_resolution)
+    resize!(timestep_resolution, first_replay_resolution - 1)
     resize!(event_margins, first_replay_lookup - 1)
     resize!(event_lookups, first_replay_lookup - 1)
     nodal.restore_nonlinear_nodal_checkpoint!(network, checkpoint)
@@ -262,6 +270,8 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
         error("gated commutation restart changed accepted lookup output")
     isequal(event_margins, uninterrupted_margins) ||
         error("gated commutation restart changed accepted margin output")
+    isequal(timestep_resolution, uninterrupted_resolution) ||
+        error("gated commutation restart changed accepted timestep resolution")
     rows = vcat(before, uninterrupted)
     final = last(rows)
     rows[250].gate_on && !rows[251].gate_on && !rows[650].gate_on && rows[651].gate_on ||
@@ -288,7 +298,7 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
         all(t -> 200 <= t <= 600, row.diode_thermal), rows) ||
         error("gated commutation left the passive state domain")
     return rows, anchor, tail.last_cutoff_time_s,
-        devices.power_semiconductor_extended_result(igbt), event_lookups, event_margins
+        devices.power_semiconductor_extended_result(igbt), event_lookups, event_margins, timestep_resolution
 end
 
 # The example is redistributable. Only these public declarations may appear in its report.
@@ -334,6 +344,30 @@ function write_event_margin_csv(path, traces)
             println(io, join((trace, lookup.device_index, lookup.event_kind, lookup.event_time_s,
                 lookup.accepted_side, lookup.interval_start_s, lookup.interval_end_s,
                 lookup.order, distances...), ','))
+        end
+    end
+    return path
+end
+
+function write_timestep_resolution_csv(path, traces)
+    open(path, "w") do io
+        columns = fieldnames(AIMORA.Nonlinear.PowerSemiconductorTimestepResolution)
+        println(io, join((:trace, columns..., :limiting_participating_interval), ','))
+        for (trace, records) in traces
+            limiting = Dict{Tuple{Int,Symbol},Int}()
+            for (index, row) in enumerate(records)
+                row.participating && row.scale_over_step !== nothing || continue
+                key = (row.device_index, row.component)
+                previous = get(limiting, key, index)
+                if row.scale_over_step < records[previous].scale_over_step || previous == index
+                    limiting[key] = index
+                end
+            end
+            for (index, row) in enumerate(records)
+                values = map(column -> something(getfield(row, column), ""), columns)
+                is_limiting = get(limiting, (row.device_index,row.component), 0) == index
+                println(io, join((trace, values..., is_limiting), ','))
+            end
         end
     end
     return path
@@ -406,7 +440,7 @@ function main(args=ARGS)
         title="Electrothermal Accepted-State Evolution",
         y_label="temperature rise (mK) and energy (mJ)",
     )
-    coupled, anchor, cutoff_s, igbt, coupled_lookups, coupled_margins =
+    coupled, anchor, cutoff_s, igbt, coupled_lookups, coupled_margins, coupled_resolution =
         gated_commutation_replay(card; record_events=true)
     lookup_path = write_event_lookup_csv(
         joinpath(output_dir, "semiconductor_event_energy_lookups.csv"),
@@ -415,6 +449,10 @@ function main(args=ARGS)
     margin_path = write_event_margin_csv(
         joinpath(output_dir, "semiconductor_event_energy_margins_v1.csv"),
         ((:diode, trace.event_margins), (:coupled, coupled_margins)),
+    )
+    resolution_path = write_timestep_resolution_csv(
+        joinpath(output_dir, "semiconductor_timestep_resolution_v1.csv"),
+        ((:diode, trace.timestep_resolution), (:coupled, coupled_resolution)),
     )
     diode = AIMORA.Nonlinear.power_semiconductor_extended_result(trace.diode)
     diode_model = public_semiconductor_provenance(diode.device_provenance)
@@ -462,6 +500,7 @@ function main(args=ARGS)
     )
     println(lookup_path)
     println(margin_path)
+    println(resolution_path)
     println(coupled_path)
     println("Restart matched ", length(coupled) - 260, " accepted rows at ", anchor.t,
         " s. Tail cutoff ", cutoff_s, " s. Maximum KCL residual ",
