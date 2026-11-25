@@ -1008,6 +1008,30 @@ state = "retained"
 reason = "Curated public tower-backflash waveform rendering."
 
 [[classification]]
+id = "switch-detailed-vsc-historical-currents-figure"
+path = "AIMORACases/examples/emt/switch_detailed_three_phase_vsc/historical/three_phase_vsc_currents.svg"
+state = "retained"
+reason = "Preserved sampled-clock phase-current rendering from the public three-phase VSC example. The documented --historical replay reproduces it for comparison with the causal example."
+
+[[classification]]
+id = "switch-detailed-vsc-historical-dc-link-figure"
+path = "AIMORACases/examples/emt/switch_detailed_three_phase_vsc/historical/three_phase_vsc_dc_link.svg"
+state = "retained"
+reason = "Preserved sampled-clock DC-link rendering from the public three-phase VSC example. The documented --historical replay reproduces it for comparison with the causal example."
+
+[[classification]]
+id = "switch-detailed-vsc-historical-device-states"
+path = "AIMORACases/examples/emt/switch_detailed_three_phase_vsc/historical/three_phase_vsc_device_states.csv"
+state = "retained"
+reason = "Preserved sampled-clock device-state table from the public three-phase VSC example. The documented --historical replay reproduces it for comparison with the causal example."
+
+[[classification]]
+id = "switch-detailed-vsc-historical-waveforms"
+path = "AIMORACases/examples/emt/switch_detailed_three_phase_vsc/historical/three_phase_vsc_waveforms.csv"
+state = "retained"
+reason = "Preserved sampled-clock electrical waveform table from the public three-phase VSC example. The documented --historical replay reproduces it for comparison with the causal example."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"
