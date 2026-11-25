@@ -118,14 +118,16 @@ function synthetic_commutation_trace(card::StudyFacet)
     temperature_k = zeros(Float64, SAMPLE_COUNT)
     cumulative_energy_j = zeros(Float64, SAMPLE_COUNT)
     event_lookups = AIMORA.Nonlinear.PowerSemiconductorEventLookup[]
+    event_margins = AIMORA.Nonlinear.PowerSemiconductorEventMargins[]
     for sample in 1:SAMPLE_COUNT
-        accepted = AIMORA.NonlinearNodal.advance_nonlinear_step_with_event_lookups!(
+        accepted = AIMORA.NonlinearNodal.advance_nonlinear_step_with_semiconductor_margins!(
             nonlinear_system,
             time_s[sample],
             timestep_s,
         )
         result = accepted.result
         append!(event_lookups, accepted.event_lookups)
+        append!(event_margins, accepted.event_margins)
         result.accepted || error(
             "private nonlinear commutation solve failed at sample $sample: $(result.failure)",
         )
@@ -149,6 +151,7 @@ function synthetic_commutation_trace(card::StudyFacet)
         temperature_k,
         cumulative_energy_j,
         event_lookups,
+        event_margins,
     )
 end
 
@@ -186,6 +189,7 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
         scales=NonlinearNetworkScales([200.0, 200.0], [20.0, 20.0], Float64[], Float64[]))
 
     event_lookups = devices.PowerSemiconductorEventLookup[]
+    event_margins = devices.PowerSemiconductorEventMargins[]
     function accepted_row(sample)
         t = sample * dt
         if sample == 640
@@ -193,9 +197,10 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
                 earliest_transition_time_s=gate_on_s)
         end
         if record_events
-            accepted = nodal.advance_nonlinear_step_with_event_lookups!(network, t, dt)
+            accepted = nodal.advance_nonlinear_step_with_semiconductor_margins!(network, t, dt)
             result = accepted.result
             append!(event_lookups, accepted.event_lookups)
+            append!(event_margins, accepted.event_margins)
         else
             result = nodal.advance_nonlinear_step!(network, t, dt)
         end
@@ -247,12 +252,16 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
     first_replay_lookup = length(event_lookups) + 1
     uninterrupted = map(accepted_row, 261:800)
     uninterrupted_lookups = copy(event_lookups)
+    uninterrupted_margins = copy(event_margins)
+    resize!(event_margins, first_replay_lookup - 1)
     resize!(event_lookups, first_replay_lookup - 1)
     nodal.restore_nonlinear_nodal_checkpoint!(network, checkpoint)
     restarted = map(accepted_row, 261:800)
     isequal(uninterrupted, restarted) || error("gated commutation restart changed accepted history")
     isequal(event_lookups, uninterrupted_lookups) ||
         error("gated commutation restart changed accepted lookup output")
+    isequal(event_margins, uninterrupted_margins) ||
+        error("gated commutation restart changed accepted margin output")
     rows = vcat(before, uninterrupted)
     final = last(rows)
     rows[250].gate_on && !rows[251].gate_on && !rows[650].gate_on && rows[651].gate_on ||
@@ -279,7 +288,7 @@ function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
         all(t -> 200 <= t <= 600, row.diode_thermal), rows) ||
         error("gated commutation left the passive state domain")
     return rows, anchor, tail.last_cutoff_time_s,
-        devices.power_semiconductor_extended_result(igbt), event_lookups
+        devices.power_semiconductor_extended_result(igbt), event_lookups, event_margins
 end
 
 # The example is redistributable. Only these public declarations may appear in its report.
@@ -304,6 +313,27 @@ function write_event_lookup_csv(path, traces)
         for (trace, records) in traces, record in records
             values = map(column -> getfield(record, column), columns)
             println(io, join((trace, values...), ','))
+        end
+    end
+    return path
+end
+
+function write_event_margin_csv(path, traces)
+    open(path, "w") do io
+        axes = fieldnames(AIMORA.Nonlinear.SemiconductorEnergyAxisMargins)
+        columns = ["$(quantity)_$(distance)_$unit"
+            for (quantity, unit) in (("current", "a"), ("blocking_voltage", "v"), ("temperature", "k"))
+            for distance in axes]
+        println(io, join(("trace", "device_index", "event_kind", "event_time_s", "accepted_side",
+            "interval_start_s", "interval_end_s", "order", columns...), ','))
+        for (trace, records) in traces, record in records
+            lookup = record.lookup
+            distances = (getfield(axis, distance)
+                for axis in (record.current_a, record.blocking_voltage_v, record.temperature_k)
+                for distance in axes)
+            println(io, join((trace, lookup.device_index, lookup.event_kind, lookup.event_time_s,
+                lookup.accepted_side, lookup.interval_start_s, lookup.interval_end_s,
+                lookup.order, distances...), ','))
         end
     end
     return path
@@ -376,11 +406,15 @@ function main(args=ARGS)
         title="Electrothermal Accepted-State Evolution",
         y_label="temperature rise (mK) and energy (mJ)",
     )
-    coupled, anchor, cutoff_s, igbt, coupled_lookups =
+    coupled, anchor, cutoff_s, igbt, coupled_lookups, coupled_margins =
         gated_commutation_replay(card; record_events=true)
     lookup_path = write_event_lookup_csv(
         joinpath(output_dir, "semiconductor_event_energy_lookups.csv"),
         ((:diode, trace.event_lookups), (:coupled, coupled_lookups)),
+    )
+    margin_path = write_event_margin_csv(
+        joinpath(output_dir, "semiconductor_event_energy_margins_v1.csv"),
+        ((:diode, trace.event_margins), (:coupled, coupled_margins)),
     )
     diode = AIMORA.Nonlinear.power_semiconductor_extended_result(trace.diode)
     diode_model = public_semiconductor_provenance(diode.device_provenance)
@@ -427,6 +461,7 @@ function main(args=ARGS)
         ),
     )
     println(lookup_path)
+    println(margin_path)
     println(coupled_path)
     println("Restart matched ", length(coupled) - 260, " accepted rows at ", anchor.t,
         " s. Tail cutoff ", cutoff_s, " s. Maximum KCL residual ",
