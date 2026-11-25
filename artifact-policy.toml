@@ -1038,6 +1038,12 @@ state = "retained"
 reason = "Reproducible public commutation output with 800 accepted samples. The named catalog case compares 540 rows after restart and exposes electrical work and thermal quantities separately."
 
 [[classification]]
+id = "semiconductor-commutation-event-energy-lookups"
+path = "AIMORACases/examples/emt/extended_semiconductor_commutation/outputs/semiconductor_event_energy_lookups.csv"
+state = "retained"
+reason = "Reproducible public commutation output with eight accepted switching-energy lookup rows. The named catalog case verifies this product, including lookup operands and accepted event sides."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"
