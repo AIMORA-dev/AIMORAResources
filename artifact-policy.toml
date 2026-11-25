@@ -1044,6 +1044,12 @@ state = "retained"
 reason = "Reproducible public commutation output with eight accepted switching-energy lookup rows. The named catalog case verifies this product, including lookup operands and accepted event sides."
 
 [[classification]]
+id = "semiconductor-commutation-event-energy-margins"
+path = "AIMORACases/examples/emt/extended_semiconductor_commutation/outputs/semiconductor_event_energy_margins_v1.csv"
+state = "retained"
+reason = "Reproducible public commutation output with eight rows of accepted switching-energy domain and cell margins. The named catalog case verifies this versioned product alongside the accepted-event lookup trace."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"
