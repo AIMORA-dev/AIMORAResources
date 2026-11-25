@@ -1056,6 +1056,12 @@ state = "retained"
 reason = "Reproducible public commutation output with 2574 rows of accepted-interval timestep resolution observations. The named catalog case verifies the versioned product for the recovery and tail mechanisms."
 
 [[classification]]
+id = "semiconductor-commutation-result-signatures"
+path = "AIMORACases/examples/emt/extended_semiconductor_commutation/outputs/semiconductor_device_result_signatures_v1.csv"
+state = "retained"
+reason = "Reproducible public commutation output with 1680 accepted device-result signature rows. The named catalog case verifies the versioned product and compares 1080 fresh-restart suffix digests."
+
+[[classification]]
 id = "generated-build-products"
 glob = "**/build/**"
 state = "external"
