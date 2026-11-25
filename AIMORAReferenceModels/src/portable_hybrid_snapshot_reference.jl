@@ -35,6 +35,7 @@ struct IndependentPortableHybridReference
     event_occurrences::Vector{IndependentPortableHybridEventOccurrence}
     surface_names::Vector{String}
     surface_fired::Vector{Bool}
+    certified_guard_kinds::Union{Nothing,Vector{String}}
     deterministic_signature_sha256::String
 end
 
@@ -305,6 +306,7 @@ function _independent_reference_surface(record)
     return (
         name = String(fields["name"]),
         repeatable = fields["repeatable"],
+        candidate_is_event = fields["candidate_is_event"],
     )
 end
 
@@ -350,7 +352,8 @@ end
 Decode and independently validate one canonical hybrid snapshot containing an
 exact action-task scheduler. The formulation verifies both state-inventory
 signatures, public/hybrid clocks, external callback-program identities, task
-calendar recurrence, event/surface consistency, and predicts every remaining
+calendar recurrence, event/surface consistency, and any certified guard kinds.
+Supply `certified_guards` to bind the expected guard mode. It predicts every remaining
 task occurrence through the stored fixed-step horizon without importing AIMORA
 production encoding, scheduler, event, or restore code.
 """
@@ -358,6 +361,7 @@ function independent_portable_hybrid_reference(
     snapshot::IndependentPortableSnapshot;
     task_program_signature_sha256::AbstractString,
     event_program_signature_sha256::AbstractString,
+    certified_guards::Union{Nothing,Bool}=nothing,
 )
     public_section = _independent_reference_section(snapshot, "emt.public_state")
     hybrid_section = _independent_reference_section(snapshot, "emt.hybrid_state")
@@ -410,6 +414,11 @@ function independent_portable_hybrid_reference(
         "hybrid.workspace_step_index",
         "hybrid.workspace_time",
     ))
+    guard_identity = "hybrid.certified_guard_kinds"
+    has_certified_guards = haskey(hybrid_fields, guard_identity)
+    (certified_guards === nothing || has_certified_guards == certified_guards) ||
+        throw(ArgumentError("independent portable hybrid guard mode changed"))
+    has_certified_guards && push!(required_hybrid, guard_identity)
     actual_scheduler = Set(identity for identity in keys(hybrid_fields) if startswith(identity, "scheduler."))
     actual_hybrid = Set(identity for identity in keys(hybrid_fields) if startswith(identity, "hybrid."))
     actual_scheduler == required_scheduler || throw(ArgumentError(
@@ -737,6 +746,22 @@ function independent_portable_hybrid_reference(
     length(unique(surface_names)) == length(surface_names) || throw(ArgumentError(
         "independent portable hybrid surfaces repeat an identity",
     ))
+    certified_guard_kinds = if has_certified_guards
+        kinds = _independent_reference_state_field(
+            hybrid_fields, guard_identity, hybrid_owner, "checkpoint", "1",
+        )
+        hybrid_fields[guard_identity].axes == ["surface"] &&
+            kinds isa AbstractVector && !isempty(kinds) && length(kinds) == length(surfaces) ||
+            throw(ArgumentError("independent portable hybrid guard kinds have the wrong shape"))
+        all(kind -> kind isa AbstractString && kind in ("clock", "continuous"), kinds) ||
+            throw(ArgumentError("independent portable hybrid guard kind is unsupported"))
+        all(kind != "clock" || surface.candidate_is_event
+            for (kind, surface) in zip(kinds, surfaces)) ||
+            throw(ArgumentError("independent portable hybrid clock requires an event candidate"))
+        String[kind for kind in kinds]
+    else
+        nothing
+    end
     fired_values = _independent_reference_state_field(
         hybrid_fields,
         "hybrid.surface_fired",
@@ -806,6 +831,7 @@ function independent_portable_hybrid_reference(
         values.event_occurrences,
         values.surface_names,
         values.surface_fired,
+        certified_guard_kinds,
         _independent_reference_signature(values),
     )
 end
