@@ -14,6 +14,8 @@ q_n = \max\!\left(0, \frac{q_{n-1}+\Delta t\,i_d}{1+\Delta t/\tau}\right).
 
 The nonlinear junction satisfies `dq/dv = C(v) > 0`. Backward Euler uses `i_n = (q_n - q_{n-1}) / h`. Trapezoidal integration uses `i_n = 2(q_n - q_{n-1}) / h - i_{n-1}` with the previous accepted displacement current. Turn-off tail current is nonnegative and decays exponentially to its declared cutoff. Switching energy is trilinearly interpolated without extrapolation and is deposited once after an accepted event. The Cauer network has strictly positive thermal resistance and capacitance and rejects heat to a declared ambient temperature.
 
+The electrical loss history and Cauer ladder receive the same accepted continuous channel and active-tail heat. Smooth trapezoidal steps average the accepted endpoint powers. Backward-Euler substeps use right-end power. The Cauer step uses the interval-average heat input and retains the instantaneous endpoint loss in its state. A switching-energy impulse is evaluated at the temperature immediately before the event and deposited separately at that boundary. Junction storage and numerical companion work remain separate from heat.
+
 ## Runtime ownership and state
 
 An extended switch is passed to the nonlinear-device list and must not simultaneously appear in the linear element list. The private solver prepares one exact candidate time, timestep, and integration method before residual/Jacobian evaluation. Trial evaluation is non-mutating. Charge, tail, event energy, loss, temperature, and history state change only after the coupled network solution is accepted; a failed acceptance restores the complete transaction.
