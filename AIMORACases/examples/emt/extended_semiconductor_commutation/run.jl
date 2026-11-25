@@ -117,12 +117,15 @@ function synthetic_commutation_trace(card::StudyFacet)
     displacement_current_a = zeros(Float64, SAMPLE_COUNT)
     temperature_k = zeros(Float64, SAMPLE_COUNT)
     cumulative_energy_j = zeros(Float64, SAMPLE_COUNT)
+    event_lookups = AIMORA.Nonlinear.PowerSemiconductorEventLookup[]
     for sample in 1:SAMPLE_COUNT
-        result = AIMORA.NonlinearNodal.advance_nonlinear_step!(
+        accepted = AIMORA.NonlinearNodal.advance_nonlinear_step_with_event_lookups!(
             nonlinear_system,
             time_s[sample],
             timestep_s,
         )
+        result = accepted.result
+        append!(event_lookups, accepted.event_lookups)
         result.accepted || error(
             "private nonlinear commutation solve failed at sample $sample: $(result.failure)",
         )
@@ -145,10 +148,11 @@ function synthetic_commutation_trace(card::StudyFacet)
         displacement_current_a,
         temperature_k,
         cumulative_energy_j,
+        event_lookups,
     )
 end
 
-function gated_commutation_replay(card::StudyFacet)
+function gated_commutation_replay(card::StudyFacet; record_events::Bool=false)
     devices = AIMORA.Nonlinear
     nodal = AIMORA.NonlinearNodal
     dt = 0.1e-6
@@ -181,13 +185,20 @@ function gated_commutation_replay(card::StudyFacet)
     network = nodal.NonlinearNodalSystem(circuit, [diode, igbt];
         scales=NonlinearNetworkScales([200.0, 200.0], [20.0, 20.0], Float64[], Float64[]))
 
+    event_lookups = devices.PowerSemiconductorEventLookup[]
     function accepted_row(sample)
         t = sample * dt
         if sample == 640
             devices.request_power_semiconductor_gate!(igbt, true, (sample - 1) * dt;
                 earliest_transition_time_s=gate_on_s)
         end
-        result = nodal.advance_nonlinear_step!(network, t, dt)
+        if record_events
+            accepted = nodal.advance_nonlinear_step_with_event_lookups!(network, t, dt)
+            result = accepted.result
+            append!(event_lookups, accepted.event_lookups)
+        else
+            result = nodal.advance_nonlinear_step!(network, t, dt)
+        end
         result.accepted || error("gated commutation failed at sample $sample: $(result.failure)")
         vd, vg = result.voltage_v
         link = 0.05 * (vd - vg)
@@ -233,10 +244,15 @@ function gated_commutation_replay(card::StudyFacet)
     anchor.tail_a > 0 && anchor.recovery_c > 0 && anchor.off_j > 0 ||
         error("restart checkpoint must contain live charge, tail and accepted event energy")
     checkpoint = nodal.nonlinear_nodal_checkpoint(network)
+    first_replay_lookup = length(event_lookups) + 1
     uninterrupted = map(accepted_row, 261:800)
+    uninterrupted_lookups = copy(event_lookups)
+    resize!(event_lookups, first_replay_lookup - 1)
     nodal.restore_nonlinear_nodal_checkpoint!(network, checkpoint)
     restarted = map(accepted_row, 261:800)
     isequal(uninterrupted, restarted) || error("gated commutation restart changed accepted history")
+    isequal(event_lookups, uninterrupted_lookups) ||
+        error("gated commutation restart changed accepted lookup output")
     rows = vcat(before, uninterrupted)
     final = last(rows)
     rows[250].gate_on && !rows[251].gate_on && !rows[650].gate_on && rows[651].gate_on ||
@@ -263,7 +279,7 @@ function gated_commutation_replay(card::StudyFacet)
         all(t -> 200 <= t <= 600, row.diode_thermal), rows) ||
         error("gated commutation left the passive state domain")
     return rows, anchor, tail.last_cutoff_time_s,
-        devices.power_semiconductor_extended_result(igbt)
+        devices.power_semiconductor_extended_result(igbt), event_lookups
 end
 
 # The example is redistributable. Only these public declarations may appear in its report.
@@ -279,6 +295,18 @@ function public_semiconductor_provenance(provenance)
         "unknown unless narrowed by the caller's parameter record",
     ) ? provenance.uncertainty : "undisclosed"
     return (; source, uncertainty)
+end
+
+function write_event_lookup_csv(path, traces)
+    open(path, "w") do io
+        columns = fieldnames(AIMORA.Nonlinear.PowerSemiconductorEventLookup)
+        println(io, join((:trace, columns...), ','))
+        for (trace, records) in traces, record in records
+            values = map(column -> getfield(record, column), columns)
+            println(io, join((trace, values...), ','))
+        end
+    end
+    return path
 end
 
 function main(args=ARGS)
@@ -348,7 +376,12 @@ function main(args=ARGS)
         title="Electrothermal Accepted-State Evolution",
         y_label="temperature rise (mK) and energy (mJ)",
     )
-    coupled, anchor, cutoff_s, igbt = gated_commutation_replay(card)
+    coupled, anchor, cutoff_s, igbt, coupled_lookups =
+        gated_commutation_replay(card; record_events=true)
+    lookup_path = write_event_lookup_csv(
+        joinpath(output_dir, "semiconductor_event_energy_lookups.csv"),
+        ((:diode, trace.event_lookups), (:coupled, coupled_lookups)),
+    )
     diode = AIMORA.Nonlinear.power_semiconductor_extended_result(trace.diode)
     diode_model = public_semiconductor_provenance(diode.device_provenance)
     diode_table = public_semiconductor_provenance(diode.component_provenance.switching_energy)
@@ -393,6 +426,7 @@ function main(args=ARGS)
             ["gate_stage_$(stage)_k" => [row.gate_thermal[stage] for row in coupled] for stage in 1:2],
         ),
     )
+    println(lookup_path)
     println(coupled_path)
     println("Restart matched ", length(coupled) - 260, " accepted rows at ", anchor.t,
         " s. Tail cutoff ", cutoff_s, " s. Maximum KCL residual ",

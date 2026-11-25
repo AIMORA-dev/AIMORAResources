@@ -1,0 +1,9 @@
+trace,device_index,event_kind,event_time_s,accepted_side,interval_start_s,interval_end_s,order,current_magnitude_a,blocking_voltage_magnitude_v,pre_impulse_temperature_k,energy_j
+diode,1,turn_on,1.0e-6,interval_right,0.0,1.0e-6,1,0.0,0.0,300.0000000006602,5.000000000066019e-7
+diode,1,reverse_recovery,3.1e-5,interval_right,3.0e-5,3.1e-5,1,14.050279064732766,7.025139532366383,300.00685449315654,2.475416391660071e-6
+diode,1,turn_off,3.1e-5,interval_left,3.1e-5,3.2e-5,1,0.0,0.0,300.00686687023847,7.50103003053577e-7
+coupled,1,turn_on,1.0e-7,interval_right,0.0,1.0e-7,1,0.0,0.0,300.0000000000011,5.000000000000108e-7
+coupled,2,turn_off,2.505e-5,localized_boundary,2.5e-5,2.51e-5,1,2.8656126482321307,1.4328063241160653,300.0005130412082,9.756746916664032e-7
+coupled,1,reverse_recovery,3.01e-5,interval_right,3.0e-5,3.01e-5,1,0.2993231143059809,0.14966155715299045,300.0060432305429,1.031549791612986e-6
+coupled,1,turn_off,3.01e-5,interval_left,3.01e-5,3.02e-5,1,0.0,0.0,300.00604838829184,7.500907258243777e-7
+coupled,2,turn_on,6.505e-5,localized_boundary,6.5e-5,6.51e-5,1,0.0,10.833260896652472,300.00080247916003,5.541743292748627e-7
