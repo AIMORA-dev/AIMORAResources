@@ -8,5 +8,14 @@
 - `final_junction_temperature_k`: 300.00786803212316
 - `final_dissipated_energy_j`: 0.001574621511293521
 - `manufacturer_identity`: none
+- `extended_result_schema_version`: 2
+- `diode_device_parameter_source`: AIMORA-authored synthetic exact case input
+- `diode_device_parameter_uncertainty`: unknown; no manufacturer or measurement inference
+- `diode_event_energy_parameter_source`: AIMORA generic caller-supplied semiconductor parameters
+- `diode_event_energy_parameter_uncertainty`: unknown unless narrowed by the caller's parameter record
+- `igbt_device_parameter_source`: AIMORA generic caller-supplied semiconductor parameters
+- `igbt_device_parameter_uncertainty`: unknown unless narrowed by the caller's parameter record
+- `igbt_event_energy_parameter_source`: AIMORA generic caller-supplied semiconductor parameters
+- `igbt_event_energy_parameter_uncertainty`: unknown unless narrowed by the caller's parameter record
 - `private_solver_required`: true
 - `unsupported`: manufacturer prediction, arbitrary compact models, destructive failure, lifetime, standards, and certification

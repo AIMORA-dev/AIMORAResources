@@ -262,7 +262,23 @@ function gated_commutation_replay(card::StudyFacet)
         all(t -> 200 <= t <= 600, row.gate_thermal) &&
         all(t -> 200 <= t <= 600, row.diode_thermal), rows) ||
         error("gated commutation left the passive state domain")
-    return rows, anchor, tail.last_cutoff_time_s
+    return rows, anchor, tail.last_cutoff_time_s,
+        devices.power_semiconductor_extended_result(igbt)
+end
+
+# The example is redistributable. Only these public declarations may appear in its report.
+function public_semiconductor_provenance(provenance)
+    provenance === nothing && return (source="unavailable", uncertainty="unavailable")
+    source = provenance.source in (
+        "AIMORA-authored synthetic exact case input",
+        "AIMORA generic caller-supplied semiconductor parameters",
+    ) ? provenance.source : "undisclosed"
+    uncertainty = provenance.uncertainty in (
+        "unknown",
+        "unknown; no manufacturer or measurement inference",
+        "unknown unless narrowed by the caller's parameter record",
+    ) ? provenance.uncertainty : "undisclosed"
+    return (; source, uncertainty)
 end
 
 function main(args=ARGS)
@@ -332,6 +348,12 @@ function main(args=ARGS)
         title="Electrothermal Accepted-State Evolution",
         y_label="temperature rise (mK) and energy (mJ)",
     )
+    coupled, anchor, cutoff_s, igbt = gated_commutation_replay(card)
+    diode = AIMORA.Nonlinear.power_semiconductor_extended_result(trace.diode)
+    diode_model = public_semiconductor_provenance(diode.device_provenance)
+    diode_table = public_semiconductor_provenance(diode.component_provenance.switching_energy)
+    igbt_model = public_semiconductor_provenance(igbt.device_provenance)
+    igbt_table = public_semiconductor_provenance(igbt.component_provenance.switching_energy)
     summary_path = write_key_value_summary(
         joinpath(output_dir, "summary.md"),
         "Generic Extended Semiconductor Commutation",
@@ -344,11 +366,19 @@ function main(args=ARGS)
             final_junction_temperature_k=last(trace.temperature_k),
             final_dissipated_energy_j=last(trace.cumulative_energy_j),
             manufacturer_identity="none",
+            extended_result_schema_version=diode.schema_version,
+            diode_device_parameter_source=diode_model.source,
+            diode_device_parameter_uncertainty=diode_model.uncertainty,
+            diode_event_energy_parameter_source=diode_table.source,
+            diode_event_energy_parameter_uncertainty=diode_table.uncertainty,
+            igbt_device_parameter_source=igbt_model.source,
+            igbt_device_parameter_uncertainty=igbt_model.uncertainty,
+            igbt_event_energy_parameter_source=igbt_table.source,
+            igbt_event_energy_parameter_uncertainty=igbt_table.uncertainty,
             private_solver_required=true,
             unsupported="manufacturer prediction, arbitrary compact models, destructive failure, lifetime, standards, and certification",
         ),
     )
-    coupled, anchor, cutoff_s = gated_commutation_replay(card)
     coupled_path = write_series_csv(
         joinpath(output_dir, "gated_commutation_restart.csv"), "time_s",
         getproperty.(coupled, :t),

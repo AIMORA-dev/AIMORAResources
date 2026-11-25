@@ -18,6 +18,8 @@ The runner writes `extended_semiconductor_commutation.csv`, three SVG figures, a
 
 `gated_commutation_restart.csv` records the coupled trace on a 0.1 µs grid, including signed terminal currents, stored charge, tail current, gate state, event counts, energy, and thermal stage temperatures. It includes both node KCL and thermal balance residuals.
 
+The summary reads declared provenance from the Engine's version-2 extended result. It lists the diode, the gated IGBT, and their event-energy tables separately. Their declarations are unknown uncertainty. The case presents no numerical uncertainty interval or distribution. Only approved generic declarations are written to its public summary; other text is withheld. The Engine retains the full typed declaration for local callers. A version-1 physical result can be viewed with provenance explicitly unavailable.
+
 The diode constructor starts at 20 µC of recovered charge at time zero. The summary key `initial_recovery_charge_c` reports the first accepted sample at 1 µs, about 16.67 µC on the current companion. The reported peak reverse current is the most negative total terminal current, including displacement.
 
 At the diode's recovered-charge exhaustion, the solver uses two backward-Euler substeps. Their channel work and electrical loss use the accepted right-end current and voltage, while the junction companion reports its numerical work separately from heat. The electrical loss history and Cauer input use the same continuous channel and active-tail heat. On smooth trapezoidal steps that amount comes from endpoint-average power. A sampled endpoint switching impulse uses the temperature after continuous evolution and is deposited separately.
