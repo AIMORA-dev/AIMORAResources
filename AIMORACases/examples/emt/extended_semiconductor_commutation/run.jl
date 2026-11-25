@@ -124,6 +124,120 @@ function synthetic_commutation_trace()
     )
 end
 
+function gated_commutation_replay()
+    devices = AIMORA.Nonlinear
+    nodal = AIMORA.NonlinearNodal
+    dt = 0.1e-6
+    gate_off_s, gate_on_s = 25.05e-6, 65.05e-6
+    diode = generic_recovered_diode()
+    thermal = devices.CauerThermalFidelity([0.2, 1.0], [0.5, 2.0];
+        initial_temperature_k=[300.0, 300.0])
+    diode_thermal = diode.extended_fidelity.thermal
+    diode_initial_storage_j = diode_thermal.last_stored_energy_j
+    gate_initial_storage_j = thermal.last_stored_energy_j
+    tail = devices.TurnOffTailFidelity(4e-6; cutoff_current_a=0.05)
+    energy = generic_energy_table()
+    igbt = devices.IGBTSwitch(2, 0;
+        gate_driver=devices.PowerSemiconductorGateDriver(initially_on=true),
+        initially_closed=true, on_conductance=2.0, off_conductance=1e-6,
+        extended_fidelity=devices.PowerSemiconductorExtendedFidelity(
+            turn_off_tail=tail, switching_energy=energy, thermal=thermal),
+    )
+    devices.power_semiconductor_event_localization!(igbt)
+    devices.request_power_semiconductor_gate!(igbt, false, 0.0;
+        earliest_transition_time_s=gate_off_s)
+    drive(t) = t <= 30e-6 ? 10.0 : t <= 55e-6 ? -20.0 : -2.0
+    circuit = AIMORA.Nodal.NodalSystem(2, [
+        AIMORA.Branches.ConductanceBranch(1, 0, 0.2),
+        AIMORA.Branches.ConductanceBranch(2, 0, 0.2),
+        AIMORA.Branches.ConductanceBranch(1, 2, 0.05),
+        AIMORA.Branches.CurrentInjection(1, drive),
+        AIMORA.Branches.CurrentInjection(2, _ -> 3.0),
+    ])
+    network = nodal.NonlinearNodalSystem(circuit, [diode, igbt];
+        scales=NonlinearNetworkScales([200.0, 200.0], [20.0, 20.0], Float64[], Float64[]))
+
+    function accepted_row(sample)
+        t = sample * dt
+        if sample == 640
+            devices.request_power_semiconductor_gate!(igbt, true, (sample - 1) * dt;
+                earliest_transition_time_s=gate_on_s)
+        end
+        result = nodal.advance_nonlinear_step!(network, t, dt)
+        result.accepted || error("gated commutation failed at sample $sample: $(result.failure)")
+        vd, vg = result.voltage_v
+        link = 0.05 * (vd - vg)
+        residual = max(abs(0.2 * vd + link + diode.last_current - drive(t)),
+                       abs(0.2 * vg - link + igbt.last_current - 3.0))
+        residual <= 1e-10 + 1e-7 * max(abs(drive(t)), 3.0) ||
+            error("gated commutation KCL failed at sample $sample")
+        d = devices.power_semiconductor_extended_state(diode)
+        g = devices.power_semiconductor_extended_state(igbt)
+        diode_thermal_residual_j = d.thermal_stored_energy_j - diode_initial_storage_j -
+            diode_thermal.cumulative_input_energy_j + diode_thermal.cumulative_ambient_energy_j
+        gate_thermal_residual_j = g.thermal_stored_energy_j - gate_initial_storage_j -
+            thermal.cumulative_input_energy_j + thermal.cumulative_ambient_energy_j
+        for (balance_j, cauer) in ((diode_thermal_residual_j, diode_thermal),
+                                   (gate_thermal_residual_j, thermal))
+            abs(balance_j) <= 1e-12 + 1e-7 *
+                max(cauer.cumulative_input_energy_j, cauer.cumulative_ambient_energy_j) ||
+                error("gated commutation thermal balance failed at sample $sample")
+        end
+        return (;
+            t, diode_v=vd, gate_v=vg, diode_a=diode.last_current, gate_a=igbt.last_current,
+            forward_a=igbt.last_forward_current_a, recovery_c=d.stored_recovery_charge_c,
+            junction_c=d.junction_charge_c, displacement_a=d.displacement_current_a,
+            tail_a=g.tail_current_a, gate_on=igbt.gate_driver.applied_on,
+            gate_edges=igbt.gate_driver.transition_count,
+            recovery_edges=d.recovery_zero_event_count, tail_edges=g.tail_cutoff_event_count,
+            event=g.last_event_kind, event_j=g.last_event_energy_j,
+            on_j=g.cumulative_turn_on_energy_j, off_j=g.cumulative_turn_off_energy_j,
+            recovery_j=d.cumulative_reverse_recovery_energy_j,
+            diode_heat_j=diode.semiconductor_dissipated_energy_j,
+            gate_heat_j=igbt.semiconductor_dissipated_energy_j,
+            diode_thermal=Tuple(d.thermal_node_temperature_k),
+            gate_thermal=Tuple(g.thermal_node_temperature_k),
+            diode_heat_flow_w=d.ambient_heat_flow_w, gate_heat_flow_w=g.ambient_heat_flow_w,
+            diode_storage_j=d.thermal_stored_energy_j, gate_storage_j=g.thermal_stored_energy_j,
+            diode_thermal_residual_j, gate_thermal_residual_j,
+            kcl_residual_a=residual,
+        )
+    end
+
+    before = map(accepted_row, 1:260)
+    anchor = last(before)
+    anchor.tail_a > 0 && anchor.recovery_c > 0 && anchor.off_j > 0 ||
+        error("restart checkpoint must contain live charge, tail and accepted event energy")
+    checkpoint = nodal.nonlinear_nodal_checkpoint(network)
+    uninterrupted = map(accepted_row, 261:800)
+    nodal.restore_nonlinear_nodal_checkpoint!(network, checkpoint)
+    restarted = map(accepted_row, 261:800)
+    isequal(uninterrupted, restarted) || error("gated commutation restart changed accepted history")
+    rows = vcat(before, uninterrupted)
+    final = last(rows)
+    rows[250].gate_on && !rows[251].gate_on && !rows[650].gate_on && rows[651].gate_on ||
+        error("gated commutation missed the gate-off or gate-on boundary")
+    final.gate_edges == 2 && final.recovery_edges == 1 && final.tail_edges == 1 ||
+        error("gated commutation did not accept each event once")
+    recovery = findfirst(row -> row.recovery_edges == 1, rows)
+    cutoff_row = findfirst(row -> row.tail_edges == 1, rows)
+    251 < recovery < cutoff_row < 651 ||
+        error("gated commutation event order changed")
+    for (field, accepted_index) in ((:off_j, 251), (:recovery_j, 301), (:on_j, 651))
+        deposits = findall(>(0), diff(getproperty.(rows, field)))
+        deposits == [accepted_index - 1] ||
+            error("gated commutation did not deposit $field exactly once")
+    end
+    cutoff = gate_off_s + tail.decay_time_s * log(rows[250].forward_a / tail.cutoff_current_a)
+    abs(tail.last_cutoff_time_s - cutoff) <= 1e-12 ||
+        error("gated commutation tail cutoff disagrees with the exponential limit")
+    all(row -> row.recovery_c >= 0 && row.tail_a >= 0 &&
+        all(t -> 200 <= t <= 600, row.gate_thermal) &&
+        all(t -> 200 <= t <= 600, row.diode_thermal), rows) ||
+        error("gated commutation left the passive state domain")
+    return rows, anchor, tail.last_cutoff_time_s
+end
+
 function main(args=ARGS)
     AIMORA.require_solver()
     trace = synthetic_commutation_trace()
@@ -197,6 +311,25 @@ function main(args=ARGS)
             unsupported="manufacturer prediction, arbitrary compact models, destructive failure, lifetime, standards, and certification",
         ),
     )
+    coupled, anchor, cutoff_s = gated_commutation_replay()
+    coupled_path = write_series_csv(
+        joinpath(output_dir, "gated_commutation_restart.csv"), "time_s",
+        getproperty.(coupled, :t),
+        vcat(
+            [String(field) => getproperty.(coupled, field) for field in
+                (:diode_v, :gate_v, :diode_a, :gate_a, :forward_a, :recovery_c, :junction_c,
+                 :displacement_a, :tail_a, :gate_on, :gate_edges, :recovery_edges, :tail_edges,
+                 :on_j, :off_j, :recovery_j, :diode_heat_j, :gate_heat_j,
+                 :diode_heat_flow_w, :gate_heat_flow_w, :diode_storage_j, :gate_storage_j,
+                 :diode_thermal_residual_j, :gate_thermal_residual_j, :kcl_residual_a)],
+            ["diode_stage_$(stage)_k" => [row.diode_thermal[stage] for row in coupled] for stage in 1:2],
+            ["gate_stage_$(stage)_k" => [row.gate_thermal[stage] for row in coupled] for stage in 1:2],
+        ),
+    )
+    println(coupled_path)
+    println("Restart matched ", length(coupled) - 260, " accepted rows at ", anchor.t,
+        " s. Tail cutoff ", cutoff_s, " s. Maximum KCL residual ",
+        maximum(getproperty.(coupled, :kcl_residual_a)), " A.")
     println(csv_path)
     println(electrical_waveform_path)
     println(charge_waveform_path)
